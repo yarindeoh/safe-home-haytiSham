@@ -5,14 +5,17 @@
   "author": "yarindeoh",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --mode=development",
+    "start-dev": "webpack-dev-server --mode=development",
     "build": "webpack --mode production",
     "test": "jest",
     "test-watch": "jest --watch",
-    "lint-fix": "eslint --fix  --ext .js src"
+    "lint-fix": "eslint --fix  --ext .js src",
+    "server": "node server",
+    "start": "concurrently \"npm run build\" \"npm run server\""
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "concurrently": "^5.2.0",
     "connected-react-router": "^6.5.2",
     "i18n": "^0.8.3",
     "node-sass": "^4.11.0",
