@@ -10,9 +10,9 @@
     "test": "jest",
     "test-watch": "jest --watch",
     "lint-fix": "eslint --fix  --ext .js src",
-    "server": "node server",
-    "start": "concurrently \"npm run build\" \"npm run server\""
+    "start": "node server"
   },
+  "heroku-run-build-script": true,
   "dependencies": {
     "classnames": "^2.2.6",
     "concurrently": "^5.2.0",
