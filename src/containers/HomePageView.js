@@ -10,6 +10,7 @@ const HomePageView = props => {
             <div className="section">
                 <Loader />
             </div>
+            test!!!
             <p>@ powered by yarindeoh</p>
         </div>
     );
