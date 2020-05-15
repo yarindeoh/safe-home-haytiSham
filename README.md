@@ -1,34 +1,26 @@
-## safe@home-beenthere
-
-#### Whats included?
-- webpack-dev-server
-- webpack 4
-- eslint configuration + prettier 
-- redux
-- redux-saga
-- sass
-- i18n (translation infra)
-- jest
-- babel
-- hot reload
-
+## Safe@Home: Hayti Sham
 
 ## Quick Use
 
-Run in locally - webpack-dev-server
+Run in locally with webpack-dev-server
 
 ```
-yarn start
+npm run start
 ```
 
-Run tests / test in dev mode (--watch)
+Run webpack prod build
+```
+npm run build
+```
+
+Run local server after webpack build
 
 ```
-yarn test
+npm run start-server
 ```
 
-Fix eslint issues
+## Deployment
+This application is deployed using Heroku:
+https://haytisham.herokuapp.com/
 
-```
-yarn lint-fix
-```
+
