@@ -1,38 +1,32 @@
-## safe@home-beenthere
-
-#### Whats included?
-- webpack-dev-server
-- webpack 4
-- eslint configuration + prettier 
-- redux
-- redux-saga
-- sass
-- i18n (translation infra)
-- jest
-- babel
-- hot reload
-
+## Safe@Home: Hayti Sham
 
 ## Quick Use
 
-Run in locally - webpack-dev-server
+Run in locally with webpack-dev-server
 
 ```
-yarn start
+npm run start
 ```
 
-Run tests / test in dev mode (--watch)
-
+Run webpack prod build
 ```
-yarn test
-```
-
-Fix eslint issues
-
-```
-yarn lint-fix
+npm run build
 ```
 
+Run local server after webpack build
+
+```
+npm run start-server
+```
+ 
+=======
+## Deployment
+This application is deployed using Heroku:
+https://haytisham.herokuapp.com/
+
+
+##
+## Server
 
 prepare server env:
 ```
@@ -48,4 +42,4 @@ supported methods:
 * getAllData: returns all records as json.
 * getDataAfterDate: gets json with 'lastUpdate': <timestamp>, e.g.: '5/15/2020 15:04:02'. returns all records posted after lastUpdate as json.   
    
-sample requests can be found under server/req_examples.py.  
+sample requests can be found under server/req_examples.py. 

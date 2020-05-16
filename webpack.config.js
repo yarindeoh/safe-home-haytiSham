@@ -2,7 +2,6 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const apiMocker = require('webpack-api-mocker');
 
 module.exports = (env, argv) => {
     return {
@@ -17,8 +16,7 @@ module.exports = (env, argv) => {
                 src: path.resolve(__dirname, 'src'),
                 components: path.resolve(__dirname, 'src/components'),    
                 containers: path.resolve(__dirname, 'src/containers'),                            
-                services: path.resolve(__dirname, 'src/services'),
-                i18n: path.resolve(__dirname, 'src/services/i18n')
+                services: path.resolve(__dirname, 'src/services')
             }
         },
         output: {
@@ -58,15 +56,9 @@ module.exports = (env, argv) => {
             })
         ],
         devServer: {
-            before(app) {
-                apiMocker(app, path.resolve('./mockers/index.js'), {});
-            },
             port: 9000,
             hot: true,
-            historyApiFallback: true,
-            proxy: {
-                '/proxy/*': 'http://localhost:8080'
-            }
+            historyApiFallback: true
         }
     };
 };
