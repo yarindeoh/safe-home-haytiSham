@@ -1,8 +1,8 @@
 import React from 'react';
 
-import HomePageView from 'containers/HomePageView';
+import Container1View from 'containers/container1/Container1View';
 import 'resources/scss/style.scss';
 
 export const App = () => {
-    return <HomePageView />;
+    return <Container1View />;
 };

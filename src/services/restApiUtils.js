@@ -27,7 +27,7 @@ export async function handleRequest(url, type, options = {}, data = {}) {
     }
 }
 
-export async function* get(url, options = {}) {
+export async function get(url, options = {}) {
     return await handleRequest(url, GET, options);
 }
 
@@ -35,7 +35,7 @@ export async function post(url, data, options = {}) {
     return await handleRequest(url, POST, options, data);
 }
 
-export async function*putAction(url, data = {}, options = {}) {
+export async function putAction(url, data = {}, options = {}) {
     return await handleRequest(url, PUT, options, data);
 }
 
