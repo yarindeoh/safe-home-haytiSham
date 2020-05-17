@@ -41,3 +41,4 @@ virtualenv==20.0.20
 virtualenv-clone==0.5.4
 Werkzeug==1.0.1
 zipp==2.2.0
+flask_cors==3.0.8
