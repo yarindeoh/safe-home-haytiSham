@@ -1,4 +1,4 @@
-import react from 'React';
+import React from 'react';
 
 export const Tags = () => {
     return <div>Tags</div>
