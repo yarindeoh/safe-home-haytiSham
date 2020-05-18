@@ -9,7 +9,7 @@ import { Footer } from 'containers/Story/components/Footer';
 
 export const StoryView = withRoute((props) => {
     const story = props.location.state;
-    const changeStoryLocation = (path, params) => {
+    const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
     };
     const proccessedStory = extractFieldsFromObj(story, [
@@ -23,7 +23,7 @@ export const StoryView = withRoute((props) => {
     return (
         <div>
             <h1>Hello From Story!</h1>
-            <button onClick={() => changeStoryLocation('/')}>Go back</button>
+            <button onClick={() => changeLocationByPath('/')}>Go back</button>
             {proccessedStory &&
                 Object.keys(proccessedStory).map((item, key) => (
                     <div key={key}>
@@ -35,7 +35,7 @@ export const StoryView = withRoute((props) => {
             <Tags tags={story.tags} />
             <SimilarStories
                 tags={story.tags}
-                changeStoryLocation={changeStoryLocation}
+                changeLocationByPath={changeLocationByPath}
             />
             <Footer />
         </div>

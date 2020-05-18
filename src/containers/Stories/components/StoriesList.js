@@ -3,7 +3,7 @@ import React from 'react';
 import { useFilteredStories } from 'containers/Stories/storiesHooks';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
 
-export const StoriesList = ({ tags, changeStoryLocation }) => {
+export const StoriesList = ({ tags, changeLocationByPath }) => {
     const { stories } = useFilteredStories(tags);
     return (
         <div className="storiesList">
@@ -12,8 +12,8 @@ export const StoriesList = ({ tags, changeStoryLocation }) => {
                     <StoryHighlight
                         story={story}
                         key={key}
-                        changeStoryLocation={() =>
-                            changeStoryLocation(`story/${story.id}`, story)
+                        changeLocationByPath={() =>
+                            changeLocationByPath(`story/${story.id}`, story)
                         }
                     />
                 ))}

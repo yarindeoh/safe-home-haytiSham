@@ -4,7 +4,7 @@ import { useAllTags } from 'containers/Stories/storiesHooks';
 import { Tag } from 'components/Tag';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 
-export const TagsFilter = ({ changeStoryLocation }) => {
+export const TagsFilter = ({ changeLocationByPath }) => {
     const tags = useAllTags();
     const [filteredTags, setFilteredTags] = useState([]);
     return (
@@ -26,7 +26,7 @@ export const TagsFilter = ({ changeStoryLocation }) => {
                 ))}
             <StoriesList
                 tags={filteredTags}
-                changeStoryLocation={changeStoryLocation}
+                changeLocationByPath={changeLocationByPath}
             />
         </div>
     );
