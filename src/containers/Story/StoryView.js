@@ -8,6 +8,9 @@ import { SimilarStories } from 'containers/Story/components/SimilarStories';
 
 export const StoryView = withRoute((props) => {
     const story = props.location.state;
+    const changeStoryLocation = (path, params) => {
+        props.history.push(path, params);
+    };
     const proccessedStory = extractFieldsFromObj(story, [
         'background',
         'whatTriggeredChange',
@@ -19,7 +22,7 @@ export const StoryView = withRoute((props) => {
     return (
         <div>
             <h1>Hello From Story!</h1>
-            <button onClick={() => props.history.push('/')}>Go back</button>
+            <button onClick={() => changeStoryLocation('/')}>Go back</button>
             {proccessedStory &&
                 Object.keys(proccessedStory).map((item, key) => (
                     <div key={key}>
@@ -29,7 +32,10 @@ export const StoryView = withRoute((props) => {
                     </div>
                 ))}
             <Tags tags={story.tags} />
-            <SimilarStories tags={story.tags} />
+            <SimilarStories
+                tags={story.tags}
+                changeStoryLocation={changeStoryLocation}
+            />
         </div>
     );
 });

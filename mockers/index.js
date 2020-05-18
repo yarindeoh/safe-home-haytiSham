@@ -395,6 +395,9 @@ const proxy = {
             tags: ['אלימות מילולית', 'קנאה'],
         },
     ],
+     'GET /mock/getAllTags': [
+         'אלימות מילולית','קנאה', 'אלימות פיזית', 'השפלה', 'פחד'
+     ]
 };
 
 module.exports = proxy;

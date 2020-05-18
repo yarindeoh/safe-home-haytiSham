@@ -7,12 +7,18 @@ function baseUrl(path) {
 }
 
 const Api = {
-    getAllData: () => {
+    // getAllData: () => {
+    //     return get(baseUrl('getAllData'));
+    // },
+    getTestMock: () => {
         return get(baseUrl('getAllData'));
     },
-    getTestMock: () => {
-        return get(baseUrl('getAllData'))
-    }
+    getAllTags: () => {
+        return get(baseUrl('getAllTags'));
+    },
+    getStoriesByTags: ({ tags }) => {
+        return get(baseUrl(`getStoriesByTags?${tags}`));
+    },
 };
 
 export default Api;
