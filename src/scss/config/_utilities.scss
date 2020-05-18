@@ -1,0 +1,12 @@
+$colors-partials: (
+  text-black: map_get($colors, black),
+  text-gray: black,
+  text-light-gray: black,
+
+);
+
+
+$colors: (
+  black: #212121,
+  //gray:
+);
