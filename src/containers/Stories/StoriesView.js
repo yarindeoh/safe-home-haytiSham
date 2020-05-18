@@ -9,6 +9,9 @@ import { Header } from '../../components/Header';
 
 export const StoriesView = withRoute((props) => {
     const { data } = useData();
+    const changeStoryLocation = (path, params) => {
+        props.history.push(path, params);
+    };
     return (
         <div className="app">
             <Header />
@@ -18,7 +21,7 @@ export const StoriesView = withRoute((props) => {
                 {lang.addStory}
             </button>
             <hr />
-            <TagsFilter />
+            <TagsFilter changeStoryLocation={changeStoryLocation} />
             {data &&
                 data.map((item, key) => {
                     return (

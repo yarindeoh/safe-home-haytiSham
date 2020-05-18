@@ -1,27 +1,25 @@
 header {
-  width: 100%;
-  height: 50px;
-  background-color: lightgray;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-  box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 header > ul {
-  height: 100%;
+    height: 100%;
 }
 header > ul > button {
-  height: 100%;
-  width: 50px;
+    height: 100%;
+    width: 50px;
 }
 header > ul > button:not(:first-of-type) {
-  margin-left: 5px;
+    margin-left: 5px;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 header {
@@ -71,9 +69,12 @@ header > ul > button:not(:first-of-type) {
 }
 
 body {
-  background-color: pink;
-  display: grid;
-  grid-template-areas: "header" "carrousel" "gallery";
+    background-color: pink;
+    display: grid;
+    grid-template-areas: 'header' 'carrousel' 'gallery';
 }
 
+.selected {
+    color: rebeccapurple;
+}
 /*# sourceMappingURL=App.css.map */

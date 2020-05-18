@@ -5,6 +5,7 @@ import lang from 'services/lang.json';
 import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
+import { Footer } from 'containers/Story/components/Footer';
 
 export const StoryView = withRoute((props) => {
     const story = props.location.state;
@@ -36,6 +37,7 @@ export const StoryView = withRoute((props) => {
                 tags={story.tags}
                 changeStoryLocation={changeStoryLocation}
             />
+            <Footer />
         </div>
     );
 });
