@@ -9,7 +9,6 @@
   grid-area: carrousel;
   height: 265px;
   width: 100%;
-  background-color: red;
   display: flex;
 
   > section {
@@ -19,13 +18,29 @@
     width: $size;
     background-color: gray;
 
-    :not(:first-of-type) {
+    &:not(:first-of-type) {
       margin-left: 24px;
     }
 
     > img {
       height: $size;
       width: $size;
+      background-color: black;
+
+      > h1 {
+        color: white;
+      }
+
+      > h2 {
+        color: lightgray;
+      }
+    }
+
+    > .tag {
+      padding: 5px;
+      background-color: gray;
+      color: #2d2d2d;
+      border-radius: 50%;
     }
   }
 }

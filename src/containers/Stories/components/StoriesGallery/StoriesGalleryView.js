@@ -9,18 +9,35 @@ export const StoriesGalleryView = () => {
                     width="560"
                     height="315"
                 ></iframe>
+                <ul className={'tags-container'}>
+                    <button className={'tag'} />
+                    <button className={'tag'} />
+                    <button className={'tag'} />
+                </ul>
             </section>
-            <iframe
-                src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FonlifeIL%2Fvideos%2F610082766499736%2F&show_text=0&width=560"
-                width="560"
-                height="315"
-            ></iframe>
+            <section>
+                <iframe
+                    src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FonlifeIL%2Fvideos%2F610082766499736%2F&show_text=0&width=560"
+                    width="560"
+                    height="315"
+                ></iframe>
+                <ul className={'tags-container'}>
+                    <button className={'tag'} />
+                    <button className={'tag'} />
+                    <button className={'tag'} />
+                </ul>
+            </section>
             <section>
                 <iframe
                     src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FonlifeIL%2Fvideos%2F234311144373734%2F&show_text=0&width=560"
                     width="560"
                     height="315"
                 ></iframe>
+                <ul className={'tags-container'}>
+                    <button className={'tag'} />
+                    <button className={'tag'} />
+                    <button className={'tag'} />
+                </ul>
             </section>
             <section>
                 <iframe
@@ -28,6 +45,11 @@ export const StoriesGalleryView = () => {
                     width="560"
                     height="315"
                 ></iframe>
+                <ul className={'tags-container'}>
+                    <button className={'tag'} />
+                    <button className={'tag'} />
+                    <button className={'tag'} />
+                </ul>
             </section>
             <section>
                 <iframe
@@ -35,6 +57,11 @@ export const StoriesGalleryView = () => {
                     width="560"
                     height="315"
                 ></iframe>
+                <ul className={'tags-container'}>
+                    <button className={'tag'} />
+                    <button className={'tag'} />
+                    <button className={'tag'} />
+                </ul>
             </section>
         </div>
     );

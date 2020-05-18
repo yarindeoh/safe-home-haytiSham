@@ -5,8 +5,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
-  box-sizing: border-box;
 }
 header > ul {
   height: 100%;
@@ -19,6 +17,10 @@ header > ul > button:not(:first-of-type) {
   margin-left: 5px;
 }
 
+.selected {
+  color: red;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -26,8 +28,34 @@ header > ul > button:not(:first-of-type) {
 
 .stories-gallery {
   grid-area: carrousel;
+  height: 265px;
   width: 100%;
-  background-color: red;
+  display: flex;
+}
+.stories-gallery > section {
+  height: 100%;
+  width: 216px;
+  background-color: gray;
+}
+.stories-gallery > section:not(:first-of-type) {
+  margin-left: 24px;
+}
+.stories-gallery > section > img {
+  height: 216px;
+  width: 216px;
+  background-color: black;
+}
+.stories-gallery > section > img > h1 {
+  color: white;
+}
+.stories-gallery > section > img > h2 {
+  color: lightgray;
+}
+.stories-gallery > section > .tag {
+  padding: 5px;
+  background-color: gray;
+  color: #2d2d2d;
+  border-radius: 50%;
 }
 
-/*# sourceMappingURL=%20storiesGallery.css.map */
+/*# sourceMappingURL=storiesGallery.css.map */

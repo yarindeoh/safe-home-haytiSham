@@ -5,14 +5,13 @@
 @import '../config/_reset.scss';
 
 //@media only screen and (max-width: map_get($breakpoints, mobie)) {
-body {
-    background-color: map_get($colors, global-background);
-    //background-color: red;
-    display: grid;
-    grid-template-areas:
-        'header'
-        'carrousel'
-        'gallery';
-}
-
+  body {
+      background-color: map_get($colors, global-background);
+      //background-color: red;
+      display: grid;
+      grid-template-areas: "header"
+                            "carrousel"
+                            "send-testimony-box"
+                            "gallery";
+  }
 //}
