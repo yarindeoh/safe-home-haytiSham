@@ -1,4 +1,4 @@
-import Api from 'containers/container1/container1Api';
+import Api from 'containers/Stories/storiesApi';
 import { useEffect, useState } from 'react';
 
 export const useData = () => {

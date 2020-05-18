@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Loader from 'components/Loader';
-import { useData } from 'containers/container1/container1Hooks';
+import { useData } from 'containers/Stories/storiesHooks';
 
-const Container1View = () => {
+export const StoriesView = () => {
     const { data } = useData();
     console.log(data);
     return (
@@ -16,5 +16,3 @@ const Container1View = () => {
         </div>
     );
 };
-
-export default Container1View;
