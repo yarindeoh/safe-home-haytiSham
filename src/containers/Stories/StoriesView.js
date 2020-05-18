@@ -9,6 +9,9 @@ export const StoriesView = withRoute((props) => {
     return (
         <div className="app">
             <div className="title">It Could Have Been Me</div>
+            <button onClick={() => props.history.push('addStory')}>
+                {lang.addStory}
+            </button>
             {data &&
                 data.map((item, key) => {
                     return (

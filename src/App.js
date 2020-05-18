@@ -4,6 +4,7 @@ import { Context } from 'services/routing/context';
 import { StoriesView } from 'containers/Stories/StoriesView';
 import 'resources/scss/style.scss';
 import { StoryView } from 'containers/Story/StoryView';
+import { AddStoryView } from 'containers/AddStory/AddStoryView';
 
 import { createBrowserHistory } from 'history';
 
@@ -15,6 +16,7 @@ export const App = () => (
             <Switch>
                 <Route path="/" exact={true} component={StoriesView} />
                 <Route path="/story" component={StoryView} />
+                <Route path="/addStory" exact={true} component={AddStoryView} />
             </Switch>
         </BrowserRouter>
     </Context.Provider>
