@@ -4,7 +4,7 @@ import { StoryHighlight } from './StoryHighlight';
 import { useSimilarStories } from 'containers/Story/storyHooks';
 import lang from 'services/lang.json';
 
-export const SimilarStories = ({ tags, changeStoryLocation }) => {
+export const SimilarStories = ({ tags, changeLocationByPath }) => {
     const { stories } = useSimilarStories(tags);
     return (
         <div>
@@ -15,7 +15,7 @@ export const SimilarStories = ({ tags, changeStoryLocation }) => {
                         <StoryHighlight
                             story={stories[index]}
                             key={key}
-                            changeStoryLocation={changeStoryLocation}
+                            changeLocationByPath={changeLocationByPath}
                         />
                     );
                 })}

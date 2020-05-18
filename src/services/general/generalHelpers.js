@@ -7,3 +7,7 @@ export function extractFieldsFromObj(obj, fields) {
     });
     return res;
 }
+
+export const changeLocationByPath = (history, path, params) => {
+    history.push(path, params);
+};
