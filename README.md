@@ -27,7 +27,11 @@ https://haytisham.herokuapp.com/
 
 ##
 ## Server
-
+### Peer Dependencies
+ - Python 3 +
+ - Pip 3 +
+ 
+ If you don't have alias run python3 instead python or pip3 instead pip
 prepare server env:
 ```
 pip install -r requirements.txt

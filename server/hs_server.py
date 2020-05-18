@@ -5,6 +5,7 @@ import gspread
 import logging
 from logging.handlers import RotatingFileHandler
 from datetime import datetime
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.JSON_AS_ASCII = False
@@ -16,6 +17,7 @@ key_data = 'data'
 key_error = 'error'
 date_format = '%m/%d/%Y %H:%M:%S'
 
+CORS(app)
 
 @app.route('/getAllData', methods=['GET'])
 def get_all_data():

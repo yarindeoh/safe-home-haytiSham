@@ -1,0 +1,31 @@
+@import "../local/_breakpoints.scss",
+"../local/_colors.scss",
+"../local/_common.scss";
+//"../local/_directions.scss";
+
+@import "../config/_reset.scss";
+
+.stories-gallery {
+  grid-area: carrousel;
+  height: 265px;
+  width: 100%;
+  background-color: red;
+  display: flex;
+
+  > section {
+    $size: 216px;
+
+    height: 100%;
+    width: $size;
+    background-color: gray;
+
+    :not(:first-of-type) {
+      margin-left: 24px;
+    }
+
+    > img {
+      height: $size;
+      width: $size;
+    }
+  }
+}

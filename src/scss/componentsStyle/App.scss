@@ -1,0 +1,18 @@
+@import '../local/_breakpoints.scss', '../local/_colors.scss',
+    '../local/_common.scss';
+//"../local/_directions.scss";
+
+@import '../config/_reset.scss';
+
+//@media only screen and (max-width: map_get($breakpoints, mobie)) {
+body {
+    background-color: map_get($colors, global-background);
+    //background-color: red;
+    display: grid;
+    grid-template-areas:
+        'header'
+        'carrousel'
+        'gallery';
+}
+
+//}

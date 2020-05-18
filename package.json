@@ -15,13 +15,16 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "concurrently": "^5.2.0",
+    "history": "^4.10.1",
     "isomorphic-fetch": "^2.2.1",
     "node-sass": "^4.14.1",
+    "pip": "0.0.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-router": "^5.0.0",
-    "react-router-dom": "^5.0.0",
-    "reselect": "^4.0.0"
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "reselect": "^4.0.0",
+    "sass": "^1.26.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
@@ -41,6 +44,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-api-mocker": "^1.7.6"
   }
 }

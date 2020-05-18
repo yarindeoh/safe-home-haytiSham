@@ -2,13 +2,14 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const apiMocker = require('webpack-api-mocker');
 
 module.exports = (env, argv) => {
     return {
         performance: { hints: false },
         mode: argv.mode,
         entry: path.resolve(__dirname, 'src/index.js'),
-        devtool: argv.mode === 'development' ? 'eval-source-map' : 'none',
+        devtool: argv.mode === 'development' ? 'inline-source-map' : 'none',
         resolve: {
             extensions: ['jsx', '.js'],
             alias: {
@@ -55,7 +56,9 @@ module.exports = (env, argv) => {
                 template: path.resolve(__dirname, 'index.html')
             })
         ],
-        devServer: {
+        devServer: { before(app) {
+                apiMocker(app, path.resolve('./mockers/index.js'), {});
+            },
             port: 9000,
             hot: true,
             historyApiFallback: true
