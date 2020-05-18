@@ -1,0 +1,17 @@
+.app {
+  display: flex;
+  flex-direction: column;
+}
+.app .title {
+  font-size: 30px;
+  padding: 10px;
+}
+.app .section {
+  display: flex;
+  justify-content: center;
+}
+.app p {
+  text-align: center;
+}
+
+/*# sourceMappingURL=app.css.map */
