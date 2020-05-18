@@ -14,7 +14,7 @@ export const App = () => (
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact={true} component={StoriesView} />
-                <Route path="/story" exact={true} component={StoryView} />
+                <Route path="/story" component={StoryView} />
             </Switch>
         </BrowserRouter>
     </Context.Provider>

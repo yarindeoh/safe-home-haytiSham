@@ -16,7 +16,7 @@ export const StoriesView = withRoute((props) => {
                             className="story"
                             key={key}
                             onClick={() => {
-                                props.history.push('story');
+                                props.history.push(`story/${item.id}`, item);
                             }}
                         >
                             <span>{lang.storyName}: </span>
