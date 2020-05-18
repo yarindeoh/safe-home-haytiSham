@@ -9,6 +9,9 @@ function baseUrl(path) {
 const Api = {
     getAllData: () => {
         return get(baseUrl('getAllData'));
+    },
+    getTestMock: () => {
+        return get(baseUrl('getAllData'))
     }
 };
 

@@ -2,6 +2,7 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const apiMocker = require('webpack-api-mocker');
 
 module.exports = (env, argv) => {
     return {
@@ -55,7 +56,9 @@ module.exports = (env, argv) => {
                 template: path.resolve(__dirname, 'index.html')
             })
         ],
-        devServer: {
+        devServer: { before(app) {
+                apiMocker(app, path.resolve('./mockers/index.js'), {});
+            },
             port: 9000,
             hot: true,
             historyApiFallback: true

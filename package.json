@@ -41,6 +41,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-api-mocker": "^1.7.6"
   }
 }
