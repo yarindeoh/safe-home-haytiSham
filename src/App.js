@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import { Context } from './context';
+import { Context } from 'services/routing/context';
 import { StoriesView } from 'containers/Stories/StoriesView';
 import 'resources/scss/style.scss';
 import { StoryView } from 'containers/Story/StoryView';

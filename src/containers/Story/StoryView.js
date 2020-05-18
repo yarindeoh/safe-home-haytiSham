@@ -1,18 +1,11 @@
 import React from 'react';
-import { Context } from 'src/context';
+import { withRoute } from 'services/routing/routerHOC';
 
-export const StoryView = (props) => {
-    console.log(props);
+export const StoryView = withRoute((props) => {
     return (
-        <Context.Consumer>
-            {() => (
-                <div>
-                    <h1>Hello!</h1>
-                    <button onClick={() => props.history.push('/')}>
-                        Click
-                    </button>
-                </div>
-            )}
-        </Context.Consumer>
+        <div>
+            <h1>Hello From Story!</h1>
+            <button onClick={() => props.history.push('/')}>Click</button>
+        </div>
     );
-};
+});

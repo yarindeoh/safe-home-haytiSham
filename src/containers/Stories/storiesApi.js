@@ -1,5 +1,5 @@
-import Configuration from '../../services/configutation.js';
-import { get } from 'services/restApiUtils';
+import Configuration from 'services/api/configutation';
+import { get } from 'services/api/restApiUtils';
 
 function baseUrl(path) {
     const restPrefix = Configuration.get('apiPrefix');

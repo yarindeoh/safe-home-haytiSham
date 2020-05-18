@@ -1,18 +1,29 @@
 import React from 'react';
 
-import Loader from 'components/Loader';
 import { useData } from 'containers/Stories/storiesHooks';
+import lang from 'services/lang.json';
+import { withRoute } from 'services/routing/routerHOC';
 
-export const StoriesView = () => {
+export const StoriesView = withRoute((props) => {
     const { data } = useData();
-    console.log(data);
     return (
         <div className="app">
             <div className="title">It Could Have Been Me</div>
-            <div className="section">
-                <Loader />
-            </div>
-            <p>@ powered by yarindeoh</p>
+            {data &&
+                data.map((item, key) => {
+                    return (
+                        <div
+                            className="story"
+                            key={key}
+                            onClick={() => {
+                                props.history.push('story');
+                            }}
+                        >
+                            <span>{lang.storyName}: </span>
+                            <span>{item.name}</span>
+                        </div>
+                    );
+                })}
         </div>
     );
-};
+});
