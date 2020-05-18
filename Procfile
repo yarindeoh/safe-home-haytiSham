@@ -1,1 +1,1 @@
-web: gunicorn hs_server:hs_server
+web: gunicorn server/hs_server:hs_server
