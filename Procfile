@@ -1,1 +1,1 @@
-web: gunicorn server.hs_server:hs_server
+web: gunicorn --chdir server hs_server:hs_server
