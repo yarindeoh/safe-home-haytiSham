@@ -13,7 +13,6 @@ export const StoriesView = withRoute((props) => {
         <div className="app">
             <Header />
             <h4>בית לעדויות ממערכות יחסים אלימות</h4>
-            <div className="title">It Could Have Been Me</div>
             <StoriesGalleryView />
             <button onClick={() => props.history.push('addStory')}>
                 {lang.addStory}

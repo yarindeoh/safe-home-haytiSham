@@ -5,7 +5,9 @@
 
 @import "../config/_reset.scss";
 
-//@media only screen and (max-width: map_get($breakpoints, mobie)) {
+@import "storiesGallery";
+
+//@media only screen and (max-width: map_get($breakpoints, mobile)) {
   body {
     background-color: map_get($colors, global-background);
     //background-color: red;
