@@ -14,6 +14,8 @@
 
 .app {
   background-color: map_get($colors, global-background);
+  box-sizing: border-box;
+  padding: 0 24px;
   height: 100%;
   display: grid;
   grid-template-areas: "header"

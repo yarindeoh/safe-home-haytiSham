@@ -7,7 +7,7 @@ export const Header = () => {
                 <button className={'BTN-hamburger-menu'} />
                 <button className={'BTN-search'} />
             </ul>
-            <h1>#הייתי_שם</h1>
+            <div className={'logo'} />
             <button className={'BTN-lang-changer'} />
         </header>
     );

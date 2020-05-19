@@ -5,15 +5,22 @@
 @import '../config/partials/_buttons';
 
 .stories-gallery-container {
-    grid-area: gallery;
-    display: flex;
-    flex-direction: column;
+  grid-area: gallery;
+  display: flex;
+  flex-direction: column;
 
-    > #stories {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-        grid-gap: 10px;
-    }
-    > h6 {
-    }
+  > h1 {
+    font-weight: normal;
+    font-size: 22px;
+    color: #212121;
+    margin-bottom: 27px;
+  }
+
+  > #stories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      grid-gap: 10px;
+  }
+  > h6 {
+  }
 }

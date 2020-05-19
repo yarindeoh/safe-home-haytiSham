@@ -9,6 +9,7 @@ export const TagsFilter = ({ changeLocationByPath }) => {
     const [filteredTags, setFilteredTags] = useState([]);
     return (
         <div className={'stories-gallery-container'}>
+            <h1>עדויות נוספות</h1>
             <div id={'tags-container'}>
                 <div className="tagsFilter">
                     {tags &&

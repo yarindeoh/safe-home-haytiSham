@@ -11,6 +11,7 @@ header {
     align-items: center;
     box-sizing: border-box;
     padding-right: 10px;
+    left: 0;
 
     button {
         height: 100%;
@@ -26,10 +27,12 @@ header {
         }
     }
 
-    > h1 {
-        font-weight: normal;
-        margin-left: 105px;
-        color: map_get($colors, text-white);
+    .logo {
+        margin-left: 50px;
+        margin-bottom: 6px;
+        width: 114px;
+        height: 29px;
+        background-image: url("../../media/icons/logo.png");
     }
 }
 
