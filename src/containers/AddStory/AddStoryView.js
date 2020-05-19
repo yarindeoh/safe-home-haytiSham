@@ -23,11 +23,15 @@ export const AddStoryView = withRoute((props) => {
         e.preventDefault();
         props.history.push('/');
     };
+    const back = (e) => {
+        e.preventDefault();
+        props.history.push('/');
+    };
     return (
         <>
             <div id={'testimony-form'}>
                 <header>
-                    <button className={'BTX-back'} />
+                    <button className={'BTX-back'} onClick={back} />
                     <h1>העדות שלי</h1>
                 </header>
                 <button className={'BTN-accessibility'} />
