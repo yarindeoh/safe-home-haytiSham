@@ -30,7 +30,11 @@ export const useFilteredStories = (tags) => {
     const [data, setData] = useState();
     useEffect(() => {
         async function fetchData() {
-            setData(await Api.getStoriesByTags(tags || []));
+            if (!tags.length) {
+                setData(await Api.getTestMock());
+            } else {
+                setData(await Api.getStoriesByTags(tags || []));
+            }
         }
         fetchData();
     }, [tags]);

@@ -6,17 +6,19 @@ import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
 export const StoriesList = ({ tags, changeLocationByPath }) => {
     const { stories } = useFilteredStories(tags);
     return (
-        <div className="storiesList">
+        <main id={'stories'}>
             {stories &&
-                stories.map((story, key) => (
-                    <StoryHighlight
-                        story={story}
-                        key={key}
-                        changeLocationByPath={() =>
-                            changeLocationByPath(`story/${story.id}`, story)
-                        }
-                    />
-                ))}
-        </div>
+                stories.map((item, key) => {
+                    return (
+                        <StoryHighlight
+                            story={item}
+                            key={key}
+                            changeLocationByPath={() =>
+                                changeLocationByPath(`story/${item.id}`, item)
+                            }
+                        />
+                    );
+                })}
+        </main>
     );
 };

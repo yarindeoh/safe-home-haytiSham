@@ -21,7 +21,6 @@ const submitForm = () => {
 export const AddStoryView = withRoute((props) => {
     const submit = (e) => {
         e.preventDefault();
-        console.log(e.currentTarget);
         props.history.push("/");
     };
     return (

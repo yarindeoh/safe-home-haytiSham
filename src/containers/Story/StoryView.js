@@ -30,7 +30,7 @@ export const StoryView = withRoute((props) => {
                     "אשה חזקה. מצליחה. מרוויחה טוב. יפהפייה. כל יום חוזרת הביתה והופכת לאפס"
                 </h1>
                 <h2>עדותה של ב', 23.01.20</h2>
-                <TagsFilter changeStoryLocation={changeLocationByPath} />
+                 <Tags tags={story.tags} />
             </div>
             {/*<button onClick={() => changeLocationByPath('/')}>Go back</button>*/}
             {proccessedStory &&
@@ -41,7 +41,6 @@ export const StoryView = withRoute((props) => {
                         <br />
                     </div>
                 ))}
-            <Tags tags={story.tags} />
             <SimilarStories
                 tags={story.tags}
                 changeLocationByPath={changeLocationByPath}

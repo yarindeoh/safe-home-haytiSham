@@ -10,10 +10,10 @@ export const StoriesGalleryView = () => {
         <div className={'stories-carousel-container'}>
             <div className={'stories-gallery'} ref={gallery}>
                 {publicStories &&
-                    publicStories.map((story) => {
+                    publicStories.map((story, key) => {
                         return (
-                            <section>
-                                <div className={'image'}>
+                            <section key={`section${key}`}>
+                                <div className={'image'} key={`img${key}`}>
                                     <h1>{story.quote}</h1>
                                     <h2>
                                         `עדותה של {story.name} {story.date}`
