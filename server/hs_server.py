@@ -18,10 +18,12 @@ key_error = 'error'
 date_format = '%m/%d/%Y %H:%M:%S'
 
 CORS(app)
+MYDIR = os.path.dirname(__file__)
 
 @app.route("/")
-def root():
-    return "Hello World!"
+def root(path):
+    logger.info(MYDIR)
+    return send_from_directory(MYDIR+ '/../build', index.html)
 
 @app.route('/getAllData', methods=['GET'])
 def get_all_data():
