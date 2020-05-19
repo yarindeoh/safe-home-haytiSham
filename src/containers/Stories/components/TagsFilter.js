@@ -24,10 +24,10 @@ export const TagsFilter = ({ changeLocationByPath }) => {
                         }}
                     />
                 ))}
-            {/*<StoriesList*/}
-            {/*    tags={filteredTags}*/}
-            {/*    changeStoryLocation={changeStoryLocation}*/}
-            {/*/>*/}
+            {/* <StoriesList
+                tags={filteredTags}
+                changeLocationByPath={changeLocationByPath}
+            /> */}
         </div>
     );
 };

@@ -15,6 +15,7 @@ header {
         > button {
             height: 100%;
             width: 50px;
+            background-color: transparent;
 
             &:not(:first-of-type) {
                 margin-right: 5px;

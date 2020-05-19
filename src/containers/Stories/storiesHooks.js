@@ -38,3 +38,16 @@ export const useFilteredStories = (tags) => {
         stories: data,
     };
 };
+
+export const usePublicStories = () => {
+    const [data, setData] = useState();
+    useEffect(() => {
+        async function fetchData() {
+            setData(await Api.getPublicStories());
+        }
+        fetchData();
+    }, []);
+    return {
+        publicStories: data,
+    };
+};

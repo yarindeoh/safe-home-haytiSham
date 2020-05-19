@@ -19,6 +19,9 @@ const Api = {
     getStoriesByTags: ({ tags }) => {
         return get(baseUrl(`getStoriesByTags?${tags}`));
     },
+    getPublicStories: () => {
+        return get(baseUrl('getPublicStories'));
+    },
 };
 
 export default Api;
