@@ -6,9 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start-dev": "webpack-dev-server --mode=development",
-    "build": "webpack --mode production",
     "lint-fix": "eslint --fix  --ext .js src",
-    "start": "node server",
     "start-server": "concurrently \"npm run build\" \"npm run start\""
   },
   "heroku-run-build-script": true,

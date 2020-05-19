@@ -7,8 +7,8 @@
 **/.idea/
 
 # production
-/dist
-dist
+# /dist
+# dist
 /build
 build
 
@@ -18,4 +18,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # logs
-hs_server.log
+hs_server*.log
