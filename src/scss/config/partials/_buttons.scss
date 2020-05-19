@@ -5,7 +5,7 @@
   grid-area: send-testimony-box;
   align-self: center;
   font-weight: bold;
-  color: #3690E4;
+  color: map_get($colors, BTN-to-all-testimonies);
   font-size: 15px;
   line-height: 20px;
   text-decoration: underline;
