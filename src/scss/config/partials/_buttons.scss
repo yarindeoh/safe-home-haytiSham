@@ -45,14 +45,12 @@
 }
 
 .BTN-accessibility {
-  $size: 32px;
-
-  height: $size;
-  width: $size;
+  height: 32px;
+  width: 99%;
   position: sticky;
   left: 8px;
   top: 54px;
-  background-image: url("../../media/icons/accessibility.png");
+  background: url("../../media/icons/accessibility.png") no-repeat;
 }
 
 .BTN-help {

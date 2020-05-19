@@ -74,7 +74,7 @@ header {
     padding: 10px 16px 11px;
     display: grid;
     grid-template-columns: 1fr 60px;
-    grid-template-rows: 20px 35px 30px;
+    grid-template-rows: 20px 35px;
     grid-template-areas:
         'date letter'
         'text letter'
@@ -143,18 +143,8 @@ header {
         font-size: 22px;
         color: #212121;
     }
-
-    > ul {
-        height: 312px;
-
-        > li {
-            border-radius: 11px;
-        }
-    }
-
-    > button {
-    }
 }
+
 #moreTags {
     background-color: transparent;
     padding: 3px 10px 2px 10px;
@@ -171,41 +161,62 @@ label {
 }
 
 footer {
-    padding: 19px 78px 58px 68px;
-    background-color: map_get($colors, header-background);
+    //display: flex;
+    //flex-direction: column;
+    //align-items: center;
+    //padding: 19px 78px 58px 68px;
+    //background-color: map_get($colors, header-background);
+    width: 100%;
+    height: calc(100vw + 32px);
+    background: url("../../media/icons/footer.png") no-repeat;
+    background-size: cover;
+
+    li {
+        list-style-type: none;
+        color: map_get($colors, text-white);
+        font-style: normal;
+        font-size: 15px;
+    }
 
     > h1 {
+        font-weight: normal;
         color: map_get($colors, dark-purple-footer-background);
+        margin-bottom: 16px;
     }
 
     .purple {
         color: map_get($colors, dark-purple-footer-background);
     }
 
-    > ul:nth-child(1) {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        grid-row-gap: 10px;
-        grid-column-gap: 36px;
+    > ul {
+        &:nth-child(1) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-row-gap: 10px;
+            grid-column-gap: 36px;
+        }
 
-        > h2 {
-            font-style: normal;
-            font-size: 15px;
-            color: map_get($colors, text-white);
+        &:nth-child(2) {
+            display: flex;
+            left: 0;
+            right: 0;
+            background-color: map_get($colors, dark-purple-footer-background);
+
+            > li {
+                color: map_get($colors, text-white);
+            }
+        }
+
+        &:nth-child(3) {
+            display: flex;
+
+
         }
     }
+}
 
-    > ul:nth-child(2) {
-        display: flex;
-
-        background-color: map_get($colors, dark-purple-footer-background);
-
-        > h2 {
-            color: map_get($colors, text-white);
-        }
-    }
-
-    > ul:nth-child(3) {
-        display: flex;
-    }
+.stories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    grid-gap: 10px;
 }
