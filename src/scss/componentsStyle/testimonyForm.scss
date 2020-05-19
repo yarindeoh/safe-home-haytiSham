@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Assistant:regular,bold,italic&subset=latin,latin-ext');
+
+@import '../local/_breakpoints.scss',
+        '../local/_colors.scss',
+        '../local/_common.scss';
+
+@import '../config/_reset.scss';
+@import '../config/partials/_buttons';
+
+#testimony-form {
+  box-sizing: border-box;
+  padding: 63px 24px 61px;
+  display: flex;
+  flex-direction: column;
+
+  > h1 {
+    font-weight: normal;
+    font-size: 22px;
+    color: map_get($colors, text-black);
+  }
+
+  > h3 {
+    font-weight: normal;
+    font-size: 15px;
+    color: map_get($colors, text-black);
+  }
+
+  > form {
+    > div {
+      
+    }
+  }
+}

@@ -1,3 +1,6 @@
+
+@import '../../local/_colors.scss';
+
 .BTN-send-testimony {
   width: fit-content;
   grid-area: send-testimony-box;
@@ -18,4 +21,12 @@
 
 .BTX-lang-changer {
   text-decoration: underline;
+}
+
+.BTX-to-all-testimonies {
+  font-style: normal;
+  font-size: 15px;
+  text-decoration-line: underline;
+
+  color: map_get($colors, BTX-to-all-testimonies);
 }

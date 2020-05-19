@@ -1,7 +1,10 @@
 @import '../local/_colors.scss';
 
 header {
-    grid-area: header;
+    width: 100%;
+    height: 46px;
+    position: fixed;
+    z-index: 2;
     background-color: map_get($colors, header-background);
     display: flex;
     justify-content: space-between;
@@ -82,7 +85,7 @@ header {
         width: $size;
         height: $size;
         border-radius: 50%;
-        background-color: #E7E7E7;
+        background-color: map_get($colors, light-purple-header-background);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -91,6 +94,7 @@ header {
             font-size: 20px;
             font-weight: normal;
             margin: -2px 2px 0 0;
+            color: map_get($colors, text-dark-purple);
         }
     }
 
@@ -121,4 +125,28 @@ header {
     grid-area: const-text;
     justify-self: center;
     align-self: flex-start;
+}
+
+.more-testimonies {
+    box-sizing: border-box;
+    padding: 18px 24px 32px;
+
+    > h1 {
+        font-weight: normal;
+        font-size: 22px;
+        color: #212121;
+    }
+
+    > ul {
+        height: 312px;
+
+        > li {
+            background-color: red;
+            border-radius: 11px;
+        }
+    }
+
+    > button {
+
+    }
 }
