@@ -3,6 +3,8 @@ $colors: (
         text-black: black,
         text-dark-gray: darkgray,
         text-light-gray: lightgray,
+        text-white: white,
+        text-tag: #125A9E,
 
   //buttons & tags:
 
@@ -10,4 +12,5 @@ $colors: (
   //backgrounds:
     global-background: white,
     header-background: #000000,
+    tag-background: #D8EBFD,
 );
