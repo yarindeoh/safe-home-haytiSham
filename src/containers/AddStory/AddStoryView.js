@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
-import { Input } from 'src/components/Input';
-import { Radio } from 'src/components/Radio';
-import { TextArea } from 'src/components/TextArea';
+import { Input } from 'components/Input';
+import { Radio } from 'components/Radio';
+import { TextArea } from 'components/TextArea';
 import lang from 'services/lang.json';
 
 const uploadVideo = () => {
@@ -21,6 +21,7 @@ export const AddStoryView = withRoute((props) => {
     const submit = (e) => {
         e.preventDefault();
         console.log(e.currentTarget);
+        props.history.push("/");
     };
     return (
         <div>
