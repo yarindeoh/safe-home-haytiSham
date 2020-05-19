@@ -1,0 +1,67 @@
+header {
+  grid-area: header;
+  background-color: #C4C4C4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header > ul {
+  height: 100%;
+}
+header > ul > button {
+  height: 100%;
+  width: 50px;
+}
+header > ul > button:not(:first-of-type) {
+  margin-left: 5px;
+}
+
+.selected {
+  color: red;
+}
+
+.tag {
+  padding: 5px 10px;
+  background-color: darkgrey;
+  color: #2d2d2d;
+  border-radius: 30px;
+  border: 0;
+}
+.tag:not(:first-of-type) {
+  margin-left: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.stories-gallery-container {
+  grid-area: carrousel;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #828282;
+}
+
+.stories-gallery {
+  display: flex;
+}
+.stories-gallery > section {
+  width: 480px;
+  background-color: gray;
+}
+.stories-gallery > section:not(:first-of-type) {
+  margin-left: 24px;
+}
+.stories-gallery > section > iframe {
+  width: 480px;
+}
+.stories-gallery > section > iframe > h1 {
+  color: white;
+}
+.stories-gallery > section > iframe > h2 {
+  color: lightgray;
+}
+
+/*# sourceMappingURL=storiesCarrousel.css.map */

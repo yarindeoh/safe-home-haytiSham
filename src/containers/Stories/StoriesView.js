@@ -15,28 +15,41 @@ export const StoriesView = withRoute((props) => {
     return (
         <div className="app">
             <Header />
-            <h4>בית לעדויות ממערכות יחסים אלימות</h4>
+            <h4 className={'const-text'}>בית לעדויות ממערכות יחסים אלימות</h4>
             <StoriesGalleryView />
-            <button onClick={() => props.history.push('addStory')}>
+            <button
+                className={'BTN-send-testimony'}
+                onClick={() => props.history.push('addStory')}>
                 {lang.addStory}
             </button>
             <hr />
-            <TagsFilter changeLocationByPath={changeLocationByPath} />
-            {data &&
-                data.map((item, key) => {
-                    return (
-                        <div
-                            className="story"
-                            key={key}
-                            onClick={() => {
-                                props.history.push(`story/${item.id}`, item);
-                            }}
-                        >
-                            <span>{lang.storyName}: </span>
-                            <span>{item.name}</span>
-                        </div>
-                    );
-                })}
+            <div className={'stories-gallery-container'}>
+                <TagsFilter changeStoryLocation={changeLocationByPath} />
+                <main id={'stories'}>
+                    {data &&
+                        data.map((item, key) => {
+                            return (
+                                <div
+                                    className="story"
+                                    key={key}
+                                    onClick={() => {
+                                        props.history.push(`story/${item.id}`, item);
+                                    }}
+                                >
+                                    <figure>
+                                        <h2>א'</h2>
+                                    </figure>
+                                    <h6>13.02.20</h6>
+                                    <p>"האימה במבטה, הבעטה שתקפה אותה כשראתה אותו מאחוריה."</p>
+                                    <div id={'tags-container'}>
+                                        <TagsFilter changeStoryLocation={changeLocationByPath} />
+                                    </div>
+                                </div>
+                            );
+                        })}
+                </main>
+                <h6>לעוד הדויות</h6>
+            </div>
         </div>
     );
 });

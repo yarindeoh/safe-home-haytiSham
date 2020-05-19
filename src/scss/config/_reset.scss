@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Assistant:Extra-light, Light, Regular, Semi-bold, bold, Extra-bold');
+
 * {
   margin: 0;
   padding: 0;
+  border: 0;
+  direction: rtl;
+  font-family: 'Assistant', serif;
+  color: #828282;
+}
 
+body {
+  height: 100vh;
+}
+
+#root {
+  height: 100vh;
 }

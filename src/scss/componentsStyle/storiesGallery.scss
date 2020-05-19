@@ -1,46 +1,23 @@
-@import "../local/_breakpoints.scss",
-"../local/_colors.scss",
-"../local/_common.scss";
-//"../local/_directions.scss";
+@import '../local/_breakpoints.scss',
+'../local/_colors.scss',
+'../local/_common.scss';
 
-@import "../config/_reset.scss";
+@import '../config/_reset.scss';
+@import '../config/partials/_buttons';
 
-.stories-gallery {
-  grid-area: carrousel;
-  height: 265px;
-  width: 100%;
+
+.stories-gallery-container {
+  grid-area: gallery;
   display: flex;
+  flex-direction: column;
 
-  > section {
-    $size: 216px;
+  > #stories {
+    display: grid;
+    grid-template-columns:repeat(auto-fit, minmax(480px , 1fr));
+    grid-gap: 10px;
+  }
 
-    height: 100%;
-    width: $size;
-    background-color: gray;
+  > h6 {
 
-    &:not(:first-of-type) {
-      margin-left: 24px;
-    }
-
-    > img {
-      height: $size;
-      width: $size;
-      background-color: black;
-
-      > h1 {
-        color: white;
-      }
-
-      > h2 {
-        color: lightgray;
-      }
-    }
-
-    > .tag {
-      padding: 5px;
-      background-color: gray;
-      color: #2d2d2d;
-      border-radius: 50%;
-    }
   }
 }
