@@ -26,6 +26,7 @@ export const StoriesView = withRoute((props) => {
             </button>
             <hr />
             <TagsFilter changeLocationByPath={changeLocationByPath} />
+            <button className="BTN-help" />
         </div>
     );
 });

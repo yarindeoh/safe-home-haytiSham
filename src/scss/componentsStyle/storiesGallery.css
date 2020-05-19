@@ -17,6 +17,7 @@ header {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-right: 10px;
+  left: 0;
 }
 
 header button {
@@ -33,10 +34,12 @@ header > ul > button:not(:first-of-type) {
   margin-right: 5px;
 }
 
-header > h1 {
-  font-weight: normal;
-  margin-left: 105px;
-  color: white;
+header .logo {
+  margin-left: 50px;
+  margin-bottom: 6px;
+  width: 114px;
+  height: 29px;
+  background-image: url("../../media/icons/logo.png");
 }
 
 .selected {
@@ -190,6 +193,10 @@ label {
   padding: 0 10px;
 }
 
+.tagsFilter .selected {
+  background: #97CCFF;
+}
+
 footer {
   padding: 19px 78px 58px 68px;
   background-color: #000000;
@@ -249,6 +256,7 @@ body {
 }
 
 #root {
+  background-color: #F6F7F9;
   height: 100vh;
 }
 
@@ -265,7 +273,9 @@ button {
       -ms-grid-row-align: center;
       align-self: center;
   font-weight: bold;
-  color: #3E0A80;
+  color: #3690E4;
+  font-size: 15px;
+  line-height: 20px;
   text-decoration: underline;
 }
 
@@ -282,7 +292,7 @@ button {
 .BTN-lang-changer {
   background: url("../../media/icons/globe.png") no-repeat center;
   text-decoration: underline;
-  margin-left: 14px;
+  margin-left: 7px;
 }
 
 .BTN-to-all-testimonies {
@@ -300,6 +310,26 @@ button {
   background-image: url("../../media/icons/backArrow.png");
 }
 
+.BTN-accessibility {
+  height: 32px;
+  width: 32px;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 8px;
+  top: 54px;
+  background-image: url("../../media/icons/accessibility.png");
+}
+
+.BTN-help {
+  height: 64px;
+  width: 64px;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 8px;
+  bottom: 17px;
+  background-image: url("../../media/icons/help.png");
+}
+
 .stories-gallery-container {
   grid-area: gallery;
   display: -webkit-box;
@@ -309,6 +339,13 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.stories-gallery-container > h1 {
+  font-weight: normal;
+  font-size: 22px;
+  color: #212121;
+  margin-bottom: 27px;
 }
 
 .stories-gallery-container > #stories {
