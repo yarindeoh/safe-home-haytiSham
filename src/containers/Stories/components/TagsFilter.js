@@ -39,7 +39,6 @@ export const TagsFilter = ({ changeLocationByPath }) => {
                 tags={filteredTags}
                 changeLocationByPath={changeLocationByPath}
             />
-            <h6>לעוד הדויות</h6>
         </div>
     );
 };

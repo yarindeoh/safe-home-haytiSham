@@ -24,6 +24,7 @@ export const StoryView = withRoute((props) => {
     return (
         <div id={'story-page-container'}>
             <Header />
+            <button className={'BTN-accessibility'} />
             <div className={'quote'}>
                 <h1>"{story.quote}"</h1>
                 <h2>

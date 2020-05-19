@@ -21,7 +21,7 @@ const submitForm = () => {
 export const AddStoryView = withRoute((props) => {
     const submit = (e) => {
         e.preventDefault();
-        props.history.push("/");
+        props.history.push('/');
     };
     return (
         <>
@@ -30,6 +30,7 @@ export const AddStoryView = withRoute((props) => {
                     <button className={'BTX-back'} />
                     <h1>העדות שלי</h1>
                 </header>
+                <button className={'BTN-accessibility'} />
                 <h3>
                     על מנת שנוכל לשמור על צנעת הפרט, נסיר פרטים מזהים של אנשים
                     אחרים. כמו כן, נשלח הודעה אנונימית לאחר פרסום העדות לאמצעי
@@ -53,7 +54,7 @@ export const AddStoryView = withRoute((props) => {
                         checked={0}
                         options={[
                             { value: 'yes', label: 'כן' },
-                            { value: 'no', label: 'לא' }
+                            { value: 'no', label: 'לא' },
                         ]}
                     />
 

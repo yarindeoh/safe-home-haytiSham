@@ -9,6 +9,7 @@ import { Tags } from 'containers/Story/components/Tags';
 export const StoryViedo = () => {
     return (
         <div id={'story-page-container'}>
+            <button className={'BTN-accessibility'} />
             <Header />
             <div className={'quote'}>
                 <h1>
