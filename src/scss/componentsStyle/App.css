@@ -21,6 +21,11 @@ header > ul > button {
 header > ul > button:not(:first-of-type) {
   margin-right: 5px;
 }
+header > h1 {
+  font-weight: normal;
+  margin-left: 105px;
+  color: white;
+}
 
 .selected {
   color: red;
@@ -34,20 +39,20 @@ header > ul > button:not(:first-of-type) {
   box-sizing: border-box;
   border: 0 !important;
 }
-.tagsFilter .tag, .tagsFilter .selected {
+.tagsFilter .tag, .tagsFilter .more-tag {
   padding: 3px 10px 2px 10px;
-  color: #2d2d2d;
+  color: #125A9E;
   border-radius: 30px;
   border: 0;
 }
-.tagsFilter .tag:not(:first-of-type), .tagsFilter .selected:not(:first-of-type) {
+.tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
   margin-left: 12px;
 }
 .tagsFilter .tag {
-  background-color: #EAEAEA;
+  background-color: #D8EBFD;
 }
-.tagsFilter .selected {
-  background-color: #D8D8D8;
+.tagsFilter .more-tag {
+  border: 1px solid #125A9E;
 }
 
 .story {
@@ -73,6 +78,7 @@ header > ul > button:not(:first-of-type) {
 }
 .story > figure > h2 {
   font-size: 20px;
+  font-weight: normal;
   margin: -2px 2px 0 0;
 }
 .story > h6 {
@@ -85,11 +91,20 @@ header > ul > button:not(:first-of-type) {
   grid-area: text;
   width: 100%;
   height: 100%;
+  font-weight: bold;
 }
 .story > #tags-container {
   grid-area: tags;
   width: 100%;
   height: 100%;
+}
+
+.const-text {
+  color: black;
+  padding-top: 15px;
+  grid-area: const-text;
+  justify-self: center;
+  align-self: flex-start;
 }
 
 * {
@@ -113,6 +128,8 @@ body {
   width: fit-content;
   grid-area: send-testimony-box;
   align-self: center;
+  font-weight: bold;
+  color: #3E0A80;
   text-decoration: underline;
 }
 
@@ -147,6 +164,11 @@ header > ul > button {
 header > ul > button:not(:first-of-type) {
   margin-right: 5px;
 }
+header > h1 {
+  font-weight: normal;
+  margin-left: 105px;
+  color: white;
+}
 
 .selected {
   color: red;
@@ -160,20 +182,20 @@ header > ul > button:not(:first-of-type) {
   box-sizing: border-box;
   border: 0 !important;
 }
-.tagsFilter .tag, .tagsFilter .selected {
+.tagsFilter .tag, .tagsFilter .more-tag {
   padding: 3px 10px 2px 10px;
-  color: #2d2d2d;
+  color: #125A9E;
   border-radius: 30px;
   border: 0;
 }
-.tagsFilter .tag:not(:first-of-type), .tagsFilter .selected:not(:first-of-type) {
+.tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
   margin-left: 12px;
 }
 .tagsFilter .tag {
-  background-color: #EAEAEA;
+  background-color: #D8EBFD;
 }
-.tagsFilter .selected {
-  background-color: #D8D8D8;
+.tagsFilter .more-tag {
+  border: 1px solid #125A9E;
 }
 
 .story {
@@ -199,6 +221,7 @@ header > ul > button:not(:first-of-type) {
 }
 .story > figure > h2 {
   font-size: 20px;
+  font-weight: normal;
   margin: -2px 2px 0 0;
 }
 .story > h6 {
@@ -211,11 +234,20 @@ header > ul > button:not(:first-of-type) {
   grid-area: text;
   width: 100%;
   height: 100%;
+  font-weight: bold;
 }
 .story > #tags-container {
   grid-area: tags;
   width: 100%;
   height: 100%;
+}
+
+.const-text {
+  color: black;
+  padding-top: 15px;
+  grid-area: const-text;
+  justify-self: center;
+  align-self: flex-start;
 }
 
 * {
@@ -276,6 +308,11 @@ header > ul > button {
 header > ul > button:not(:first-of-type) {
   margin-right: 5px;
 }
+header > h1 {
+  font-weight: normal;
+  margin-left: 105px;
+  color: white;
+}
 
 .selected {
   color: red;
@@ -289,20 +326,20 @@ header > ul > button:not(:first-of-type) {
   box-sizing: border-box;
   border: 0 !important;
 }
-.tagsFilter .tag, .tagsFilter .selected {
+.tagsFilter .tag, .tagsFilter .more-tag {
   padding: 3px 10px 2px 10px;
-  color: #2d2d2d;
+  color: #125A9E;
   border-radius: 30px;
   border: 0;
 }
-.tagsFilter .tag:not(:first-of-type), .tagsFilter .selected:not(:first-of-type) {
+.tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
   margin-left: 12px;
 }
 .tagsFilter .tag {
-  background-color: #EAEAEA;
+  background-color: #D8EBFD;
 }
-.tagsFilter .selected {
-  background-color: #D8D8D8;
+.tagsFilter .more-tag {
+  border: 1px solid #125A9E;
 }
 
 .story {
@@ -328,6 +365,7 @@ header > ul > button:not(:first-of-type) {
 }
 .story > figure > h2 {
   font-size: 20px;
+  font-weight: normal;
   margin: -2px 2px 0 0;
 }
 .story > h6 {
@@ -340,11 +378,20 @@ header > ul > button:not(:first-of-type) {
   grid-area: text;
   width: 100%;
   height: 100%;
+  font-weight: bold;
 }
 .story > #tags-container {
   grid-area: tags;
   width: 100%;
   height: 100%;
+}
+
+.const-text {
+  color: black;
+  padding-top: 15px;
+  grid-area: const-text;
+  justify-self: center;
+  align-self: flex-start;
 }
 
 * {
@@ -368,6 +415,8 @@ body {
   width: fit-content;
   grid-area: send-testimony-box;
   align-self: center;
+  font-weight: bold;
+  color: #3E0A80;
   text-decoration: underline;
 }
 
@@ -400,12 +449,6 @@ body {
   grid-template-areas: "header" "const-text" "carrousel" "send-testimony-box" "gallery";
   grid-template-columns: auto;
   grid-template-rows: 46px 56px 265px 63px 1fr;
-}
-.app > .const-text {
-  padding-top: 15px;
-  grid-area: const-text;
-  justify-self: flex-end;
-  align-self: flex-start;
 }
 
 /*# sourceMappingURL=App.css.map */

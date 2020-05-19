@@ -23,11 +23,4 @@
                         "gallery";
   grid-template-columns: auto;
   grid-template-rows: 46px 56px 265px 63px 1fr;
-
-  > .const-text {
-    padding-top: 15px;
-    grid-area: const-text;
-    justify-self: flex-end;
-    align-self: flex-start;
-  }
 }
