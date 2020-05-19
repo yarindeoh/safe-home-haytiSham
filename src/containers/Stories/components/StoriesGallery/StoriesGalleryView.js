@@ -13,7 +13,7 @@ export const StoriesGalleryView = ({ changeLocationByPath }) => {
                     publicStories.map((story, key) => {
                         return (
                             <section
-                                id={key === 1 && 'selected'}
+                                id={key === 1 ? 'selected' : 'galleryImg'}
                                 key={`section${key}`}
                                 onClick={() =>
                                     changeLocationByPath('publicStory')
