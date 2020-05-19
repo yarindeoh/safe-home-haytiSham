@@ -19,6 +19,10 @@ date_format = '%m/%d/%Y %H:%M:%S'
 
 CORS(app)
 
+@app.route("/")
+def root():
+    return "Hello World!"
+
 @app.route('/getAllData', methods=['GET'])
 def get_all_data():
     gc = gspread.service_account(cred_path)
