@@ -375,6 +375,28 @@ const proxy = {
             id: '1',
             tags: ['תמיכה ממעגלים קרובים', 'אלימות טכנולוגית', 'אלימות פיזית', 'פגיעה ברכוש', 'קנאה ואובססיביות'],
             quote: 'לא האמנתי לעצמי שאני בסיטואציה כזו'
+        },
+        {
+            timestamp: '5/15/2020 11:23:07',
+            whatTriggeredChange:
+                '',
+            howDidYouManged:
+                '',
+            additionalnfo:
+                '',
+            mail:
+                '',
+            whatHelpedYou:
+                '',
+            background:
+                '',
+            storyContent:
+                '',
+            name: '',
+            initials: 'ל',
+            id: '2',
+            tags: [],
+            quote: ''
         }
     ],
     'GET /mock/getStoriesByTags': [

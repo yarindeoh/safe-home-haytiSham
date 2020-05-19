@@ -26,9 +26,7 @@ export const AddStoryView = withRoute((props) => {
         <div>
             <h1> העדות שלי</h1>
             <h3>
-                על מנת שנוכל לשמור על צנעת הפרט, נסיר פרטים מזהים של אנשים
-                אחרים. כמו כן, נשלח הודעה אנונימית לאחר פרסום העדות לאמצעי
-                שהשארת למטה
+                {lang.noPersonalDetails}
             </h3>
             <form onSubmit={submit}>
                 <Input
