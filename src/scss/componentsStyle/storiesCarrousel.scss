@@ -1,0 +1,46 @@
+@import "../local/_breakpoints.scss",
+"../local/_colors.scss",
+"../local/_common.scss";
+//"../local/_directions.scss";
+
+@import "../config/_reset.scss";
+
+.stories-carousel-container {
+  grid-area: carrousel;
+  width: 100%;
+  overflow: hidden;
+  background-color: #828282;
+}
+
+.stories-gallery {
+  display: flex;
+
+  > section {
+    $size: 480px;
+
+    width: $size;
+    background-color: gray;
+
+    &:not(:first-of-type) {
+      margin-left: 24px;
+    }
+
+    > div {
+      width: $size;
+      height: $size;
+      background-color: red;
+
+      //> h1 {
+      //  color: white;
+      //}
+      //
+      //> h2 {
+      //  color: lightgray;
+      //}
+    }
+
+    > ul {
+
+    }
+  }
+}
