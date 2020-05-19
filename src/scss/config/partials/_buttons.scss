@@ -46,7 +46,7 @@
 
 .BTN-accessibility {
   height: 32px;
-  width: 99%;
+  width: calc(100% + 24px - 8px);
   position: sticky;
   left: 8px;
   top: 54px;
@@ -54,12 +54,9 @@
 }
 
 .BTN-help {
-  $size: 64px;
-
-  height: $size;
-  width: $size;
+  width: calc(100% + 24px);
+  height: 64px;
   position: sticky;
-  left: 8px;
   bottom: 17px;
-  background-image: url("../../media/icons/help.png");
+  background: url("../../media/icons/help.png") no-repeat;
 }

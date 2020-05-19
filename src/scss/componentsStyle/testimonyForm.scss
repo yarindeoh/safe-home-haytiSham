@@ -8,11 +8,12 @@
 @import '../config/partials/_buttons';
 
 #testimony-form {
+  background-color: map_get($colors, global-background);
   box-sizing: border-box;
   padding: 0 24px 61px;
   display: flex;
   flex-direction: column;
-
+  
   header {
     margin: 0 -24px;
     position: unset;
@@ -24,6 +25,10 @@
     > h1 {
       color: map_get($colors, text-black);
     }
+  }
+
+  input, textarea {
+    background-color: map_get($colors, global-background);
   }
 
   > h1 {

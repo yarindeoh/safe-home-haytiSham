@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,OAAO,CAAC;EACN,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,aAAa;EACtB,gBAAgB,EAAE,GAAG;CAkBtB;;AArBD,AAKE,OALK,GAKH,MAAM,CAAC;EAGP,KAAK,EAFE,IAAI;EAGX,MAAM,EAHC,IAAI;EAIX,aAAa,EAAE,GAAG;EAClB,gBAAgB,EAAE,IAAI;CACvB;;AAZH,AAcE,OAdK,GAcH,CAAC,CAAC;EACF,KAAK,EAAE,OAAO;CAKf;;AApBH,AAiBI,OAjBG,GAcH,CAAC,GAGC,IAAI,CAAC;EACL,KAAK,EAAE,OAAO;CACf",
-    "sources": [
-        "StoryCarrousel.scss"
-    ],
-    "names": [],
-    "file": "StoryCarrousel.css"
-}
+{"version":3,"sourceRoot":"","sources":["StoryCarrousel.scss"],"names":[],"mappings":"AAAA;EACE;EACA;;AAEA;EAGE,OAFO;EAGP,QAHO;EAIP;;AAGF;EACE;;AAEA;EACE","file":"StoryCarrousel.css"}
