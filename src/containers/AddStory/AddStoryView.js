@@ -25,9 +25,11 @@ export const AddStoryView = withRoute((props) => {
     };
     return (
         <>
-            <Header />
             <div id={'testimony-form'}>
-                <h1> העדות שלי</h1>
+                <header>
+                    <button className={'BTX-back'} />
+                    <h1>העדות שלי</h1>
+                </header>
                 <h3>
                     על מנת שנוכל לשמור על צנעת הפרט, נסיר פרטים מזהים של אנשים
                     אחרים. כמו כן, נשלח הודעה אנונימית לאחר פרסום העדות לאמצעי
@@ -46,21 +48,26 @@ export const AddStoryView = withRoute((props) => {
                     />
                     <Radio
                         name="contact"
-                        label="שניצור איתך קשר לקבלת תמיכה? (אפשר גם ליצור קשר 24/7 דרך כפתור התמיכה)"
+                        label="שניצור איתך קשר לקבלת תמיכה (לא חובה, לא יפורסם)"
+                        notes="אפשר גם ליצור קשר 24/7 דרך כפתור התמיכה"
                         checked={0}
                         options={[
                             { value: 'yes', label: 'כן' },
-                            { value: 'no', label: 'לא' },
-                        ]}>
-                    </Radio>
+                            { value: 'no', label: 'לא' }
+                        ]}
+                    />
 
                     <div>
-                        <label>
-                            אפשר לדלג ולמלא בכתב או:
-                        </label>
+                        <label>אפשר לדלג ולמלא בכתב או:</label>
                         <div>
-                            <button onClick={uploadVideo}> להעלות סרטון </button>
-                            <button onClick={uploadSound}> להעלות הקלטה </button>
+                            <button onClick={uploadVideo}>
+                                {' '}
+                                להעלות סרטון{' '}
+                            </button>
+                            <button onClick={uploadSound}>
+                                {' '}
+                                להעלות הקלטה{' '}
+                            </button>
                         </div>
                     </div>
 
@@ -68,43 +75,43 @@ export const AddStoryView = withRoute((props) => {
                         name="background"
                         placeholder=""
                         label={lang.background}
-                        sublabel={lang.backgroundSublabel}>
-                    </TextArea>
+                        sublabel={lang.backgroundSublabel}
+                    />
 
                     <TextArea
                         name="storyContent"
                         placeholder=""
                         label={lang.storyContent}
-                        sublabel="">
-                    </TextArea>
+                        sublabel=""
+                    />
 
                     <TextArea
                         name="howDidYouManged"
                         placeholder=""
                         label={lang.howDidYouManged}
-                        sublabel="">
-                    </TextArea>
+                        sublabel=""
+                    />
 
                     <TextArea
                         name="whatTriggeredChange"
                         placeholder=""
                         label={lang.whatTriggeredChange}
-                        sublabel="">
-                    </TextArea>
+                        sublabel=""
+                    />
 
                     <TextArea
                         name="howDidYouManged"
                         placeholder=""
                         label={lang.howDidYouManged}
-                        sublabel="">
-                    </TextArea>
+                        sublabel=""
+                    />
 
                     <TextArea
                         name="additionalnfo"
                         placeholder=""
                         label={lang.additionalnfo}
-                        sublabel="">
-                    </TextArea>
+                        sublabel=""
+                    />
 
                     <button onClick={submit}> {lang.submitForm} </button>
                 </form>

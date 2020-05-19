@@ -30,3 +30,13 @@
 
   color: map_get($colors, BTX-to-all-testimonies);
 }
+
+.BTX-back {
+  $size: 24px;
+
+  height: $size;
+  width: $size;
+  margin-left:6px;
+  background-color: #212121;
+  //background-image: url("../../../media/icons/backArrow.png");
+}
