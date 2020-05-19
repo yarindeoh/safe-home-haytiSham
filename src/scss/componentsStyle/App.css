@@ -46,7 +46,7 @@ header > h1 {
   border: 0;
 }
 .tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
-  margin-left: 12px;
+  margin-right: 12px;
 }
 .tagsFilter .tag {
   background-color: #D8EBFD;
@@ -189,7 +189,7 @@ header > h1 {
   border: 0;
 }
 .tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
-  margin-left: 12px;
+  margin-right: 12px;
 }
 .tagsFilter .tag {
   background-color: #D8EBFD;
@@ -271,24 +271,66 @@ body {
   grid-area: carrousel;
   width: 100%;
   overflow: hidden;
-  background-color: #828282;
 }
 
 .stories-gallery {
   display: flex;
+  align-items: flex-end;
 }
 .stories-gallery > section {
-  width: 480px;
-  background-color: gray;
+  width: 216px;
 }
 .stories-gallery > section:not(:first-of-type) {
-  margin-left: 24px;
+  margin-right: 16px;
+}
+.stories-gallery > section:nth-child(1) div {
+  background: url("../../media/videosImages/img1.png"), no-repeat center;
+  box-shadow: inset 0px -90px 75px -25px rgba(83, 19, 113, 0.85);
+  background-size: cover;
+}
+.stories-gallery > section:nth-child(2) div {
+  background: url("../../media/videosImages/img2.png"), no-repeat center;
+  box-shadow: inset 0px -90px 75px -25px rgba(83, 19, 113, 0.85);
+  background-size: cover;
+}
+.stories-gallery > section:nth-child(3) div {
+  background: url("../../media/videosImages/img3.png"), no-repeat center;
+  box-shadow: inset 0px -90px 75px -25px rgba(83, 19, 113, 0.85);
+  background-size: cover;
+}
+.stories-gallery > section:nth-child(4) div {
+  background: url("../../media/videosImages/img4.png"), no-repeat center;
+  box-shadow: inset 0px -90px 75px -25px rgba(83, 19, 113, 0.85);
+  background-size: cover;
 }
 .stories-gallery > section > div {
-  width: 480px;
-  height: 480px;
+  width: 216px;
+  height: 216px;
   background-color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 15px 19px;
+  box-sizing: border-box;
 }
+.stories-gallery > section > div > h1 {
+  color: white;
+  font-weight: normal;
+  font-size: 18px;
+}
+.stories-gallery > section > div > h2 {
+  color: #D3A7F1;
+  font-weight: normal;
+  font-size: 13px;
+}
+.stories-gallery .selected {
+  width: 232px;
+}
+.stories-gallery .selected > div {
+  width: 232px;
+  height: 232px;
+}
+
 header {
   grid-area: header;
   background-color: #000000;
@@ -333,7 +375,7 @@ header > h1 {
   border: 0;
 }
 .tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
-  margin-left: 12px;
+  margin-right: 12px;
 }
 .tagsFilter .tag {
   background-color: #D8EBFD;
