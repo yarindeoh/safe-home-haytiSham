@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const Tag = ({ value, onClick, selected }) => {
+export const Tag = ({ value, onClick, selected, customClass }) => {
     return (
-        <span className={selected ? 'tag selected' : 'tag'} onClick={onClick}>
+        <span className={customClass + selected ? 'tag selected ' : 'tag'} onClick={onClick}>
             {value}
         </span>
     );

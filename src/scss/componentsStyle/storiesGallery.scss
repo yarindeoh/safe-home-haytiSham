@@ -1,23 +1,19 @@
-@import '../local/_breakpoints.scss',
-'../local/_colors.scss',
-'../local/_common.scss';
+@import '../local/_breakpoints.scss', '../local/_colors.scss',
+    '../local/_common.scss';
 
 @import '../config/_reset.scss';
 @import '../config/partials/_buttons';
 
-
 .stories-gallery-container {
-  grid-area: gallery;
-  display: flex;
-  flex-direction: column;
+    grid-area: gallery;
+    display: flex;
+    flex-direction: column;
 
-  > #stories {
-    display: grid;
-    grid-template-columns:repeat(auto-fit, minmax(480px , 1fr));
-    grid-gap: 10px;
-  }
-
-  > h6 {
-
-  }
+    > #stories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+        grid-gap: 10px;
+    }
+    > h6 {
+    }
 }

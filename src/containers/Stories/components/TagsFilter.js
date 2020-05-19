@@ -31,6 +31,7 @@ export const TagsFilter = ({ changeLocationByPath }) => {
                                 }}
                             />
                         ))}
+                    <span id="moreTags">עוד קטגוריות </span>
                 </div>
             </div>
             <StoriesList

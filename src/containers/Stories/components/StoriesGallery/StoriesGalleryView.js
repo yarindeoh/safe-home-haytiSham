@@ -13,6 +13,7 @@ export const StoriesGalleryView = ({ changeLocationByPath }) => {
                     publicStories.map((story, key) => {
                         return (
                             <section
+                                id={key === 1 && 'selected'}
                                 key={`section${key}`}
                                 onClick={() =>
                                     changeLocationByPath('publicStory')
@@ -21,7 +22,7 @@ export const StoriesGalleryView = ({ changeLocationByPath }) => {
                                 <div className={'image'} key={`img${key}`}>
                                     <h1>{story.quote}</h1>
                                     <h2>
-                                        `עדותה של {story.name} {story.date}`
+                                        עדותה של {story.name} {story.date}
                                     </h2>
                                 </div>
                                 <ul className={'tagsFilter'}>

@@ -11,7 +11,7 @@
 #story-page-container {
   display: flex;
   flex-direction: column;
-
+  
   .quote {
     border-bottom: 1px solid map_get($colors, border-bottom);
     box-sizing: border-box;
