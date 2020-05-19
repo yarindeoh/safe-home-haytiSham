@@ -198,6 +198,7 @@ body {
 }
 
 #root {
+  background-color: #F6F7F9;
   height: 100vh;
 }
 
@@ -244,6 +245,24 @@ button {
   width: 24px;
   margin-left: 6px;
   background-image: url("../../media/icons/backArrow.png");
+}
+
+.BTN-accessibility {
+  height: 32px;
+  width: 32px;
+  position: sticky;
+  left: 8px;
+  top: 54px;
+  background-image: url("../../media/icons/accessibility.png");
+}
+
+.BTN-help {
+  height: 64px;
+  width: 64px;
+  position: sticky;
+  left: 8px;
+  bottom: 17px;
+  background-image: url("../../media/icons/help.png");
 }
 
 header {
@@ -437,6 +456,7 @@ body {
 }
 
 #root {
+  background-color: #F6F7F9;
   height: 100vh;
 }
 
@@ -712,6 +732,7 @@ body {
 }
 
 #root {
+  background-color: #F6F7F9;
   height: 100vh;
 }
 
@@ -758,6 +779,24 @@ button {
   width: 24px;
   margin-left: 6px;
   background-image: url("../../media/icons/backArrow.png");
+}
+
+.BTN-accessibility {
+  height: 32px;
+  width: 32px;
+  position: sticky;
+  left: 8px;
+  top: 54px;
+  background-image: url("../../media/icons/accessibility.png");
+}
+
+.BTN-help {
+  height: 64px;
+  width: 64px;
+  position: sticky;
+  left: 8px;
+  bottom: 17px;
+  background-image: url("../../media/icons/help.png");
 }
 
 .stories-gallery-container {
@@ -967,6 +1006,7 @@ body {
 }
 
 #root {
+  background-color: #F6F7F9;
   height: 100vh;
 }
 
@@ -1013,6 +1053,24 @@ button {
   width: 24px;
   margin-left: 6px;
   background-image: url("../../media/icons/backArrow.png");
+}
+
+.BTN-accessibility {
+  height: 32px;
+  width: 32px;
+  position: sticky;
+  left: 8px;
+  top: 54px;
+  background-image: url("../../media/icons/accessibility.png");
+}
+
+.BTN-help {
+  height: 64px;
+  width: 64px;
+  position: sticky;
+  left: 8px;
+  bottom: 17px;
+  background-image: url("../../media/icons/help.png");
 }
 
 header {
@@ -1206,6 +1264,7 @@ body {
 }
 
 #root {
+  background-color: #F6F7F9;
   height: 100vh;
 }
 
@@ -1481,6 +1540,7 @@ body {
 }
 
 #root {
+  background-color: #F6F7F9;
   height: 100vh;
 }
 
@@ -1527,6 +1587,24 @@ button {
   width: 24px;
   margin-left: 6px;
   background-image: url("../../media/icons/backArrow.png");
+}
+
+.BTN-accessibility {
+  height: 32px;
+  width: 32px;
+  position: sticky;
+  left: 8px;
+  top: 54px;
+  background-image: url("../../media/icons/accessibility.png");
+}
+
+.BTN-help {
+  height: 64px;
+  width: 64px;
+  position: sticky;
+  left: 8px;
+  bottom: 17px;
+  background-image: url("../../media/icons/help.png");
 }
 
 .stories-gallery-container {
@@ -1772,6 +1850,7 @@ body {
 }
 
 #root {
+  background-color: #F6F7F9;
   height: 100vh;
 }
 
@@ -1818,6 +1897,24 @@ button {
   width: 24px;
   margin-left: 6px;
   background-image: url("../../media/icons/backArrow.png");
+}
+
+.BTN-accessibility {
+  height: 32px;
+  width: 32px;
+  position: sticky;
+  left: 8px;
+  top: 54px;
+  background-image: url("../../media/icons/accessibility.png");
+}
+
+.BTN-help {
+  height: 64px;
+  width: 64px;
+  position: sticky;
+  left: 8px;
+  bottom: 17px;
+  background-image: url("../../media/icons/help.png");
 }
 
 #testimony-form {

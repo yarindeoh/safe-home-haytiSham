@@ -43,3 +43,25 @@
   margin-left:6px;
   background-image: url("../../media/icons/backArrow.png");
 }
+
+.BTN-accessibility {
+  $size: 32px;
+
+  height: $size;
+  width: $size;
+  position: sticky;
+  left: 8px;
+  top: 54px;
+  background-image: url("../../media/icons/accessibility.png");
+}
+
+.BTN-help {
+  $size: 64px;
+
+  height: $size;
+  width: $size;
+  position: sticky;
+  left: 8px;
+  bottom: 17px;
+  background-image: url("../../media/icons/help.png");
+}
