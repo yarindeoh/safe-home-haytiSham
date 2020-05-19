@@ -5,16 +5,21 @@ $colors: (
         text-light-gray: lightgray,
         text-white: white,
         text-light-purple: #D3A7F1,
+        text-dark-purple:  rgba(62, 10, 128, 0.6),
         text-tag: #125A9E,
 
   //buttons & tags:
-
+        BTX-to-all-testimonies: #3690E4,
 
   //backgrounds:
     global-background: white,
     header-background: #000000,
     tag-background: #D8EBFD,
+    light-purple-header-background: rgba(234, 223, 249, 0.4),
 
-  //effects
+  //effects:
         image-shadow: rgba(83, 19, 113, 0.85),
+
+  //borders:
+        border-bottom: #DEDEE3,
 );

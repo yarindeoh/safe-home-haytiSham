@@ -7,18 +7,20 @@ import lang from 'services/lang.json';
 export const SimilarStories = ({ tags, changeLocationByPath }) => {
     const { stories } = useSimilarStories(tags);
     return (
-        <div>
+        <div className={'more-testimonies'}>
             {lang.additionalStories}:
-            {stories &&
-                Object.keys(stories).map((index, key) => {
-                    return (
-                        <StoryHighlight
-                            story={stories[index]}
-                            key={key}
-                            changeLocationByPath={changeLocationByPath}
-                        />
-                    );
-                })}
+            <ul>
+                {stories &&
+                    Object.keys(stories).map((index, key) => {
+                        return (
+                            <StoryHighlight
+                                story={stories[index]}
+                                key={key}
+                                changeLocationByPath={changeLocationByPath}
+                            />
+                        );
+                    })}
+            </ul>
         </div>
     );
 };

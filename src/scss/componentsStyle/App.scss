@@ -9,6 +9,8 @@
 
 @import "storiesCarrousel";
 @import "storiesGallery";
+@import "story-page-container";
+@import "testimonyForm";
 
 .app {
   background-color: map_get($colors, global-background);
