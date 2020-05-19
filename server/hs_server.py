@@ -6,6 +6,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 from datetime import datetime
 from flask_cors import CORS
+from flask import render_template
 
 app = Flask(__name__)
 app.config.JSON_AS_ASCII = False
@@ -18,12 +19,10 @@ key_error = 'error'
 date_format = '%m/%d/%Y %H:%M:%S'
 
 CORS(app)
-MYDIR = os.path.dirname(__file__)
 
 @app.route("/")
-def root(path):
-    logger.info(MYDIR)
-    return send_from_directory(MYDIR+ '/../build', index.html)
+def index():
+    return render_template("index.html") 
 
 @app.route('/getAllData', methods=['GET'])
 def get_all_data():
