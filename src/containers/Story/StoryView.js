@@ -6,8 +6,7 @@ import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
 import { Footer } from 'containers/Story/components/Footer';
-import { Header } from '../../components/Header';
-import { TagsFilter } from '../Stories/components/TagsFilter';
+import { Header } from 'components/Header';
 
 export const StoryView = withRoute((props) => {
     const story = props.location.state;
@@ -25,14 +24,17 @@ export const StoryView = withRoute((props) => {
     return (
         <div id={'story-page-container'}>
             <Header />
-            <div className={'quote'} >
-                <h1>
-                    "אשה חזקה. מצליחה. מרוויחה טוב. יפהפייה. כל יום חוזרת הביתה והופכת לאפס"
-                </h1>
-                <h2>עדותה של ב', 23.01.20</h2>
-                 <Tags tags={story.tags} />
+            <div className={'quote'}>
+                <h1>"{story.quote}"</h1>
+                <h2>
+                    {`
+                    עדותה של 
+                     ${story.name.split('')[0]}׳ 
+                     ${story.timestamp.split(' ')[0]} 
+                   `}
+                </h2>
+                <Tags tags={story.tags} />
             </div>
-            {/*<button onClick={() => changeLocationByPath('/')}>Go back</button>*/}
             {proccessedStory &&
                 Object.keys(proccessedStory).map((item, key) => (
                     <div key={key}>
