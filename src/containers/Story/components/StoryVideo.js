@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
-import { Footer } from 'containers/Story/components/Footer';
+import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
 import img from 'src/media/videosImages/img1.png';
 import { Tags } from 'containers/Story/components/Tags';

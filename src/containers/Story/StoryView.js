@@ -5,7 +5,7 @@ import lang from 'services/lang.json';
 import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
-import { Footer } from 'containers/Story/components/Footer';
+import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
 
 export const StoryView = withRoute((props) => {
