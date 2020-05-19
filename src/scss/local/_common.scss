@@ -168,37 +168,6 @@ header {
 
 label {
     padding: 0 10px;
-    //
-    //    input[type='radio'] {
-    //        $size: 20px;
-    //
-    //        &:after {
-    //            content: '';
-    //            background: map_get($colors, global-background);
-    //            width: $size;
-    //            height: $size;
-    //            border-radius: 50%;
-    //            top: -2px;
-    //            left: 15px;
-    //            position: relative;
-    //            display: inline-block;
-    //            visibility: visible;
-    //            border: 1px solid #212121;
-    //        }
-    //
-    //        &:checked:after {
-    //            content: '';
-    //            width: $size / 2;
-    //            height: $size / 2;
-    //            border-radius: 15px;
-    //            top: -2px;
-    //            left: -1px;
-    //            position: relative;
-    //            background-color: map_get($colors, dark-purple-footer-background);
-    //            display: inline-block;
-    //            visibility: visible;
-    //        }
-    //    }
 }
 
 footer {
