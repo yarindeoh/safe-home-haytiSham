@@ -1,14 +1,16 @@
 import React from 'react';
 
-export const Radio = ({ label, options, checked }) => {
+export const Radio = ({ label, notes, options, checked }) => {
     return (
         <div>
             <label>{label}</label>
+            <p>{notes}</p>
             <div>
                 {options &&
                     options.map((option, index) => (
                         <label key={index}>
                             <input
+                                className={'radio'}
                                 type="radio"
                                 value={option.value}
                                 checked={index === checked}

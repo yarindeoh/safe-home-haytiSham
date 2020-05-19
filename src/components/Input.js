@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Input = ({ name, placeholder, label, subLabel }) => {
     return (
-        <div>
+        <div className={'question'}>
             <label>
                 {label}
                 <div>
