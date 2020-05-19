@@ -3,26 +3,18 @@ import React from 'react';
 export const Footer = () => {
     return (
         <footer>
-            <h1>הייתי שם#</h1>
-            <ul>
-                <div>
-                    <span className="purple">עזרה וסיוע</span>
-                    <span>מי אנחנו</span>
-                </div>
-                <div>
-                    <span>סימני אזהרה</span>
-                    <span>פורום מיכל סלע</span>
-                </div>
-                <div>
-                    <span>שליחת עדות</span>
-                    <span>נגישות</span>
-                </div>
-                <div>
-                    <span>סטטיסטיקה</span>
-                    <span>תמיכה טכנית</span>
-                </div>
-            </ul>
+            {/*<h1>הייתי שם#</h1>*/}
             {/*<ul>*/}
+            {/*    <li className={'purple'}>עזרה וסיוע</li>*/}
+            {/*    <li>מי אנחנו</li>*/}
+            {/*    <li>סימני אזהרה</li>*/}
+            {/*    <li>פורום מיכל סלע</li>*/}
+            {/*    <li>שליחת עדות</li>*/}
+            {/*    <li>נגישות</li>*/}
+            {/*    <li>סטטיסטיקה</li>*/}
+            {/*    <li>תמיכה טכנית</li>*/}
+            {/*</ul>*/}
+            {/*<ul className={'purple'}>*/}
             {/*    <div>*/}
             {/*        <h2>118</h2>*/}
             {/*        <p>קו החירום החברתי של משרד העבודה והרווחה</p>*/}
