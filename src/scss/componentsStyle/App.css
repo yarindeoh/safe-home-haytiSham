@@ -19,13 +19,13 @@ header {
   box-sizing: border-box;
   padding-right: 10px;
 }
-header > ul {
-  height: 100%;
-}
-header > ul > button {
+header button {
   height: 100%;
   width: 50px;
   background-color: transparent;
+}
+header > ul {
+  height: 100%;
 }
 header > ul > button:not(:first-of-type) {
   margin-right: 5px;
@@ -41,9 +41,11 @@ header > h1 {
 }
 
 .tagsFilter {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 150px));
+  white-space: nowrap;
+  grid-row-gap: 9px;
+  grid-column-gap: 12px;
   margin: 5px;
   box-sizing: border-box;
   border: 0 !important;
@@ -54,9 +56,6 @@ header > h1 {
   border-radius: 30px;
   border: 0;
 }
-.tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
-  margin-right: 12px;
-}
 .tagsFilter .tag {
   background-color: #D8EBFD;
 }
@@ -66,12 +65,13 @@ header > h1 {
 
 .story {
   direction: ltr;
+  padding: 10px 16px 11px;
   display: grid;
   grid-template-columns: 1fr 60px;
   grid-template-rows: 20px 35px 30px;
   grid-template-areas: "date letter" "text letter" "tags tags";
-  padding-bottom: 10px;
-  border-bottom: 2px solid #E5E5E5;
+  border-radius: 11px;
+  background-color: white;
 }
 .story > figure {
   grid-area: letter;
@@ -200,18 +200,22 @@ button {
 }
 
 .BTN-hamburger-menu {
+  background: url("../../media/icons/hamburger.png") no-repeat center;
   text-decoration: underline;
 }
 
 .BTN-search {
+  background: url("../../media/icons/Union.png") no-repeat center;
   text-decoration: underline;
 }
 
-.BTX-lang-changer {
+.BTN-lang-changer {
+  background: url("../../media/icons/globe.png") no-repeat center;
   text-decoration: underline;
+  margin-left: 14px;
 }
 
-.BTX-to-all-testimonies {
+.BTN-to-all-testimonies {
   font-style: normal;
   font-size: 15px;
   text-decoration-line: underline;
@@ -237,13 +241,13 @@ header {
   box-sizing: border-box;
   padding-right: 10px;
 }
-header > ul {
-  height: 100%;
-}
-header > ul > button {
+header button {
   height: 100%;
   width: 50px;
   background-color: transparent;
+}
+header > ul {
+  height: 100%;
 }
 header > ul > button:not(:first-of-type) {
   margin-right: 5px;
@@ -259,9 +263,11 @@ header > h1 {
 }
 
 .tagsFilter {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 150px));
+  white-space: nowrap;
+  grid-row-gap: 9px;
+  grid-column-gap: 12px;
   margin: 5px;
   box-sizing: border-box;
   border: 0 !important;
@@ -272,9 +278,6 @@ header > h1 {
   border-radius: 30px;
   border: 0;
 }
-.tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
-  margin-right: 12px;
-}
 .tagsFilter .tag {
   background-color: #D8EBFD;
 }
@@ -284,12 +287,13 @@ header > h1 {
 
 .story {
   direction: ltr;
+  padding: 10px 16px 11px;
   display: grid;
   grid-template-columns: 1fr 60px;
   grid-template-rows: 20px 35px 30px;
   grid-template-areas: "date letter" "text letter" "tags tags";
-  padding-bottom: 10px;
-  border-bottom: 2px solid #E5E5E5;
+  border-radius: 11px;
+  background-color: white;
 }
 .story > figure {
   grid-area: letter;
@@ -412,11 +416,16 @@ button {
   grid-area: carrousel;
   width: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
 
 .stories-gallery {
   display: flex;
   align-items: flex-end;
+}
+.stories-gallery .tagsFilter {
+  display: none;
 }
 .stories-gallery > section {
   width: 216px;
@@ -425,25 +434,25 @@ button {
   margin-right: 16px;
 }
 .stories-gallery > section:nth-child(1) div {
-  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), url("../../media/videosImages/img1.png");
+  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), linear-gradient(180deg, rgba(108, 160, 209, 0.2) 0%, rgba(98, 156, 212, 0.689583) 97.92%, rgba(122, 146, 169, 0.7) 100%), url("../../media/videosImages/img1.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .stories-gallery > section:nth-child(2) div {
-  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), url("../../media/videosImages/img2.png");
+  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), linear-gradient(180deg, rgba(108, 160, 209, 0.2) 0%, rgba(98, 156, 212, 0.689583) 97.92%, rgba(122, 146, 169, 0.7) 100%), url("../../media/videosImages/img2.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .stories-gallery > section:nth-child(3) div {
-  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), url("../../media/videosImages/img3.png");
+  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), linear-gradient(180deg, rgba(108, 160, 209, 0.2) 0%, rgba(98, 156, 212, 0.689583) 97.92%, rgba(122, 146, 169, 0.7) 100%), url("../../media/videosImages/img3.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .stories-gallery > section:nth-child(4) div {
-  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), url("../../media/videosImages/img4.png");
+  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), linear-gradient(180deg, rgba(108, 160, 209, 0.2) 0%, rgba(98, 156, 212, 0.689583) 97.92%, rgba(122, 146, 169, 0.7) 100%), url("../../media/videosImages/img4.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -488,13 +497,13 @@ header {
   box-sizing: border-box;
   padding-right: 10px;
 }
-header > ul {
-  height: 100%;
-}
-header > ul > button {
+header button {
   height: 100%;
   width: 50px;
   background-color: transparent;
+}
+header > ul {
+  height: 100%;
 }
 header > ul > button:not(:first-of-type) {
   margin-right: 5px;
@@ -510,9 +519,11 @@ header > h1 {
 }
 
 .tagsFilter {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 150px));
+  white-space: nowrap;
+  grid-row-gap: 9px;
+  grid-column-gap: 12px;
   margin: 5px;
   box-sizing: border-box;
   border: 0 !important;
@@ -523,9 +534,6 @@ header > h1 {
   border-radius: 30px;
   border: 0;
 }
-.tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
-  margin-right: 12px;
-}
 .tagsFilter .tag {
   background-color: #D8EBFD;
 }
@@ -535,12 +543,13 @@ header > h1 {
 
 .story {
   direction: ltr;
+  padding: 10px 16px 11px;
   display: grid;
   grid-template-columns: 1fr 60px;
   grid-template-rows: 20px 35px 30px;
   grid-template-areas: "date letter" "text letter" "tags tags";
-  padding-bottom: 10px;
-  border-bottom: 2px solid #E5E5E5;
+  border-radius: 11px;
+  background-color: white;
 }
 .story > figure {
   grid-area: letter;
@@ -669,18 +678,22 @@ button {
 }
 
 .BTN-hamburger-menu {
+  background: url("../../media/icons/hamburger.png") no-repeat center;
   text-decoration: underline;
 }
 
 .BTN-search {
+  background: url("../../media/icons/Union.png") no-repeat center;
   text-decoration: underline;
 }
 
-.BTX-lang-changer {
+.BTN-lang-changer {
+  background: url("../../media/icons/globe.png") no-repeat center;
   text-decoration: underline;
+  margin-left: 14px;
 }
 
-.BTX-to-all-testimonies {
+.BTN-to-all-testimonies {
   font-style: normal;
   font-size: 15px;
   text-decoration-line: underline;
@@ -716,13 +729,13 @@ header {
   box-sizing: border-box;
   padding-right: 10px;
 }
-header > ul {
-  height: 100%;
-}
-header > ul > button {
+header button {
   height: 100%;
   width: 50px;
   background-color: transparent;
+}
+header > ul {
+  height: 100%;
 }
 header > ul > button:not(:first-of-type) {
   margin-right: 5px;
@@ -738,9 +751,11 @@ header > h1 {
 }
 
 .tagsFilter {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 150px));
+  white-space: nowrap;
+  grid-row-gap: 9px;
+  grid-column-gap: 12px;
   margin: 5px;
   box-sizing: border-box;
   border: 0 !important;
@@ -751,9 +766,6 @@ header > h1 {
   border-radius: 30px;
   border: 0;
 }
-.tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
-  margin-right: 12px;
-}
 .tagsFilter .tag {
   background-color: #D8EBFD;
 }
@@ -763,12 +775,13 @@ header > h1 {
 
 .story {
   direction: ltr;
+  padding: 10px 16px 11px;
   display: grid;
   grid-template-columns: 1fr 60px;
   grid-template-rows: 20px 35px 30px;
   grid-template-areas: "date letter" "text letter" "tags tags";
-  padding-bottom: 10px;
-  border-bottom: 2px solid #E5E5E5;
+  border-radius: 11px;
+  background-color: white;
 }
 .story > figure {
   grid-area: letter;
@@ -897,18 +910,22 @@ button {
 }
 
 .BTN-hamburger-menu {
+  background: url("../../media/icons/hamburger.png") no-repeat center;
   text-decoration: underline;
 }
 
 .BTN-search {
+  background: url("../../media/icons/Union.png") no-repeat center;
   text-decoration: underline;
 }
 
-.BTX-lang-changer {
+.BTN-lang-changer {
+  background: url("../../media/icons/globe.png") no-repeat center;
   text-decoration: underline;
+  margin-left: 14px;
 }
 
-.BTX-to-all-testimonies {
+.BTN-to-all-testimonies {
   font-style: normal;
   font-size: 15px;
   text-decoration-line: underline;
@@ -934,13 +951,13 @@ header {
   box-sizing: border-box;
   padding-right: 10px;
 }
-header > ul {
-  height: 100%;
-}
-header > ul > button {
+header button {
   height: 100%;
   width: 50px;
   background-color: transparent;
+}
+header > ul {
+  height: 100%;
 }
 header > ul > button:not(:first-of-type) {
   margin-right: 5px;
@@ -956,9 +973,11 @@ header > h1 {
 }
 
 .tagsFilter {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 150px));
+  white-space: nowrap;
+  grid-row-gap: 9px;
+  grid-column-gap: 12px;
   margin: 5px;
   box-sizing: border-box;
   border: 0 !important;
@@ -969,9 +988,6 @@ header > h1 {
   border-radius: 30px;
   border: 0;
 }
-.tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
-  margin-right: 12px;
-}
 .tagsFilter .tag {
   background-color: #D8EBFD;
 }
@@ -981,12 +997,13 @@ header > h1 {
 
 .story {
   direction: ltr;
+  padding: 10px 16px 11px;
   display: grid;
   grid-template-columns: 1fr 60px;
   grid-template-rows: 20px 35px 30px;
   grid-template-areas: "date letter" "text letter" "tags tags";
-  padding-bottom: 10px;
-  border-bottom: 2px solid #E5E5E5;
+  border-radius: 11px;
+  background-color: white;
 }
 .story > figure {
   grid-area: letter;
@@ -1109,11 +1126,16 @@ button {
   grid-area: carrousel;
   width: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
 
 .stories-gallery {
   display: flex;
   align-items: flex-end;
+}
+.stories-gallery .tagsFilter {
+  display: none;
 }
 .stories-gallery > section {
   width: 216px;
@@ -1122,25 +1144,25 @@ button {
   margin-right: 16px;
 }
 .stories-gallery > section:nth-child(1) div {
-  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), url("../../media/videosImages/img1.png");
+  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), linear-gradient(180deg, rgba(108, 160, 209, 0.2) 0%, rgba(98, 156, 212, 0.689583) 97.92%, rgba(122, 146, 169, 0.7) 100%), url("../../media/videosImages/img1.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .stories-gallery > section:nth-child(2) div {
-  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), url("../../media/videosImages/img2.png");
+  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), linear-gradient(180deg, rgba(108, 160, 209, 0.2) 0%, rgba(98, 156, 212, 0.689583) 97.92%, rgba(122, 146, 169, 0.7) 100%), url("../../media/videosImages/img2.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .stories-gallery > section:nth-child(3) div {
-  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), url("../../media/videosImages/img3.png");
+  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), linear-gradient(180deg, rgba(108, 160, 209, 0.2) 0%, rgba(98, 156, 212, 0.689583) 97.92%, rgba(122, 146, 169, 0.7) 100%), url("../../media/videosImages/img3.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .stories-gallery > section:nth-child(4) div {
-  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), url("../../media/videosImages/img4.png");
+  background-image: linear-gradient(180deg, rgba(83, 19, 113, 0) 0%, rgba(83, 19, 113, 0.7) 100%), linear-gradient(180deg, rgba(108, 160, 209, 0.2) 0%, rgba(98, 156, 212, 0.689583) 97.92%, rgba(122, 146, 169, 0.7) 100%), url("../../media/videosImages/img4.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1185,13 +1207,13 @@ header {
   box-sizing: border-box;
   padding-right: 10px;
 }
-header > ul {
-  height: 100%;
-}
-header > ul > button {
+header button {
   height: 100%;
   width: 50px;
   background-color: transparent;
+}
+header > ul {
+  height: 100%;
 }
 header > ul > button:not(:first-of-type) {
   margin-right: 5px;
@@ -1207,9 +1229,11 @@ header > h1 {
 }
 
 .tagsFilter {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 150px));
+  white-space: nowrap;
+  grid-row-gap: 9px;
+  grid-column-gap: 12px;
   margin: 5px;
   box-sizing: border-box;
   border: 0 !important;
@@ -1220,9 +1244,6 @@ header > h1 {
   border-radius: 30px;
   border: 0;
 }
-.tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
-  margin-right: 12px;
-}
 .tagsFilter .tag {
   background-color: #D8EBFD;
 }
@@ -1232,12 +1253,13 @@ header > h1 {
 
 .story {
   direction: ltr;
+  padding: 10px 16px 11px;
   display: grid;
   grid-template-columns: 1fr 60px;
   grid-template-rows: 20px 35px 30px;
   grid-template-areas: "date letter" "text letter" "tags tags";
-  padding-bottom: 10px;
-  border-bottom: 2px solid #E5E5E5;
+  border-radius: 11px;
+  background-color: white;
 }
 .story > figure {
   grid-area: letter;
@@ -1366,18 +1388,22 @@ button {
 }
 
 .BTN-hamburger-menu {
+  background: url("../../media/icons/hamburger.png") no-repeat center;
   text-decoration: underline;
 }
 
 .BTN-search {
+  background: url("../../media/icons/Union.png") no-repeat center;
   text-decoration: underline;
 }
 
-.BTX-lang-changer {
+.BTN-lang-changer {
+  background: url("../../media/icons/globe.png") no-repeat center;
   text-decoration: underline;
+  margin-left: 14px;
 }
 
-.BTX-to-all-testimonies {
+.BTN-to-all-testimonies {
   font-style: normal;
   font-size: 15px;
   text-decoration-line: underline;
@@ -1449,13 +1475,13 @@ header {
   box-sizing: border-box;
   padding-right: 10px;
 }
-header > ul {
-  height: 100%;
-}
-header > ul > button {
+header button {
   height: 100%;
   width: 50px;
   background-color: transparent;
+}
+header > ul {
+  height: 100%;
 }
 header > ul > button:not(:first-of-type) {
   margin-right: 5px;
@@ -1471,9 +1497,11 @@ header > h1 {
 }
 
 .tagsFilter {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 150px));
+  white-space: nowrap;
+  grid-row-gap: 9px;
+  grid-column-gap: 12px;
   margin: 5px;
   box-sizing: border-box;
   border: 0 !important;
@@ -1484,9 +1512,6 @@ header > h1 {
   border-radius: 30px;
   border: 0;
 }
-.tagsFilter .tag:not(:first-of-type), .tagsFilter .more-tag:not(:first-of-type) {
-  margin-right: 12px;
-}
 .tagsFilter .tag {
   background-color: #D8EBFD;
 }
@@ -1496,12 +1521,13 @@ header > h1 {
 
 .story {
   direction: ltr;
+  padding: 10px 16px 11px;
   display: grid;
   grid-template-columns: 1fr 60px;
   grid-template-rows: 20px 35px 30px;
   grid-template-areas: "date letter" "text letter" "tags tags";
-  padding-bottom: 10px;
-  border-bottom: 2px solid #E5E5E5;
+  border-radius: 11px;
+  background-color: white;
 }
 .story > figure {
   grid-area: letter;
@@ -1630,18 +1656,22 @@ button {
 }
 
 .BTN-hamburger-menu {
+  background: url("../../media/icons/hamburger.png") no-repeat center;
   text-decoration: underline;
 }
 
 .BTN-search {
+  background: url("../../media/icons/Union.png") no-repeat center;
   text-decoration: underline;
 }
 
-.BTX-lang-changer {
+.BTN-lang-changer {
+  background: url("../../media/icons/globe.png") no-repeat center;
   text-decoration: underline;
+  margin-left: 14px;
 }
 
-.BTX-to-all-testimonies {
+.BTN-to-all-testimonies {
   font-style: normal;
   font-size: 15px;
   text-decoration-line: underline;
@@ -1666,7 +1696,7 @@ button {
   position: unset;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: #F6F7F9;
   justify-content: flex-start;
 }
 #testimony-form header > h1 {
@@ -1735,12 +1765,12 @@ button {
 }
 
 .app {
-  background-color: white;
+  background-color: #F6F7F9;
   height: 100%;
   display: grid;
   grid-template-areas: "header" "const-text" "carrousel" "send-testimony-box" "gallery";
   grid-template-columns: auto;
-  grid-template-rows: 46px 56px 265px 63px 1fr;
+  grid-template-rows: 46px 56px 232px 63px 1fr;
 }
 
 /*# sourceMappingURL=App.css.map */

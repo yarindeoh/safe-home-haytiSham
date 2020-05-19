@@ -15,8 +15,6 @@
 .app {
   background-color: map_get($colors, global-background);
   height: 100%;
-  //background-color: red;
-  //overflow: hidden;
   display: grid;
   grid-template-areas: "header"
                         "const-text"
@@ -24,5 +22,5 @@
                         "send-testimony-box"
                         "gallery";
   grid-template-columns: auto;
-  grid-template-rows: 46px 56px 265px 63px 1fr;
+  grid-template-rows: 46px 56px 232px 63px 1fr;
 }
