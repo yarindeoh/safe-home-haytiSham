@@ -185,3 +185,44 @@ label {
 //        }
 //    }
 }
+
+footer {
+    padding: 19px 78px 58px 68px;
+    background-color: map_get($colors, header-background);
+
+    > h1 {
+        color: map_get($colors, dark-purple-footer-background);
+    }
+
+    .purple {
+        color: map_get($colors, dark-purple-footer-background);
+    }
+
+    > ul:nth-child(1) {
+        display: grid;
+        grid-template-columns:repeat(auto-fit, minmax(200px , 1fr));
+        grid-row-gap: 10px;
+        grid-column-gap: 36px;
+
+        > h2 {
+            font-style: normal;
+            font-size: 15px;
+            color: map_get($colors, text-white);
+        }
+    }
+
+    > ul:nth-child(2) {
+        display: flex;
+
+        background-color: map_get($colors, dark-purple-footer-background);
+
+        > h2 {
+            color: map_get($colors, text-white);
+        }
+    }
+
+    > ul:nth-child(3) {
+        display: flex;
+
+    }
+}
