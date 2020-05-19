@@ -16,11 +16,6 @@
     margin-bottom: 27px;
   }
 
-  > #stories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-      grid-gap: 10px;
-  }
   > h6 {
   }
 }

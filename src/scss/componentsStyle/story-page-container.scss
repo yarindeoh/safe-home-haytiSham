@@ -11,6 +11,8 @@
 #story-page-container {
   display: flex;
   flex-direction: column;
+  background-color: map_get($colors, global-background);
+  //background-color: red;
   
   .quote {
     border-bottom: 1px solid map_get($colors, border-bottom);
