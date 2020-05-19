@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Tag } from 'components/Tag';
 import { usePublicStories } from 'containers/Stories/storiesHooks';
 
-export const StoriesGalleryView = () => {
+export const StoriesGalleryView = ({ changeLocationByPath }) => {
     const [SelectedImage, setSelectedImage] = useState([false]);
     const gallery = useRef(null);
     const { publicStories } = usePublicStories();
@@ -12,7 +12,12 @@ export const StoriesGalleryView = () => {
                 {publicStories &&
                     publicStories.map((story, key) => {
                         return (
-                            <section key={`section${key}`}>
+                            <section
+                                key={`section${key}`}
+                                onClick={() =>
+                                    changeLocationByPath('publicStory')
+                                }
+                            >
                                 <div className={'image'} key={`img${key}`}>
                                     <h1>{story.quote}</h1>
                                     <h2>

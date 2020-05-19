@@ -6,6 +6,8 @@ import { StoriesGalleryView } from 'containers/Stories/components/StoriesGallery
 import { TagsFilter } from 'containers/Stories/components/TagsFilter';
 import { Header } from 'components/Header';
 
+import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
+
 export const StoriesView = withRoute((props) => {
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
@@ -14,7 +16,7 @@ export const StoriesView = withRoute((props) => {
         <div className="app">
             <Header />
             <h4 className={'const-text'}>בית לעדויות ממערכות יחסים אלימות</h4>
-            <StoriesGalleryView />
+            <StoriesGalleryView changeLocationByPath={changeLocationByPath} />
             <button
                 className={'BTN-send-testimony'}
                 onClick={() => props.history.push('addStory')}
