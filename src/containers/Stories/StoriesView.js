@@ -40,7 +40,7 @@ export const StoriesView = withRoute((props) => {
                                         <h2>א'</h2>
                                     </figure>
                                     <h6>13.02.20</h6>
-                                    <p>"האימה במבטה, הבעטה שתקפה אותה כשראתה אותו מאחוריה."</p>
+                                    <p>"האימה במבטה, הבעטה שתקפה אותה כשראתה אותו מאחוריה"</p>
                                     <div id={'tags-container'}>
                                         <TagsFilter changeStoryLocation={changeLocationByPath} />
                                     </div>
