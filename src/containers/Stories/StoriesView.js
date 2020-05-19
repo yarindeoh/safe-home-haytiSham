@@ -15,6 +15,7 @@ export const StoriesView = withRoute((props) => {
     return (
         <div className="app">
             <Header />
+            <button className={'BTN-accessibility'} />
             <h4 className={'const-text'}>בית לעדויות ממערכות יחסים אלימות</h4>
             <StoriesGalleryView changeLocationByPath={changeLocationByPath} />
             <button
