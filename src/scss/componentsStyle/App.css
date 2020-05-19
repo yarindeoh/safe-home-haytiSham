@@ -1095,7 +1095,7 @@ header > h1 {
   height: 312px;
 }
 .more-testimonies > ul > li {
-  background-color: red;
+  /* background-color: red; */
   border-radius: 11px;
 }
 * {
