@@ -11,26 +11,27 @@
 }
 
 .BTN-hamburger-menu {
-  //background: url("../../../media/icons/hamburger.jpg") no-repeat center;
+  background: url("../../media/icons/hamburger.png") no-repeat center;
   text-decoration: underline;
 }
 
 .BTN-search {
-  //background: url("../../../media/icons/search.jpg") no-repeat center;
+  background: url("../../media/icons/Union.png") no-repeat center;
   text-decoration: underline;
 }
 
-.BTX-lang-changer {
-  //background: url("../../../media/icons/globe.jpg") no-repeat center;
+.BTN-lang-changer {
+  background: url("../../media/icons/globe.png") no-repeat center;
   text-decoration: underline;
+  margin-left: 14px;
 }
 
-.BTX-to-all-testimonies {
+.BTN-to-all-testimonies {
   font-style: normal;
   font-size: 15px;
   text-decoration-line: underline;
 
-  color: map_get($colors, BTX-to-all-testimonies);
+  color: map_get($colors, BTN-to-all-testimonies);
 }
 
 .BTX-back {

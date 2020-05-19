@@ -8,7 +8,7 @@ export const Header = () => {
                 <button className={'BTN-search'} />
             </ul>
             <h1>#הייתי_שם</h1>
-            <button className={'BTX-lang-changer'} />
+            <button className={'BTN-lang-changer'} />
         </header>
     );
-}
+};

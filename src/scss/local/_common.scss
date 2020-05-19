@@ -12,17 +12,17 @@ header {
     box-sizing: border-box;
     padding-right: 10px;
 
+    button {
+        height: 100%;
+        width: 50px;
+        background-color: transparent;
+    }
+
     > ul {
         height: 100%;
 
-        > button {
-            height: 100%;
-            width: 50px;
-            background-color: transparent;
-
-            &:not(:first-of-type) {
-                margin-right: 5px;
-            }
+        > button:not(:first-of-type) {
+            margin-right: 5px;
         }
     }
 
@@ -38,9 +38,13 @@ header {
 }
 
 .tagsFilter {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px,150px));
+    white-space: nowrap;
+    grid-row-gap: 9px;
+    grid-column-gap: 12px;
+    //justify-content: flex-start;
+    //align-items: center;
     margin: 5px;
     box-sizing: border-box;
     border: 0 !important;
@@ -50,14 +54,11 @@ header {
         color: map_get($colors, text-tag);
         border-radius: 30px;
         border: 0;
-
-        &:not(:first-of-type) {
-            margin-right: 12px;
-        }
     }
 
     .tag {
         background-color: map_get($colors, tag-background);
+
     }
 
     .more-tag {
@@ -67,14 +68,16 @@ header {
 
 .story {
     direction: ltr;
+    padding: 10px 16px 11px;
     display: grid;
     grid-template-columns: 1fr 60px;
     grid-template-rows: 20px 35px 30px;
     grid-template-areas:    "date letter"
                             "text letter"
                             "tags tags";
-    padding-bottom: 10px;
-    border-bottom: 2px solid #E5E5E5;
+    //border-bottom: 2px solid #E5E5E5;
+    border-radius: 11px;
+    background-color: map_get($colors, white-background);
 
     > figure {
         $size: 33px;
