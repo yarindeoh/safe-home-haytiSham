@@ -9,7 +9,7 @@ export const SimilarStories = ({ tags, changeLocationByPath }) => {
     return (
         <div className={'more-testimonies'}>
             {lang.additionalStories}
-            <ul class="stories">
+            <ul className="stories">
                 {stories &&
                     Object.keys(stories).map((index, key) => {
                         return (

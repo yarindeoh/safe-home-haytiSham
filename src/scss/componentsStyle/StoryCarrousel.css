@@ -2,16 +2,18 @@ section {
   width: 100%;
   padding: 0 16px 0 14px;
 }
+
 section > figure {
   width: 33px;
   height: 33px;
   border-radius: 50%;
 }
+
 section > p {
   color: #828282;
 }
+
 section > p > span {
   color: #B3B3B3;
 }
-
 /*# sourceMappingURL=StoryCarrousel.css.map */

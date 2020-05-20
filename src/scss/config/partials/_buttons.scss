@@ -44,6 +44,15 @@
   background-image: url("../../media/icons/backArrow.png");
 }
 
+.BTX-back-white {
+  $size: 24px;
+  background-repeat: no-repeat;
+  height: 31px;
+  width: $size;
+  margin-left:6px;
+  background-image: url("../../media/icons/backWhite.png");
+}
+
 .BTN-accessibility {
   height: 32px;
   width: calc(100% + 24px - 8px);

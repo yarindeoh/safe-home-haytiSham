@@ -23,7 +23,17 @@ export const StoryView = withRoute((props) => {
     ]);
     return (
         <div id={'story-page-container'}>
-            <Header />
+            <header>
+                <ul className={'header-menu-container'}>
+                    <button
+                        className={'BTX-back-white'}
+                        onClick={() => changeLocationByPath('/')}
+                    />
+                    <button className={'BTN-search'} />
+                </ul>
+                <div className={'logo'} />
+                <button className={'BTN-lang-changer'} />
+            </header>
             <button className={'BTN-accessibility'} />
             <div className={'quote'}>
                 <h1>"{story.quote}"</h1>
