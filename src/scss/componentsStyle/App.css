@@ -194,7 +194,12 @@ label {
 }
 
 .tagsFilter .selected {
-  background: #97CCFF;
+  background: #97ccff;
+}
+
+.test {
+  width: 100% !important;
+  height: calc(100vh - 36px) !important;
 }
 
 footer {
@@ -331,6 +336,49 @@ button {
   width: 24px;
   margin-left: 6px;
   background-image: url("../../media/icons/backWhite.png");
+}
+
+.BTX-help2 {
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 36px;
+  margin-left: 20%;
+  float: left;
+  background-color: white;
+  background-image: url("../../media/icons/Union1.png");
+}
+
+.footercustom {
+  height: 70px;
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: white;
+}
+
+.footercustom > button {
+  background-color: white;
+}
+
+.footercustom .helpright {
+  margin-left: 20%;
+  float: left;
+  margin-top: 9px;
+}
+
+.footercustom .shareleft {
+  float: right;
+  margin-right: 20%;
+  margin-top: 4px;
+}
+
+.BTX-share {
+  margin-top: 5px;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 36px;
+  margin-right: -15px;
+  background-color: white;
+  background-image: url("../../media/icons/share.png");
 }
 
 .BTN-accessibility {
@@ -539,7 +587,12 @@ label {
 }
 
 .tagsFilter .selected {
-  background: #97CCFF;
+  background: #97ccff;
+}
+
+.test {
+  width: 100% !important;
+  height: calc(100vh - 36px) !important;
 }
 
 footer {
@@ -920,7 +973,12 @@ label {
 }
 
 .tagsFilter .selected {
-  background: #97CCFF;
+  background: #97ccff;
+}
+
+.test {
+  width: 100% !important;
+  height: calc(100vh - 36px) !important;
 }
 
 footer {
@@ -1057,6 +1115,49 @@ button {
   width: 24px;
   margin-left: 6px;
   background-image: url("../../media/icons/backWhite.png");
+}
+
+.BTX-help2 {
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 36px;
+  margin-left: 20%;
+  float: left;
+  background-color: white;
+  background-image: url("../../media/icons/Union1.png");
+}
+
+.footercustom {
+  height: 70px;
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: white;
+}
+
+.footercustom > button {
+  background-color: white;
+}
+
+.footercustom .helpright {
+  margin-left: 20%;
+  float: left;
+  margin-top: 9px;
+}
+
+.footercustom .shareleft {
+  float: right;
+  margin-right: 20%;
+  margin-top: 4px;
+}
+
+.BTX-share {
+  margin-top: 5px;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 36px;
+  margin-right: -15px;
+  background-color: white;
+  background-image: url("../../media/icons/share.png");
 }
 
 .BTN-accessibility {
@@ -1289,7 +1390,12 @@ label {
 }
 
 .tagsFilter .selected {
-  background: #97CCFF;
+  background: #97ccff;
+}
+
+.test {
+  width: 100% !important;
+  height: calc(100vh - 36px) !important;
 }
 
 footer {
@@ -1426,6 +1532,49 @@ button {
   width: 24px;
   margin-left: 6px;
   background-image: url("../../media/icons/backWhite.png");
+}
+
+.BTX-help2 {
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 36px;
+  margin-left: 20%;
+  float: left;
+  background-color: white;
+  background-image: url("../../media/icons/Union1.png");
+}
+
+.footercustom {
+  height: 70px;
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: white;
+}
+
+.footercustom > button {
+  background-color: white;
+}
+
+.footercustom .helpright {
+  margin-left: 20%;
+  float: left;
+  margin-top: 9px;
+}
+
+.footercustom .shareleft {
+  float: right;
+  margin-right: 20%;
+  margin-top: 4px;
+}
+
+.BTX-share {
+  margin-top: 5px;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 36px;
+  margin-right: -15px;
+  background-color: white;
+  background-image: url("../../media/icons/share.png");
 }
 
 .BTN-accessibility {
@@ -1634,7 +1783,12 @@ label {
 }
 
 .tagsFilter .selected {
-  background: #97CCFF;
+  background: #97ccff;
+}
+
+.test {
+  width: 100% !important;
+  height: calc(100vh - 36px) !important;
 }
 
 footer {
@@ -2015,7 +2169,12 @@ label {
 }
 
 .tagsFilter .selected {
-  background: #97CCFF;
+  background: #97ccff;
+}
+
+.test {
+  width: 100% !important;
+  height: calc(100vh - 36px) !important;
 }
 
 footer {
@@ -2152,6 +2311,49 @@ button {
   width: 24px;
   margin-left: 6px;
   background-image: url("../../media/icons/backWhite.png");
+}
+
+.BTX-help2 {
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 36px;
+  margin-left: 20%;
+  float: left;
+  background-color: white;
+  background-image: url("../../media/icons/Union1.png");
+}
+
+.footercustom {
+  height: 70px;
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: white;
+}
+
+.footercustom > button {
+  background-color: white;
+}
+
+.footercustom .helpright {
+  margin-left: 20%;
+  float: left;
+  margin-top: 9px;
+}
+
+.footercustom .shareleft {
+  float: right;
+  margin-right: 20%;
+  margin-top: 4px;
+}
+
+.BTX-share {
+  margin-top: 5px;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 36px;
+  margin-right: -15px;
+  background-color: white;
+  background-image: url("../../media/icons/share.png");
 }
 
 .BTN-accessibility {
@@ -2434,7 +2636,12 @@ label {
 }
 
 .tagsFilter .selected {
-  background: #97CCFF;
+  background: #97ccff;
+}
+
+.test {
+  width: 100% !important;
+  height: calc(100vh - 36px) !important;
 }
 
 footer {
@@ -2571,6 +2778,49 @@ button {
   width: 24px;
   margin-left: 6px;
   background-image: url("../../media/icons/backWhite.png");
+}
+
+.BTX-help2 {
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 36px;
+  margin-left: 20%;
+  float: left;
+  background-color: white;
+  background-image: url("../../media/icons/Union1.png");
+}
+
+.footercustom {
+  height: 70px;
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: white;
+}
+
+.footercustom > button {
+  background-color: white;
+}
+
+.footercustom .helpright {
+  margin-left: 20%;
+  float: left;
+  margin-top: 9px;
+}
+
+.footercustom .shareleft {
+  float: right;
+  margin-right: 20%;
+  margin-top: 4px;
+}
+
+.BTX-share {
+  margin-top: 5px;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 36px;
+  margin-right: -15px;
+  background-color: white;
+  background-image: url("../../media/icons/share.png");
 }
 
 .BTN-accessibility {

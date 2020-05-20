@@ -157,9 +157,13 @@ label {
     padding: 0 10px;
 }
 .tagsFilter .selected {
-    background: #97CCFF;
+    background: #97ccff;
 }
 
+.test {
+    width: 100% !important;
+    height: calc(100vh - 36px) !important;
+}
 footer {
     //display: flex;
     //flex-direction: column;
@@ -168,7 +172,7 @@ footer {
     //background-color: map_get($colors, header-background);
     width: 100%;
     height: calc(100vw + 32px);
-    background: url("../../media/icons/footer.png") no-repeat;
+    background: url('../../media/icons/footer.png') no-repeat;
     background-size: cover;
 
     li {
@@ -209,8 +213,6 @@ footer {
 
         &:nth-child(3) {
             display: flex;
-
-
         }
     }
 }

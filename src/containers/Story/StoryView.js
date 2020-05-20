@@ -58,6 +58,16 @@ export const StoryView = withRoute((props) => {
                 tags={story.tags}
                 changeLocationByPath={changeLocationByPath}
             />
+            <button className="footercustom">
+                <span className="helpright">
+                    <button className="BTX-help2"></button>
+                    <p>אוזן קשבת</p>
+                </span>
+                <span className="shareleft">
+                    <button className="BTX-share"></button>
+                    <p>שיתוף   </p>
+                </span>
+            </button>
             <Footer />
         </div>
     );

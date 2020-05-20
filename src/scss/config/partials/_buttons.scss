@@ -1,71 +1,110 @@
 @import '../../local/_colors.scss';
 
 .BTN-send-testimony {
-  width: fit-content;
-  grid-area: send-testimony-box;
-  align-self: center;
-  font-weight: bold;
-  color: map_get($colors, BTN-to-all-testimonies);
-  font-size: 15px;
-  line-height: 20px;
-  text-decoration: underline;
+    width: fit-content;
+    grid-area: send-testimony-box;
+    align-self: center;
+    font-weight: bold;
+    color: map_get($colors, BTN-to-all-testimonies);
+    font-size: 15px;
+    line-height: 20px;
+    text-decoration: underline;
 }
 
 .BTN-hamburger-menu {
-  background: url("../../media/icons/hamburger.png") no-repeat center;
-  text-decoration: underline;
+    background: url('../../media/icons/hamburger.png') no-repeat center;
+    text-decoration: underline;
 }
 
 .BTN-search {
-  background: url("../../media/icons/Union.png") no-repeat center;
-  text-decoration: underline;
+    background: url('../../media/icons/Union.png') no-repeat center;
+    text-decoration: underline;
 }
 
 .BTN-lang-changer {
-  background: url("../../media/icons/globe.png") no-repeat center;
-  text-decoration: underline;
-  margin-left: 7px;
+    background: url('../../media/icons/globe.png') no-repeat center;
+    text-decoration: underline;
+    margin-left: 7px;
 }
 
 .BTN-to-all-testimonies {
-  font-style: normal;
-  font-size: 15px;
-  text-decoration-line: underline;
+    font-style: normal;
+    font-size: 15px;
+    text-decoration-line: underline;
 
-  color: map_get($colors, BTN-to-all-testimonies);
+    color: map_get($colors, BTN-to-all-testimonies);
 }
 
 .BTX-back {
-  $size: 24px;
+    $size: 24px;
 
-  height: $size;
-  width: $size;
-  margin-left:6px;
-  background-image: url("../../media/icons/backArrow.png");
+    height: $size;
+    width: $size;
+    margin-left: 6px;
+    background-image: url('../../media/icons/backArrow.png');
 }
 
 .BTX-back-white {
-  $size: 24px;
-  background-repeat: no-repeat;
-  height: 31px;
-  width: $size;
-  margin-left:6px;
-  background-image: url("../../media/icons/backWhite.png");
+    $size: 24px;
+    background-repeat: no-repeat;
+    height: 31px;
+    width: $size;
+    margin-left: 6px;
+    background-image: url('../../media/icons/backWhite.png');
+}
+
+.BTX-help2 {
+    $size: 24px;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 36px;
+    margin-left: 20%;
+    float: left;
+    background-color: white;
+    background-image: url('../../media/icons/Union1.png');
+}
+.footercustom {
+    height: 70px;
+    position: sticky;
+    > button {
+        background-color: white;
+    }
+    .helpright {
+        margin-left: 20%;
+        float: left;
+        margin-top: 9px;
+    }
+    .shareleft {
+        float: right;
+        margin-right: 20%;
+        margin-top: 4px;
+    }
+    background-color: white;
+}
+.BTX-share {
+    margin-top: 5px;
+    $size: 24px;
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 36px;
+    margin-right: -15px;
+    background-color: white;
+    background-image: url('../../media/icons/share.png');
 }
 
 .BTN-accessibility {
-  height: 32px;
-  width: calc(100% + 24px - 8px);
-  position: sticky;
-  left: 8px;
-  top: 54px;
-  background: url("../../media/icons/accessibility.png") no-repeat;
+    height: 32px;
+    width: calc(100% + 24px - 8px);
+    position: sticky;
+    left: 8px;
+    top: 54px;
+    background: url('../../media/icons/accessibility.png') no-repeat;
 }
 
 .BTN-help {
-  width: calc(100% + 24px);
-  height: 64px;
-  position: sticky;
-  bottom: 17px;
-  background: url("../../media/icons/help.png") no-repeat;
+    width: calc(100% + 24px);
+    height: 64px;
+    position: sticky;
+    bottom: 17px;
+    background: url('../../media/icons/help.png') no-repeat;
 }

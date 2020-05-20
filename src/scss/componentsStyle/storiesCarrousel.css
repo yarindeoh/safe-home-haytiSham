@@ -185,7 +185,12 @@ label {
 }
 
 .tagsFilter .selected {
-  background: #97CCFF;
+  background: #97ccff;
+}
+
+.test {
+  width: 100% !important;
+  height: calc(100vh - 36px) !important;
 }
 
 footer {
