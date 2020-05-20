@@ -1,16 +1,32 @@
 import React from 'react';
 
+import { withRoute } from 'services/routing/routerHOC';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
 import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
 import img from 'src/media/videosImages/img2.png';
 import { Tags } from 'containers/Story/components/Tags';
 
-export const StoryViedo = () => {
+export const StoryViedo = withRoute((props) => {
+    const story = props.location.state;
+    const changeLocationByPath = (path, params) => {
+        props.history.push(path, params);
+    }
+
     return (
         <div id={'story-page-container'}>
             <button className={'BTN-accessibility'} />
-            <Header />
+            <header>
+                <ul className={'header-menu-container'}>
+                    <button
+                        className={'BTX-back-white'}
+                        onClick={() => changeLocationByPath('/')}
+                    />
+                    <button className={'BTN-search'} />
+                </ul>
+                <div className={'logo'} />
+                <button className={'BTN-lang-changer'} />
+            </header>
             <div className={'quote'}>
                 <h1>
                     "מבחורה אנרגטית שהיתה בלב הקליקה החברתית, הוא הפך אותי
@@ -29,4 +45,4 @@ export const StoryViedo = () => {
             <Footer />
         </div>
     );
-};
+});
