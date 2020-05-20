@@ -36,10 +36,6 @@ header {
     }
 }
 
-.selected {
-    color: red;
-}
-
 .tagsFilter {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(50px, 150px));
@@ -58,6 +54,7 @@ header {
         color: map_get($colors, text-tag);
         border-radius: 30px;
         border: 0;
+        text-align: center;
     }
 
     .tag {
@@ -71,15 +68,15 @@ header {
 
 .story {
     direction: ltr;
-    padding: 10px 16px 11px;
+    padding: 10px 16px 20px;
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: 1fr 60px;
-    grid-template-rows: 20px 35px;
+    grid-template-rows: 20px 1fr;
     grid-template-areas:
         'date letter'
         'text letter'
         'tags tags';
-    //border-bottom: 2px solid #E5E5E5;
     border-radius: 11px;
     background-color: map_get($colors, white-background);
 
