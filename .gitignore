@@ -11,6 +11,9 @@
 dist
 /build
 build
+*.log
+# /server/static
+# /server/templates
 
 # misc
 npm-debug.log*

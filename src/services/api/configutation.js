@@ -1,6 +1,6 @@
 const configData = {
-    defaultApiPrefix: 'http://localhost:9000/mock'
-    // defaultApiPrefix: 'http://0.0.0.0:8080/'
+    // defaultApiPrefix: 'http://localhost:9000/mock'
+    defaultApiPrefix: 'http://0.0.0.0:5000/'
 };
 
 class Configuration {
