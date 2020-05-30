@@ -107,6 +107,6 @@ def init_logger():
 
 if __name__ == '__main__':
     init_logger()
-    port = int(os.environ.get('PORT', 5000))
+    # port = int(os.environ.get('PORT', 5000))
     # port = 8080  # rm comment to run locally
-    app.run(host='0.0.0.0', port=port)
+    app.run()
