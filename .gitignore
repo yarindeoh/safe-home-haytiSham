@@ -14,6 +14,7 @@ build
 *.log
 /server/static
 /server/templates
+.env
 
 # misc
 npm-debug.log*
@@ -22,3 +23,5 @@ yarn-error.log*
 
 # logs
 hs_server.log
+*.log
+/*.log
