@@ -1,7 +1,6 @@
 const configData = {
-    // defaultApiPrefix: 'http://localhost:9000/mock'
-    defaultApiPrefix: 'http://localhost:5000'
-    // defaultApiPrefix: '/'
+    //TODO:: add env var for api url 
+    defaultApiPrefix: `${process.env.API_URL}`
 };
 
 class Configuration {

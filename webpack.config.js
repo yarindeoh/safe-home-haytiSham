@@ -2,8 +2,18 @@
 
 const path = require('path');
 const apiMocker = require('webpack-api-mocker');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const dotenv = require('dotenv');
 
-module.exports = (env, argv) => {
+module.exports = (env2, argv) => {
+    // call dotenv and it will return an Object with a parsed key
+    const env = dotenv.config().parsed;
+    // reduce it to a nice object, the same as before
+    const envKeys = Object.keys(env).reduce((prev, next) => {
+        prev[`process.env.${next}`] = JSON.stringify(env[next]);
+        return prev;
+    }, {});
     return {
         performance: { hints: false },
         mode: argv.mode,
@@ -57,5 +67,12 @@ module.exports = (env, argv) => {
             hot: true,
             historyApiFallback: true,
         },
+        plugins: [
+            new webpack.DefinePlugin(envKeys),
+            new HtmlWebpackPlugin({
+                filename: 'index.html',
+                template: path.resolve(__dirname, 'index.html'),
+            }),
+        ],
     };
 };
