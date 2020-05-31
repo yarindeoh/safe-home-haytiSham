@@ -21,7 +21,7 @@ export async function handleRequest(url, type, options = {}, data = {}) {
         // TODO:: add loader state
         const response = await fetch(url, config);
         const serverData = await response.json();
-        return serverData;
+        return serverData.data;
     } catch (e) {
         return await Promise.reject(e);
     }

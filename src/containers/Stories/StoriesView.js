@@ -7,12 +7,11 @@ import { TagsFilter } from 'containers/Stories/components/TagsFilter';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 
-import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
-
 export const StoriesView = withRoute((props) => {
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
     };
+    console.log(process.env);
     return (
         <div className="app">
             <Header />

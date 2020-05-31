@@ -12,6 +12,7 @@ get_latest_data = 'getDataAfterDate'
 get_tags_map = 'getTagsMap'
 get_all_tags = 'getAllTags'
 get_stories_by_tags = 'getStoriesByTags'
+get_public_stories = 'getPublicStories'
 
 
 def send_and_save_res(req_url: str, req_json: dict, out_path: str):
@@ -28,5 +29,6 @@ send_and_save_res(req_url=f'{url}/{get_all_data}', req_json={}, out_path=f'{get_
 send_and_save_res(req_url=f'{url}/{get_all_tags}', req_json={}, out_path=f'{get_all_tags}.json')
 send_and_save_res(req_url=f'{url}/{get_stories_by_tags}', req_json={}, out_path=f'{get_stories_by_tags}.json')
 send_and_save_res(req_url=f'{url}/{get_tags_map}', req_json={}, out_path=f'{get_tags_map}.json')
+send_and_save_res(req_url=f'{url}/{get_public_stories}', req_json={}, out_path=f'{get_public_stories}.json')
 # send_and_save_res(req_url=f'{url}/{get_latest_data}', req_json={key_last_update: '5/15/2020 15:04:02'},
 #                   out_path=f'{get_latest_data}.json')

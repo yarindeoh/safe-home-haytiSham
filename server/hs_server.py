@@ -7,7 +7,7 @@ from logging.handlers import RotatingFileHandler
 from datetime import datetime
 from flask_cors import CORS
 from flask import render_template
-from server.static_data import mock_get_tags_map, mock_get_all_tags, mock_get_stories_by_tags, mock_get_all_data, keys_map
+from server.static_data import mock_get_tags_map, mock_get_all_tags, mock_get_public_stories, mock_get_stories_by_tags, mock_get_all_data, keys_map
 
 app = Flask(__name__)
 app.config.JSON_AS_ASCII = False
@@ -20,8 +20,6 @@ key_error = 'error'
 date_format = '%m/%d/%Y %H:%M:%S'
 
 CORS(app)
-# app = Flask(__name__)
-
 
 @app.route("/")
 def index():
@@ -56,6 +54,10 @@ def get_stories_by_tags():
 @app.route('/getAllTags', methods=['GET'])
 def get_all_tags():
     return {key_data: mock_get_all_tags, key_error: ''}
+
+@app.route('/getPublicStories', methods=['GET'])
+def get_public_stories():
+    return {key_data: mock_get_public_stories, key_error: ''}
 
 
 @app.route('/getTagsMap', methods=['GET'])
@@ -103,6 +105,4 @@ def init_logger():
 
 if __name__ == '__main__':
     init_logger()
-    port = int(os.environ.get('PORT', 5000))
-    # port = 8080  # rm comment to run locally
-    app.run(host='0.0.0.0', port=port)
+    app.run()
