@@ -3,11 +3,13 @@
 ## Quick Use
 ### Start Local Frontend
 
-Create an .env file with the following: 
-     ```
+Create an .env file in the root of the project with the following:
+
+
+     
      API_URL=http://localhost:5000
      //prod API_URL=https://haytisham.herokuapp.com
-     ```
+     
 
 Run in locally with webpack-dev-server (FE)
 
@@ -32,8 +34,10 @@ Run server (BE):
 python server/hs_server.py
 ``` 
 
-***If you are using python3, and you are getting 'moduleNotFound' error, please add PYTHONPATH as an env variable to your .env file or manually: (where <repo_path> is where your app is located locally)
+#### If you are using python3, and you are getting 'moduleNotFound' error, please add PYTHONPATH as an env variable to your .env file or manually: (where <repo_path> is where your app is located locally)
+```
 export PYTHONPATH=$PYTHONPATH:<repo_path>/server && python3 hs_server.py
+``` 
 
 supported methods:
 * getAllData: returns all records as json.
