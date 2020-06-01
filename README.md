@@ -14,7 +14,7 @@ Create an .env file in the root of the project with the following:
 Run in locally with webpack-dev-server (FE)
 
 ```
-npm run start
+npm run start-dev
 ```
 
 ### Start Local Server
