@@ -14,7 +14,6 @@ build
 *.log
 /server/static
 /server/templates
-.env
 
 # misc
 npm-debug.log*
