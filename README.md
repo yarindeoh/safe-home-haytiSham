@@ -1,6 +1,13 @@
 ## Safe@Home: Hayti Sham
 
 ## Quick Use
+### Start Local Frontend
+
+Create an .env file with the following: 
+     ```
+     API_URL=http://localhost:5000
+     //prod API_URL=https://haytisham.herokuapp.com
+     ```
 
 Run in locally with webpack-dev-server (FE)
 
@@ -8,40 +15,26 @@ Run in locally with webpack-dev-server (FE)
 npm run start
 ```
 
-Run webpack prod build
-```
-npm run build
-```
-
-Run local server after webpack build
-
-```
-npm run start-server
-```
- 
-=======
-## Deployment
-This application is deployed using Heroku:
-https://haytisham.herokuapp.com/
-
-
-##
-## Server
-### Peer Dependencies
+### Start Local Server
+#### Peer Dependencies
  - Python 3 +
  - Pip 3 +
+
  
- If you don't have alias run python3 instead python or pip3 instead pip
+If you don't have alias run python3 instead python or pip3 instead pip
 prepare server env:
 ```
 pip install -r requirements.txt
 ```
 
-
 Run server (BE):
 ```
 python server/hs_server.py
 ``` 
+
+***If you are using python3, and you are getting 'moduleNotFound' error, please add PYTHONPATH as an env variable to your .env file or manually: (where <repo_path> is where your app is located locally)
+export PYTHONPATH=$PYTHONPATH:<repo_path>/server && python3 hs_server.py
+
 supported methods:
 * getAllData: returns all records as json.
 * getDataAfterDate: gets json with 'lastUpdate': <timestamp>, e.g.: '5/15/2020 15:04:02'. returns all records posted after lastUpdate as json. 
@@ -51,11 +44,9 @@ supported methods:
    
 sample requests can be found under server/req_examples.py. 
 
-### Deploy
-Create an .env file with the following: 
-     ```
-     API_URL=http://localhost:5000
-     //prod API_URL=https://haytisham.herokuapp.com
-     ```
+=======
+## Deployment
+This application is deployed using Heroku:
+https://haytisham.herokuapp.com/
 
 
