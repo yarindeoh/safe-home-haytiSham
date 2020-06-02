@@ -11,7 +11,6 @@ export const StoriesView = withRoute((props) => {
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
     };
-    console.log(process.env);
     return (
         <div className="app">
             <Header />

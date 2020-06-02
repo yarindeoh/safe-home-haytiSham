@@ -5,8 +5,7 @@ export const useData = () => {
     const [data, setData] = useState();
     useEffect(() => {
         async function fetchData() {
-            // setData(await Api.getAllData());
-            setData(await Api.getTestMock());
+            setData(await Api.getAllData());
         }
         fetchData();
     }, []);
@@ -31,7 +30,7 @@ export const useFilteredStories = (tags) => {
     useEffect(() => {
         async function fetchData() {
             if (!tags.length) {
-                setData(await Api.getTestMock());
+                setData(await Api.getAllData());
             } else {
                 setData(await Api.getStoriesByTags(tags || []));
             }

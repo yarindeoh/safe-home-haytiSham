@@ -7,7 +7,7 @@ function baseUrl(path) {
 }
 
 const Api = {
-    getTestMock: () => {
+    getAllData: () => {
         return get(baseUrl('getAllData'));
     },
     getAllTags: () => {

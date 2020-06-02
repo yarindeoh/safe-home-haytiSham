@@ -61,7 +61,7 @@ module.exports = (env, argv) => {
                         {
                             loader: 'file-loader',
                             options: {
-                                output: { path: path.join(__dirname, 'build') },
+                                output: { path: path.join(__dirname, 'server/static') },
                             },
                         },
                     ],

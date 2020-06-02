@@ -9,7 +9,7 @@ from flask_cors import CORS
 from flask import render_template
 from server.static_data import mock_get_tags_map, mock_get_all_tags, mock_get_public_stories, mock_get_stories_by_tags, mock_get_all_data, keys_map
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static", static_url_path='')
 app.config.JSON_AS_ASCII = False
 logger = logging.getLogger('hs_server')
 cred_path = 'creds.json'
