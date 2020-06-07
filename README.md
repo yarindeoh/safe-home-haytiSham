@@ -52,3 +52,7 @@ This application is deployed using Heroku:
 https://haytisham.herokuapp.com/
 
 
+## UI Mockups
+specified here, made by Lishay Noam:
+https://www.figma.com/file/8DBf179XwJUcLMgrtxxS9M/team_13?node-id=112%3A3480
+
