@@ -54,5 +54,5 @@ https://haytisham.herokuapp.com/
 
 ## UI Mockups
 specified here, made by Lishay Noam:
-https://www.figma.com/file/8DBf179XwJUcLMgrtxxS9M/team_13?node-id=112%3A3480
+https://www.figma.com/file/UcF9E1rT6rwKIQkkLD5EqN/hayiti_sham?node-id=446%3A286
 
