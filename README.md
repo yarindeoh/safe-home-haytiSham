@@ -1,15 +1,17 @@
 ## Safe@Home: Hayti Sham
 
 ## Quick Use
+In order to run the app locally you need to have a running local Frontend in one 
+terminal and a running local Backend in another terminal.
 ### Start Local Frontend
+#### Peer Dependencies
+- Node ^12
+- NPM ^6
 
-Create an .env file in the root of the project with the following:
-
-
-     
-     API_URL=http://localhost:5000
-     //prod API_URL=https://haytisham.herokuapp.com
-     
+First, install all Frontend dependencies:
+```
+npm install
+```
 
 Run in locally with webpack-dev-server (FE)
 
@@ -19,8 +21,8 @@ npm run start-dev
 
 ### Start Local Server
 #### Peer Dependencies
- - Python 3 +
- - Pip 3 +
+ - Python ^3
+ - Pip ^3
 
 prepare server env:
 ```
@@ -53,6 +55,6 @@ https://haytisham.herokuapp.com/
 
 
 ## UI Mockups
-specified here, made by Lishay Noam:
+Specified here, made by Lishay Noam:
 https://www.figma.com/file/UcF9E1rT6rwKIQkkLD5EqN/hayiti_sham?node-id=446%3A286
 
