@@ -34,9 +34,10 @@ Run server (BE):
 python3 server/hs_server.py
 ``` 
 
-#### If you are using python3, and you are getting 'moduleNotFound' error, please add PYTHONPATH as an env variable to your .env file or manually: (where <repo_path> is where your app is located locally)
+#### If you are using python3, and you are getting 'moduleNotFound' error, please add PYTHONPATH as an env variable to your .env file or manually(preffered): (where <repo_path> is where your app is located locally).
+#### From project path root directory run:
 ```
-export PYTHONPATH=$PYTHONPATH:<repo_path>/server && python3 hs_server.py
+export PYTHONPATH=$PYTHONPATH:<repo path> && python3 server/hs_server.py
 ``` 
 
 supported methods:
