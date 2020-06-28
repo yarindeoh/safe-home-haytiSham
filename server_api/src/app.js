@@ -35,6 +35,16 @@ app.use(express.static(staticPath));
 const routes = require("./api/api.routes");
 app.use('/api', routes);
 
+/* basic configuration */
+let envPath = path.join(__dirname, '../.env');
+const args = process.argv.slice(2);
+if(args && args[0] == 'dev'){
+    envPath = path.join(__dirname, '../.env-development');
+}
+require('dotenv').config({ path: envPath});
+
+
 /* listen on port */
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Listening on port ${port}`));
+const env = process.env.ENV || '';
+app.listen(port, () => console.log(`Listening on port ${port} configuration  ${env}`));
