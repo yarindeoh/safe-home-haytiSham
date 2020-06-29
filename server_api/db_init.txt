@@ -1,0 +1,6 @@
+use haytiSham
+db.createCollection("original_stories")
+db.createCollection("moderated_stories")
+db.createCollection("users")
+db.createCollection("counter")
+db.counter.insert({_id:"stories",sequence_value:0})

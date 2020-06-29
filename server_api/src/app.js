@@ -43,6 +43,24 @@ if(args && args[0] == 'dev'){
 }
 require('dotenv').config({ path: envPath});
 
+/* DB connection */
+const mongoose = require('mongoose');
+const dbURI = process.env.DB_URI;
+if (!dbURI) {
+    console.error("No DB_URI in config file. Please check");
+    process.exit(); 
+}
+const options = {
+    autoIndex: false,
+    useCreateIndex: true,
+    useFindAndModify:false,
+    useNewUrlParser: true,
+    reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
+    reconnectInterval: 1000, // Reconnect every 500ms
+  };
+  mongoose.Promise = global.Promise;
+  mongoose.connect(dbURI, options)
+      .then(c => console.log('Db is connected'));
 
 /* listen on port */
 const port = process.env.PORT || 5000;

@@ -13,6 +13,8 @@ dist
 build
 *.log
 /server/static
+*.log
+/server_api/static
 /server/templates
 
 # misc
