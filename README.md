@@ -49,6 +49,31 @@ supported methods:
    
 sample requests can be found under server/req_examples.py. 
 
+### Start Local API Server -- node js
+
+* Prerequisite
+- Node & NPM 
+check your installed node in command line 'node –v'
+check your installed npm in command line 'npm -v'
+https://nodejs.org/en/download/  
+* Install dependencies
+``` 
+cd server_api 
+npm i
+```
+* Runing the server
+``` 
+npm start
+``` 
+* Runing the server for dev
+``` 
+npm start dev
+``` 
+* Basic test
+http://localhost:5000/api/status
+
+
+
 =======
 ## Deployment
 This application is deployed using Heroku:
