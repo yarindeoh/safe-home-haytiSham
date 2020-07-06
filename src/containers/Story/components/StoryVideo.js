@@ -3,44 +3,42 @@ import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
 import { Footer } from 'components/Footer';
-import { Header } from 'components/Header';
-import img from 'src/media/videosImages/img2.png';
 import { Tags } from 'containers/Story/components/Tags';
 
 export const StoryViedo = withRoute((props) => {
     const story = props.location.state;
-    const changeLocationByPath = (path, params) => {
-        props.history.push(path, params);
-    }
+    const changeLocationByPath = (path) => {
+        props.history.push(path);
+    };
 
     return (
-        <div id={'story-page-container'}>
-            <button className={'BTN-accessibility'} />
+        <div id="story-page-container">
+            <button className="BTN-accessibility" />
             <header>
-                <ul className={'header-menu-container'}>
+                <ul className="header-menu-container">
                     <button
-                        className={'BTX-back-white'}
+                        className="BTX-back-white"
                         onClick={() => changeLocationByPath('/')}
                     />
-                    <button className={'BTN-search'} />
+                    <button className="BTN-search" />
                 </ul>
-                <div className={'logo'} />
-                <button className={'BTN-lang-changer'} />
+                <div className="logo" />
+                <button className="BTN-lang-changer" />
             </header>
-            <div className={'quote'}>
-                <h1>
-                    "מבחורה אנרגטית שהיתה בלב הקליקה החברתית, הוא הפך אותי
-                    לעכבר"
-                </h1>
+            <div className="quote">
+                <h1>{story.quote}</h1>
                 <h2>
-                    צפו בעדות של דנה מתוך הפרק של ׳עובדה׳ עם אילנה דיין ששודר
-                    בתאריך 13.02.20
+                    {` צפו בעדות של ${story.storyteller} מתוך קמפיין של פרויקט אוף לייף והעמותה ל.א לאלימות`}
+                    {` שפורסם ב${story.timestamp}`}
                 </h2>
-                <Tags tags={['השפלה', 'קנאה']} />
+                <Tags tags={story.tags} />
                 <div>
-                    <img className={'videoStory'} src={img} />
+                    <iframe
+                        src={`https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FonlifeIL%2Fvideos%${story.id}%2F&show_text=0`}
+                    />
                 </div>
             </div>
+            {/* //TODO */}
             <SimilarStories tags={['השפלה', 'קנאה']} />
             <Footer />
         </div>

@@ -17,11 +17,7 @@ export const App = () => (
                 <Route path="/" exact={true} component={StoriesView} />
                 <Route path="/story" component={StoryView} />
                 <Route path="/addStory" exact={true} component={AddStoryView} />
-                <Route
-                    path="/publicStory"
-                    exact={true}
-                    component={StoryViedo}
-                />
+                <Route path="/publicStory" component={StoryViedo} />
             </Switch>
         </BrowserRouter>
     </Context.Provider>

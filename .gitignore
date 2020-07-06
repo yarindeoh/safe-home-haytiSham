@@ -17,6 +17,11 @@ build
 /server_api/static
 /server/templates
 
+#scss 
+src/scss/*.css*
+*.map
+*.css
+
 # misc
 npm-debug.log*
 yarn-debug.log*
