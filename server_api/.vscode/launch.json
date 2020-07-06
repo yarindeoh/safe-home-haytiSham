@@ -16,5 +16,17 @@
              ],
             "program": "${workspaceFolder}\\src\\app.js"
         }
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Create User",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "args": [                
+                "testUser", "testPass123"
+             ],
+            "program": "${workspaceFolder}\\src\\createUser.js"
+        }
     ]
 }
