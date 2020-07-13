@@ -1,29 +1,28 @@
-$colors: (
-  //texts & titles:
-    text-black: black,
-    text-dark-gray: darkgray,
-    text-light-gray: lightgray,
-    text-white: white,
-    text-light-purple: #D3A7F1,
-    text-purple: #D3A7F1,
-    text-dark-purple: #8430AB,
-    text-tag: #125A9E,
+$colors: ( //texts & titles:
+  text-black: black,
+  text-dark-gray: darkgray,
+  text-light-gray: lightgray,
+  text-white: white,
+  text-light-purple: #D3A7F1,
+  text-purple: #D3A7F1,
+  text-dark-purple: #8430AB,
+  text-tag: #125A9E,
 
   //buttons & tags:
-    BTN-to-all-testimonies: #3690E4,
-    BTX-light-purple: #EADFF9,
+  BTN-to-all-testimonies: #3690E4,
+  BTX-light-purple: #EADFF9,
 
   //backgrounds:
-    global-background: #F6F7F9,
-    white-background: white,
-    header-background: #000000,
-    tag-background: #D8EBFD,
-    light-purple-header-background: rgba(234, 223, 249, 0.4),
-    dark-purple-footer-background: #8430AB,
+  global-background: #F6F7F9,
+  white-background: white,
+  header-background: #000000,
+  tag-background: #D8EBFD,
+  light-purple-header-background: rgba(234, 223, 249, 0.4),
+  dark-purple-footer-background: #8430AB,
 
   //effects:
-    image-shadow: rgba(83, 19, 113, 0.85),
+  image-shadow: rgba(83, 19, 113, 0.85),
 
   //borders:
-    border-bottom: #DEDEE3,
+  border-bottom: #DEDEE3,
 );
