@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,OAAO,CAAC;EACN,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,aAAa;CAiBvB;;AAnBD,AAIE,OAJK,GAIH,MAAM,CAAC;EAGP,KAAK,EAFE,IAAI;EAGX,MAAM,EAHC,IAAI;EAIX,aAAa,EAAE,GAAG;CACnB;;AAVH,AAYE,OAZK,GAYH,CAAC,CAAC;EACF,KAAK,EAAE,OAAO;CAKf;;AAlBH,AAeI,OAfG,GAYH,CAAC,GAGC,IAAI,CAAC;EACL,KAAK,EAAE,OAAO;CACf",
-    "sources": [
-        "StoryCarrousel.scss"
-    ],
-    "names": [],
-    "file": "StoryCarrousel.css"
-}
