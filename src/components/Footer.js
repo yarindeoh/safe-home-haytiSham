@@ -1,32 +1,100 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import lang from 'services/lang.json';
 
 export const Footer = () => {
+    const {
+        getHelp,
+        whoWeAre,
+        warningSigns,
+        michalSelaForum,
+        testimonySubmission,
+        accessability,
+        statistic,
+        technicSupport,
+        emergencyHotlineOfSexualHarassment,
+        emergencyHotlineOfSexualHarassmentNumber,
+        emergencyHotlineOfMinistryOfLaborAndSocialAffairs,
+        emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber,
+        IHaveBeenThere2020,
+        IHaveBeenThereHashtag,
+        privacyPolicy
+    } = lang;
+
+    const footerMenu = [
+        { name: getHelp, url: '/get-help' },
+        { name: whoWeAre, url: '/about' },
+        { name: warningSigns, url: '/warning-signs' },
+        { name: michalSelaForum, url: '/michal-sela-forum' },
+        { name: testimonySubmission, url: '/testimony' },
+        { name: accessability, url: '/accessability' },
+        { name: statistic, url: '/statistic' },
+        { name: technicSupport, url: '/technical-support' }
+    ];
+
+    const emergencyLines = [
+        {
+            number: emergencyHotlineOfSexualHarassmentNumber,
+            text: emergencyHotlineOfSexualHarassment
+            // TODO: Add dialing option url
+        },
+        {
+            number: emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber,
+            text: emergencyHotlineOfMinistryOfLaborAndSocialAffairs
+            // TODO: Add dialing option url
+        }
+    ];
+
+    // TODO: Fix li's alignment
+    const displayFooterMenu = () => {
+        return footerMenu.map((item, index) => (
+            <li key={`${item}-${index}`}>
+                <Link to={item.url}>{item.name}</Link>
+            </li>
+        ));
+    };
+    const displayFooterHotLines = () => {
+        return emergencyLines.map((item, index) => (
+            <li key={`${item}-${index}`}>
+                {/*TODO: Add dialing option */}
+                <Link to="/">
+                    <span>
+                        {/*TODO: Add phone icon */}
+                        {/* <i className="fa fa-phone" aria-hidden="true"></i> */}
+                        <p>{item.number}</p>
+                    </span>
+                    <span>
+                        <p>{item.text}</p>
+                    </span>
+                </Link>
+            </li>
+        ));
+    };
+
     return (
-        <footer>
-            {/*<h1>הייתי שם#</h1>*/}
-            {/*<ul>*/}
-            {/*    <li className={'purple'}>עזרה וסיוע</li>*/}
-            {/*    <li>מי אנחנו</li>*/}
-            {/*    <li>סימני אזהרה</li>*/}
-            {/*    <li>פורום מיכל סלע</li>*/}
-            {/*    <li>שליחת עדות</li>*/}
-            {/*    <li>נגישות</li>*/}
-            {/*    <li>סטטיסטיקה</li>*/}
-            {/*    <li>תמיכה טכנית</li>*/}
-            {/*</ul>*/}
-            {/*<ul className={'purple'}>*/}
-            {/*    <div>*/}
-            {/*        <h2>118</h2>*/}
-            {/*        <p>קו החירום החברתי של משרד העבודה והרווחה</p>*/}
-            {/*    </div>*/}
-            {/*    <div>*/}
-            {/*        <h2>1202/3</h2>*/}
-            {/*        <p>קו החירום לנפגעות ונפגעי תקיפה מינית</p>*/}
-            {/*    </div>*/}
-            {/*</ul>*/}
-            {/*<ul>*/}
-            {/*    <h3> ׳הייתי שם׳ 2020 | מדיניות הפרטיות ©</h3>*/}
-            {/*</ul>*/}
+        <footer className="footer">
+            <div className="footer-inner">
+                <div className="footer-menu">
+                    <h1>{IHaveBeenThereHashtag}</h1>
+                    <ul>{displayFooterMenu()}</ul>
+                </div>
+                <div className="emergency-dial-wrapper purple">
+                    <ul>{displayFooterHotLines()}</ul>
+                </div>
+                <div className="legal-bar">
+                    <ul>
+                        <li>
+                            <Link to="/been-there-2020">
+                                {IHaveBeenThere2020}
+                            </Link>
+                        </li>
+                        <span> | </span>
+                        <li>
+                            <Link to="/privacy-policy">{privacyPolicy}</Link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </footer>
     );
 };

@@ -19,10 +19,10 @@ header {
         background-color: transparent;
     }
 
-    > ul {
+    >ul {
         height: 100%;
 
-        > button:not(:first-of-type) {
+        >button:not(:first-of-type) {
             margin-right: 5px;
         }
     }
@@ -80,7 +80,7 @@ header {
     border-radius: 11px;
     background-color: map_get($colors, white-background);
 
-    > figure {
+    >figure {
         $size: 33px;
 
         grid-area: letter;
@@ -94,7 +94,7 @@ header {
         justify-content: center;
         align-items: center;
 
-        > h2 {
+        >h2 {
             font-size: 20px;
             font-weight: normal;
             margin: -2px 2px 0 0;
@@ -102,21 +102,21 @@ header {
         }
     }
 
-    > h6 {
+    >h6 {
         color: #b3b3b3;
         grid-area: date;
         width: 100%;
         height: 100%;
     }
 
-    > p {
+    >p {
         grid-area: text;
         width: 100%;
         height: 100%;
         font-weight: bold;
     }
 
-    > #tags-container {
+    >#tags-container {
         grid-area: tags;
         width: 100%;
         height: 100%;
@@ -135,7 +135,7 @@ header {
     box-sizing: border-box;
     padding: 18px 24px 32px;
 
-    > h1 {
+    >h1 {
         font-weight: normal;
         font-size: 22px;
         color: #212121;
@@ -149,6 +149,7 @@ header {
     border-radius: 30px;
     border: 1px solid #125a9e;
 }
+
 .videoStory {
     width: 100%;
 }
@@ -156,6 +157,7 @@ header {
 label {
     padding: 0 10px;
 }
+
 .tagsFilter .selected {
     background: #97ccff;
 }
@@ -164,16 +166,11 @@ label {
     width: 100% !important;
     height: calc(100vh - 36px) !important;
 }
-footer {
-    //display: flex;
-    //flex-direction: column;
-    //align-items: center;
-    //padding: 19px 78px 58px 68px;
-    //background-color: map_get($colors, header-background);
-    width: 100%;
-    height: calc(100vw + 32px);
-    background: url('../../media/icons/footer.png') no-repeat;
-    background-size: cover;
+
+.footer {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
 
     li {
         list-style-type: none;
@@ -182,37 +179,75 @@ footer {
         font-size: 15px;
     }
 
-    > h1 {
+    li a {
+        color: map_get($colors, text-white);
+    }
+
+    li a:link {
+        text-decoration: none;
+    }
+
+    div {
+        background-color: map_get($colors, text-black);
+    }
+
+    .footer-menu h1 {
         font-weight: normal;
-        color: map_get($colors, dark-purple-footer-background);
-        margin-bottom: 16px;
+        color: map_get($colors, text-dark-purple);
+        margin: 15px;
+        font-size: 35px;
     }
 
-    .purple {
-        color: map_get($colors, dark-purple-footer-background);
+    .footer-inner ul:first-of-type {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    > ul {
-        &:nth-child(1) {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            grid-row-gap: 10px;
-            grid-column-gap: 36px;
-        }
+    .footer-menu ul li {
+        flex: 50%;
+        margin: 8px auto;
+    }
 
-        &:nth-child(2) {
-            display: flex;
-            left: 0;
-            right: 0;
-            background-color: map_get($colors, dark-purple-footer-background);
+    .emergency-dial-wrapper.purple {
+        background: map_get($colors, dark-purple-footer-background);
+    }
 
-            > li {
-                color: map_get($colors, text-white);
-            }
-        }
+    .emergency-dial-wrapper li,
+    .footer-menu {
+        display: flex;
+        flex-direction: column;
+    }
 
-        &:nth-child(3) {
-            display: flex;
+    .emergency-dial-wrapper li span p {
+        color: white;
+        max-width: 130px;
+    }
+
+    .emergency-dial-wrapper ul,
+    .legal-bar ul {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-inner ul,
+    .emergency-dial-wrapper li,
+    .legal-bar li {
+        margin: 10px;
+    }
+
+    .legal-bar ul span {
+        margin: auto 5px;
+    }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .footer {
+        
+        .footer-inner ul,
+        .emergency-dial-wrapper li,
+        .legal-bar li {
+            margin: 10px 0.5vw;
         }
     }
 }
