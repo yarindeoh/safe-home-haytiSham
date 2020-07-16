@@ -1,4 +1,6 @@
 @import '../../local/_colors.scss';
+@import '../../local/_spaces.scss';
+
 
 .BTN-send-testimony {
     width: fit-content;
@@ -9,6 +11,8 @@
     font-size: 15px;
     line-height: 20px;
     text-decoration: underline;
+    margin: map_get($spaces, small);
+    background: transparent;
 }
 
 .BTN-hamburger-menu {
@@ -94,7 +98,6 @@
 
 .BTN-accessibility {
     height: 32px;
-    width: calc(100% + 24px - 8px);
     position: sticky;
     left: 8px;
     top: 54px;
@@ -102,7 +105,6 @@
 }
 
 .BTN-help {
-    width: calc(100% + 24px);
     height: 64px;
     position: sticky;
     bottom: 17px;

@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Assistant:regular,bold,italic&subset=latin,latin-ext');
 
-@import '../local/_breakpoints.scss', '../local/_colors.scss',
-    '../local/_common.scss';
-
+@import '../local/_breakpoints.scss';
+@import '../local/_colors.scss';
+@import '../local/_common.scss';
+@import '../local/_spaces.scss';
 @import '../config/_reset.scss';
 @import '../config/partials/_buttons';
 
@@ -14,7 +15,6 @@
 .app {
     background-color: map_get($colors, global-background);
     box-sizing: border-box;
-    padding: 0 24px;
     height: 100%;
     display: grid;
     grid-template-areas:

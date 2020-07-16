@@ -55,6 +55,9 @@ header {
         border-radius: 30px;
         border: 0;
         text-align: center;
+        &:hover{
+            cursor: pointer;
+        }
     }
 
     .tag {

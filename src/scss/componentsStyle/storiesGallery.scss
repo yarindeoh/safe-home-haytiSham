@@ -1,5 +1,6 @@
 @import '../local/_breakpoints.scss', '../local/_colors.scss',
-    '../local/_common.scss';
+    '../local/_common.scss',
+'../local/_spaces.scss';
 
 @import '../config/_reset.scss';
 @import '../config/partials/_buttons';
@@ -8,12 +9,14 @@
   grid-area: gallery;
   display: flex;
   flex-direction: column;
+  padding: map_get($spaces, small);
+  border-top: 1px solid map_get($colors, border-bottom);
 
   > h1 {
     font-weight: normal;
     font-size: 22px;
     color: #212121;
-    margin-bottom: 27px;
+    margin-bottom: map_get($spaces, x-small);
   }
 
   > main {
