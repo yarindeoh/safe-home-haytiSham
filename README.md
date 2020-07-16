@@ -1,6 +1,9 @@
 ## Safe@Home: Hayti Sham
 
 ## Quick Use
+---> Pay attention, we have 2 folders of servers, current running server is python server under 'server' (which is going to be removed in the future)
+and a Node server under 'server_api' that is under development and will replace python server soon. 
+
 In order to run the app locally you need to have a running local Frontend in one 
 terminal and a running local Backend in another terminal.
 ### Start Local Frontend
