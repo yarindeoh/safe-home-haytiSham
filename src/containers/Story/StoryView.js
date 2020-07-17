@@ -7,6 +7,7 @@ import { extractFieldsFromObj } from 'services/general/generalHelpers';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
 import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
+import { useTranslation } from 'react-i18next';
 
 export const StoryView = withRoute((props) => {
     const story = props.location.state;
@@ -39,7 +40,7 @@ export const StoryView = withRoute((props) => {
                 <h1>"{story.quote}"</h1>
                 <h2>
                     {`
-                    עדותה של 
+                     ${t('storyView.storyOf')}
                      ${story.name.split('')[0]}׳ 
                      ${story.timestamp.split(' ')[0]} 
                    `}
@@ -61,11 +62,11 @@ export const StoryView = withRoute((props) => {
             <button className="footercustom">
                 <span className="helpright">
                     <button className="BTX-help2"></button>
-                    <p>אוזן קשבת</p>
+                    <p>{t('storyView.listeningEar')}</p>
                 </span>
                 <span className="shareleft">
                     <button className="BTX-share"></button>
-                    <p>שיתוף   </p>
+                    <p>{t('storyView.share')}</p>
                 </span>
             </button>
             <Footer />
