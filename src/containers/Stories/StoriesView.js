@@ -7,7 +7,7 @@ import { TagsFilter } from 'containers/Stories/components/TagsFilter';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 
-export const StoriesView = withRoute((props) => {
+export const StoriesView = withRoute(props => {
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
     };

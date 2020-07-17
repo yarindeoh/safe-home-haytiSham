@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import lang from 'services/lang.json';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Footer = () => {
     const {
@@ -58,9 +59,8 @@ export const Footer = () => {
             <li key={`${item}-${index}`}>
                 {/*TODO: Add dialing option */}
                 <Link to="/">
-                    <span>
-                        {/*TODO: Add phone icon */}
-                        {/* <i className="fa fa-phone" aria-hidden="true"></i> */}
+                    <span className="hotline-dial">
+                        <FontAwesomeIcon icon={['fa', 'phone']} />
                         <p>{item.number}</p>
                     </span>
                     <span>

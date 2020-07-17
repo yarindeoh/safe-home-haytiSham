@@ -177,73 +177,106 @@ label {
         color: map_get($colors, text-white);
         font-style: normal;
         font-size: 15px;
-    }
 
-    li a {
-        color: map_get($colors, text-white);
-    }
+        a {
+            color: map_get($colors, text-white);
+        }
 
-    li a:link {
-        text-decoration: none;
+        a:link {
+            text-decoration: none;
+        }
     }
 
     div {
         background-color: map_get($colors, text-black);
     }
 
-    .footer-menu h1 {
-        font-weight: normal;
-        color: map_get($colors, text-dark-purple);
-        margin: 15px;
-        font-size: 35px;
-    }
+    .footer-inner {
+        ul {
+            margin: 10px;
+        }
 
-    .footer-inner ul:first-of-type {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .footer-menu ul li {
-        flex: 50%;
-        margin: 8px auto;
+        ul:first-of-type {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 
     .emergency-dial-wrapper.purple {
         background: map_get($colors, dark-purple-footer-background);
     }
 
-    .emergency-dial-wrapper li,
     .footer-menu {
         display: flex;
         flex-direction: column;
+
+        ul li {
+            flex: 50%;
+            margin: 8px auto;
+        }
+
+        h1 {
+            font-weight: normal;
+            color: map_get($colors, text-dark-purple);
+            margin: 15px;
+            font-size: 35px;
+        }
     }
 
-    .emergency-dial-wrapper li span p {
-        color: white;
-        max-width: 130px;
-    }
-
-    .emergency-dial-wrapper ul,
-    .legal-bar ul {
+    .emergency-dial-wrapper ul {
         display: flex;
         justify-content: center;
+
+        li {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+        }
+
+        li span p {
+            color: white;
+            max-width: 130px;
+        }
+
     }
 
-    .footer-inner ul,
-    .emergency-dial-wrapper li,
-    .legal-bar li {
-        margin: 10px;
+    .legal-bar {
+        ul {
+            display: flex;
+            justify-content: center;
+
+            span {
+                margin: auto 5px;
+            }
+        }
+
+        li {
+            margin: 10px;
+        }
     }
 
-    .legal-bar ul span {
-        margin: auto 5px;
+    .hotline-dial {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg,
+        p {
+            height: auto;
+            margin: 5px;
+            margin-bottom: 0;
+        }
+
+        svg path {
+            fill: #ffffff;
+        }
     }
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     .footer {
-        
+
         .footer-inner ul,
         .emergency-dial-wrapper li,
         .legal-bar li {
