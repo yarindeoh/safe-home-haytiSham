@@ -98,7 +98,8 @@
 
 .BTN-accessibility {
     height: 32px;
-    position: sticky;
+    width: 100%;
+    position: fixed;
     left: 8px;
     top: 54px;
     background: url('../../media/icons/accessibility.png') no-repeat;
@@ -106,7 +107,8 @@
 
 .BTN-help {
     height: 64px;
-    position: sticky;
+    width: 100%;
+    position: fixed;
     bottom: 17px;
     background: url('../../media/icons/help.png') no-repeat;
 }

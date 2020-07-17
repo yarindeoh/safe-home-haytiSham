@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Assistant:regular,bold,italic&subset=latin,latin-ext');
 
+@import '../config/_reset.scss';
 @import '../local/_breakpoints.scss';
 @import '../local/_colors.scss';
 @import '../local/_common.scss';
 @import '../local/_spaces.scss';
-@import '../config/_reset.scss';
 @import '../config/partials/_buttons';
 
 @import 'storiesCarrousel';
@@ -14,17 +14,6 @@
 
 .app {
     background-color: map_get($colors, global-background);
-    box-sizing: border-box;
-    height: 100%;
-    display: grid;
-    grid-template-areas:
-        'header'
-        'const-text'
-        'carrousel'
-        'send-testimony-box'
-        'gallery';
-    grid-template-columns: auto;
-    grid-template-rows: 46px 56px 232px 63px 1fr;
 }
 
 iframe {

@@ -1,4 +1,6 @@
 @import '../local/_colors.scss';
+@import '../local/_spaces.scss';
+@import '../local/_breakpoints.scss';
 
 header {
     width: 100%;
@@ -9,8 +11,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-sizing: border-box;
-    padding-right: 10px;
+    top: 0;
     left: 0;
 
     button {
@@ -36,25 +37,20 @@ header {
     }
 }
 
-.tagsFilter {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50px, 150px));
-    white-space: nowrap;
-    grid-row-gap: 9px;
-    grid-column-gap: 12px;
-    //justify-content: flex-start;
-    //align-items: center;
-    margin: 5px;
-    box-sizing: border-box;
-    border: 0 !important;
+.tags-container {
+    display: flex;
+    margin: 0 0 map_get($spaces, medium);
+    flex-wrap: wrap;
 
     .tag,
-    .more-tag {
-        padding: 3px 10px 2px 10px;
+    .more-tags {
+        padding: 3px map_get($spaces, small);
         color: map_get($colors, text-tag);
-        border-radius: 30px;
+        border-radius: 20px;
         border: 0;
         text-align: center;
+        margin: 0 0 map_get($spaces, x-small) map_get($spaces, x-small);
+
         &:hover{
             cursor: pointer;
         }
@@ -62,10 +58,15 @@ header {
 
     .tag {
         background-color: map_get($colors, tag-background);
+        &.selected {
+            background-color: #97ccff;
+        }
     }
 
-    .more-tag {
+    .more-tags {
         border: 1px solid map_get($colors, text-tag);
+        background-color: transparent;
+        color: map_get($colors, text-tag);
     }
 }
 
@@ -82,6 +83,9 @@ header {
         'tags tags';
     border-radius: 11px;
     background-color: map_get($colors, white-background);
+    &:hover {
+        cursor: pointer;
+    }
 
     >figure {
         $size: 33px;
@@ -118,20 +122,17 @@ header {
         height: 100%;
         font-weight: bold;
     }
-
-    >#tags-container {
-        grid-area: tags;
-        width: 100%;
-        height: 100%;
-    }
 }
 
 .const-text {
     color: map_get($colors, text-black);
-    padding-top: 15px;
+    margin: 46px 0 map_get($spaces, small);
+    padding-top: map_get($spaces, small);
     grid-area: const-text;
     justify-self: center;
     align-self: flex-start;
+    text-align: center;
+    font-size: 18px;
 }
 
 .more-testimonies {
@@ -145,14 +146,6 @@ header {
     }
 }
 
-#moreTags {
-    background-color: transparent;
-    padding: 3px 10px 2px 10px;
-    color: #125a9e;
-    border-radius: 30px;
-    border: 1px solid #125a9e;
-}
-
 .videoStory {
     width: 100%;
 }
@@ -161,16 +154,12 @@ label {
     padding: 0 10px;
 }
 
-.tagsFilter .selected {
-    background: #97ccff;
-}
-
 .test {
     width: 100% !important;
     height: calc(100vh - 36px) !important;
 }
 
-.footer {
+footer {
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -201,7 +190,7 @@ label {
         font-size: 35px;
     }
 
-    .footer-inner ul:first-of-type {
+    ul:first-of-type {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -233,7 +222,7 @@ label {
         justify-content: center;
     }
 
-    .footer-inner ul,
+    ul,
     .emergency-dial-wrapper li,
     .legal-bar li {
         margin: 10px;
@@ -245,9 +234,9 @@ label {
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    .footer {
+    footer {
         
-        .footer-inner ul,
+        ul,
         .emergency-dial-wrapper li,
         .legal-bar li {
             margin: 10px 0.5vw;
@@ -259,4 +248,10 @@ label {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
     grid-gap: 10px;
+}
+
+@media only screen and (max-width: map_get($breakpoints, mobile)) {
+    .stories {
+        grid-template-columns: 1fr;
+    }
 }

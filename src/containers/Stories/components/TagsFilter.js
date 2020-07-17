@@ -10,8 +10,7 @@ export const TagsFilter = ({ changeLocationByPath }) => {
     return (
         <div className={'stories-gallery-container'}>
             <h1>עדויות נוספות</h1>
-            <div id={'tags-container'}>
-                <div className="tagsFilter">
+            <div className="tags-container">
                     {tags &&
                         tags.map((tag, key) => (
                             <Tag
@@ -32,8 +31,7 @@ export const TagsFilter = ({ changeLocationByPath }) => {
                                 }}
                             />
                         ))}
-                    <span id="moreTags">עוד קטגוריות </span>
-                </div>
+                    <span className="more-tags">עוד קטגוריות </span>
             </div>
             <StoriesList
                 tags={filteredTags}
