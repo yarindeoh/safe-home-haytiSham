@@ -1,13 +1,12 @@
 @import '../../local/_colors.scss';
 @import '../../local/_spaces.scss';
 
-
 .BTN-send-testimony {
     width: fit-content;
     grid-area: send-testimony-box;
     align-self: center;
     font-weight: bold;
-    color: map_get($colors, BTN-to-all-testimonies);
+    color: map_get($colors, blue-200);
     font-size: 15px;
     line-height: 20px;
     text-decoration: underline;
@@ -36,7 +35,7 @@
     font-size: 15px;
     text-decoration-line: underline;
 
-    color: map_get($colors, BTN-to-all-testimonies);
+    color: map_get($colors, blue-200);
 }
 
 .BTX-back {
