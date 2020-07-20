@@ -8,8 +8,8 @@ export const SimilarStories = ({ tags, changeLocationByPath }) => {
     const { t } = useTranslation();
     const { stories } = useSimilarStories(tags);
     return (
-        <div className={t('more-testimonies')}>
-            {lang.additionalStories}
+        <div className={'more-testimonies'}>
+            {t('additionalStories')}
             <ul className="stories">
                 {stories &&
                     Object.keys(stories).map((index, key) => {

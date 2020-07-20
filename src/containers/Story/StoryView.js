@@ -9,7 +9,8 @@ import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
 import { useTranslation } from 'react-i18next';
 
-export const StoryView = withRoute((props) => {
+export const StoryView = withRoute(props => {
+    const { t } = useTranslation();
     const story = props.location.state;
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
@@ -20,7 +21,7 @@ export const StoryView = withRoute((props) => {
         'howDidYouManged',
         'additionalnfo',
         'whatHelpedYou',
-        'storyContent',
+        'storyContent'
     ]);
     return (
         <div id={'story-page-container'}>
@@ -50,7 +51,7 @@ export const StoryView = withRoute((props) => {
             {proccessedStory &&
                 Object.keys(proccessedStory).map((item, key) => (
                     <div key={key}>
-                        <h6>{lang[item]}</h6>
+                        <h6>{t(item)}</h6>
                         <span>{proccessedStory[item]}</span>
                         <br />
                     </div>
