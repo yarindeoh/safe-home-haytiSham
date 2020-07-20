@@ -13,7 +13,7 @@
 @import 'testimonyForm';
 
 .app {
-    background-color: map_get($colors, global-background);
+    background-color: map_get($colors, grey-100);
 }
 
 iframe {

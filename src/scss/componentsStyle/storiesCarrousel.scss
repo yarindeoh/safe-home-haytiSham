@@ -1,8 +1,4 @@
-@import '../local/_breakpoints.scss', '../local/_colors.scss',
-    '../local/_common.scss';
-//"../local/_directions.scss";
-
-@import '../config/_reset.scss';
+@import '../local/_colors.scss';
 
 .stories-carousel-container {
     grid-area: carrousel;
@@ -67,7 +63,7 @@
             }
 
             > h2 {
-                color: map_get($colors, text-light-purple);
+                color: map_get($colors, purple-300);
                 font-weight: normal;
                 font-size: 13px;
             }
