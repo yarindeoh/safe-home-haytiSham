@@ -56,28 +56,26 @@ export const Footer = () => {
     };
 
     return (
-        <footer className="footer">
-            <div className="footer-inner">
-                <div className="footer-menu">
-                    <h1>{t('common.iHaveBeenThereHashtag')}</h1>
-                    <ul>{displayFooterMenu()}</ul>
-                </div>
-                <div className="emergency-dial-wrapper purple">
-                    <ul>{displayFooterHotLines()}</ul>
-                </div>
-                <div className="legal-bar">
-                    <ul>
-                        <li>
-                            <Link to="/been-there-2020">
-                                {t('IHaveBeenThere2020')}
-                            </Link>
-                        </li>
-                        <span> | </span>
-                        <li>
-                            <Link to="/privacy-policy">{t('privacyPolicy')}</Link>
-                        </li>
-                    </ul>
-                </div>
+        <footer>
+            <div className="footer-menu">
+                <h1>{t('common.iHaveBeenThereHashtag')}</h1>
+                <ul>{displayFooterMenu()}</ul>
+            </div>
+            <div className="emergency-dial-wrapper purple">
+                <ul>{displayFooterHotLines()}</ul>
+            </div>
+            <div className="legal-bar">
+                <ul>
+                    <li>
+                        <Link to="/been-there-2020">
+                            {t('IHaveBeenThere2020')}
+                        </Link>
+                    </li>
+                    <span> | </span>
+                    <li>
+                        <Link to="/privacy-policy">{t('privacyPolicy')}</Link>
+                    </li>
+                </ul>
             </div>
         </footer>
     );
