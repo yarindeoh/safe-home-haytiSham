@@ -11,6 +11,7 @@
 @import 'storiesGallery';
 @import 'story-page-container';
 @import 'testimonyForm';
+@import "./HelpButton";
 
 .app {
     background-color: map_get($colors, grey-100);
