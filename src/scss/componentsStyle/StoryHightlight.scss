@@ -49,11 +49,5 @@
 
   .tags {
     grid-area: tags;
-
-    .tag {
-      color: map_get($colors, blue-200);
-      margin-left: 11px;
-      font-size: 13px;
-    }
   }
 }

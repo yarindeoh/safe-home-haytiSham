@@ -1,4 +1,5 @@
 import React from 'react';
+import Tag from 'src/components/Tag';
 
 export const StoryHighlight = ({ story, changeLocationByPath }) => {
     const { id, initials, timestamp, tags, quote } = story;
@@ -7,7 +8,7 @@ export const StoryHighlight = ({ story, changeLocationByPath }) => {
     const allTags = () => (
         <div className="tags">
             {tags.map((tag, i) => (
-                <span key={`tag_${i}`} className="tag">{tag}</span>
+                <Tag key={`tag_${i}`} text={tag} />
             ))}
         </div>
     );

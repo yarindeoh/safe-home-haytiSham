@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useAllTags } from 'containers/Stories/storiesHooks';
-import { Tag } from 'components/Tag';
+import TagFilter from 'src/components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 
 export const TagsFilter = ({ changeLocationByPath }) => {
@@ -10,10 +10,10 @@ export const TagsFilter = ({ changeLocationByPath }) => {
     return (
         <div className={'stories-gallery-container'}>
             <h1>עדויות נוספות</h1>
-            <div className="tags-container">
+            <div className="tags-filter-container">
                     {tags &&
                         tags.map((tag, key) => (
-                            <Tag
+                            <TagFilter
                                 value={tag}
                                 key={key}
                                 selected={filteredTags.includes(tag)}

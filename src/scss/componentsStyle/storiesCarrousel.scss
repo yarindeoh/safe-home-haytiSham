@@ -13,10 +13,6 @@
     display: flex;
     align-items: flex-end;
 
-    .tagsFilter {
-        display: none;
-    }
-
     > section {
         $size: 216px;
         width: $size;
