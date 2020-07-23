@@ -1,5 +1,5 @@
 import React from 'react';
-import HeartIcon from '../media/icons/Union.svg';
+import HeartIcon from 'src/media/icons/Union.svg';
 
 export default function HelpButton() {
     return (

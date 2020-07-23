@@ -6,7 +6,7 @@ import { StoriesGalleryView } from 'containers/Stories/components/StoriesGallery
 import { TagsFilter } from 'containers/Stories/components/TagsFilter';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
-import HelpButton from '../../components/HelpButton';
+import HelpButton from 'src/components/HelpButton.js';
 
 export const StoriesView = withRoute((props) => {
     const changeLocationByPath = (path, params) => {
