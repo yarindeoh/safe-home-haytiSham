@@ -28,8 +28,8 @@ export const StoriesGalleryView = ({ changeLocationByPath }) => {
                             </div>
                             <ul className={'tagsFilter'}>
                                 {story &&
-                                    story.tags.map((tag) => (
-                                        <Tag value={tag} />
+                                    story.tags.map((tag, i) => (
+                                        <Tag key={`tag_${i}`} value={tag} />
                                     ))}
                             </ul>
                         </section>

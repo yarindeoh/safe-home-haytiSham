@@ -70,60 +70,6 @@ header {
     }
 }
 
-.story {
-    direction: ltr;
-    padding: 10px 16px 20px;
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 1fr 60px;
-    grid-template-rows: 20px 1fr;
-    grid-template-areas:
-        'date letter'
-        'text letter'
-        'tags tags';
-    border-radius: 11px;
-    background-color: map_get($colors, white);
-    &:hover {
-        cursor: pointer;
-    }
-
-    >figure {
-        $size: 33px;
-
-        grid-area: letter;
-        align-self: center;
-        justify-self: center;
-        width: $size;
-        height: $size;
-        border-radius: 50%;
-        background-color: map_get($colors, purple-100);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        >h2 {
-            font-size: 20px;
-            font-weight: normal;
-            margin: -2px 2px 0 0;
-            color: map_get($colors, purple-400);
-        }
-    }
-
-    >h6 {
-        color: #b3b3b3;
-        grid-area: date;
-        width: 100%;
-        height: 100%;
-    }
-
-    >p {
-        grid-area: text;
-        width: 100%;
-        height: 100%;
-        font-weight: bold;
-    }
-}
-
 .const-text {
     color: map_get($colors, black);
     margin: 46px 0 map_get($spaces, small);
