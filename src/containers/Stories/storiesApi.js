@@ -8,7 +8,7 @@ function baseUrl(path) {
 
 const Api = {
     getAllData: () => {
-        return get(baseUrl('getAllData'));
+        return get(baseUrl('getStoriesByTags'));
     },
     getAllTags: () => {
         return get(baseUrl('getAllTags'));

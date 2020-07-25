@@ -40,7 +40,7 @@ module.exports = (env, argv) => {
         },
         output: {
             filename: 'bundle.js',
-            path: path.resolve('server/static'),
+            path: path.resolve('build'),
             publicPath: '/',
         },
         module: {
@@ -62,7 +62,7 @@ module.exports = (env, argv) => {
                             loader: 'file-loader',
                             options: {
                                 output: {
-                                    path: path.join(__dirname, 'server/static'),
+                                    path: path.join(__dirname, 'build'),
                                 },
                             },
                         },
