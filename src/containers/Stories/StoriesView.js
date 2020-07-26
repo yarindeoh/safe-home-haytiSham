@@ -24,7 +24,6 @@ export const StoriesView = withRoute((props) => {
             >
                 {lang.addStory}
             </button>
-            <hr />
             <TagsFilter changeLocationByPath={changeLocationByPath} />
             <HelpButton />
             <Footer />

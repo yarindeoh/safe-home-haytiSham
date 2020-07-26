@@ -37,12 +37,12 @@ header {
     }
 }
 
-.tags-container {
+.tags-filter-container {
     display: flex;
     margin: 0 0 map_get($spaces, medium);
     flex-wrap: wrap;
 
-    .tag,
+    .tag-filter,
     .more-tags {
         padding: 3px map_get($spaces, small);
         color: map_get($colors, blue-300);
@@ -56,7 +56,7 @@ header {
         }
     }
 
-    .tag {
+    .tag-filter {
         background-color: map_get($colors, blue-100);
         &.selected {
             background-color: #97ccff;
@@ -67,60 +67,6 @@ header {
         border: 1px solid map_get($colors, blue-300);
         background-color: transparent;
         color: map_get($colors, blue-300);
-    }
-}
-
-.story {
-    direction: ltr;
-    padding: 10px 16px 20px;
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 1fr 60px;
-    grid-template-rows: 20px 1fr;
-    grid-template-areas:
-        'date letter'
-        'text letter'
-        'tags tags';
-    border-radius: 11px;
-    background-color: map_get($colors, white);
-    &:hover {
-        cursor: pointer;
-    }
-
-    >figure {
-        $size: 33px;
-
-        grid-area: letter;
-        align-self: center;
-        justify-self: center;
-        width: $size;
-        height: $size;
-        border-radius: 50%;
-        background-color: map_get($colors, purple-100);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        >h2 {
-            font-size: 20px;
-            font-weight: normal;
-            margin: -2px 2px 0 0;
-            color: map_get($colors, purple-400);
-        }
-    }
-
-    >h6 {
-        color: #b3b3b3;
-        grid-area: date;
-        width: 100%;
-        height: 100%;
-    }
-
-    >p {
-        grid-area: text;
-        width: 100%;
-        height: 100%;
-        font-weight: bold;
     }
 }
 

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Tag } from 'components/Tag';
+import Tag from 'src/components/Tag';
 import { PUBLIC_STORIES } from 'containers/Stories/components/StoriesGallery/storiesGalleryConstants';
 
 export const StoriesGalleryView = ({ changeLocationByPath }) => {
@@ -25,13 +25,13 @@ export const StoriesGalleryView = ({ changeLocationByPath }) => {
                                 <h2>
                                     עדותה של {story.name} {story.date}
                                 </h2>
-                            </div>
-                            <ul className={'tagsFilter'}>
-                                {story &&
-                                    story.tags.map((tag) => (
-                                        <Tag value={tag} />
+                                <ul>
+                                    {story &&
+                                    story.tags.map((tag, i) => (
+                                        <Tag key={`tag_${i}`} text={tag} />
                                     ))}
-                            </ul>
+                                </ul>
+                            </div>
                         </section>
                     );
                 })}
