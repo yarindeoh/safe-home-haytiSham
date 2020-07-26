@@ -8,7 +8,6 @@ export const TagsFilter = ({ changeLocationByPath }) => {
     const tags = useAllTags();
     const [filteredTags, setFilteredTags] = useState([]);
     const [showMoreTags, setShowMoreTags] = useState(false);
-
     const allTags =
         tags &&
         tags.map((tag, key) => (
