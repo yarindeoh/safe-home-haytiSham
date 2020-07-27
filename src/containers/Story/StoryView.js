@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { withRoute } from 'services/routing/routerHOC';
-import lang from 'services/lang.json';
 import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
 import { Footer } from 'components/Footer';
-import { Header } from 'components/Header';
 import { useTranslation } from 'react-i18next';
 
 export const StoryView = withRoute(props => {
