@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Tag } from 'components/Tag';
+import Tag from 'src/components/Tag';
 import { PUBLIC_STORIES } from 'containers/Stories/components/StoriesGallery/storiesGalleryConstants';
 import { useTranslation } from 'react-i18next';
 
@@ -30,11 +30,13 @@ export const StoriesGalleryView = ({ changeLocationByPath }) => {
                                         date: story.date
                                     })}
                                 </h2>
+                                <ul>
+                                    {story &&
+                                        story.tags.map((tag, i) => (
+                                            <Tag key={`tag_${i}`} text={tag} />
+                                        ))}
+                                </ul>
                             </div>
-                            <ul className={'tagsFilter'}>
-                                {story &&
-                                    story.tags.map(tag => <Tag value={tag} />)}
-                            </ul>
                         </section>
                     );
                 })}

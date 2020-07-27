@@ -1,12 +1,11 @@
 import React from 'react';
-
-import { Tag } from 'components/Tag';
+import Tag from 'src/components/Tag';
 
 export const Tags = ({ tags }) => {
     return (
-        <div className="tagsFilter">
+        <div>
             {tags.map((tag, key) => (
-                <Tag value={tag} key={key} />
+                <Tag text={tag} key={key} />
             ))}
         </div>
     );

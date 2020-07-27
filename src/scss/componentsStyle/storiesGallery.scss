@@ -1,16 +1,12 @@
-@import '../local/_breakpoints.scss', '../local/_colors.scss',
-    '../local/_common.scss',
-'../local/_spaces.scss';
-
-@import '../config/_reset.scss';
-@import '../config/partials/_buttons';
+@import '../local/_colors.scss';
+@import '../local/_spaces.scss';
 
 .stories-gallery-container {
   grid-area: gallery;
   display: flex;
   flex-direction: column;
   padding: map_get($spaces, small);
-  border-top: 1px solid map_get($colors, border-bottom);
+  border-top: 1px solid map_get($colors, grey-200);
 
   > h1 {
     font-weight: normal;

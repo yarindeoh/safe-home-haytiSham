@@ -6,8 +6,9 @@ import { TagsFilter } from 'containers/Stories/components/TagsFilter';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
+import HelpButton from 'src/components/HelpButton.js';
 
-export const StoriesView = withRoute((props) => {
+export const StoriesView = withRoute(props => {
     const { t } = useTranslation();
 
     const changeLocationByPath = (path, params) => {
@@ -17,9 +18,7 @@ export const StoriesView = withRoute((props) => {
         <div className="app">
             <Header />
             <button className={'BTN-accessibility'} />
-            <h4 className={'const-text'}>
-                {t('storiesView.header')}
-            </h4>
+            <h4 className={'const-text'}>{t('storiesView.header')}</h4>
             <StoriesGalleryView changeLocationByPath={changeLocationByPath} />
             <button
                 className={'BTN-send-testimony'}
@@ -27,9 +26,8 @@ export const StoriesView = withRoute((props) => {
             >
                 {t('storiesView.addStory')}
             </button>
-            <hr />
             <TagsFilter changeLocationByPath={changeLocationByPath} />
-            <button className="BTN-help" />
+            <HelpButton />
             <Footer />
         </div>
     );

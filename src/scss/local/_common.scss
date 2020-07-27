@@ -7,7 +7,7 @@ header {
     height: 46px;
     position: fixed;
     z-index: 2;
-    background-color: map_get($colors, header-background);
+    background-color: map_get($colors, black);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,15 +37,15 @@ header {
     }
 }
 
-.tags-container {
+.tags-filter-container {
     display: flex;
     margin: 0 0 map_get($spaces, medium);
     flex-wrap: wrap;
 
-    .tag,
+    .tag-filter,
     .more-tags {
         padding: 3px map_get($spaces, small);
-        color: map_get($colors, text-tag);
+        color: map_get($colors, blue-300);
         border-radius: 20px;
         border: 0;
         text-align: center;
@@ -56,76 +56,22 @@ header {
         }
     }
 
-    .tag {
-        background-color: map_get($colors, tag-background);
+    .tag-filter {
+        background-color: map_get($colors, blue-100);
         &.selected {
             background-color: #97ccff;
         }
     }
 
     .more-tags {
-        border: 1px solid map_get($colors, text-tag);
+        border: 1px solid map_get($colors, blue-300);
         background-color: transparent;
-        color: map_get($colors, text-tag);
-    }
-}
-
-.story {
-    direction: ltr;
-    padding: 10px 16px 20px;
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 1fr 60px;
-    grid-template-rows: 20px 1fr;
-    grid-template-areas:
-        'date letter'
-        'text letter'
-        'tags tags';
-    border-radius: 11px;
-    background-color: map_get($colors, white-background);
-    &:hover {
-        cursor: pointer;
-    }
-
-    >figure {
-        $size: 33px;
-
-        grid-area: letter;
-        align-self: center;
-        justify-self: center;
-        width: $size;
-        height: $size;
-        border-radius: 50%;
-        background-color: map_get($colors, light-purple-header-background);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        >h2 {
-            font-size: 20px;
-            font-weight: normal;
-            margin: -2px 2px 0 0;
-            color: map_get($colors, text-dark-purple);
-        }
-    }
-
-    >h6 {
-        color: #b3b3b3;
-        grid-area: date;
-        width: 100%;
-        height: 100%;
-    }
-
-    >p {
-        grid-area: text;
-        width: 100%;
-        height: 100%;
-        font-weight: bold;
+        color: map_get($colors, blue-300);
     }
 }
 
 .const-text {
-    color: map_get($colors, text-black);
+    color: map_get($colors, black);
     margin: 46px 0 map_get($spaces, small);
     padding-top: map_get($spaces, small);
     grid-area: const-text;
@@ -166,13 +112,13 @@ footer {
 
     li {
         list-style-type: none;
-        color: map_get($colors, text-white);
+        color: map_get($colors, white);
         font-style: normal;
         font-size: 15px;
     }
 
     li a {
-        color: map_get($colors, text-white);
+        color: map_get($colors, white);
     }
 
     li a:link {
@@ -180,12 +126,12 @@ footer {
     }
 
     div {
-        background-color: map_get($colors, text-black);
+        background-color: map_get($colors, black);
     }
 
     .footer-menu h1 {
         font-weight: normal;
-        color: map_get($colors, text-dark-purple);
+        color: map_get($colors, purple-400);
         margin: 15px;
         font-size: 35px;
     }
@@ -202,7 +148,7 @@ footer {
     }
 
     .emergency-dial-wrapper.purple {
-        background: map_get($colors, dark-purple-footer-background);
+        background: map_get($colors, purple-400);
     }
 
     .emergency-dial-wrapper li,
