@@ -1,46 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import lang from 'services/lang.json';
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
-    const {
-        getHelp,
-        whoWeAre,
-        warningSigns,
-        michalSelaForum,
-        testimonySubmission,
-        accessability,
-        statistic,
-        technicSupport,
-        emergencyHotlineOfSexualHarassment,
-        emergencyHotlineOfSexualHarassmentNumber,
-        emergencyHotlineOfMinistryOfLaborAndSocialAffairs,
-        emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber,
-        IHaveBeenThere2020,
-        IHaveBeenThereHashtag,
-        privacyPolicy
-    } = lang;
+    const { t } = useTranslation();
 
     const footerMenu = [
-        { name: getHelp, url: '/get-help' },
-        { name: whoWeAre, url: '/about' },
-        { name: warningSigns, url: '/warning-signs' },
-        { name: michalSelaForum, url: '/michal-sela-forum' },
-        { name: testimonySubmission, url: '/testimony' },
-        { name: accessability, url: '/accessability' },
-        { name: statistic, url: '/statistic' },
-        { name: technicSupport, url: '/technical-support' }
+        { name: t('getHelp'), url: '/get-help' },
+        { name: t('whoWeAre'), url: '/about' },
+        { name: t('warningSigns'), url: '/warning-signs' },
+        { name: t('michalSelaForum'), url: '/michal-sela-forum' },
+        { name: t('testimonySubmission'), url: '/testimony' },
+        { name: t('accessability'), url: '/accessability' },
+        { name: t('statistic'), url: '/statistic' },
+        { name: t('technicSupport'), url: '/technical-support' }
     ];
 
     const emergencyLines = [
         {
-            number: emergencyHotlineOfSexualHarassmentNumber,
-            text: emergencyHotlineOfSexualHarassment
+            number: t('emergencyHotlineOfSexualHarassmentNumber'),
+            text: t('emergencyHotlineOfSexualHarassment')
             // TODO: Add dialing option url
         },
         {
-            number: emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber,
-            text: emergencyHotlineOfMinistryOfLaborAndSocialAffairs
+            number: t('emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber'),
+            text: t('emergencyHotlineOfMinistryOfLaborAndSocialAffairs')
             // TODO: Add dialing option url
         }
     ];
@@ -74,7 +58,7 @@ export const Footer = () => {
     return (
         <footer>
             <div className="footer-menu">
-                <h1>{IHaveBeenThereHashtag}</h1>
+                <h1>{t('common.iHaveBeenThereHashtag')}</h1>
                 <ul>{displayFooterMenu()}</ul>
             </div>
             <div className="emergency-dial-wrapper purple">
@@ -84,12 +68,12 @@ export const Footer = () => {
                 <ul>
                     <li>
                         <Link to="/been-there-2020">
-                            {IHaveBeenThere2020}
+                            {t('IHaveBeenThere2020')}
                         </Link>
                     </li>
                     <span> | </span>
                     <li>
-                        <Link to="/privacy-policy">{privacyPolicy}</Link>
+                        <Link to="/privacy-policy">{t('privacyPolicy')}</Link>
                     </li>
                 </ul>
             </div>
