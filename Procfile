@@ -1,1 +1,1 @@
-web: node server_api/src/app.js
+web: npm run heroku-prebuild
