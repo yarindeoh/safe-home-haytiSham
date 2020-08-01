@@ -6,26 +6,18 @@ import { TextArea } from 'components/TextArea';
 import { useTranslation } from 'react-i18next';
 import { Header } from '../../components/Header';
 
-const uploadVideo = () => {
-    //TODO;
-};
-
-const uploadSound = () => {
-    //TODO;
-};
-
 const submitForm = () => {
     //TODO;
 };
 
-export const AddStoryView = withRoute((props) => {
+export const AddStoryView = withRoute(props => {
     const { t } = useTranslation();
 
-    const submit = (e) => {
+    const submit = e => {
         e.preventDefault();
         props.history.push('/');
     };
-    const back = (e) => {
+    const back = e => {
         e.preventDefault();
         props.history.push('/');
     };
@@ -37,9 +29,7 @@ export const AddStoryView = withRoute((props) => {
                     <h1>{t('addStoryView.myConfession')}</h1>
                 </header>
                 <button className={'BTN-accessibility'} />
-                <h3>
-                    {t('addStoryView.anonymity')}
-                </h3>
+                <h3>{t('addStoryView.anonymity')}</h3>
                 <form onSubmit={submit}>
                     <Input
                         name="name"
@@ -58,24 +48,9 @@ export const AddStoryView = withRoute((props) => {
                         checked={0}
                         options={[
                             { value: 'yes', label: t('common.yes') },
-                            { value: 'no', label: t('common.no') },
+                            { value: 'no', label: t('common.no') }
                         ]}
                     />
-                    <div>
-                        <label>{t('addStoryView.manualSubmition')}</label>
-                        <div>
-                            <button onClick={uploadVideo}>
-                                {' '}
-                                {t('addStoryView.uploadVideo')}
-                                {' '}
-                            </button>
-                            <button onClick={uploadSound}>
-                                {' '}
-                                {t('addStoryView.uploadRecording')}
-                                {' '}
-                            </button>
-                        </div>
-                    </div>
 
                     <TextArea
                         name="background"
@@ -86,29 +61,22 @@ export const AddStoryView = withRoute((props) => {
 
                     <TextArea
                         name="storyContent"
-                        placeholder=""
                         label={t('storyContent')}
+                        placeholder="הסיפור שלי הוא..."
+                        sublabel=""
+                    />
+                    <TextArea
+                        name="howDidYouManged"
+                        label={t('howDidYouManged')}
+                        placeholder="ההתמודדות שלי"
                         sublabel=""
                     />
 
                     <TextArea
                         name="howDidYouManged"
-                        placeholder=""
-                        label={t('howDidYouManged')}
-                        sublabel=""
-                    />
-
-                    <TextArea
-                        name="whatTriggeredChange"
-                        placeholder=""
-                        label={t('whatTriggeredChange')}
-                        sublabel=""
-                    />
-
-                    <TextArea
-                        name="howDidYouManged"
-                        placeholder=""
-                        label={t('howDidYouManged')}
+                        label={t('whatHelpedYou')}
+                        name="whatHelpedYou"
+                        placeholder="מאוד עזר לי ש..."
                         sublabel=""
                     />
 
