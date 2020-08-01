@@ -30,17 +30,16 @@
 
   .multiply-answer-area{
       background-color: map_get($colors, white);
+
   .question, .question label, label{
     
       margin-bottom: 4px;
     }
-
       textarea{
         width: 100%;
       }
        margin-bottom: 16px;
   }
-
 
   > h3 {
     font-weight: normal;
@@ -54,10 +53,6 @@
    * {
      resize: none;
    }
-
-    // > div {
-    //   margin-bottom: 42px;
-    // }
 
     label div {
       width: 271px;
@@ -80,10 +75,8 @@
     }
 
       input[type="radio"]{
-  margin-left:10px
- 
- 
-}
+      margin-left:10px
+  }
 
     > button {
       width: 100%;
