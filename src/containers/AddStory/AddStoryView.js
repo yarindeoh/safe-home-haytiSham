@@ -56,35 +56,30 @@ export const AddStoryView = withRoute(props => {
                         name="background"
                         placeholder=""
                         label={t('background')}
-                        sublabel={t('backgroundSublabel')}
                     />
 
                     <TextArea
                         name="storyContent"
                         label={t('storyContent')}
-                        placeholder="הסיפור שלי הוא..."
-                        sublabel=""
+                        placeholder={t('storyContentPlaceholder')}
                     />
                     <TextArea
                         name="howDidYouManged"
                         label={t('howDidYouManged')}
-                        placeholder="ההתמודדות שלי"
-                        sublabel=""
+                        placeholder={t('howDidYouMangedPlaceholder')}
                     />
 
                     <TextArea
-                        name="howDidYouManged"
+                        name="whatHelpedYou"
                         label={t('whatHelpedYou')}
                         name="whatHelpedYou"
-                        placeholder="מאוד עזר לי ש..."
-                        sublabel=""
+                        placeholder={t('whatHelpedYouPlaceHolder')}
                     />
 
                     <TextArea
                         name="additionalnfo"
-                        placeholder=""
+                        placeholder={t('additionalnfoPlaceHolder')}
                         label={t('additionalnfo')}
-                        sublabel=""
                     />
 
                     <button onClick={submit}> {t('submitForm')} </button>
