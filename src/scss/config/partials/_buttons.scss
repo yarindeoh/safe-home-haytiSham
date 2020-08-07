@@ -1,14 +1,17 @@
 @import '../../local/_colors.scss';
+@import '../../local/_spaces.scss';
 
 .BTN-send-testimony {
     width: fit-content;
     grid-area: send-testimony-box;
     align-self: center;
     font-weight: bold;
-    color: map_get($colors, BTN-to-all-testimonies);
+    color: map_get($colors, blue-200);
     font-size: 15px;
     line-height: 20px;
     text-decoration: underline;
+    margin: map_get($spaces, small);
+    background: transparent;
 }
 
 .BTN-hamburger-menu {
@@ -32,7 +35,7 @@
     font-size: 15px;
     text-decoration-line: underline;
 
-    color: map_get($colors, BTN-to-all-testimonies);
+    color: map_get($colors, blue-200);
 }
 
 .BTX-back {
@@ -94,17 +97,9 @@
 
 .BTN-accessibility {
     height: 32px;
-    width: calc(100% + 24px - 8px);
-    position: sticky;
+    width: 100%;
+    position: fixed;
     left: 8px;
     top: 54px;
     background: url('../../media/icons/accessibility.png') no-repeat;
-}
-
-.BTN-help {
-    width: calc(100% + 24px);
-    height: 64px;
-    position: sticky;
-    bottom: 17px;
-    background: url('../../media/icons/help.png') no-repeat;
 }

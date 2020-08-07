@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { withRoute } from 'services/routing/routerHOC';
-import lang from 'services/lang.json';
 import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
 import { Footer } from 'components/Footer';
-import { Header } from 'components/Header';
+import { useTranslation } from 'react-i18next';
 
-export const StoryView = withRoute((props) => {
+export const StoryView = withRoute(props => {
+    const { t } = useTranslation();
     const story = props.location.state;
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
@@ -19,7 +19,7 @@ export const StoryView = withRoute((props) => {
         'howDidYouManged',
         'additionalnfo',
         'whatHelpedYou',
-        'storyContent',
+        'storyContent'
     ]);
     return (
         <div id={'story-page-container'}>
@@ -39,7 +39,7 @@ export const StoryView = withRoute((props) => {
                 <h1>"{story.quote}"</h1>
                 <h2>
                     {`
-                    עדותה של 
+                     ${t('storyView.storyOf')}
                      ${story.name.split('')[0]}׳ 
                      ${story.timestamp.split(' ')[0]} 
                    `}
@@ -49,7 +49,7 @@ export const StoryView = withRoute((props) => {
             {proccessedStory &&
                 Object.keys(proccessedStory).map((item, key) => (
                     <div key={key}>
-                        <h6>{lang[item]}</h6>
+                        <h6>{t(item)}</h6>
                         <span>{proccessedStory[item]}</span>
                         <br />
                     </div>
@@ -61,11 +61,11 @@ export const StoryView = withRoute((props) => {
             <button className="footercustom">
                 <span className="helpright">
                     <button className="BTX-help2"></button>
-                    <p>אוזן קשבת</p>
+                    <p>{t('storyView.listeningEar')}</p>
                 </span>
                 <span className="shareleft">
                     <button className="BTX-share"></button>
-                    <p>שיתוף   </p>
+                    <p>{t('storyView.share')}</p>
                 </span>
             </button>
             <Footer />

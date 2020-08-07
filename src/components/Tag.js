@@ -1,10 +1,17 @@
 import React from 'react';
 
-export const Tag = ({ value, onClick, selected, customClass }) => {
-    const tagClass = selected ? 'tag selected ' : 'tag';
+export const Tag = ({ text, onClick }) => {
+    const handleOnClick = () => {
+        if (onClick) {
+            onClick();
+        }
+    };
+
     return (
-        <span className={`${tagClass}`} onClick={onClick}>
-            {value}
+        <span className="tag" onClick={handleOnClick}>
+            {text}
         </span>
     );
 };
+
+export default Tag;

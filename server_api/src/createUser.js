@@ -8,7 +8,7 @@ const userName = args[0];
 const password = args[1];
 
 const UsersService = require("./api/authentication/users.service");
-const usersService = new UsersService()
+const usersService = new UsersService();
 
 /* basic configuration */
 const path = require('path');

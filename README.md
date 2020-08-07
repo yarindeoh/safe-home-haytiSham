@@ -1,8 +1,17 @@
 ## Safe@Home: Hayti Sham
 
 ## Quick Use
+---> Pay attention, we have 2 folders of servers, current running server is python server under 'server' (which is going to be removed in the future)
+and a Node server under 'server_api' that is under development and will replace python server soon. 
+
 In order to run the app locally you need to have a running local Frontend in one 
 terminal and a running local Backend in another terminal.
+### Front-end development
+1. Each UI change should be aligned with the [mock](https://www.figma.com/file/UcF9E1rT6rwKIQkkLD5EqN/hayiti_sham?node-id=446%3A286).
+2. Each new string in the UI should be added to `lang-he.js` file and used with `react-18next` library.
+    1. For example, search for `t('iHaveBeenThereHashtag')`.
+3. Re-use existing strings from the `lang-he.js` file.
+
 ### Start Local Frontend
 #### Peer Dependencies
 - Node ^12
@@ -72,12 +81,9 @@ npm start dev
 * Basic test
 http://localhost:5000/api/status
 
-
-
-=======
+----
 ## Deployment
-This application is deployed using Heroku:
-https://haytisham.herokuapp.com/
+- This application is deployed using Heroku: https://haytisham.herokuapp.com/
 
 
 ## UI Mockups

@@ -1,32 +1,82 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
+    const { t } = useTranslation();
+
+    const footerMenu = [
+        { name: t('getHelp'), url: '/get-help' },
+        { name: t('whoWeAre'), url: '/about' },
+        { name: t('warningSigns'), url: '/warning-signs' },
+        { name: t('michalSelaForum'), url: '/michal-sela-forum' },
+        { name: t('testimonySubmission'), url: '/testimony' },
+        { name: t('accessability'), url: '/accessability' },
+        { name: t('statistic'), url: '/statistic' },
+        { name: t('technicSupport'), url: '/technical-support' }
+    ];
+
+    const emergencyLines = [
+        {
+            number: t('emergencyHotlineOfSexualHarassmentNumber'),
+            text: t('emergencyHotlineOfSexualHarassment')
+            // TODO: Add dialing option url
+        },
+        {
+            number: t('emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber'),
+            text: t('emergencyHotlineOfMinistryOfLaborAndSocialAffairs')
+            // TODO: Add dialing option url
+        }
+    ];
+
+    // TODO: Fix li's alignment
+    const displayFooterMenu = () => {
+        return footerMenu.map((item, index) => (
+            <li key={`${item}-${index}`}>
+                <Link to={item.url}>{item.name}</Link>
+            </li>
+        ));
+    };
+    const displayFooterHotLines = () => {
+        return emergencyLines.map((item, index) => (
+            <li key={`${item}-${index}`}>
+                {/*TODO: Add dialing option */}
+                <Link to="/">
+                    <span>
+                        {/*TODO: Add phone icon */}
+                        {/* <i className="fa fa-phone" aria-hidden="true"></i> */}
+                        <p>{item.number}</p>
+                    </span>
+                    <span>
+                        <p>{item.text}</p>
+                    </span>
+                </Link>
+            </li>
+        ));
+    };
+
     return (
         <footer>
-            {/*<h1>הייתי שם#</h1>*/}
-            {/*<ul>*/}
-            {/*    <li className={'purple'}>עזרה וסיוע</li>*/}
-            {/*    <li>מי אנחנו</li>*/}
-            {/*    <li>סימני אזהרה</li>*/}
-            {/*    <li>פורום מיכל סלע</li>*/}
-            {/*    <li>שליחת עדות</li>*/}
-            {/*    <li>נגישות</li>*/}
-            {/*    <li>סטטיסטיקה</li>*/}
-            {/*    <li>תמיכה טכנית</li>*/}
-            {/*</ul>*/}
-            {/*<ul className={'purple'}>*/}
-            {/*    <div>*/}
-            {/*        <h2>118</h2>*/}
-            {/*        <p>קו החירום החברתי של משרד העבודה והרווחה</p>*/}
-            {/*    </div>*/}
-            {/*    <div>*/}
-            {/*        <h2>1202/3</h2>*/}
-            {/*        <p>קו החירום לנפגעות ונפגעי תקיפה מינית</p>*/}
-            {/*    </div>*/}
-            {/*</ul>*/}
-            {/*<ul>*/}
-            {/*    <h3> ׳הייתי שם׳ 2020 | מדיניות הפרטיות ©</h3>*/}
-            {/*</ul>*/}
+            <div className="footer-menu">
+                <h1>{t('common.iHaveBeenThereHashtag')}</h1>
+                <ul>{displayFooterMenu()}</ul>
+            </div>
+            <div className="emergency-dial-wrapper purple">
+                <ul>{displayFooterHotLines()}</ul>
+            </div>
+            <div className="legal-bar">
+                <ul>
+                    <li>
+                        <Link to="/been-there-2020">
+                            {t('IHaveBeenThere2020')}
+                        </Link>
+                    </li>
+                    <span> | </span>
+                    <li>
+                        <Link to="/privacy-policy">{t('privacyPolicy')}</Link>
+                    </li>
+                </ul>
+            </div>
         </footer>
     );
 };
