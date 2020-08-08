@@ -67,7 +67,8 @@ const he = {
         },
         tagsFilter: {
             additionalTestimonies: 'עדויות נוספות',
-            moreCategories: 'עוד קטגוריות'
+            moreCategories: 'עוד קטגוריות',
+            lessCategories: 'פחות קטגוריות'
         },
         storiesGalleryView: {
             confessionOf: 'עדותה של {{name}} {{date}}'

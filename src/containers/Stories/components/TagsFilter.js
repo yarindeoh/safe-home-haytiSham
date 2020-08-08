@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 
-import { useAllTags } from 'containers/Stories/storiesHooks';
+import { useAllTags, useDisplayedTags } from 'containers/Stories/storiesHooks';
 import TagFilter from 'src/components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { useTranslation } from 'react-i18next';
 
 export const TagsFilter = ({ changeLocationByPath }) => {
     const { t } = useTranslation();
-    const tags = useAllTags();
+    const { tags, showMoreTags, handleShowMoreTagsChange } = useDisplayedTags(
+        useAllTags()
+    );
     const [filteredTags, setFilteredTags] = useState([]);
     return (
         <div className={'stories-gallery-container'}>
@@ -28,8 +30,10 @@ export const TagsFilter = ({ changeLocationByPath }) => {
                             }}
                         />
                     ))}
-                <span className="more-tags">
-                    {t('tagsFilter.moreCategories')}
+                <span className="more-tags" onClick={handleShowMoreTagsChange}>
+                    {showMoreTags
+                        ? t('tagsFilter.lessCategories')
+                        : t('tagsFilter.moreCategories')}
                 </span>
             </div>
             <StoriesList
