@@ -39,12 +39,12 @@
 }
 
 .BTX-back {
-    $size: 24px;
-
+    $size: 20px;
     height: $size;
     width: $size;
     margin-left: 6px;
-    background-image: url('../../media/icons/backArrow.png');
+    background-repeat: no-repeat;
+    background-image: url('../../media/icons/backArrow.svg');
 }
 
 .BTX-back-white {

@@ -6,26 +6,18 @@ import { TextArea } from 'components/TextArea';
 import { useTranslation } from 'react-i18next';
 import { Header } from '../../components/Header';
 
-const uploadVideo = () => {
-    //TODO;
-};
-
-const uploadSound = () => {
-    //TODO;
-};
-
 const submitForm = () => {
     //TODO;
 };
 
-export const AddStoryView = withRoute((props) => {
+export const AddStoryView = withRoute(props => {
     const { t } = useTranslation();
 
-    const submit = (e) => {
+    const submit = e => {
         e.preventDefault();
         props.history.push('/');
     };
-    const back = (e) => {
+    const back = e => {
         e.preventDefault();
         props.history.push('/');
     };
@@ -37,9 +29,7 @@ export const AddStoryView = withRoute((props) => {
                     <h1>{t('addStoryView.myConfession')}</h1>
                 </header>
                 <button className={'BTN-accessibility'} />
-                <h3>
-                    {t('addStoryView.anonymity')}
-                </h3>
+                <h3>{t('addStoryView.anonymity')}</h3>
                 <form onSubmit={submit}>
                     <Input
                         name="name"
@@ -58,65 +48,38 @@ export const AddStoryView = withRoute((props) => {
                         checked={0}
                         options={[
                             { value: 'yes', label: t('common.yes') },
-                            { value: 'no', label: t('common.no') },
+                            { value: 'no', label: t('common.no') }
                         ]}
                     />
-                    <div>
-                        <label>{t('addStoryView.manualSubmition')}</label>
-                        <div>
-                            <button onClick={uploadVideo}>
-                                {' '}
-                                {t('addStoryView.uploadVideo')}
-                                {' '}
-                            </button>
-                            <button onClick={uploadSound}>
-                                {' '}
-                                {t('addStoryView.uploadRecording')}
-                                {' '}
-                            </button>
-                        </div>
-                    </div>
 
                     <TextArea
                         name="background"
                         placeholder=""
                         label={t('background')}
-                        sublabel={t('backgroundSublabel')}
                     />
 
                     <TextArea
                         name="storyContent"
-                        placeholder=""
                         label={t('storyContent')}
-                        sublabel=""
+                        placeholder={t('storyContentPlaceholder')}
                     />
-
                     <TextArea
                         name="howDidYouManged"
-                        placeholder=""
                         label={t('howDidYouManged')}
-                        sublabel=""
+                        placeholder={t('howDidYouMangedPlaceholder')}
                     />
 
                     <TextArea
-                        name="whatTriggeredChange"
-                        placeholder=""
-                        label={t('whatTriggeredChange')}
-                        sublabel=""
-                    />
-
-                    <TextArea
-                        name="howDidYouManged"
-                        placeholder=""
-                        label={t('howDidYouManged')}
-                        sublabel=""
+                        name="whatHelpedYou"
+                        label={t('whatHelpedYou')}
+                        name="whatHelpedYou"
+                        placeholder={t('whatHelpedYouPlaceHolder')}
                     />
 
                     <TextArea
                         name="additionalnfo"
-                        placeholder=""
+                        placeholder={t('additionalnfoPlaceHolder')}
                         label={t('additionalnfo')}
-                        sublabel=""
                     />
 
                     <button onClick={submit}> {t('submitForm')} </button>

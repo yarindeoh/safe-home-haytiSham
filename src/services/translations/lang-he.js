@@ -10,16 +10,18 @@ const he = {
             jealousy: 'קנאה'
         },
         storyName: 'שם הסיפור',
-        background: 'רקע',
-        backgroundSublabel:
-            'מה היה טיב מערכת היחסים, מתי זה קרה, לאורך כמה זמן, גיל וכו׳',
+        background: 'רקע* (מה היה טיב מערכת היחסים, מתי זה קרה, לאורך כמה זמן, גיל וכו׳)',
         whatTriggeredChange: 'איך הסיטואציה השתנתה',
         howDidYouManged: 'איך התמודדתי עם המצב',
+        howDidYouMangedPlaceholder: 'ההתמודדות שלי...',
         additionalnfo: 'בכמה משפטים, מה הכי היית רוצה לומר למי במצב דומה',
+        additionalnfoPlaceHolder: 'אני רוצה לומר ש...',
         image: 'תמונה',
         mail: 'אימייל',
         whatHelpedYou: 'מה עזר לך להתמודד',
+        whatHelpedYouPlaceHolder: 'מאוד עזר לי ש...',
         storyContent: 'הסיפור שלי',
+        storyContentPlaceholder: 'הסיפור שלי הוא...',
         additionalStories: 'עדויות נוספות',
         submitForm: 'שליחה',
         noPersonalDetails:
@@ -51,15 +53,15 @@ const he = {
         },
         addStoryView: {
             myConfession: 'העדות שלי',
-            anonymity: ` על מנת שנוכל לשמור על צנעת הפרט, נסיר פרטים מזהים של אנשים
-            אחרים. כמו כן, נשלח הודעה אנונימית לאחר פרסום העדות לאמצעי
-            שהשארת למטה`,
-            nameLabel: 'תחת איזה שם היית רוצה שהסיפור יפורסם?',
-            namePlaceholder: 'שמך המלא או באופן אנונימי/בדוי',
+            anonymity: `שימו לב! נעבור על כל עדות שתתקבל,ולא נוכל לפרסם פרטים מזהים של הפוגעים.
+                    כמו כן, במידה ותשאירו פרטי קשרֿ נשלח הודעה לאחר פרסום העדות.
+           `,
+            nameLabel: 'שם לפרסום העדות (שם מלא/אנונימי)*?',
+            namePlaceholder: 'הוספת שם',
             emailLabel:
-                'כתובת מייל או טלפון ליצירת קשר (לא חובה, לא יפורסם באתר)',
-            emailPlaceholder: 'כתובת אימייל',
-            contactLabel: 'שניצור איתך קשר לקבלת תמיכה (לא חובה, לא יפורסם)',
+                'מייל/טלפון ליצירת קשר (לא חובה, לא יפורסם)',
+            emailPlaceholder: 'הוספת פרטי התקשרות',
+            contactLabel: 'שניצור איתך קשר לקבלת תמיכה?',
             contactNotes: 'אפשר גם ליצור קשר 24/7 דרך כפתור התמיכה',
             manualSubmition: 'אפשר לדלג ולמלא בכתב או:',
             uploadVideo: 'להעלות סרטון',
