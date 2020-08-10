@@ -1,46 +1,49 @@
-import React, { useState, useRef } from 'react';
-import Tag from 'src/components/Tag';
+import React, { useState } from 'react';
+import Slider from 'react-slick';
 import { PUBLIC_STORIES } from 'containers/Stories/components/StoriesGallery/storiesGalleryConstants';
 import { useTranslation } from 'react-i18next';
+import { CarrouselItem } from './CarrouselItem';
 
 export const StoriesGalleryView = ({ changeLocationByPath }) => {
-    const { t } = useTranslation();
-    const [SelectedImage, setSelectedImage] = useState([false]);
-    const gallery = useRef(null);
+
+    const initialSelectedItem = Math.floor(PUBLIC_STORIES.length / 2);
+    const [selectedItem, setSelectedItem] = useState(initialSelectedItem);
+
+    const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        variableWidth: true,
+        centerMode: true,
+        initialSlide: initialSelectedItem,
+        focusOnSelect: true,
+        afterChange: key => onChangeItem(key),
+        customPaging: () => <div className="NavItem" />
+    };
+
+    const onChangeItem = key => {
+        setSelectedItem(key);
+    };
+
+    const onClickItem = id => {
+        changeLocationByPath(`/publicStory/${id}`);
+    };
+
     return (
         <div className={'stories-carousel-container'}>
-            <div className={'stories-gallery'} ref={gallery}>
-                {PUBLIC_STORIES.map((story, key) => {
-                    return (
-                        <section
-                            id={key === 1 ? 'selected' : 'galleryImg'}
-                            key={`section${key}`}
-                            onClick={() =>
-                                changeLocationByPath(
-                                    `publicStory/${story.id}`,
-                                    story
-                                )
-                            }
-                        >
-                            <div className={'image'} key={`img${key}`}>
-                                <h1>{story.quote}</h1>
-                                <h2>
-                                    {t('storiesGalleryView.confessionOf', {
-                                        name: story.name,
-                                        date: story.date
-                                    })}
-                                </h2>
-                                <ul>
-                                    {story &&
-                                        story.tags.map((tag, i) => (
-                                            <Tag key={`tag_${i}`} text={tag} />
-                                        ))}
-                                </ul>
-                            </div>
-                        </section>
-                    );
-                })}
-            </div>
+            <Slider {...sliderSettings}>
+                {PUBLIC_STORIES.map((story, key) => (
+                    <CarrouselItem
+                        story={story}
+                        onClick={onClickItem}
+                        isSelected={key === selectedItem}
+                    />
+                ))}
+            </Slider>
         </div>
     );
 };
+
+export default StoriesGalleryView;

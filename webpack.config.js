@@ -57,8 +57,11 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /\.(svg)$/,
-                    include: [path.join(__dirname, 'src/media/icons')],
-                    loader: ['file-loader']
+                    include: [
+                        path.join(__dirname, 'src/media/icons'),
+                        path.join(__dirname, './node_modules/')
+                    ],
+                    loader: 'file-loader'
                 },
                 {
                     test: /\.(jpg|png|gif|ico|ttf|woff|woff2|eot)(\?.*)?$/,

@@ -5,6 +5,7 @@ export const PUBLIC_STORIES = [
         tags: ['אלימות פיזית', 'אלימות מילולית'],
         timestamp: '15/03/2020',
         storyteller: 'יעל יהודה',
+        img: 'img1.png'
     },
     {
         id: '2F610082766499736',
@@ -12,6 +13,7 @@ export const PUBLIC_STORIES = [
         tags: ['אלימות פיזית', 'קנאה ואובססיביות'],
         timestamp: '25/02/2020',
         storyteller: 'דנה אינטרנשיונל',
+        img: 'img2.png'
     },
     {
         id: '2F527567764562364',
@@ -19,6 +21,7 @@ export const PUBLIC_STORIES = [
         tags: ['אלימות פיזית', 'משטרה'],
         timestamp: '10/03/2020',
         storyteller: 'שירן וקארין סנדל',
+        img: 'img3.png'
     },
     {
         id: '2F243174673491976',
@@ -26,6 +29,7 @@ export const PUBLIC_STORIES = [
         tags: ['אלימות מילולית', 'הפחדה'],
         timestamp: '12/04/2020',
         storyteller: 'יאנה בריקסמן',
+        img: 'img4.png'
     },
     {
         id: '2F234311144373734',
@@ -33,5 +37,10 @@ export const PUBLIC_STORIES = [
         tags: ['אלימות פיזית', 'אלימות מילולית', 'משטרה'],
         timestamp: '08/03/2020',
         storyteller: 'שרית קרול',
-    },
+        img: 'img5.png'
+    }
 ];
+
+export const getPublicStoryById = id => {
+    return PUBLIC_STORIES.find(story => story.id === id);
+};
