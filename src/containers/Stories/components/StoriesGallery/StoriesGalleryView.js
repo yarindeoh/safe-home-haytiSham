@@ -36,6 +36,7 @@ export const StoriesGalleryView = ({ changeLocationByPath }) => {
             <Slider {...sliderSettings}>
                 {PUBLIC_STORIES.map((story, key) => (
                     <CarrouselItem
+                        key={key}
                         story={story}
                         onClick={onClickItem}
                         isSelected={key === selectedItem}
