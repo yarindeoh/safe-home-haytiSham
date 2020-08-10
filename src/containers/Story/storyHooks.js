@@ -5,11 +5,11 @@ export const useSimilarStories = (tags) => {
     const [data, setData] = useState();
     useEffect(() => {
         async function fetchData() {
-            setData(await Api.getStoriesByTags(tags));
+            setData(await Api.getStoriesByTags(tags || []));
         }
         fetchData();
     }, [tags]);
     return {
-        stories: data,
+        stories: data && data.result,
     };
 };

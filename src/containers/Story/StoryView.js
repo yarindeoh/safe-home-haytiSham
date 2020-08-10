@@ -41,7 +41,7 @@ export const StoryView = withRoute((props) => {
                     {`
                     עדותה של 
                      ${story.name.split('')[0]}׳ 
-                     ${story.timestamp.split(' ')[0]} 
+                     ${story.createdAt}
                    `}
                 </h2>
                 <Tags tags={story.tags} />
@@ -60,11 +60,11 @@ export const StoryView = withRoute((props) => {
             />
             <button className="footercustom">
                 <span className="helpright">
-                    <button className="BTX-help2"></button>
+                    <button className="BTX-help2" />
                     <p>אוזן קשבת</p>
                 </span>
                 <span className="shareleft">
-                    <button className="BTX-share"></button>
+                    <button className="BTX-share" />
                     <p>שיתוף   </p>
                 </span>
             </button>

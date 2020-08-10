@@ -22,7 +22,8 @@ const Api = {
         return result;
     },
     getStoriesByTags: ({ tags }) => {
-        return get(baseUrl(`getStoriesByTags?${tags}`));
+        return get(baseUrl(`getStoriesByTags`));
+        // return get(baseUrl(`getStoriesByTags?${tags}`)).result;
     },
     getPublicStories: () => {
         return get(baseUrl('getPublicStories'));

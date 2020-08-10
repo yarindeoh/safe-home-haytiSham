@@ -1,12 +1,13 @@
 import React from 'react';
 
 export const StoryHighlight = ({ story, changeLocationByPath }) => {
-    let name = story.name.split('')[0];
-    let time = story.timestamp.split(' ')[0];
+    let name = story.name && story.name.split('')[0];
+    // let time = story.createdAt.split(' ')[0];
+    let time = story.createdAt;
     return (
         <li
             className={'story'}
-            onClick={() => changeLocationByPath(story.id, story)}
+            onClick={() => changeLocationByPath(story._id, story)}
         >
             <figure>
                 <h2>{name}</h2>
