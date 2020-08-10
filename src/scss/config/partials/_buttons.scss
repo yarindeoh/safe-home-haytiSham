@@ -95,11 +95,13 @@
     background-image: url('../../media/icons/share.png');
 }
 
-.BTN-accessibility {
-    height: 32px;
-    width: 100%;
-    position: fixed;
-    left: 8px;
-    top: 54px;
-    background: url('../../media/icons/accessibility.png') no-repeat;
+.AccessibilityButton {
+  height: 32px;
+  width: inherit;
+  position: fixed;
+  left: 8px;
+  top: 54px;
+  background-color: white;
+  border-radius: 50px;
+  z-index: 3;
 }
