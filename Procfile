@@ -1,1 +1,1 @@
-web: gunicorn --chdir server hs_server:app
+web: npm run heroku-prebuild & npm start

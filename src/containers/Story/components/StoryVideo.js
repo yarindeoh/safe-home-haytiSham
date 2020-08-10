@@ -15,13 +15,13 @@ export const StoryVideo = withRoute(props => {
 
     return (
         <div id="story-page-container">
-            <button className="BTN-accessibility" />
+            <button className="BTN-accessibility"></button>
             <header>
                 <ul className="header-menu-container">
                     <button
                         className="BTX-back-white"
                         onClick={() => changeLocationByPath('/')}
-                    />
+                     />
                     <button className="BTN-search" />
                 </ul>
                 <div className="logo" />
