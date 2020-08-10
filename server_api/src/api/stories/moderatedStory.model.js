@@ -5,7 +5,6 @@ const storySchema = new Schema({
     whatTriggeredChange: String,
     howDidYouManged: String,
     additionalnfo: String,
-    mail: String,
     quote: String,
     whatHelpedYou: String, 
     background: String,
