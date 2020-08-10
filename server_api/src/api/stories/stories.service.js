@@ -40,7 +40,10 @@ class StorieService {
 
     createStory(storyInstance){
         storyInstance.moderated = false;
-        return Story.create(storyInstance);
+        const p2 = this.getValueForNextSequence('original_stories').then((number) => {
+            storyInstance.sequence = number;
+            return Story.create(storyInstance);
+        });        
     }
 
     createModeratedStory(storyInstance, originalStoryID){

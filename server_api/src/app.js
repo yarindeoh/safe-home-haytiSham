@@ -26,11 +26,6 @@ app.use(function applyHeaders(req, res, next) {
     next(); 
 });
 
-/* static files */
-const staticPath = path.join(__dirname, '../static');
-console.log("Static files from folder " + staticPath);
-app.use(express.static(staticPath));
-
 /* api router */
 const routes = require("./api/api.routes");
 app.use('/api', routes);
@@ -42,6 +37,11 @@ if(args && args[0] == 'dev'){
     envPath = path.join(__dirname, '../.env-development');
 }
 require('dotenv').config({ path: envPath});
+
+/* static files */
+const staticPath = path.join(__dirname, '../../build');
+console.log("Static files from folder " + staticPath);
+app.use(express.static(staticPath));
 
 /* DB connection */
 const mongoose = require('mongoose');
@@ -62,7 +62,15 @@ const options = {
   mongoose.connect(dbURI, options)
       .then(c => console.log('Db is connected'));
 
+
+
+
+
+
 /* listen on port */
 const port = process.env.PORT || 5000;
 const env = process.env.ENV || '';
-app.listen(port, () => console.log(`Listening on port ${port} configuration  ${env}`));
+app.listen(process.env.PORT || 5000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
+// app.listen(port, () => console.log(`Listening on port ${port} configuration  ${env}`));

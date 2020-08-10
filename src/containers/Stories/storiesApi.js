@@ -8,7 +8,7 @@ function baseUrl(path) {
 
 const Api = {
     getAllData: () => {
-        return get(baseUrl('getAllData'));
+        return get(baseUrl('getStoriesByTags'));
     },
     getAllTags: () => {
         return get(baseUrl('getAllTags'));
@@ -22,7 +22,8 @@ const Api = {
         return result;
     },
     getStoriesByTags: ({ tags }) => {
-        return get(baseUrl(`getStoriesByTags?${tags}`));
+        return get(baseUrl(`getStoriesByTags`));
+        // return get(baseUrl(`getStoriesByTags?${tags}`)).result;
     },
     getPublicStories: () => {
         return get(baseUrl('getPublicStories'));

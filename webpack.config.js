@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const apiMocker = require('webpack-api-mocker');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const dotenv = require('dotenv');
@@ -25,7 +24,6 @@ module.exports = (env, argv) => {
     }, {});
     return {
         performance: { hints: false },
-        mode: argv.mode,
         entry: path.resolve(__dirname, 'src/index.js'),
         devtool: argv.mode === 'development' ? 'inline-source-map' : 'none',
         resolve: {
@@ -40,7 +38,7 @@ module.exports = (env, argv) => {
         },
         output: {
             filename: 'bundle.js',
-            path: path.resolve('server/static'),
+            path: path.resolve('build'),
             publicPath: '/',
         },
         module: {
@@ -67,7 +65,7 @@ module.exports = (env, argv) => {
                             loader: 'file-loader',
                             options: {
                                 output: {
-                                    path: path.join(__dirname, 'server/static'),
+                                    path: path.join(__dirname, 'build'),
                                 },
                             },
                         },
@@ -76,12 +74,12 @@ module.exports = (env, argv) => {
             ],
         },
         devServer: {
-            before(app) {
-                apiMocker(app, path.resolve('./mockers/index.js'), {});
-            },
             port: 9000,
             hot: true,
             historyApiFallback: true,
+            proxy: {
+                '/api': 'localhost:5000'
+            }
         },
         plugins: [
             new webpack.DefinePlugin(envKeys),

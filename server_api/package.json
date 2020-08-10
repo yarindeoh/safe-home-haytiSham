@@ -5,6 +5,7 @@
   "author": "",
   "license": "MIT",
   "main": "app.js",
+  "private": true,
   "scripts": {
     "start": "node ./src/app.js",
     "dev": "node ./src/app.js dev",

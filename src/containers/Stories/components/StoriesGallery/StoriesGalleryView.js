@@ -17,7 +17,7 @@ export const StoriesGalleryView = ({ changeLocationByPath }) => {
                             key={`section${key}`}
                             onClick={() =>
                                 changeLocationByPath(
-                                    `publicStory/${story.id}`,
+                                    `publicStory/${story._id}`,
                                     story
                                 )
                             }

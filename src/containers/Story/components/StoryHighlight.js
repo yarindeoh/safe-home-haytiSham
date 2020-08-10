@@ -2,9 +2,8 @@ import React from 'react';
 import Tag from 'src/components/Tag';
 
 export const StoryHighlight = ({ story, changeLocationByPath }) => {
-    const { id, initials, timestamp, tags, quote } = story;
-    const date = timestamp.split(' ')[0];
-
+    const { id, name, createdAt, tags, quote } = story;
+    let initials = name && name.split('')[0];
     const allTags = () => (
         <div className="tags">
             {tags.map((tag, i) => (
@@ -16,7 +15,7 @@ export const StoryHighlight = ({ story, changeLocationByPath }) => {
     return (
         <li className="story" onClick={() => changeLocationByPath(id, story)}>
             <div className="initials">{initials}</div>
-            <span className="date">{date}</span>
+            <span className="date">{createdAt}</span>
             <p className="text">{quote}</p>
             {allTags()}
         </li>
