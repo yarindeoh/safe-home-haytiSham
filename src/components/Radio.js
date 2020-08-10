@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Radio = ({ label, notes, options, checked }) => {
     return (
-        <div>
+        <div className={'question'}>
             <label>{label}</label>
             <p>{notes}</p>
             <div>

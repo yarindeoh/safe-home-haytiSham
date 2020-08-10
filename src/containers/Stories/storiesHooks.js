@@ -1,7 +1,6 @@
 import Api from 'containers/Stories/storiesApi';
 import { useEffect, useState } from 'react';
 
-
 export const useAllTags = () => {
     const [tags, setTags] = useState();
     useEffect(() => {
@@ -11,6 +10,21 @@ export const useAllTags = () => {
         fetchData();
     }, []);
     return tags;
+};
+
+export const useDisplayedTags = (tags) => {
+    const [showMoreTags, setShowMoreTags] = useState(false);
+    const tags_to_return = showMoreTags ? tags : tags && tags.slice(0, 5);
+
+    function handleShowMoreTagsChange() {
+        setShowMoreTags(showMoreTags => !showMoreTags);
+    }
+
+    return {
+        tags: tags_to_return,
+        showMoreTags,
+        handleShowMoreTagsChange
+    };
 };
 
 export const useFilteredStories = (tags) => {

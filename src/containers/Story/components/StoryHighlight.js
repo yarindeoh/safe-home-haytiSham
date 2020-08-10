@@ -1,19 +1,25 @@
 import React from 'react';
+import Tag from 'src/components/Tag';
 
 export const StoryHighlight = ({ story, changeLocationByPath }) => {
-    let name = story.name && story.name.split('')[0];
-    // let time = story.createdAt.split(' ')[0];
-    let time = story.createdAt;
+    const { id, name, createdAt, tags, quote } = story;
+    let initials = name && name.split('')[0];
+    const allTags = () => (
+        <div className="tags">
+            {tags.map((tag, i) => (
+                <Tag key={`tag_${i}`} text={tag} />
+            ))}
+        </div>
+    );
+
     return (
-        <li
-            className={'story'}
-            onClick={() => changeLocationByPath(story._id, story)}
-        >
-            <figure>
-                <h2>{name}</h2>
-            </figure>
-            <h6>{time}</h6>
-            <p>{story.quote}</p>
+        <li className="story" onClick={() => changeLocationByPath(id, story)}>
+            <div className="initials">{initials}</div>
+            <span className="date">{createdAt}</span>
+            <p className="text">{quote}</p>
+            {allTags()}
         </li>
     );
 };
+
+export default StoryHighlight;

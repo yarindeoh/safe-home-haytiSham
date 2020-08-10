@@ -2,13 +2,14 @@ import React from 'react';
 
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
 import { useSimilarStories } from 'containers/Story/storyHooks';
-import lang from 'services/lang.json';
+import { useTranslation } from 'react-i18next';
 
 export const SimilarStories = ({ tags, changeLocationByPath }) => {
+    const { t } = useTranslation();
     const { stories } = useSimilarStories(tags);
     return (
         <div className={'more-testimonies'}>
-            {lang.additionalStories}
+            {t('additionalStories')}
             <ul className="stories">
                 {stories &&
                     Object.keys(stories).map((index, key) => {

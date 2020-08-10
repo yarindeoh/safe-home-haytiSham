@@ -1,0 +1,53 @@
+@import '../local/_colors.scss';
+@import '../local/_spaces.scss';
+
+.story {
+  direction: ltr;
+  padding: map_get($spaces, small);
+  display: grid;
+  grid-row-gap: 3px;
+  grid-column-gap: map_get($spaces, x-small);
+  grid-template-columns: 6fr 1fr;
+  grid-template-areas:
+          'date letter'
+          'text letter'
+          'tags letter';
+  border-radius: 11px;
+  background-color: map_get($colors, white);
+  box-shadow: 0px 6px 18px rgba(219, 220, 246, 0.36);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .initials {
+    grid-area: letter;
+    align-self: center;
+    justify-self: center;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background-color: map_get($colors, purple-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: normal;
+    color: map_get($colors, purple-400);
+  }
+
+  .date {
+    grid-area: date;
+    font-size: 13px;
+    color: rgba(114, 75, 228, 0.6);
+  }
+
+  .text {
+    grid-area: text;
+    color:  map_get($colors, black);
+  }
+
+  .tags {
+    grid-area: tags;
+  }
+}

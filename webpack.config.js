@@ -54,6 +54,11 @@ module.exports = (env, argv) => {
                     include: path.resolve(__dirname, '../'),
                 },
                 {
+                    test: /\.(svg)$/,
+                    include: [path.join(__dirname, 'src/media/icons')],
+                    loader: ['file-loader']
+                },
+                {
                     test: /\.(jpg|png|gif|ico|ttf|woff|woff2|eot)(\?.*)?$/,
                     use: [
                         {

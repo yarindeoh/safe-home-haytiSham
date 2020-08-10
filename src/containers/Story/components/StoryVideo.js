@@ -4,22 +4,24 @@ import { withRoute } from 'services/routing/routerHOC';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
 import { Footer } from 'components/Footer';
 import { Tags } from 'containers/Story/components/Tags';
+import { useTranslation } from 'react-i18next';
 
-export const StoryViedo = withRoute((props) => {
+export const StoryVideo = withRoute(props => {
+    const { t } = useTranslation();
     const story = props.location.state;
-    const changeLocationByPath = (path) => {
+    const changeLocationByPath = path => {
         props.history.push(path);
     };
 
     return (
         <div id="story-page-container">
-            <button className="BTN-accessibility" />
+            <button className="BTN-accessibility"></button>
             <header>
                 <ul className="header-menu-container">
                     <button
                         className="BTX-back-white"
                         onClick={() => changeLocationByPath('/')}
-                    />
+                     />
                     <button className="BTN-search" />
                 </ul>
                 <div className="logo" />
@@ -28,8 +30,10 @@ export const StoryViedo = withRoute((props) => {
             <div className="quote">
                 <h1>{story.quote}</h1>
                 <h2>
-                    {` צפו בעדות של ${story.storyteller} מתוך קמפיין של פרויקט אוף לייף והעמותה ל.א לאלימות`}
-                    {` שפורסם ב${story.timestamp}`}
+                    {t('storyVideo.campaign', {
+                        storyteller: story.storyteller,
+                        timestamp: story.timestamp
+                    })}
                 </h2>
                 <Tags tags={story.tags} />
                 <div>
@@ -39,7 +43,9 @@ export const StoryViedo = withRoute((props) => {
                 </div>
             </div>
             {/* //TODO */}
-            <SimilarStories tags={['השפלה', 'קנאה']} />
+            <SimilarStories
+                tags={[t('tags.jealousy'), t('tags.humiliation')]}
+            />
             <Footer />
         </div>
     );

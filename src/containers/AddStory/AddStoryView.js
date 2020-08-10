@@ -3,27 +3,21 @@ import { withRoute } from 'services/routing/routerHOC';
 import { Input } from 'components/Input';
 import { Radio } from 'components/Radio';
 import { TextArea } from 'components/TextArea';
-import lang from 'services/lang.json';
+import { useTranslation } from 'react-i18next';
 import { Header } from '../../components/Header';
-
-const uploadVideo = () => {
-    //TODO;
-};
-
-const uploadSound = () => {
-    //TODO;
-};
 
 const submitForm = () => {
     //TODO;
 };
 
-export const AddStoryView = withRoute((props) => {
-    const submit = (e) => {
+export const AddStoryView = withRoute(props => {
+    const { t } = useTranslation();
+
+    const submit = e => {
         e.preventDefault();
         props.history.push('/');
     };
-    const back = (e) => {
+    const back = e => {
         e.preventDefault();
         props.history.push('/');
     };
@@ -32,93 +26,63 @@ export const AddStoryView = withRoute((props) => {
             <div id={'testimony-form'}>
                 <header>
                     <button className={'BTX-back'} onClick={back} />
-                    <h1>העדות שלי</h1>
+                    <h1>{t('addStoryView.myConfession')}</h1>
                 </header>
                 <button className={'BTN-accessibility'} />
-                <h3>
-                    על מנת שנוכל לשמור על צנעת הפרט, נסיר פרטים מזהים של אנשים
-                    אחרים. כמו כן, נשלח הודעה אנונימית לאחר פרסום העדות לאמצעי
-                    שהשארת למטה
-                </h3>
+                <h3>{t('addStoryView.anonymity')}</h3>
                 <form onSubmit={submit}>
                     <Input
                         name="name"
-                        label="תחת איזה שם היית רוצה שהסיפור יפורסם?"
-                        placeholder="שמך המלא או באופן אנונימי/בדוי"
+                        label={t('addStoryView.nameLabel')}
+                        placeholder={t('addStoryView.namePlaceholder')}
                     />
                     <Input
                         name="email"
-                        label="כתובת מייל או טלפון ליצירת קשר (לא חובה, לא יפורסם באתר)"
-                        placeholder="כתובת אימייל"
+                        label={t('addStoryView.emailLabel')}
+                        placeholder={t('addStoryView.emailPlaceholder')}
                     />
                     <Radio
                         name="contact"
-                        label="שניצור איתך קשר לקבלת תמיכה (לא חובה, לא יפורסם)"
-                        notes="אפשר גם ליצור קשר 24/7 דרך כפתור התמיכה"
+                        label={t('addStoryView.contactLabel')}
+                        notes={t('addStoryView.contactNotes')}
                         checked={0}
                         options={[
-                            { value: 'yes', label: 'כן' },
-                            { value: 'no', label: 'לא' },
+                            { value: 'yes', label: t('common.yes') },
+                            { value: 'no', label: t('common.no') }
                         ]}
                     />
-
-                    <div>
-                        <label>אפשר לדלג ולמלא בכתב או:</label>
-                        <div>
-                            <button onClick={uploadVideo}>
-                                {' '}
-                                להעלות סרטון{' '}
-                            </button>
-                            <button onClick={uploadSound}>
-                                {' '}
-                                להעלות הקלטה{' '}
-                            </button>
-                        </div>
-                    </div>
 
                     <TextArea
                         name="background"
                         placeholder=""
-                        label={lang.background}
-                        sublabel={lang.backgroundSublabel}
+                        label={t('background')}
                     />
 
                     <TextArea
                         name="storyContent"
-                        placeholder=""
-                        label={lang.storyContent}
-                        sublabel=""
+                        label={t('storyContent')}
+                        placeholder={t('storyContentPlaceholder')}
                     />
-
                     <TextArea
                         name="howDidYouManged"
-                        placeholder=""
-                        label={lang.howDidYouManged}
-                        sublabel=""
+                        label={t('howDidYouManged')}
+                        placeholder={t('howDidYouMangedPlaceholder')}
                     />
 
                     <TextArea
-                        name="whatTriggeredChange"
-                        placeholder=""
-                        label={lang.whatTriggeredChange}
-                        sublabel=""
-                    />
-
-                    <TextArea
-                        name="howDidYouManged"
-                        placeholder=""
-                        label={lang.howDidYouManged}
-                        sublabel=""
+                        name="whatHelpedYou"
+                        label={t('whatHelpedYou')}
+                        name="whatHelpedYou"
+                        placeholder={t('whatHelpedYouPlaceHolder')}
                     />
 
                     <TextArea
                         name="additionalnfo"
-                        placeholder=""
-                        label={lang.additionalnfo}
-                        sublabel=""
+                        placeholder={t('additionalnfoPlaceHolder')}
+                        label={t('additionalnfo')}
                     />
 
-                    <button onClick={submit}> {lang.submitForm} </button>
+                    <button onClick={submit}> {t('submitForm')} </button>
                 </form>
             </div>
         </>

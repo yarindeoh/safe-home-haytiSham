@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const jwt = require('jsonwebtoken');
 
 const User = require("./user.model");
 
 class UsersService {
     constructor() {
+        this.jwtExpiresInValue = 12 * 60 * 60, // 12 hours;
+        this.jwtSubjectValue = 'login';    
     }
 
     createUser(userName, userPaswword){
@@ -26,6 +29,28 @@ class UsersService {
             return false;
         })
     }
+
+    generateJWTToken(userId, userName) {
+        const jwtSsecret = process.env.JWT_SECRET || '';
+        const options = { expiresIn: this.jwtExpiresInValue, subject:  this.jwtSubjectValue}
+        return jwt.sign({ id: userId, name: userName }, jwtSsecret, options);
+    };
+
+    validateJWTToken(token) {
+        try {
+            const jwtSsecret = process.env.JWT_SECRET || '';
+            var decoded = jwt.verify(token, jwtSsecret);
+            return User.findById(decoded.id).then((user) => {
+                if (user._id) {
+                    return true;
+                }
+                return false;
+            });
+        } catch (err) {
+            return false;
+        }
+    }
+    
 
 }
 module.exports = UsersService;
