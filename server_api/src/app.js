@@ -63,10 +63,6 @@ const options = {
       .then(c => console.log('Db is connected'));
 
 
-
-
-
-
 /* listen on port */
 const port = process.env.PORT || 5000;
 const env = process.env.ENV || '';
