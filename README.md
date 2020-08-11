@@ -71,3 +71,11 @@ http://localhost:5000/api/status
 Specified here, made by Lishay Noam:
 https://www.figma.com/file/UcF9E1rT6rwKIQkkLD5EqN/hayiti_sham?node-id=446%3A286
 
+
+## Server API
+* Login - post - /api/login
+parametesr:
+userName
+password
+For successful login the API return status 200 and JWT token
+This token should be sent as part of all the admin moderator requests
