@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Assistant:regular,bold,italic&subset=latin,latin-ext');
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
 
 @import '../config/_reset.scss';
 @import '../local/_breakpoints.scss';
@@ -14,6 +16,7 @@
 @import 'testimonyForm';
 @import "./HelpButton";
 @import './StoryHightlight';
+@import 'CarrouselItem';
 
 .app {
     background-color: map_get($colors, grey-100);
