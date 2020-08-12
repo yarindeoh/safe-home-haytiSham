@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 
-import { useAllTags, useDisplayedTags } from 'containers/Stories/storiesHooks';
-import TagFilter from 'src/components/TagFilter';
+import {
+    useAllTags,
+    useDisplayedTags,
+    useTagsMap
+} from 'containers/Stories/storiesHooks';
+import TagFilter from 'components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { useTranslation } from 'react-i18next';
 
@@ -10,6 +14,8 @@ export const TagsFilter = ({ changeLocationByPath }) => {
     const { tags, showMoreTags, handleShowMoreTagsChange } = useDisplayedTags(
         useAllTags()
     );
+    // const { tags: dd } = useTagsMap();
+    // console.log(dd);
     const [filteredTags, setFilteredTags] = useState([]);
     return (
         <div className={'stories-gallery-container'}>

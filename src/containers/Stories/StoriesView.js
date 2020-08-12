@@ -6,13 +6,11 @@ import { TagsFilter } from 'containers/Stories/components/TagsFilter';
 import { Header } from 'components/Header';
 import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
-import HelpButton from 'src/components/HelpButton.js';
-import AccessibilityIcon from 'src/media/icons/accessibility.svg';
-
+import HelpButton from 'components/HelpButton.js';
+import AccessibilityIcon from 'media/icons/accessibility.svg';
 
 export const StoriesView = withRoute(props => {
     const { t } = useTranslation();
-
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
     };

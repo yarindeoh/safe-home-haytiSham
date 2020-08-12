@@ -39,3 +39,17 @@ export const useFilteredStories = (tags) => {
         stories: data && data.result,
     };
 };
+
+export const useTagsMap = () => {
+    const [tags, setTags] = useState();
+    useEffect(() => {
+        async function fetchData() {
+            setTags(await Api.getTagsMap());
+        }
+        fetchData();
+    }, [tags]);
+    return {
+        tags
+    };
+};
+
