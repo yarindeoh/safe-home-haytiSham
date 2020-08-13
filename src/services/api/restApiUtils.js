@@ -16,6 +16,7 @@ export async function handleRequest(url, type, options = {}, data = {}) {
     };
     if (type === 'POST') {
         config.body = JSON.stringify(data);
+        console.log("handleRequest -> config.body", config.body)
     }
     try {
         // TODO:: add loader state
