@@ -15,7 +15,7 @@ import { AddStoryContext } from 'containers/AddStory/addStoryContext';
 export const StoriesView = withRoute(props => {
     const { t } = useTranslation();
     const {addStoryData, setAddStoryData} = useContext(AddStoryContext)
-    console.log("addStoryData", addStoryData)
+    //TODO: ADD : YOUR STORY IS SUBMITTED form AddStoryContext
 
 
     const changeLocationByPath = (path, params) => {

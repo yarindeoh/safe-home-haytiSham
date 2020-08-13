@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { Context } from 'services/routing/context';
 import { AddStoryContext } from 'containers/AddStory/addStoryContext';
+import { addStoryDataInit } from 'containers/AddStory/addStoryConstants';
 import { StoriesView } from 'containers/Stories/StoriesView';
 import './scss/componentsStyle/App.scss';
 import { StoryView } from 'containers/Story/StoryView';
@@ -10,20 +11,6 @@ import { StoryVideo } from 'containers/Story/components/StoryVideo';
 import { createBrowserHistory } from 'history';
 
 export const history = createBrowserHistory();
-
-export const addStoryDataInit = {
-    additionalnfo: "",
-    background: "",
-    email: "",
-    howDidYouManged: "",
-    name: "",
-    quote: "",
-    storyContent: "",
-    whatHelpedYou: "",
-    whatTriggeredChange: "",
-    contact: true,
-    submitted: false
-}
 
 export const App = () => {
     const [addStoryData, setAddStoryData] = useState(addStoryDataInit);    
