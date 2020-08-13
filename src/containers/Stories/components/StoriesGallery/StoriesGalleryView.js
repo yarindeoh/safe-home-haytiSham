@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Slider from 'react-slick';
 import { PUBLIC_STORIES } from 'containers/Stories/components/StoriesGallery/storiesGalleryConstants';
 import { useTranslation } from 'react-i18next';
-import { CarrouselItem } from './CarrouselItem';
+import { CarouselItem } from './CarouselItem';
 
 export const StoriesGalleryView = ({ changeLocationByPath }) => {
 
@@ -35,7 +35,7 @@ export const StoriesGalleryView = ({ changeLocationByPath }) => {
         <div className={'stories-carousel-container'}>
             <Slider {...sliderSettings}>
                 {PUBLIC_STORIES.map((story, key) => (
-                    <CarrouselItem
+                    <CarouselItem
                         key={key}
                         story={story}
                         onClick={onClickItem}

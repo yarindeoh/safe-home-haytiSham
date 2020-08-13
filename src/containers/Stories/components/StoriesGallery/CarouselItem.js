@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export function CarrouselItem({ story, isSelected, onClick }) {
+export function CarouselItem({ story, isSelected, onClick }) {
     const { t } = useTranslation();
     const { id, tags, quote, img, timestamp, storyteller } = story;
 
@@ -17,14 +17,12 @@ export function CarrouselItem({ story, isSelected, onClick }) {
         </ul>
     );
 
-    const wrapperClassName = 'CarruselItemWrapper';
-
     return (
-        <div className={wrapperClassName} onClick={handleClick}>
+        <div className="CarouselItemWrapper" onClick={handleClick}>
             <img src={require(`src/media/videosImages/${img}`)} />
-            <div className="CarruselItemTextWrapper">
-                <h1 className="CarruselItemQuote">"{quote}"</h1>
-                <h2 className="CarruselItemBy">
+            <div className="CarouselItemTextWrapper">
+                <h1 className="CarouselItemQuote">"{quote}"</h1>
+                <h2 className="CarouselItemBy">
                     {t('storiesGalleryView.confessionOf', {
                         name: storyteller,
                         date: timestamp
