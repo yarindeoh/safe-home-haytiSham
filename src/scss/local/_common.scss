@@ -47,6 +47,10 @@
             background-color: map_get($colors, purple-200);
             color: inherit;
 
+          .CloseIcon {
+            cursor: pointer;
+          }
+
             .MainTitle {
                 color: inherit;
                 font-size: 32px;

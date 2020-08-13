@@ -31,7 +31,7 @@ export const Header = ({ isMainHeader = false, history }) => {
         <div className="AppHeader">
             <div className={`Menu ${showMenu ? 'Visible' : ''}`}>
                 <div className="Title">
-                    <XIcon onClick={toggleMenu} />
+                    <XIcon className="CloseIcon" onClick={toggleMenu} />
                     <div className="MainTitle">#הייתי_שם</div>
                     <div className="SubTitle">עדויות ממערכות יחסים אלימות</div>
                 </div>
