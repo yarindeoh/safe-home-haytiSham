@@ -3,7 +3,7 @@ import { withRoute } from 'services/routing/routerHOC';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
 import { Footer } from 'components/Footer';
 import { Tags } from 'containers/Story/components/Tags';
-import { getPublicStoryById } from 'containers/Stories/components/StoriesGallery/storiesGalleryConstants';
+import { getPublicStoryById } from 'src/constants/publicStories';
 import { useTranslation } from 'react-i18next';
 
 export const StoryVideo = withRoute(props => {
