@@ -19,10 +19,10 @@ class StorieController {
 
     addStory(req, res) {
         const instance = {
-            whatTriggeredChange: req.body.whatTriggeredChange || '',
+            whatTriggeredChange: req.body.whatTriggeredChange,
             howDidYouManged: req.body.howDidYouManged,
             additionalnfo: req.body.additionalnfo,            
-            quote: req.body.quote || '',
+            quote: req.body.quote,
             whatHelpedYou: req.body.whatHelpedYou,
             background: req.body.background,
             storyContent: req.body.storyContent,

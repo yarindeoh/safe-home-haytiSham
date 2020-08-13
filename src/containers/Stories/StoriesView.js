@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import { withRoute } from 'services/routing/routerHOC';
 import { StoriesGalleryView } from 'containers/Stories/components/StoriesGallery/StoriesGalleryView';
@@ -8,10 +8,15 @@ import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
 import HelpButton from 'src/components/HelpButton.js';
 import AccessibilityIcon from 'src/media/icons/accessibility.svg';
+import { AddStoryContext } from 'containers/AddStory/addStoryContext';
+
 
 
 export const StoriesView = withRoute(props => {
     const { t } = useTranslation();
+    const {addStoryData, setAddStoryData} = useContext(AddStoryContext)
+    console.log("addStoryData", addStoryData)
+
 
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);

@@ -11,8 +11,22 @@ import { createBrowserHistory } from 'history';
 
 export const history = createBrowserHistory();
 
+export const addStoryDataInit = {
+    additionalnfo: "",
+    background: "",
+    email: "",
+    howDidYouManged: "",
+    name: "",
+    quote: "",
+    storyContent: "",
+    whatHelpedYou: "",
+    whatTriggeredChange: "",
+    contact: true,
+    submitted: false
+}
+
 export const App = () => {
-    const [addStoryData, setAddStoryData] = useState({a:1});
+    const [addStoryData, setAddStoryData] = useState(addStoryDataInit);    
     return (
     <Context.Provider history={history}>
         <AddStoryContext.Provider value={{addStoryData, setAddStoryData}}>

@@ -10,34 +10,37 @@ import { AddStoryContext } from './addStoryContext';
 import Api from './addStoryApi';
 
 
-const formToJSON = elements => [].reduce.call(elements, (data, element) => {
-    if(element.type !== "submit"){
-        data[element.name] = element.value;
-    }
-    return data;
-}, {});
-
-
 const submitForm = () => {
     //TODO;
 };
 
 export const AddStoryView = withRoute(props => {
     const { t } = useTranslation();
-    const [checkedContact, setCheckedContact] = useState(0)
+    // const [checkedContact, setCheckedContact] = useState(0)
     const {addStoryData, setAddStoryData} = useContext(AddStoryContext)
 
+    const handleFiledChange = (e, filed) => {
+        let newAddStoryData = {...addStoryData};
+        newAddStoryData[filed] = e.target.value;
+        setAddStoryData(newAddStoryData)
+    }
+
    const submit = e => {
-       e.preventDefault();
-        const form = document.getElementById('addStoryForm');
-        const data = formToJSON(form.elements);
-        console.log("data", data)
-    
+        e.preventDefault();
+        let addStoryDataToPost = {...addStoryData}
+        delete addStoryDataToPost.submitted;
+
         async function postData() {
-            setAddStoryData(await Api.postAddStory(data));
-        }
-        postData();
-        props.history.push('/');
+            try{
+                await Api.postAddStory(addStoryDataToPost);
+                setAddStoryData({...addStoryData, submitted: true})
+                props.history.push('/');
+            }
+            catch(e){
+                window.alert(e)
+            }
+        }   
+        postData()
     };
 
     const back = e => {
@@ -53,16 +56,20 @@ export const AddStoryView = withRoute(props => {
                 </header>
                 <button className={'BTN-accessibility'} />
                 <h3>{t('addStoryView.anonymity')}</h3>
-                <form onSubmit={submit} id={"addStoryForm"} onChange={()=>console.log("heyyy")}>
+                <form onSubmit={submit} id={"addStoryForm"}>
                     <Input
                         name="name"
                         label={t('addStoryView.nameLabel')}
                         placeholder={t('addStoryView.namePlaceholder')}
+                        value={addStoryData.name}
+                        onChange={(e)=>handleFiledChange(e, "name")}
                     />
                     <Input
                         name="email"
                         label={t('addStoryView.emailLabel')}
                         placeholder={t('addStoryView.emailPlaceholder')}
+                        value={addStoryData.email}
+                        onChange={(e)=>handleFiledChange(e, "email")}
                     />
                     {/* <Radio
                         name="contact"
@@ -80,33 +87,60 @@ export const AddStoryView = withRoute(props => {
                         name="background"
                         placeholder=""
                         label={t('background')}
+                        value={addStoryData.background}
+                        onChange={(e)=>handleFiledChange(e, "background")}
+                        required
                     />
 
                     <TextArea
                         name="storyContent"
                         label={t('storyContent')}
                         placeholder={t('storyContentPlaceholder')}
+                        value={addStoryData.storyContent}
+                        onChange={(e)=>handleFiledChange(e, "storyContent")}
+                        required
                     />
                     <TextArea
                         name="howDidYouManged"
                         label={t('howDidYouManged')}
                         placeholder={t('howDidYouMangedPlaceholder')}
+                        onChange={(e)=>handleFiledChange(e, "howDidYouManged")}
+                        required
                     />
 
                     <TextArea
                         name="whatHelpedYou"
                         label={t('whatHelpedYou')}
-                        name="whatHelpedYou"
                         placeholder={t('whatHelpedYouPlaceHolder')}
+                        onChange={(e)=>handleFiledChange(e, "whatHelpedYou")}
+                        required
+                    />
+
+                    <TextArea
+                        name="whatTriggeredChange"
+                        label={t('whatTriggeredChange')}
+                        placeholder={t('whatTriggeredChangePlaceHolder')}
+                        onChange={(e)=>handleFiledChange(e, "whatTriggeredChange")}
+                        required
+                    />
+
+                    <TextArea
+                        name="quote"
+                        label={t('quote')}
+                        placeholder={t('quotePlaceHolder')}
+                        onChange={(e)=>handleFiledChange(e, "quote")}
+                        required
                     />
 
                     <TextArea
                         name="additionalnfo"
                         placeholder={t('additionalnfoPlaceHolder')}
                         label={t('additionalnfo')}
+                        onChange={(e)=>handleFiledChange(e, "additionalnfo")}
+                        required
                     />
 
-                    <button onClick={submit}> {t('submitForm')} </button>
+                    <input className="submit-button" type="submit"/>
                 </form>
             </div>
         </>
