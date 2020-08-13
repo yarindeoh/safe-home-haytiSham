@@ -3,7 +3,7 @@ import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import Carousel from 'containers/Stories/components/Carousel/Carousel';
 import { TagsFilter } from 'containers/Stories/components/TagsFilter';
-import { Header } from 'components/Header';
+import Header from 'src/components/Header';
 import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
 import HelpButton from 'src/components/HelpButton.js';
@@ -17,7 +17,7 @@ export const StoriesView = withRoute(props => {
     };
     return (
         <div className="app">
-            <Header />
+            <Header isMainHeader={true} />
             <AccessibilityIcon className="AccessibilityButton" />
             <h4 className={'const-text'}>{t('storiesView.header')}</h4>
             <Carousel changeLocationByPath={changeLocationByPath} />

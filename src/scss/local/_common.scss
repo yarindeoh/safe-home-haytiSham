@@ -2,38 +2,84 @@
 @import '../local/_spaces.scss';
 @import '../local/_breakpoints.scss';
 
-header {
+.AppHeader {
     width: 100%;
     height: 46px;
     position: fixed;
-    z-index: 2;
+    top: 0;
+    left: 0;
+    z-index: 3;
     background-color: map_get($colors, black);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    top: 0;
-    left: 0;
+    font-size: 27px;
+    line-height: 35px;
 
-    button {
-        height: 100%;
-        width: 50px;
-        background-color: transparent;
+    span {
+        color: map_get($colors, white);
     }
 
-    >ul {
-        height: 100%;
+    & > svg {
+        margin: 18px;
+        cursor: pointer;
+    }
 
-        >button:not(:first-of-type) {
-            margin-right: 5px;
+    .Menu {
+        width: 0;
+        background-color: white;
+        color: map_get($colors, black);
+        height: 640px;
+        z-index: 4;
+        position: fixed;
+        left: 0;
+        top: 0;
+        transition: 0.3s;
+        display: flex;
+        flex-direction: column;
+
+        &.Visible {
+            width: 288px;
         }
-    }
 
-    .logo {
-        margin-left: 50px;
-        margin-bottom: 6px;
-        width: 114px;
-        height: 29px;
-        background-image: url('../../media/icons/logo.png');
+        .Title {
+            padding: 8px 28px 16px;
+            background-color: map_get($colors, purple-200);
+            color: inherit;
+
+            .MainTitle {
+                color: inherit;
+                font-size: 32px;
+                line-height: 42px;
+            }
+
+            .SubTitle {
+                color: inherit;
+                font-size: 18px;
+            }
+        }
+
+        .Items {
+            color: inherit;
+            padding: 28px;
+            flex: 1;
+            width: fit-content;
+
+            div {
+                color: inherit;
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 20px;
+
+                &.Bold {
+                    color: map_get($colors, purple-500);
+                }
+                &.EndSection {
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid  map_get($colors, black);
+                }
+            }
+        }
     }
 }
 

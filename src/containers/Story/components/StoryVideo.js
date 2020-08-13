@@ -5,6 +5,7 @@ import { Footer } from 'components/Footer';
 import { Tags } from 'containers/Story/components/Tags';
 import { getPublicStoryById } from 'src/constants/publicStories';
 import { useTranslation } from 'react-i18next';
+import Header from 'src/components/Header';
 
 export const StoryVideo = withRoute(props => {
     const { t } = useTranslation();
@@ -16,7 +17,7 @@ export const StoryVideo = withRoute(props => {
     return (
         <div id="story-page-container">
             <button className="BTN-accessibility"></button>
-            <header>
+{/*            <header>
                 <ul className="header-menu-container">
                     <button
                         className="BTX-back-white"
@@ -26,7 +27,8 @@ export const StoryVideo = withRoute(props => {
                 </ul>
                 <div className="logo" />
                 <button className="BTN-lang-changer" />
-            </header>
+            </header>*/}
+            <Header />
             <div className="quote">
                 <h1>{story.quote}</h1>
                 <h2>
