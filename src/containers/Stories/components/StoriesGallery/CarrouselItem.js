@@ -21,7 +21,7 @@ export function CarrouselItem({ story, isSelected, onClick }) {
 
     return (
         <div className={wrapperClassName} onClick={handleClick}>
-            <img src={`src/media/videosImages/${img}`} />
+            <img src={require(`src/media/videosImages/${img}`)} />
             <div className="CarruselItemTextWrapper">
                 <h1 className="CarruselItemQuote">"{quote}"</h1>
                 <h2 className="CarruselItemBy">
