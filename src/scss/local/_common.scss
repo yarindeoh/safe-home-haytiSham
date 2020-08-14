@@ -25,65 +25,79 @@
         cursor: pointer;
     }
 
+    .DarkFilter {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: 0.6;
+        z-index: 3;
+    }
+
     .Menu {
         width: 0;
         background-color: white;
         color: map_get($colors, black);
-        height: 640px;
-        z-index: 4;
+        height: 100%;
         position: fixed;
         left: 0;
         top: 0;
         transition: 0.3s;
         display: flex;
         flex-direction: column;
+        z-index: 4;
 
         &.Visible {
             width: 288px;
         }
 
         .Title {
-            padding: 8px 28px 16px;
-            background-color: map_get($colors, purple-200);
-            color: inherit;
-
-          .CloseIcon {
-            cursor: pointer;
-          }
-
-            .MainTitle {
+                padding: 8px 28px 16px;
+                background-color: map_get($colors, purple-200);
                 color: inherit;
-                font-size: 32px;
-                line-height: 42px;
-            }
 
-            .SubTitle {
-                color: inherit;
-                font-size: 18px;
+                .CloseIcon {
+                    cursor: pointer;
+                }
+
+                .MainTitle {
+                    color: inherit;
+                    font-size: 32px;
+                    line-height: 42px;
+                }
+
+                .SubTitle {
+                    color: inherit;
+                    font-size: 18px;
+                }
             }
-        }
 
         .Items {
-            color: inherit;
-            padding: 28px;
-            flex: 1;
-            width: fit-content;
-
-            div {
                 color: inherit;
-                font-size: 18px;
-                line-height: 24px;
-                margin-bottom: 20px;
+                padding: 28px;
+                flex: 1;
+                width: fit-content;
 
-                &.Bold {
-                    color: map_get($colors, purple-500);
-                }
-                &.EndSection {
-                    padding-bottom: 20px;
-                    border-bottom: 1px solid  map_get($colors, black);
+                div {
+                    color: inherit;
+                    font-size: 18px;
+                    line-height: 24px;
+                    margin-bottom: 20px;
+
+                    &.Bold {
+                        color: map_get($colors, purple-500);
+                    }
+                    &.EndSection {
+                        padding-bottom: 20px;
+                        border-bottom: 1px solid  map_get($colors, black);
+                    }
+                    &.Clickable {
+                        cursor: pointer;
+                    }
                 }
             }
-        }
     }
 }
 
