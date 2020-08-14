@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import HamburgerIcon from 'src/media/icons/hamburger.svg';
 import ArrowBackIcon from 'src/media/icons/ArrowBack.svg';
 import SearchIcon from 'src/media/icons/Search.svg';
 import Menu from 'src/components/Menu';
 
-export const Header = ({ isMainHeader = false, history }) => {
+export const Header = ({ isMainHeader = false }) => {
     const [showMenu, setShowMenu] = useState(false);
+    let history = useHistory();
 
     const toggleMenu = () => {
         setShowMenu(!showMenu);
