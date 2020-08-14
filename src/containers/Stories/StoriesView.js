@@ -7,7 +7,7 @@ import Header from 'src/components/Header';
 import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
 import HelpButton from 'src/components/HelpButton.js';
-import AccessibilityIcon from 'src/media/icons/accessibility.svg';
+import { Skeleton } from 'src/components/Skeleton';
 
 export const StoriesView = withRoute(props => {
     const { t } = useTranslation();
@@ -16,9 +16,7 @@ export const StoriesView = withRoute(props => {
         props.history.push(path, params);
     };
     return (
-        <div className="app">
-            <Header isMainHeader={true} />
-            <AccessibilityIcon className="AccessibilityButton" />
+        <Skeleton isMainHeader={true}>
             <h4 className={'const-text'}>{t('storiesView.header')}</h4>
             <Carousel changeLocationByPath={changeLocationByPath} />
             <button
@@ -30,6 +28,6 @@ export const StoriesView = withRoute(props => {
             <TagsFilter changeLocationByPath={changeLocationByPath} />
             <HelpButton />
             <Footer />
-        </div>
+        </Skeleton>
     );
 });

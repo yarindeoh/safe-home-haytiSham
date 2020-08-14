@@ -101,6 +101,10 @@
     }
 }
 
+.Content {
+  padding-top: 62px;
+}
+
 .tags-filter-container {
     display: flex;
     margin: 0 0 map_get($spaces, medium);
@@ -136,8 +140,7 @@
 
 .const-text {
     color: map_get($colors, black);
-    margin: 46px 0 map_get($spaces, small);
-    padding-top: map_get($spaces, small);
+    margin: 0 0 map_get($spaces, small);
     grid-area: const-text;
     justify-self: center;
     align-self: flex-start;

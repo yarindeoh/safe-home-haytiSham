@@ -18,7 +18,7 @@
 @import './StoryHightlight';
 @import 'CarouselItem';
 
-.app {
+#root {
     background-color: map_get($colors, grey-100);
 }
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
 import HamburgerIcon from 'src/media/icons/hamburger.svg';
 import ArrowBackIcon from 'src/media/icons/ArrowBack.svg';
 import SearchIcon from 'src/media/icons/Search.svg';
@@ -16,7 +15,7 @@ export const Header = ({ isMainHeader = false, history }) => {
         history.goBack();
     };
 
-    const goTo = (path) => {
+    const goTo = path => {
         history.push(path);
     };
 
@@ -34,4 +33,4 @@ export const Header = ({ isMainHeader = false, history }) => {
     );
 };
 
-export default withRouter(Header);
+export default Header;
