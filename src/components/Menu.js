@@ -1,19 +1,21 @@
 import React from 'react';
 import XIcon from 'src/media/icons/X.svg';
+import { useTranslation } from "react-i18next";
 
 const PAGES = [
-    { title: 'מי אנחנו' },
-    { title: 'עזרה וסיוע' },
-    { title: 'סימני אזהרה', isBold: true },
-    { title: 'סטטיסטיקה' },
-    { title: 'שליחת עדות', path: '/addStory' },
-    { title: 'פורום מיכל סלה' },
-    { title: 'נגישות' },
-    { title: 'תמיכה טכנית' }
+    { title: 'whoWeAre' },
+    { title: 'getHelp' },
+    { title: 'warningSigns', isBold: true },
+    { title: 'statistic' },
+    { title: 'testimonySubmission', path: '/addStory' },
+    { title: 'michalSelaForum' },
+    { title: 'accessability' },
+    { title: 'technicSupport' }
 ];
 
 export function Menu(props) {
     const { show, onToggle, onGoTo } = props;
+    const { t } = useTranslation();
 
     return (
         <React.Fragment>
@@ -21,8 +23,8 @@ export function Menu(props) {
             <div className={`Menu ${show ? 'Visible' : ''}`}>
                 <div className="Title">
                     <XIcon className="CloseIcon" onClick={onToggle} />
-                    <div className="MainTitle">#הייתי_שם</div>
-                    <div className="SubTitle">עדויות ממערכות יחסים אלימות</div>
+                    <div className="MainTitle">{t('common.iHaveBeenThereHashtag')}</div>
+                    <div className="SubTitle">{t('testimoniesFromRelationships')}</div>
                 </div>
                 <ul className="Items">
                     {PAGES.map(({ title, isBold, path }, index) => {
@@ -39,7 +41,7 @@ export function Menu(props) {
                                 className={className}
                                 onClick={() => path && onGoTo(path)}
                             >
-                                {title}
+                                {t(title)}
                             </div>
                         );
                     })}
