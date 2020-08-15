@@ -42,6 +42,7 @@ const he = {
             'קו החירום החברתי של \n משרד העבודה והרווחה',
         IHaveBeenThere2020: 'הייתי שם 2020',
         privacyPolicy: 'מדיניות הפרטיות',
+        testimoniesFromRelationships: 'עדויות ממערכות יחסים אלימות',
         storiesView: {
             header: 'בית לעדויות ממערכות יחסים אלימות',
             addStory: 'לשליחת העדות שלך'

@@ -11,13 +11,14 @@
 
 @import "./Tag";
 @import 'Carousel';
+@import 'storiesGallery';
 @import 'story-page-container';
 @import 'testimonyForm';
 @import "./HelpButton";
 @import './StoryHightlight';
 @import 'CarouselItem';
 
-.app {
+#root {
     background-color: map_get($colors, grey-100);
 }
 

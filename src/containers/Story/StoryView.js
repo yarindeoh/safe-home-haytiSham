@@ -1,11 +1,11 @@
 import React from 'react';
-
 import { withRoute } from 'services/routing/routerHOC';
 import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
 import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
+import Skeleton from 'src/components/Skeleton';
 
 export const StoryView = withRoute(props => {
     const { t } = useTranslation();
@@ -21,20 +21,8 @@ export const StoryView = withRoute(props => {
         'whatHelpedYou',
         'storyContent'
     ]);
-    return (
+    return (<Skeleton>
         <div id={'story-page-container'}>
-            <header>
-                <ul className={'header-menu-container'}>
-                    <button
-                        className={'BTX-back-white'}
-                        onClick={() => changeLocationByPath('/')}
-                    />
-                    <button className={'BTN-search'} />
-                </ul>
-                <div className={'logo'} />
-                <button className={'BTN-lang-changer'} />
-            </header>
-            <button className={'BTN-accessibility'} />
             <div className={'quote'}>
                 <h1>"{story.quote}"</h1>
                 <h2>
@@ -70,5 +58,6 @@ export const StoryView = withRoute(props => {
             </button>
             <Footer />
         </div>
+        </Skeleton>
     );
 });
