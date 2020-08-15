@@ -1,41 +1,53 @@
 import Api from 'containers/Stories/storiesApi';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+
+import { getSlicedTagsObj } from 'services/general/generalHelpers';
 
 export const useAllTags = () => {
     const [tags, setTags] = useState();
     useEffect(() => {
-        async function fetchData() {
-            setTags(await Api.getAllTags());
-        }
-        fetchData();
+        (async function fetchData() {
+            setTags(await Api.getTagsMap());
+        })();
     }, []);
     return tags;
 };
 
-export const useDisplayedTags = (tags) => {
+export const useDisplayedTags = tags => {
     const [showMoreTags, setShowMoreTags] = useState(false);
-    const tags_to_return = showMoreTags ? tags : tags && tags.slice(0, 5);
 
-    function handleShowMoreTagsChange() {
-        setShowMoreTags(showMoreTags => !showMoreTags);
-    }
-
+    const tagsToReturn = showMoreTags
+        ? tags
+        : tags && getSlicedTagsObj(tags, 0, 5);
     return {
-        tags: tags_to_return,
+        tags: tagsToReturn,
         showMoreTags,
-        handleShowMoreTagsChange
+        handleShowMoreTagsChange: useCallback(() => {
+            setShowMoreTags(showMoreTags => !showMoreTags);
+        }, [])
     };
 };
 
-export const useFilteredStories = (tags) => {
-    const [data, setData] = useState();
+export const useFilteredStories = tags => {
+    const [stories, setStories] = useState();
     useEffect(() => {
-        async function fetchData() {
-            setData(await Api.getStoriesByTags(tags || []));
-        }
-        fetchData();
+        (async () => {
+            await setStories(await Api.getStoriesByTags(tags || []));
+        })();
     }, [tags]);
     return {
-        stories: data && data.result,
+        stories: stories?.result
+    };
+};
+
+export const useTagsMap = () => {
+    const [tags, setTags] = useState();
+    useEffect(() => {
+        (async function fetchData() {
+            setTags(await Api.getAllTags());
+        })();
+    }, [tags]);
+    return {
+        tags
     };
 };

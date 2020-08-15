@@ -32,14 +32,15 @@ module.exports = (env, argv) => {
                 resources: path.resolve(__dirname, 'resources'),
                 src: path.resolve(__dirname, 'src'),
                 components: path.resolve(__dirname, 'src/components'),
-                containers: path.resolve(__dirname, 'src/containers'),
                 services: path.resolve(__dirname, 'src/services'),
-            },
+                media: path.resolve(__dirname, 'src/media'),
+                containers: path.resolve(__dirname, 'src/containers')
+            }
         },
         output: {
             filename: 'bundle.js',
             path: path.resolve('build'),
-            publicPath: '/',
+            publicPath: '/'
         },
         module: {
             rules: [
@@ -51,7 +52,7 @@ module.exports = (env, argv) => {
                 {
                     test: /\.(css|scss)$/,
                     loaders: ['style-loader', 'css-loader', 'sass-loader'],
-                    include: path.resolve(__dirname, '../'),
+                    include: path.resolve(__dirname, '../')
                 },
                 {
                     test: /\.(svg)$/,
@@ -64,13 +65,13 @@ module.exports = (env, argv) => {
                             loader: 'file-loader',
                             options: {
                                 output: {
-                                    path: path.join(__dirname, 'build'),
-                                },
-                            },
-                        },
-                    ],
-                },
-            ],
+                                    path: path.join(__dirname, 'build')
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
         },
         devServer: {
             port: 9000,
@@ -84,8 +85,8 @@ module.exports = (env, argv) => {
             new webpack.DefinePlugin(envKeys),
             new HtmlWebpackPlugin({
                 filename: 'index.html',
-                template: path.resolve(__dirname, 'index.html'),
-            }),
-        ],
+                template: path.resolve(__dirname, 'index.html')
+            })
+        ]
     };
 };
