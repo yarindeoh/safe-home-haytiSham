@@ -5,13 +5,16 @@ class StorieController {
         this.storieService = new StorieService();
     }
 
-    getStoriesByTags(req,res) {
-        //TODO read parameters from the request
-        let tags = '';
-        let page = 1;
-        let pageSize = 100;
-        let sortField = "createdAt";
-        let sortDirection = "ASC";
+    getStoriesByTags(req,res) {        
+        let tags = req.query.tags || '';
+        if(tags){
+            tags = JSON.parse(tags);
+            tags = tags.map(x => Number(x)); 
+        }
+        let page = parseInt(req.query.page) || 1;
+        let pageSize = parseInt(req.query.page) || 100;
+        let sortField = req.query.sortField || "sequence";
+        let sortDirection = req.query.sortDirection || "DESC";
         return this.storieService.listByTags(tags, page, pageSize, sortField, sortDirection).then((data) =>{
             res.json(data);
         });  
@@ -55,11 +58,10 @@ class StorieController {
     }
 
     getStortiesForModeration(req,res){
-        //TODO read parameters from the request
-        let page = 1;
-        let pageSize = 100;
-        let sortField = "createdAt";
-        let sortDirection = "ASC";
+        let page = parseInt(req.query.page) || 1;
+        let pageSize = parseInt(req.query.page) || 100;
+        let sortField = req.query.sortField || "sequence";
+        let sortDirection = req.query.sortDirection || "DESC";
         return this.storieService.listStriesToModerate(page, pageSize, sortField, sortDirection).then((data) =>{
             res.json(data);
         });     

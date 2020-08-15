@@ -1,11 +1,11 @@
 import React from 'react';
-
 import { withRoute } from 'services/routing/routerHOC';
 import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
 import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
+import Skeleton from 'src/components/Skeleton';
 
 export const StoryView = withRoute(props => {
     const { t } = useTranslation();
@@ -13,7 +13,7 @@ export const StoryView = withRoute(props => {
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
     };
-    const proccessedStory = extractFieldsFromObj(story, [
+    const processedStory = extractFieldsFromObj(story, [
         'background',
         'whatTriggeredChange',
         'howDidYouManged',
@@ -21,20 +21,8 @@ export const StoryView = withRoute(props => {
         'whatHelpedYou',
         'storyContent'
     ]);
-    return (
+    return (<Skeleton>
         <div id={'story-page-container'}>
-            <header>
-                <ul className={'header-menu-container'}>
-                    <button
-                        className={'BTX-back-white'}
-                        onClick={() => changeLocationByPath('/')}
-                    />
-                    <button className={'BTN-search'} />
-                </ul>
-                <div className={'logo'} />
-                <button className={'BTN-lang-changer'} />
-            </header>
-            <button className={'BTN-accessibility'} />
             <div className={'quote'}>
                 <h1>"{story.quote}"</h1>
                 <h2>
@@ -46,11 +34,11 @@ export const StoryView = withRoute(props => {
                 </h2>
                 <Tags tags={story.tags} />
             </div>
-            {proccessedStory &&
-                Object.keys(proccessedStory).map((item, key) => (
+            {processedStory &&
+                Object.keys(processedStory).map((item, key) => (
                     <div key={key}>
                         <h6>{t(item)}</h6>
-                        <span>{proccessedStory[item]}</span>
+                        <span>{processedStory[item]}</span>
                         <br />
                     </div>
                 ))}
@@ -65,10 +53,11 @@ export const StoryView = withRoute(props => {
                 </span>
                 <span className="shareleft">
                     <button className="BTX-share" />
-                    <p>שיתוף   </p>
+                    <p>שיתוף </p>
                 </span>
             </button>
             <Footer />
         </div>
+        </Skeleton>
     );
 });

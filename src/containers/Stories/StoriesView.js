@@ -1,29 +1,25 @@
 import React, {useContext} from 'react';
 
 import { withRoute } from 'services/routing/routerHOC';
-import { StoriesGalleryView } from 'containers/Stories/components/StoriesGallery/StoriesGalleryView';
+import Carousel from 'containers/Stories/components/Carousel/Carousel';
 import { TagsFilter } from 'containers/Stories/components/TagsFilter';
-import { Header } from 'components/Header';
+import Header from 'src/components/Header';
 import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
-import HelpButton from 'src/components/HelpButton.js';
-import AccessibilityIcon from 'src/media/icons/accessibility.svg';
 
+import HelpButton from 'src/components/HelpButton.js';
+import { Skeleton } from 'src/components/Skeleton';
 
 
 export const StoriesView = withRoute(props => {
     const { t } = useTranslation();
-
-
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
     };
     return (
-        <div className="app">
-            <Header />
-            <img className="AccessibilityButton" src={AccessibilityIcon} />
+        <Skeleton isMainHeader={true}>
             <h4 className={'const-text'}>{t('storiesView.header')}</h4>
-            <StoriesGalleryView changeLocationByPath={changeLocationByPath} />
+            <Carousel changeLocationByPath={changeLocationByPath} />
             <button
                 className={'BTN-send-testimony'}
                 onClick={() => props.history.push('addStory')}
@@ -33,6 +29,6 @@ export const StoriesView = withRoute(props => {
             <TagsFilter changeLocationByPath={changeLocationByPath} />
             <HelpButton />
             <Footer />
-        </div>
+        </Skeleton>
     );
 });
