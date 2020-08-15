@@ -4,7 +4,6 @@ import { Input } from 'components/Input';
 import { Radio } from 'components/Radio';
 import { TextArea } from 'components/TextArea';
 import { useTranslation } from 'react-i18next';
-import { Header } from '../../components/Header';
 import { AddStoryContext } from './addStoryContext';
 import { addStoryDataInit } from './addStoryConstants';
 
