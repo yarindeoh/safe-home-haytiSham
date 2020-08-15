@@ -1,13 +1,13 @@
 export const addStoryDataInit = {
     additionalnfo: "",
     background: "",
-    email: "",
+    mail: "",
     howDidYouManged: "",
     name: "",
     quote: "",
     storyContent: "",
     whatHelpedYou: "",
     whatTriggeredChange: "",
-    // contact: true,
+    contact: true,
     submitted: false
 }
