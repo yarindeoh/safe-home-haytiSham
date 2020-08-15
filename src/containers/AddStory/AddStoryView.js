@@ -6,6 +6,7 @@ import { TextArea } from 'components/TextArea';
 import { useTranslation } from 'react-i18next';
 import { AddStoryContext } from './addStoryContext';
 import { addStoryDataInit } from './addStoryConstants';
+import BackArrowIcon from 'src/media/icons/backArrow.svg';
 
 import Api from './addStoryApi';
 
@@ -67,7 +68,7 @@ export const AddStoryView = withRoute(props => {
             :
             <div id={'testimony-form'}>
                 <header>
-                    <button className={'BTX-back'} onClick={back} />
+                    <BackArrowIcon className={'back-arrow-icon'} onClick={back}/>
                     <h1>{t('addStoryView.myConfession')}</h1>
                 </header>
                 <button className={'BTN-accessibility'} />

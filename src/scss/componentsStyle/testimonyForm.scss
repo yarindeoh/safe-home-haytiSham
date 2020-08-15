@@ -12,15 +12,23 @@
   
   header {
     position: static;
+    margin: 10px 0;
     background-color: map_get($colors, grey-300);
-    justify-content: flex-start;
-
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    
     > h1 {
       color: map_get($colors, black);
       font-weight: normal;
       font-size: 22px;
       font-family: 'Assistant';
-      margin-right: 32px;
+      margin-right: 20px;
+    }
+
+    .back-arrow-icon {
+      $size: 22px;
+      height: $size;
     }
   }
 
