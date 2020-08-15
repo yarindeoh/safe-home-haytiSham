@@ -18,7 +18,7 @@ export const StoriesView = withRoute(props => {
     return (
         <div className="app">
             <Header />
-            <img className="AccessibilityButton" src={AccessibilityIcon} />
+            <AccessibilityIcon className="AccessibilityButton" />
             <h4 className={'const-text'}>{t('storiesView.header')}</h4>
             <Carousel changeLocationByPath={changeLocationByPath} />
             <button
