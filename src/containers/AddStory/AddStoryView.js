@@ -60,6 +60,7 @@ export const AddStoryView = withRoute(props => {
                         placeholder={t('addStoryView.namePlaceholder')}
                         value={addStoryData.name}
                         onChange={(e)=>handleFiledChange(e, "name")}
+                        required
                     />
                     <Input
                         name="mail"
@@ -86,6 +87,7 @@ export const AddStoryView = withRoute(props => {
                         label={t('background')}
                         value={addStoryData.background}
                         onChange={(e)=>handleFiledChange(e, "background")}
+                        required
                     />
 
                     <TextArea

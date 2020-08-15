@@ -24,7 +24,7 @@ const he = {
         whatTriggeredChangePlaceHolder: 'השינוי התחיל ש...',
         quote: 'תמצית',
         quotePlaceHolder: '',
-        storyContent: 'הסיפור שלי',
+        storyContent: 'הסיפור שלי*',
         storyContentPlaceholder: 'הסיפור שלי הוא...',
         additionalStories: 'עדויות נוספות',
         submitForm: 'שליחה',
