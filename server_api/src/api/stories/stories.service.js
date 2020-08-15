@@ -8,10 +8,10 @@ class StorieService {
     constructor() {
     }
 
-    listByTags(tags, page = 1, pageSize = 100, sortField = "createdAt", sortDirection = "ASC"){
+    listByTags(tags, page = 1, pageSize = 100, sortField = "createdAt", sortDirection = "DESC"){
         sortDirection = sortDirection === 'ASC' ? '' : '-';
         sortField = sortDirection + sortField;
-        const query = {}; //TODO implement by tag
+        const query = tags? {tags: {'$all': tags}} : {}; 
         return Promise.all([
             ModeratedStrory.countDocuments(query),
             ModeratedStrory.find(query)
@@ -23,7 +23,7 @@ class StorieService {
                 result, total: count, page: page, pages: Math.ceil(count / pageSize) }));
     }
     
-    listStriesToModerate(page = 1, pageSize = 100, sortField = "createdAt", sortDirection = "ASC"){
+    listStriesToModerate(page = 1, pageSize = 100, sortField = "createdAt", sortDirection = "DESC"){
         sortDirection = sortDirection === 'ASC' ? '' : '-';
         sortField = sortDirection + sortField;
         const query = {moderated:false};
