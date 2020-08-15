@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import Slider from 'react-slick';
-import { PUBLIC_STORIES } from 'containers/Stories/components/StoriesGallery/storiesGalleryConstants';
-import { useTranslation } from 'react-i18next';
-import { CarrouselItem } from './CarrouselItem';
+import { PUBLIC_STORIES } from 'src/constants/publicStories';
+import { CarouselItem } from './CarouselItem';
 
-export const StoriesGalleryView = ({ changeLocationByPath }) => {
-
+export const Carousel = ({ changeLocationByPath }) => {
     const initialSelectedItem = Math.floor(PUBLIC_STORIES.length / 2);
     const [selectedItem, setSelectedItem] = useState(initialSelectedItem);
 
@@ -35,7 +33,7 @@ export const StoriesGalleryView = ({ changeLocationByPath }) => {
         <div className={'stories-carousel-container'}>
             <Slider {...sliderSettings}>
                 {PUBLIC_STORIES.map((story, key) => (
-                    <CarrouselItem
+                    <CarouselItem
                         key={key}
                         story={story}
                         onClick={onClickItem}
@@ -47,4 +45,4 @@ export const StoriesGalleryView = ({ changeLocationByPath }) => {
     );
 };
 
-export default StoriesGalleryView;
+export default Carousel;

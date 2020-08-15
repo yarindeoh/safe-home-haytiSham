@@ -56,11 +56,7 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /\.(svg)$/,
-                    include: [
-                        path.join(__dirname, 'src/media/icons'),
-                        path.join(__dirname, './node_modules/')
-                    ],
-                    loader: 'file-loader'
+                    use: ['@svgr/webpack']
                 },
                 {
                     test: /\.(jpg|png|gif|ico|ttf|woff|woff2|eot)(\?.*)?$/,

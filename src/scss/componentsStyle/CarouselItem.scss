@@ -1,7 +1,7 @@
 @import "src/scss/local/_spaces.scss";
 @import "src/scss/local/_colors.scss";
 
-.CarruselItemWrapper {
+.CarouselItemWrapper {
   width: 260px;
   height: 260px;
   position: relative;
@@ -38,20 +38,20 @@
   }
 }
 
-.CarruselItemTextWrapper {
+.CarouselItemTextWrapper {
   position: absolute;
   bottom: 0;
   right: 0;
   margin: map_get($spaces, small);
   z-index: 1;
 
-  .CarruselItemQuote {
+  .CarouselItemQuote {
     color: map_get($colors,white);
     font-weight: normal;
     font-size: 18px;
   }
 
-  .CarruselItemBy {
+  .CarouselItemBy {
     color: map_get($colors, purple-300);
     font-weight: normal;
     font-size: 13px;
@@ -68,7 +68,7 @@
 }
 
 .slick-active {
-  .CarruselItemWrapper {
+  .CarouselItemWrapper {
       width: 300px;
       height: 300px;
   }
