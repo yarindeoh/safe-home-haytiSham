@@ -63,6 +63,7 @@ module.exports = (env, argv) => {
                         {
                             loader: 'file-loader',
                             options: {
+                                name: '[path][name].[ext]',
                                 output: {
                                     path: path.join(__dirname, 'build'),
                                 },
