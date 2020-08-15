@@ -13,7 +13,7 @@ export const StoryView = withRoute(props => {
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
     };
-    const proccessedStory = extractFieldsFromObj(story, [
+    const processedStory = extractFieldsFromObj(story, [
         'background',
         'whatTriggeredChange',
         'howDidYouManged',
@@ -46,11 +46,11 @@ export const StoryView = withRoute(props => {
                 </h2>
                 <Tags tags={story.tags} />
             </div>
-            {proccessedStory &&
-                Object.keys(proccessedStory).map((item, key) => (
+            {processedStory &&
+                Object.keys(processedStory).map((item, key) => (
                     <div key={key}>
                         <h6>{t(item)}</h6>
-                        <span>{proccessedStory[item]}</span>
+                        <span>{processedStory[item]}</span>
                         <br />
                     </div>
                 ))}
@@ -65,7 +65,7 @@ export const StoryView = withRoute(props => {
                 </span>
                 <span className="shareleft">
                     <button className="BTX-share" />
-                    <p>שיתוף   </p>
+                    <p>שיתוף </p>
                 </span>
             </button>
             <Footer />

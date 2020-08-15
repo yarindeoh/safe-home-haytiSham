@@ -8,13 +8,16 @@ export const StoriesList = ({ tags, changeLocationByPath }) => {
     return (
         <main className={'stories'}>
             {stories &&
-                Object.keys(stories).map((key) => {
+                Object.keys(stories).map(key => {
                     return (
                         <StoryHighlight
                             story={stories[key]}
                             key={key}
                             changeLocationByPath={() =>
-                                changeLocationByPath(`story/${stories[key]._id}`, stories[key])
+                                changeLocationByPath(
+                                    `story/${stories[key]._id}`,
+                                    stories[key]
+                                )
                             }
                         />
                     );

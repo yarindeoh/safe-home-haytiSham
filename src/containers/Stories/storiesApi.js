@@ -10,13 +10,12 @@ const Api = {
     getAllTags: () => {
         return get(baseUrl('getAllTags'));
     },
-    getStoriesByTags: ({ tags }) => {
-        return get(baseUrl(`getStoriesByTags`));
-        // return get(baseUrl(`getStoriesByTags?tags=${tags}`)).result;
+    getStoriesByTags: tags => {
+        return get(baseUrl(`getStoriesByTags?tags=[${tags}]`));
     },
     getTagsMap: () => {
         return get(baseUrl('getTagsMap'));
-    },
+    }
 };
 
 export default Api;
