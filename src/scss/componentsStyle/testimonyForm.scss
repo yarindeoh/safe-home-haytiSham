@@ -50,6 +50,21 @@
     color: map_get($colors, white);
     border-radius: 80px;
   }
+  
+  .submitted-success-heading{
+    color: map_get($colors, black);
+    font-weight: normal;
+    font-size: 22px;
+    font-family: 'Assistant';
+    margin-top: 25px;
+  }
+  
+  .submitted-success-text{
+    font-weight: normal;
+    font-size: 18px;
+    max-width: 100%;
+    margin: 25px 0 25px;
+  }
 
   > h3 {
     font-weight: normal;
@@ -79,7 +94,7 @@
       font-weight: bold;
       color: map_get($colors, black);
       margin-bottom: 25px;
-       padding: 0;
+      padding: 0;
       margin-left: 22px;
 
     }

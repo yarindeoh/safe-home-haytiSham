@@ -8,6 +8,5 @@ export const addStoryDataInit = {
     storyContent: "",
     whatHelpedYou: "",
     whatTriggeredChange: "",
-    contact: false,
-    submitted: false
+    contact: false
 }

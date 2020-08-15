@@ -28,6 +28,7 @@ const he = {
         storyContentPlaceholder: 'הסיפור שלי הוא...',
         additionalStories: 'עדויות נוספות',
         submitForm: 'שליחה',
+        backFromForm: 'חזרה לדף הבית',
         noPersonalDetails:
             'שימו לב שלא נוכל לפרסם פרטים מזהים של הפוגעים. \n כמו כן, נשלח הודעה אנונימית לאחר פרסום העדות לאמצעי שהשארת למטה.',
         getHelp: 'עזרה וסיוע',
@@ -69,7 +70,9 @@ const he = {
             contactNotes: 'אפשר גם ליצור קשר 24/7 דרך כפתור התמיכה',
             manualSubmition: 'אפשר לדלג ולמלא בכתב או:',
             uploadVideo: 'להעלות סרטון',
-            uploadRecording: 'להעלות הקלטה'
+            uploadRecording: 'להעלות הקלטה',
+            submittedSuccessHeading: "הסיפור שלך נשלח בהצלחה!",
+            submittedSuccessText: "במידה והשארת פרטי קשר, נעדכן אותך לאחר שהוא יעלה לאתר"
         },
         tagsFilter: {
             additionalTestimonies: 'עדויות נוספות',

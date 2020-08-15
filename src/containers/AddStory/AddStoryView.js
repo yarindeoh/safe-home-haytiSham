@@ -6,6 +6,7 @@ import { TextArea } from 'components/TextArea';
 import { useTranslation } from 'react-i18next';
 import { Header } from '../../components/Header';
 import { AddStoryContext } from './addStoryContext';
+import { addStoryDataInit } from './addStoryConstants';
 
 import Api from './addStoryApi';
 
@@ -13,7 +14,20 @@ import Api from './addStoryApi';
 export const AddStoryView = withRoute(props => {
     const { t } = useTranslation();
     const {addStoryData, setAddStoryData} = useContext(AddStoryContext)
+    
     const [checkedContact, setCheckedContact] = useState(addStoryData.contact===true ? 0: 1)
+    const [submitted, setSubmitted] = useState(false)
+
+    const handleCheckedContact= (e) => {
+        if(e.target.value==='yes'){
+            setCheckedContact(0);
+            setAddStoryData((addStoryData)=>({...addStoryData, contact: true}));
+        }
+        else{
+            setCheckedContact(1);
+            setAddStoryData((addStoryData)=>({...addStoryData, contact: true}));
+        }
+    }
 
     const handleFiledChange = (e, filed) => {
         let newAddStoryData = {...addStoryData};
@@ -24,14 +38,12 @@ export const AddStoryView = withRoute(props => {
    const submit = e => {
         e.preventDefault();
         let addStoryDataToPost = {...addStoryData}
-        addStoryDataToPost.contact = checkedContact===0 ? true: false;
-        delete addStoryDataToPost.submitted;
 
         async function postData() {
             try{
                 await Api.postAddStory(addStoryDataToPost);
-                setAddStoryData({...addStoryData, submitted: true, contact: addStoryDataToPost.contact})
-                props.history.push('/');
+                setAddStoryData({...addStoryDataInit})
+                setSubmitted(true);
             }
             catch(e){
                 window.alert(e)
@@ -42,10 +54,18 @@ export const AddStoryView = withRoute(props => {
 
     const back = e => {
         e.preventDefault();
+        setSubmitted(false);
         props.history.push('/');
     };
     return (
         <>
+        {submitted ? 
+            <div id={'testimony-form'} >
+                <div className="submitted-success-heading">{t('addStoryView.submittedSuccessHeading')}</div>
+                <div className="submitted-success-text">{t('addStoryView.submittedSuccessText')}</div>
+                <button className={'submit-button'} onClick={back}>{t('backFromForm')}</button>
+            </div> 
+            :
             <div id={'testimony-form'}>
                 <header>
                     <button className={'BTX-back'} onClick={back} />
@@ -78,7 +98,7 @@ export const AddStoryView = withRoute(props => {
                             { value: 'yes', label: t('common.yes') },
                             { value: 'no', label: t('common.no') }
                         ]}
-                        onClick={(e)=>{e.target.value==='yes' ? setCheckedContact(0) : setCheckedContact(1)}}
+                        onClick={(e)=>handleCheckedContact(e)}
                     />
 
                     <TextArea
@@ -137,10 +157,10 @@ export const AddStoryView = withRoute(props => {
                         value={addStoryData.additionalnfo}
                         onChange={(e)=>handleFiledChange(e, "additionalnfo")}
                     />
-
-                    <input className="submit-button" type="submit"/>
+                    <input className="submit-button" type="submit" value={t('submitForm')}></input>
                 </form>
             </div>
+        }
         </>
     );
 });

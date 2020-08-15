@@ -8,14 +8,11 @@ import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
 import HelpButton from 'src/components/HelpButton.js';
 import AccessibilityIcon from 'src/media/icons/accessibility.svg';
-import { AddStoryContext } from 'containers/AddStory/addStoryContext';
 
 
 
 export const StoriesView = withRoute(props => {
     const { t } = useTranslation();
-    const {addStoryData, setAddStoryData} = useContext(AddStoryContext)
-    //TODO: ADD : YOUR STORY IS SUBMITTED form AddStoryContext
 
 
     const changeLocationByPath = (path, params) => {
