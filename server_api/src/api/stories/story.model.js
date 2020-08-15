@@ -12,7 +12,8 @@ const storySchema = new Schema({
     mail: String,
     name: String,
     sequence: Number,
-    moderated: false,  
+    contact: {type: Boolean, default: false},
+    moderated: {type: Boolean, default: false},  
 }, { timestamps: { createdAt: 'createdAt' } });
 
 storySchema.index({ _id: 1, moderated: 1, sequence:1 });
