@@ -1,62 +1,21 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import { Input } from 'components/Input';
 import { Radio } from 'components/Radio';
 import { TextArea } from 'components/TextArea';
 import { useTranslation } from 'react-i18next';
 import { AddStoryContext } from './addStoryContext';
-import { addStoryDataInit } from './addStoryConstants';
+import { useCheckedContact, useFiledChange, useSubmit, useBack } from './addStoryHooks';
 import BackArrowIcon from 'src/media/icons/backArrow.svg';
-
-import Api from './addStoryApi';
-
 
 export const AddStoryView = withRoute(props => {
     const { t } = useTranslation();
-    const {addStoryData, setAddStoryData} = useContext(AddStoryContext)
+    const {addStoryData} = useContext(AddStoryContext)
+    const { checkedContact, handleCheckedContact } = useCheckedContact();
+    const { handleFiledChange } = useFiledChange();
+    const { submitted, setSubmitted, handleSubmit } = useSubmit()
+    const { back } = useBack(props, setSubmitted)
     
-    const [checkedContact, setCheckedContact] = useState(addStoryData.contact===true ? 0: 1)
-    const [submitted, setSubmitted] = useState(false)
-
-    const handleCheckedContact= (e) => {
-        if(e.target.value==='yes'){
-            setCheckedContact(0);
-            setAddStoryData((addStoryData)=>({...addStoryData, contact: true}));
-        }
-        else{
-            setCheckedContact(1);
-            setAddStoryData((addStoryData)=>({...addStoryData, contact: true}));
-        }
-    }
-
-    const handleFiledChange = (e, filed) => {
-        let newAddStoryData = {...addStoryData};
-        newAddStoryData[filed] = e.target.value;
-        setAddStoryData(newAddStoryData)
-    }
-
-   const submit = e => {
-        e.preventDefault();
-        let addStoryDataToPost = {...addStoryData}
-
-        async function postData() {
-            try{
-                await Api.postAddStory(addStoryDataToPost);
-                setAddStoryData({...addStoryDataInit})
-                setSubmitted(true);
-            }
-            catch(e){
-                window.alert(e)
-            }
-        }   
-        postData()
-    };
-
-    const back = e => {
-        e.preventDefault();
-        setSubmitted(false);
-        props.history.push('/');
-    };
     return (
         <>
         {submitted ? 
@@ -73,7 +32,7 @@ export const AddStoryView = withRoute(props => {
                 </header>
                 <button className={'BTN-accessibility'} />
                 <h3>{t('addStoryView.anonymity')}</h3>
-                <form onSubmit={submit} id={"addStoryForm"}>
+                <form onSubmit={handleSubmit} id={"addStoryForm"}>
                     <Input
                         name="name"
                         label={t('addStoryView.nameLabel')}
