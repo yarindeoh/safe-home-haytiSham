@@ -22,7 +22,7 @@ const he = {
         whatHelpedYouPlaceHolder: 'מאוד עזר לי ש...',
         whatTriggeredChange: 'מה גרם לשינוי',
         whatTriggeredChangePlaceHolder: 'השינוי התחיל ש...',
-        quote: 'תמצית',
+        quote: 'ציטוט נבחר',
         quotePlaceHolder: '',
         storyContent: 'הסיפור שלי*',
         storyContentPlaceholder: 'הסיפור שלי הוא...',
@@ -58,6 +58,7 @@ const he = {
             share: 'שיתוף   '
         },
         addStoryView: {
+            createdAt: "נכתב ב: ",
             myConfession: 'העדות שלי',
             anonymity: `שימו לב! נעבור על כל עדות שתתקבל,ולא נוכל לפרסם פרטים מזהים של הפוגעים.
                     כמו כן, במידה ותשאירו פרטי קשרֿ נשלח הודעה לאחר פרסום העדות.
@@ -91,7 +92,9 @@ const he = {
             header: "התחברי כדי לערוך",
             userName: "שם משתמש",
             password: "סיסמא",
-            loginButtonText: "התחבר"
+            loginButtonText: "התחבר",
+            listToModerate: "רשימת הסיפורים שדורשים עריכה",
+            listAllStories: "רשימת כל הסיפורים"
         },
         moderation:{
             header: "עריכת העדות",
@@ -101,7 +104,8 @@ const he = {
             submittedSuccessText: "תודה שערכת את העדות,  לא לשכוח לשלוח מייל/הודעה לאחר האישור!",
             submitText: "אישור העלאת העדות",
             phoneMail: "מייל/טלפון: ",
-            backToAdminPage: "חזרה לרשימת העדויות הדורשות עריכה"
+            backToAdminPage: "חזרה לרשימת העדויות הדורשות עריכה",
+            choseTags: "בחר תגיות"
         }
     }
 };

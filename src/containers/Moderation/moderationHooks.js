@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import Api from './moderationApi';
 import { ModerationContext } from './moderationContext';
-import { moderationStoryDataInit } from './moderationConstants'
+import { moderationDataInit } from './moderationConstants'
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
 
 export const useFiledChange = (data, setData) => {
@@ -24,7 +24,8 @@ export const useLoginSubmit = (loginData) => {
 
         async function postLogin() {
             try{
-                await Api.postLogin(loginData);
+                const serverData = await Api.postLogin(loginData);
+                sessionStorage.moderatorToken = serverData.token;
                 setModerationData((moderationData)=>({...moderationData, loggedIn: true}));
             }
             catch(e){
@@ -78,12 +79,15 @@ export const useModerationStory = (story) => {
 };
 
 
-export const useModerateStorySubmit = () => {
+export const useModerateStorySubmit = (selectedTags) => {
     const {moderationData, setModerationData} = useContext(ModerationContext);
     const [submitted, setSubmitted] = useState(false);
     let moderationDataToPost = {...moderationData}
     delete moderationDataToPost.loggedIn;
-    delete moderationDataToPost.currentStoryId;
+    moderationDataToPost.originalStory = moderationData._id;
+    delete moderationDataToPost._id;
+    
+    //TODO: add to json selectedTags
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -91,7 +95,7 @@ export const useModerateStorySubmit = () => {
         async function postData() {
             try{
                 await Api.postModerateStory(moderationDataToPost);
-                setModerationData((moderationData)=>({...moderationData, ...moderationStoryDataInit}))
+                setModerationData((moderationData)=>({...moderationData, ...moderationDataInit}))
                 setSubmitted(true);
             }
             catch(e){
@@ -118,6 +122,21 @@ export const useBack = (props, setSubmitted, path) => {
 
     return {
         back
+    };
+}
+export const useSelectedTags = () => {
+    const [selectedTags, setSelectedTags] = useState([]);
+    function onSelect(selectedList, selectedItem) {
+        setSelectedTags((selectedTags)=>[...selectedTags,selectedItem])
+    }
+    function onRemove(selectedList, selectedItem) {
+        setSelectedTags((selectedTags)=>selectedTags.filter(e => e !== selectedItem))
+    }
+
+    return {
+        selectedTags,
+        onSelect,
+        onRemove
     };
 }
 

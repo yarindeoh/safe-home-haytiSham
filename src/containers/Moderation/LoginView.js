@@ -29,7 +29,7 @@ export const LoginView = withRoute(props => {
         {moderationData.loggedIn ? 
             <div>
                 {/* list with stories before moderation */}
-                <header> list with stories before moderation </header>
+                <header><h3>{t('login.listToModerate')}</h3></header>
                 <main className={'stories'}>
                     {storiesToModerate &&
                         Object.keys(storiesToModerate).map(key => {
@@ -48,7 +48,7 @@ export const LoginView = withRoute(props => {
                         })}
                 </main> 
                 {/* All Stories */}
-                <header> All Stories </header>
+                <header><h3>{t('login.listAllStories')}</h3></header>
                 <main className={'stories'}>
                     {allStories &&
                         Object.keys(allStories).map(key => {

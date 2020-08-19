@@ -5,23 +5,27 @@ import { Radio } from 'components/Radio';
 import { TestimonyForm } from 'components/TestimonyForm';
 import { TextArea } from 'components/TextArea';
 import { useTranslation, Trans } from 'react-i18next';
-import { useFiledChange, useModerateStorySubmit,useBack, useModerationStory } from './moderationHooks';
+import { useFiledChange, useModerateStorySubmit,useBack, useModerationStory, useSelectedTags } from './moderationHooks';
+import { useAllTags } from 'containers/Stories/storiesHooks';
+
 import { ModerationContext } from './moderationContext';
 import BackArrowIcon from 'src/media/icons/backArrow.svg';
 import '../../scss/componentsStyle/moderationView.scss';
-
+import { getTagsAsArray } from '../../services/general/generalHelpers';
+import { Multiselect } from 'multiselect-react-dropdown';
 
 
 export const ModerationView = withRoute(props => {
     const { t } = useTranslation();
     const {moderationData, setModerationData} = useContext(ModerationContext);
+    const tags = getTagsAsArray(useAllTags());
     const { handleFiledChange } = useFiledChange(moderationData, setModerationData);
-    const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit();
+    const { selectedTags, onSelect, onRemove} = useSelectedTags();
+    const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit(selectedTags);
     const { back } = useBack(props,setSubmitted, '/admin');
-
+    
     const story = props.location.state;
     useModerationStory(story);
-
     
     return (
         <>
@@ -62,6 +66,30 @@ export const ModerationView = withRoute(props => {
                         <br></br>
                         <br></br>
                         <Trans i18nKey='moderation.moderationRules'/>
+                        <br></br>
+                        <br></br>
+                        <Multiselect
+                            options={tags} // Options to display in the dropdown
+                            selectedValues={selectedTags} // Preselected value to persist in dropdown
+                            onSelect={onSelect} // Function will trigger on select event
+                            onRemove={onRemove} // Function will trigger on remove event
+                            displayValue="name"
+                            closeIcon="cancel"
+                            placeholder={t('moderation.choseTags')}
+                            avoidHighlightFirstOption
+                            style={{
+                                chips: {
+                                  background: "#ffffff",
+                                  color: '#724BE4'
+                                },
+                                searchBox: {
+                                  border: "none",
+                                  borderBottom: "1px solid blue",
+                                  borderRadius: "0px",
+                                  borderColor: '#724BE4',
+                                }
+                            }}
+                        />
                     </div>
                     
 

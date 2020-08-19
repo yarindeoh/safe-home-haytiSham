@@ -1,8 +1,5 @@
 export const moderationDataInit = {
-    loggedIn: false,
     _id: "",
-}
-export const moderationStoryDataInit = {
     additionalnfo: "",
     background: "",
     mail: "",

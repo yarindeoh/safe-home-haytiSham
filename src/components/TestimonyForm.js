@@ -5,6 +5,7 @@ import { Radio } from 'components/Radio';
 import { TextArea } from 'components/TextArea';
 import { useTranslation } from 'react-i18next';
 import { useCheckedContact } from '../containers/AddStory/addStoryHooks';
+import moment from 'moment-mini-ts'
 
 export const TestimonyForm = withRoute(({handleSubmit, handleFiledChange, formData, disabled, moderatedForm}) => {
     const { t } = useTranslation();
@@ -16,8 +17,7 @@ export const TestimonyForm = withRoute(({handleSubmit, handleFiledChange, formDa
                 <form onSubmit={!disabled? handleSubmit: undefined}>
                     {formData.createdAt && 
                         <div>
-                            <div>נוצר ב:</div>
-                            {formData.createdAt}
+                            <div>{`${t('addStoryView.createdAt')}  ${moment.utc(formData.createdAt).format("DD.MM.YYYY HH:mm:ss")}`}</div> 
                         </div>
                     }
                     <Input
@@ -98,6 +98,15 @@ export const TestimonyForm = withRoute(({handleSubmit, handleFiledChange, formDa
                         disabled={disabled}
                     />
 
+                    <TextArea
+                        name="additionalnfo"
+                        placeholder={t('additionalnfoPlaceHolder')}
+                        label={t('additionalnfo')}
+                        value={formData.additionalnfo}
+                        onChange={(e)=>handleFiledChange(e, "additionalnfo")}
+                        disabled={disabled}
+                    />
+                    
                     {moderatedForm && <TextArea
                         name="quote"
                         label={t('quote')}
@@ -107,14 +116,6 @@ export const TestimonyForm = withRoute(({handleSubmit, handleFiledChange, formDa
                         disabled={disabled}
                     />}
 
-                    <TextArea
-                        name="additionalnfo"
-                        placeholder={t('additionalnfoPlaceHolder')}
-                        label={t('additionalnfo')}
-                        value={formData.additionalnfo}
-                        onChange={(e)=>handleFiledChange(e, "additionalnfo")}
-                        disabled={disabled}
-                    />
                     {!disabled && <input className="submit-button" type="submit" value={moderatedForm? t('moderation.submitText') : t('submitForm')}></input>}
                 </form>
             </div>

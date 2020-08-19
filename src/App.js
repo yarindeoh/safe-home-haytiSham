@@ -11,14 +11,14 @@ import { StoryVideo } from 'containers/Story/components/StoryVideo';
 import { createBrowserHistory } from 'history';
 import { LoginView } from './containers/Moderation/loginView';
 import { ModerationView } from './containers/Moderation/ModerationView';
-import { moderationDataInit, moderationStoryDataInit } from './containers/Moderation/moderationConstants';
+import { moderationDataInit } from './containers/Moderation/moderationConstants';
 import { ModerationContext } from './containers/Moderation/moderationContext';
 
 export const history = createBrowserHistory();
 
 export const App = () => {
     const [addStoryData, setAddStoryData] = useState(addStoryDataInit);    
-    const [moderationData, setModerationData] = useState(Object.assign({}, moderationDataInit, moderationStoryDataInit));    
+    const [moderationData, setModerationData] = useState(Object.assign({}, moderationDataInit, {loggedIn: sessionStorage.moderatorToken !== undefined}));    
     return (
     <Context.Provider history={history}>
         <ModerationContext.Provider value={{moderationData, setModerationData}}>
