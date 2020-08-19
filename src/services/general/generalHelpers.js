@@ -22,10 +22,10 @@ export const getSlicedTagsObj = (obj, start, end) => {
         }, {});
 };
 
-export const getTagsAsArray = (obj) => {
-    let arr = []
-    for (let item in obj){
-        arr.push({id: item, name: obj[item]})
+export const getTagsAsArray = obj => {
+    let arr = [];
+    for (let item in obj) {
+        arr.push({ id: item, name: obj[item] });
     }
     return arr;
 };

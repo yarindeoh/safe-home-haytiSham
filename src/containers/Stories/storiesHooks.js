@@ -52,12 +52,12 @@ export const useTagsMap = () => {
     };
 };
 
-export const useAllStories = (needToRefresh) => {
+export const useAllStories = needToRefresh => {
     let tags = useAllTags();
     tags = tags && Object.keys(tags);
     const [stories, setStories] = useState();
     useEffect(() => {
-        if(needToRefresh){
+        if (needToRefresh) {
             (async () => {
                 await setStories(await Api.getStoriesByTags(tags || []));
             })();
@@ -67,4 +67,3 @@ export const useAllStories = (needToRefresh) => {
         allStories: stories?.result
     };
 };
-

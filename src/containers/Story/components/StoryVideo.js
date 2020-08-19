@@ -14,7 +14,8 @@ export const StoryVideo = withRoute(props => {
         props.history.push(path);
     };
 
-    return (<Skeleton>
+    return (
+        <Skeleton>
             <div id="story-page-container">
                 <div className="quote">
                     <h1>{story.quote}</h1>
@@ -24,7 +25,7 @@ export const StoryVideo = withRoute(props => {
                             timestamp: story.timestamp
                         })}
                     </h2>
-                    <Tags tags={story.tags}/>
+                    <Tags tags={story.tags} />
                     <div>
                         <iframe
                             src={`https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FonlifeIL%2Fvideos%${story.id}%2F&show_text=0`}
@@ -35,7 +36,7 @@ export const StoryVideo = withRoute(props => {
                 <SimilarStories
                     tags={[t('tags.jealousy'), t('tags.humiliation')]}
                 />
-                <Footer/>
+                <Footer />
             </div>
         </Skeleton>
     );

@@ -4,65 +4,70 @@ import { addStoryDataInit } from './addStoryConstants';
 import Api from './addStoryApi';
 
 export const useCheckedContact = () => {
-    const {addStoryData, setAddStoryData} = useContext(AddStoryContext)
-    const [checkedContact, setCheckedContact] = useState(addStoryData.contact===true ? 0: 1)
-    const handleCheckedContact= (e) => {
-        if(e.target.value==='yes'){
+    const { addStoryData, setAddStoryData } = useContext(AddStoryContext);
+    const [checkedContact, setCheckedContact] = useState(
+        addStoryData.contact === true ? 0 : 1
+    );
+    const handleCheckedContact = e => {
+        if (e.target.value === 'yes') {
             setCheckedContact(0);
-            setAddStoryData((addStoryData)=>({...addStoryData, contact: true}));
-        }
-        else{
+            setAddStoryData(addStoryData => ({
+                ...addStoryData,
+                contact: true
+            }));
+        } else {
             setCheckedContact(1);
-            setAddStoryData((addStoryData)=>({...addStoryData, contact: false}));
+            setAddStoryData(addStoryData => ({
+                ...addStoryData,
+                contact: false
+            }));
         }
-    }
+    };
     return {
-        checkedContact, 
+        checkedContact,
         handleCheckedContact
     };
 };
 
-
 export const useFiledChange = () => {
-    const {addStoryData, setAddStoryData} = useContext(AddStoryContext)
+    const { addStoryData, setAddStoryData } = useContext(AddStoryContext);
     const handleFiledChange = (e, filed) => {
-        let newAddStoryData = {...addStoryData};
+        let newAddStoryData = { ...addStoryData };
         newAddStoryData[filed] = e.target.value;
-        setAddStoryData(newAddStoryData)
-    }    
-    
+        setAddStoryData(newAddStoryData);
+    };
+
     return {
         handleFiledChange
     };
-}
+};
 
 export const useSubmit = () => {
-    const {addStoryData, setAddStoryData} = useContext(AddStoryContext)
-    const [submitted, setSubmitted] = useState(false)
+    const { addStoryData, setAddStoryData } = useContext(AddStoryContext);
+    const [submitted, setSubmitted] = useState(false);
 
     const handleSubmit = e => {
         e.preventDefault();
-        let addStoryDataToPost = {...addStoryData}
+        let addStoryDataToPost = { ...addStoryData };
 
         async function postData() {
-            try{
+            try {
                 await Api.postAddStory(addStoryDataToPost);
-                setAddStoryData({...addStoryDataInit})
+                setAddStoryData({ ...addStoryDataInit });
                 setSubmitted(true);
+            } catch (e) {
+                window.alert(e);
             }
-            catch(e){
-                window.alert(e)
-            }
-        }   
-        postData()
+        }
+        postData();
     };
-    
+
     return {
         submitted,
         setSubmitted,
         handleSubmit
     };
-}
+};
 
 export const useBack = (props, setSubmitted) => {
     const back = e => {
@@ -74,9 +79,4 @@ export const useBack = (props, setSubmitted) => {
     return {
         back
     };
-}
-
-
-
-
-
+};

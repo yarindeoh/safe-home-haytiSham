@@ -23,7 +23,9 @@ export const Footer = () => {
             // TODO: Add dialing option url
         },
         {
-            number: t('emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber'),
+            number: t(
+                'emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber'
+            ),
             text: t('emergencyHotlineOfMinistryOfLaborAndSocialAffairs')
             // TODO: Add dialing option url
         }

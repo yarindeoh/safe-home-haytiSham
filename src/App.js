@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { Context } from 'services/routing/context';
 import { AddStoryContext } from 'containers/AddStory/addStoryContext';
@@ -17,23 +17,46 @@ import { ModerationContext } from './containers/Moderation/moderationContext';
 export const history = createBrowserHistory();
 
 export const App = () => {
-    const [addStoryData, setAddStoryData] = useState(addStoryDataInit);    
-    const [moderationData, setModerationData] = useState(Object.assign({}, moderationDataInit, {loggedIn: sessionStorage.moderatorToken !== undefined}));    
+    const [addStoryData, setAddStoryData] = useState(addStoryDataInit);
+    const [moderationData, setModerationData] = useState(
+        Object.assign({}, moderationDataInit, {
+            loggedIn: sessionStorage.moderatorToken !== undefined
+        })
+    );
     return (
-    <Context.Provider history={history}>
-        <ModerationContext.Provider value={{moderationData, setModerationData}}>
-            <AddStoryContext.Provider value={{addStoryData, setAddStoryData}}>
-                <BrowserRouter>
-                    <Switch>
-                        <Route path="/" exact={true} component={StoriesView} />
-                        <Route path="/story" component={StoryView} />
-                        <Route path="/addStory" exact={true} component={AddStoryView} />
-                        <Route path="/publicStory/:id" component={StoryVideo} />
-                        <Route path="/admin" component={LoginView} />
-                        <Route path="/moderateStory" component={ModerationView} />
-                    </Switch>
-                </BrowserRouter>
-            </AddStoryContext.Provider>
-        </ModerationContext.Provider>        
-    </Context.Provider>
-)};
+        <Context.Provider history={history}>
+            <ModerationContext.Provider
+                value={{ moderationData, setModerationData }}
+            >
+                <AddStoryContext.Provider
+                    value={{ addStoryData, setAddStoryData }}
+                >
+                    <BrowserRouter>
+                        <Switch>
+                            <Route
+                                path="/"
+                                exact={true}
+                                component={StoriesView}
+                            />
+                            <Route path="/story" component={StoryView} />
+                            <Route
+                                path="/addStory"
+                                exact={true}
+                                component={AddStoryView}
+                            />
+                            <Route
+                                path="/publicStory/:id"
+                                component={StoryVideo}
+                            />
+                            <Route path="/admin" component={LoginView} />
+                            <Route
+                                path="/moderateStory"
+                                component={ModerationView}
+                            />
+                        </Switch>
+                    </BrowserRouter>
+                </AddStoryContext.Provider>
+            </ModerationContext.Provider>
+        </Context.Provider>
+    );
+};

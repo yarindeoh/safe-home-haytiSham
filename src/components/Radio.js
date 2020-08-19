@@ -1,8 +1,16 @@
 import React from 'react';
 
-export const Radio = ({ label, notes, options, checked, onClick, name, disabled }) => {
+export const Radio = ({
+    label,
+    notes,
+    options,
+    checked,
+    onClick,
+    name,
+    disabled
+}) => {
     return (
-        <div className={`question ${disabled ? "disabled-area": ""}`}>
+        <div className={`question ${disabled ? 'disabled-area' : ''}`}>
             <label>{label}</label>
             <p>{notes}</p>
             <div>
@@ -17,7 +25,7 @@ export const Radio = ({ label, notes, options, checked, onClick, name, disabled 
                                 checked={index === checked}
                                 key={index}
                                 onClick={onClick}
-                                onChange={()=>{}}
+                                onChange={() => {}}
                                 disabled={disabled}
                             />
                             {option.label}
