@@ -1,9 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { withRoute } from 'services/routing/routerHOC';
-import { Input } from 'components/Input';
-import { Radio } from 'components/Radio';
 import { TestimonyForm } from 'components/TestimonyForm';
-import { TextArea } from 'components/TextArea';
 import { useTranslation, Trans } from 'react-i18next';
 import { useFiledChange, useModerateStorySubmit,useBack, useModerationStory, useSelectedTags } from './moderationHooks';
 import { useAllTags } from 'containers/Stories/storiesHooks';

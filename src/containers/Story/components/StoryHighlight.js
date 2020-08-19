@@ -1,5 +1,6 @@
 import React from 'react';
 import Tag from 'components/Tag';
+import moment from 'moment-mini-ts'
 
 export const StoryHighlight = ({ story, changeLocationByPath }) => {
     const { id, name, createdAt, tags, quote } = story;
@@ -15,7 +16,7 @@ export const StoryHighlight = ({ story, changeLocationByPath }) => {
     return (
         <li className="story" onClick={() => changeLocationByPath(id, story)}>
             <div className="initials">{initials}</div>
-            <span className="date">{createdAt}</span>
+            <span className="date">{moment.utc(createdAt).format("DD.MM.YYYY HH:mm:ss")}</span>
             <p className="text">{quote}</p>
             {allTags()}
         </li>

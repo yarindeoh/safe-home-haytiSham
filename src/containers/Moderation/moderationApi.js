@@ -13,8 +13,8 @@ const Api = {
     postModerateStory: (data) => {
         return post(baseUrl('addModerateStory'), data, {no_result:true});
     },
-    getModerationStories: () => {
-        return get(baseUrl('getStortiesForModeration'));
+    getModerationStories: (sortField, sortDirection) => {
+        return get(baseUrl(`getStortiesForModeration?sortField=${sortField},sortDirection=${sortDirection}`));
     },
 };
 

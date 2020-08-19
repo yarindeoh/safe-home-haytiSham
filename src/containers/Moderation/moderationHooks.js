@@ -46,7 +46,7 @@ export const useModerationStories = () => {
     useEffect(() => {
         if(moderationData.loggedIn){
             (async () => {
-                await setStories(await Api.getModerationStories());
+                await setStories(await Api.getModerationStories("createdAt", "ASC"));
             })();
         }
     }, [moderationData.loggedIn]);
