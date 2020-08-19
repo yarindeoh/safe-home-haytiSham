@@ -17,6 +17,7 @@ export const ModerationView = withRoute(props => {
     const {moderationData, setModerationData} = useContext(ModerationContext);
     const tags = getTagsAsArray(useAllTags());
     const { handleFiledChange } = useFiledChange(moderationData, setModerationData);
+    //TODO: add selectedTags to moderationData in order to save data if go back ? or as data to send to server? 
     const { selectedTags, onSelect, onRemove} = useSelectedTags();
     const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit(selectedTags);
     const { back } = useBack(props,setSubmitted, '/admin');
