@@ -5,7 +5,7 @@ export function withRoute(Component) {
     return function RouteComponent(props) {
         return (
             <Context.Consumer>
-                {(contexts) => <Component {...props} {...contexts} />}
+                {contexts => <Component {...props} {...contexts} />}
             </Context.Consumer>
         );
     };

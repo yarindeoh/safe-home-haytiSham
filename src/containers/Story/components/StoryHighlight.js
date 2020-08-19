@@ -6,9 +6,7 @@ export const StoryHighlight = ({ story, changeLocationByPath }) => {
     let initials = name && name.split('')[0];
     const allTags = () => (
         <div className="tags">
-            {tags && tags.map((tag, i) => (
-                <Tag key={`tag_${i}`} text={tag} />
-            ))}
+            {tags && tags.map((tag, i) => <Tag key={`tag_${i}`} text={tag} />)}
         </div>
     );
 
