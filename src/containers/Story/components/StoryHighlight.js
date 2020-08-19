@@ -2,7 +2,7 @@ import React from 'react';
 import Tag from 'components/Tag';
 import moment from 'moment-mini-ts';
 
-export const StoryHighlight = ({ story, changeLocationByPath }) => {
+export const StoryHighlight = ({ story, changeLocationByPath, liStyle }) => {
     const { id, name, createdAt, tags, quote } = story;
     let initials = name && name.split('')[0];
     const allTags = () => (
@@ -12,7 +12,11 @@ export const StoryHighlight = ({ story, changeLocationByPath }) => {
     );
 
     return (
-        <li className="story" onClick={() => changeLocationByPath(id, story)}>
+        <li
+            className="story"
+            style={liStyle}
+            onClick={() => changeLocationByPath(id, story)}
+        >
             <div className="initials">{initials}</div>
             <span className="date">
                 {moment.utc(createdAt).format('DD.MM.YYYY HH:mm:ss')}

@@ -36,42 +36,48 @@ export const LoginView = withRoute(props => {
                         <h3>{t('login.listToModerate')}</h3>
                     </header>
                     <main className={'stories'}>
-                        {storiesToModerate &&
-                            Object.keys(storiesToModerate).map(key => {
-                                return (
-                                    <StoryHighlight
-                                        story={storiesToModerate[key]}
-                                        key={key}
-                                        changeLocationByPath={() =>
-                                            changeLocationByPath(
-                                                `moderateStory/${storiesToModerate[key]._id}`,
-                                                storiesToModerate[key]
-                                            )
-                                        }
-                                    />
-                                );
-                            })}
+                        <ol>
+                            {storiesToModerate &&
+                                Object.keys(storiesToModerate).map(key => {
+                                    return (
+                                        <StoryHighlight
+                                            liStyle={{ margin: '10px' }}
+                                            story={storiesToModerate[key]}
+                                            key={key}
+                                            changeLocationByPath={() =>
+                                                changeLocationByPath(
+                                                    `moderateStory/${storiesToModerate[key]._id}`,
+                                                    storiesToModerate[key]
+                                                )
+                                            }
+                                        />
+                                    );
+                                })}
+                        </ol>
                     </main>
                     {/* All Stories */}
                     <header>
                         <h3>{t('login.listAllStories')}</h3>
                     </header>
                     <main className={'stories'}>
-                        {allStories &&
-                            Object.keys(allStories).map(key => {
-                                return (
-                                    <StoryHighlight
-                                        story={allStories[key]}
-                                        key={key}
-                                        changeLocationByPath={() =>
-                                            changeLocationByPath(
-                                                `moderateStory/${allStories[key]._id}`,
-                                                allStories[key]
-                                            )
-                                        }
-                                    />
-                                );
-                            })}
+                        <ol>
+                            {allStories &&
+                                Object.keys(allStories).map(key => {
+                                    return (
+                                        <StoryHighlight
+                                            liStyle={{ margin: '10px' }}
+                                            story={allStories[key]}
+                                            key={key}
+                                            changeLocationByPath={() =>
+                                                changeLocationByPath(
+                                                    `moderateStory/${allStories[key]._id}`,
+                                                    allStories[key]
+                                                )
+                                            }
+                                        />
+                                    );
+                                })}
+                        </ol>
                     </main>
                 </div>
             ) : (
