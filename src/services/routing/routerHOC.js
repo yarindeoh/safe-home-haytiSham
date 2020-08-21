@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Context } from 'services/routing/context';
+import { RouterContext } from 'services/routing/routerContext';
 
 export function withRoute(Component) {
     return function RouteComponent(props) {
         return (
-            <Context.Consumer>
+            <RouterContext.Consumer>
                 {contexts => <Component {...props} {...contexts} />}
-            </Context.Consumer>
+            </RouterContext.Consumer>
         );
     };
 }

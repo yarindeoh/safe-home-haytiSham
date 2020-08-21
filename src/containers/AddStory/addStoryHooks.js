@@ -1,40 +1,43 @@
-import { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { AddStoryContext } from './addStoryContext';
-import { addStoryDataInit } from './addStoryConstants';
+import {
+    NEW_STORY_INIT_DATA,
+    SET_CONTACT,
+    SET_STORY_DATA
+} from './addStoryConstants';
 import Api from './addStoryApi';
 
+export function useAddStoryContext() {
+    const context = React.useContext(AddStoryContext);
+    if (context === undefined) {
+        throw new Error(
+            'AddStoryContext must be used within a AddStoryProvider'
+        );
+    }
+    return context;
+}
+
 export const useCheckedContact = () => {
-    const { addStoryData, setAddStoryData } = useContext(AddStoryContext);
-    const [checkedContact, setCheckedContact] = useState(
-        addStoryData.contact === true ? 0 : 1
-    );
+    const { addStoryState, dispatch } = useAddStoryContext();
+
     const handleCheckedContact = e => {
-        if (e.target.value === 'yes') {
-            setCheckedContact(0);
-            setAddStoryData(addStoryData => ({
-                ...addStoryData,
-                contact: true
-            }));
-        } else {
-            setCheckedContact(1);
-            setAddStoryData(addStoryData => ({
-                ...addStoryData,
-                contact: false
-            }));
-        }
+        dispatch({
+            type: SET_CONTACT,
+            payload: e.target.value === 'yes' ? true : false
+        });
     };
     return {
-        checkedContact,
+        checkedContact: !addStoryState.contact ? 1 : 0,
         handleCheckedContact
     };
 };
 
 export const useFiledChange = () => {
-    const { addStoryData, setAddStoryData } = useContext(AddStoryContext);
+    const { addStoryState, dispatch } = useAddStoryContext();
     const handleFiledChange = (e, filed) => {
-        let newAddStoryData = { ...addStoryData };
+        let newAddStoryData = { ...addStoryState };
         newAddStoryData[filed] = e.target.value;
-        setAddStoryData(newAddStoryData);
+        dispatch({ type: SET_STORY_DATA, payload: newAddStoryData });
     };
 
     return {
@@ -43,20 +46,23 @@ export const useFiledChange = () => {
 };
 
 export const useSubmit = () => {
-    const { addStoryData, setAddStoryData } = useContext(AddStoryContext);
+    const { addStoryState, dispatch } = useAddStoryContext();
     const [submitted, setSubmitted] = useState(false);
 
     const handleSubmit = e => {
         e.preventDefault();
-        let addStoryDataToPost = { ...addStoryData };
+        let addStoryDataToPost = { ...addStoryState };
 
         async function postData() {
             try {
                 await Api.postAddStory(addStoryDataToPost);
-                setAddStoryData({ ...addStoryDataInit });
+                dispatch({
+                    type: SET_STORY_DATA,
+                    payload: NEW_STORY_INIT_DATA
+                });
                 setSubmitted(true);
             } catch (e) {
-                window.alert(e);
+                console.error(e);
             }
         }
         postData();
