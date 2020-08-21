@@ -3,7 +3,8 @@ import { withRoute } from 'services/routing/routerHOC';
 import { TestimonyForm } from 'components/TestimonyForm';
 import { useTranslation, Trans } from 'react-i18next';
 import {
-    useFiledChange,
+    useModerationContext,
+    useModerationFiledChange,
     useModerateStorySubmit,
     useBack,
     useModerationStory,
@@ -11,7 +12,6 @@ import {
 } from './moderationHooks';
 import { useAllTags } from 'containers/Stories/storiesHooks';
 
-import { ModerationContext } from './moderationContext';
 import BackArrowIcon from 'src/media/icons/backArrow.svg';
 import '../../scss/componentsStyle/moderationView.scss';
 import { getTagsAsArray } from '../../services/general/generalHelpers';
@@ -19,12 +19,9 @@ import { Multiselect } from 'multiselect-react-dropdown';
 
 export const ModerationView = withRoute(props => {
     const { t } = useTranslation();
-    const { moderationData, setModerationData } = useContext(ModerationContext);
+    const { moderationState } = useModerationContext();
     const tags = getTagsAsArray(useAllTags());
-    const { handleFiledChange } = useFiledChange(
-        moderationData,
-        setModerationData
-    );
+    const { handleFiledChange } = useModerationFiledChange();
     //TODO: add selectedTags to moderationData in order to save data if go back ? or as data to send to server?
     const { selectedTags, onSelect, onRemove } = useSelectedTags();
     const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit(
@@ -75,7 +72,7 @@ export const ModerationView = withRoute(props => {
                             <TestimonyForm
                                 handleSubmit={handleSubmit}
                                 handleFiledChange={handleFiledChange}
-                                formData={{ ...moderationData }}
+                                formData={{ ...moderationState }}
                                 moderatedForm
                             />
                         </div>

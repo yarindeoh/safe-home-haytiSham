@@ -22,7 +22,7 @@ export const TestimonyForm = withRoute(
             <>
                 <div id={'testimony-form'}>
                     <form onSubmit={!disabled ? handleSubmit : undefined}>
-                        {formData.createdAt && (
+                        {formData?.createdAt && (
                             <div>
                                 <div>{`${t(
                                     'addStoryView.createdAt'
@@ -35,7 +35,7 @@ export const TestimonyForm = withRoute(
                             name="name"
                             label={t('addStoryView.nameLabel')}
                             placeholder={t('addStoryView.namePlaceholder')}
-                            value={formData.name}
+                            value={formData?.name}
                             onChange={e => handleFiledChange(e, 'name')}
                             disabled={disabled}
                             required
@@ -44,7 +44,7 @@ export const TestimonyForm = withRoute(
                             name="mail"
                             label={t('addStoryView.emailLabel')}
                             placeholder={t('addStoryView.emailPlaceholder')}
-                            value={formData.mail}
+                            value={formData?.mail}
                             onChange={e => handleFiledChange(e, 'mail')}
                             disabled={disabled}
                         />
@@ -67,7 +67,7 @@ export const TestimonyForm = withRoute(
                             name="background"
                             placeholder=""
                             label={t('background')}
-                            value={formData.background}
+                            value={formData?.background}
                             onChange={e => handleFiledChange(e, 'background')}
                             disabled={disabled}
                             required
@@ -77,7 +77,7 @@ export const TestimonyForm = withRoute(
                             name="storyContent"
                             label={t('storyContent')}
                             placeholder={t('storyContentPlaceholder')}
-                            value={formData.storyContent}
+                            value={formData?.storyContent}
                             onChange={e => handleFiledChange(e, 'storyContent')}
                             disabled={disabled}
                             required
@@ -86,7 +86,7 @@ export const TestimonyForm = withRoute(
                             name="howDidYouManged"
                             label={t('howDidYouManged')}
                             placeholder={t('howDidYouMangedPlaceholder')}
-                            value={formData.howDidYouManged}
+                            value={formData?.howDidYouManged}
                             onChange={e =>
                                 handleFiledChange(e, 'howDidYouManged')
                             }
@@ -97,7 +97,7 @@ export const TestimonyForm = withRoute(
                             name="whatHelpedYou"
                             label={t('whatHelpedYou')}
                             placeholder={t('whatHelpedYouPlaceHolder')}
-                            value={formData.whatHelpedYou}
+                            value={formData?.whatHelpedYou}
                             onChange={e =>
                                 handleFiledChange(e, 'whatHelpedYou')
                             }
@@ -108,7 +108,7 @@ export const TestimonyForm = withRoute(
                             name="whatTriggeredChange"
                             label={t('whatTriggeredChange')}
                             placeholder={t('whatTriggeredChangePlaceHolder')}
-                            value={formData.whatTriggeredChange}
+                            value={formData?.whatTriggeredChange}
                             onChange={e =>
                                 handleFiledChange(e, 'whatTriggeredChange')
                             }
@@ -119,7 +119,7 @@ export const TestimonyForm = withRoute(
                             name="additionalnfo"
                             placeholder={t('additionalnfoPlaceHolder')}
                             label={t('additionalnfo')}
-                            value={formData.additionalnfo}
+                            value={formData?.additionalnfo}
                             onChange={e =>
                                 handleFiledChange(e, 'additionalnfo')
                             }
@@ -131,7 +131,7 @@ export const TestimonyForm = withRoute(
                                 name="quote"
                                 label={t('quote')}
                                 placeholder={t('quotePlaceHolder')}
-                                value={formData.quote}
+                                value={formData?.quote}
                                 onChange={e => handleFiledChange(e, 'quote')}
                                 disabled={disabled}
                             />

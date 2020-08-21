@@ -3,11 +3,11 @@ import { withRoute } from 'services/routing/routerHOC';
 import { Input } from 'components/Input';
 import { useTranslation } from 'react-i18next';
 import {
-    useFiledChange,
+    useModerationContext,
+    useLoginFiledChange,
     useLoginSubmit,
     useModerationStories
 } from './moderationHooks';
-import { ModerationContext } from './moderationContext';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
 import { useAllStories } from 'containers/Stories/storiesHooks';
 
@@ -15,13 +15,13 @@ import { useAllStories } from 'containers/Stories/storiesHooks';
 
 export const LoginView = withRoute(props => {
     const { t } = useTranslation();
-    const { moderationData } = useContext(ModerationContext);
+    const { moderationState, dispatch } = useModerationContext();
     const [loginData, setLoginData] = useState({ userName: '', password: '' });
-    const { handleFiledChange } = useFiledChange(loginData, setLoginData);
+    const { handleFiledChange } = useLoginFiledChange(loginData, setLoginData);
     const { handleLogin } = useLoginSubmit(loginData);
 
     const { storiesToModerate } = useModerationStories();
-    const { allStories } = useAllStories(moderationData.loggedIn);
+    const { allStories } = useAllStories(moderationState.loggedIn);
 
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
@@ -29,7 +29,7 @@ export const LoginView = withRoute(props => {
 
     return (
         <div>
-            {moderationData.loggedIn ? (
+            {moderationState?.loggedIn ? (
                 <div>
                     {/* list with stories before moderation */}
                     <header>
