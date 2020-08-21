@@ -10,7 +10,8 @@ const he = {
             jealousy: 'קנאה'
         },
         storyName: 'שם הסיפור',
-        background: 'רקע* (מה היה טיב מערכת היחסים, מתי זה קרה, לאורך כמה זמן, גיל וכו׳)',
+        background:
+            'רקע* (מה היה טיב מערכת היחסים, מתי זה קרה, לאורך כמה זמן, גיל וכו׳)',
         whatTriggeredChange: 'איך הסיטואציה השתנתה',
         howDidYouManged: 'איך התמודדתי עם המצב',
         howDidYouMangedPlaceholder: 'ההתמודדות שלי...',
@@ -64,16 +65,16 @@ const he = {
            `,
             nameLabel: 'שם לפרסום העדות (שם מלא/אנונימי)*?',
             namePlaceholder: 'הוספת שם',
-            emailLabel:
-                'מייל/טלפון ליצירת קשר (לא חובה, לא יפורסם)',
+            emailLabel: 'מייל/טלפון ליצירת קשר (לא חובה, לא יפורסם)',
             emailPlaceholder: 'הוספת פרטי התקשרות',
             contactLabel: 'שניצור איתך קשר לקבלת תמיכה?',
             contactNotes: 'אפשר גם ליצור קשר 24/7 דרך כפתור התמיכה',
             manualSubmition: 'אפשר לדלג ולמלא בכתב או:',
             uploadVideo: 'להעלות סרטון',
             uploadRecording: 'להעלות הקלטה',
-            submittedSuccessHeading: "הסיפור שלך נשלח בהצלחה!",
-            submittedSuccessText: "במידה והשארת פרטי קשר, נעדכן אותך לאחר שהוא יעלה לאתר"
+            submittedSuccessHeading: 'הסיפור שלך נשלח בהצלחה!',
+            submittedSuccessText:
+                'במידה והשארת פרטי קשר, נעדכן אותך לאחר שהוא יעלה לאתר'
         },
         tagsFilter: {
             additionalTestimonies: 'עדויות נוספות',

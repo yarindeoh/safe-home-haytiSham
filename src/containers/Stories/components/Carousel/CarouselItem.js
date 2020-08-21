@@ -13,7 +13,8 @@ export function CarouselItem({ story, isSelected, onClick }) {
 
     const renderTags = () => (
         <ul className="TagsList">
-            {tags && tags.map((tagText, key) => <span key={key}>{tagText}</span>)}
+            {tags &&
+                tags.map((tagText, key) => <span key={key}>{tagText}</span>)}
         </ul>
     );
 

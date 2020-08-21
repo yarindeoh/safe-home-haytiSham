@@ -21,43 +21,44 @@ export const StoryView = withRoute(props => {
         'whatHelpedYou',
         'storyContent'
     ]);
-    return (<Skeleton>
-        <div id={'story-page-container'}>
-            <div className={'quote'}>
-                <h1>"{story.quote}"</h1>
-                <h2>
-                    {`
+    return (
+        <Skeleton>
+            <div id={'story-page-container'}>
+                <div className={'quote'}>
+                    <h1>"{story.quote}"</h1>
+                    <h2>
+                        {`
                      ${t('storyView.storyOf')}
                      ${story.name.split('')[0]}׳ 
                      ${story.createdAt}
                    `}
-                </h2>
-                <Tags tags={story.tags} />
+                    </h2>
+                    <Tags tags={story.tags} />
+                </div>
+                {processedStory &&
+                    Object.keys(processedStory).map((item, key) => (
+                        <div key={key}>
+                            <h6>{t(item)}</h6>
+                            <span>{processedStory[item]}</span>
+                            <br />
+                        </div>
+                    ))}
+                <SimilarStories
+                    tags={story.tags}
+                    changeLocationByPath={changeLocationByPath}
+                />
+                <button className="footercustom">
+                    <span className="helpright">
+                        <button className="BTX-help2" />
+                        <p>אוזן קשבת</p>
+                    </span>
+                    <span className="shareleft">
+                        <button className="BTX-share" />
+                        <p>שיתוף </p>
+                    </span>
+                </button>
+                <Footer />
             </div>
-            {processedStory &&
-                Object.keys(processedStory).map((item, key) => (
-                    <div key={key}>
-                        <h6>{t(item)}</h6>
-                        <span>{processedStory[item]}</span>
-                        <br />
-                    </div>
-                ))}
-            <SimilarStories
-                tags={story.tags}
-                changeLocationByPath={changeLocationByPath}
-            />
-            <button className="footercustom">
-                <span className="helpright">
-                    <button className="BTX-help2" />
-                    <p>אוזן קשבת</p>
-                </span>
-                <span className="shareleft">
-                    <button className="BTX-share" />
-                    <p>שיתוף </p>
-                </span>
-            </button>
-            <Footer />
-        </div>
         </Skeleton>
     );
 });

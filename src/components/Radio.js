@@ -17,7 +17,7 @@ export const Radio = ({ label, notes, options, checked, onClick, name }) => {
                                 checked={index === checked}
                                 key={index}
                                 onClick={onClick}
-                                onChange={()=>{}}
+                                onChange={() => {}}
                             />
                             {option.label}
                         </label>

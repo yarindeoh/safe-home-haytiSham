@@ -21,10 +21,9 @@ export async function handleRequest(url, type, options = {}, data = {}) {
         // TODO:: add loader state
         const response = await fetch(url, config);
         if (response.status !== 200) {
-            throw new Error("Bad response from server");
+            throw new Error('Bad response from server');
         }
-        if (options.no_result)
-        {
+        if (options.no_result) {
             return {};
         }
         const serverData = await response.json();
