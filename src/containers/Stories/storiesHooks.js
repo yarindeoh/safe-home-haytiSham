@@ -32,7 +32,13 @@ export const useSelectedTags = tags => {
     const generateTagsData = useCallback(
         tags =>
             tags
-                ? tags.reduce((accumulator, tag) => (accumulator[tag] = false))
+                ? Object.keys(tags).reduce((accumulator, tagId) => {
+                      accumulator[tagId] = {
+                          value: tags[tagId],
+                          selected: false
+                      };
+                      return accumulator;
+                  }, {})
                 : {},
         []
     );
@@ -50,7 +56,10 @@ export const useSelectedTags = tags => {
                 setTagsData(prevTagsData => {
                     return {
                         ...prevTagsData,
-                        tag: !prevTagsData[tag]
+                        [tag]: {
+                            ...prevTagsData[tag],
+                            selected: !(prevTagsData[tag].selected)
+                        }
                     };
                 }),
             []

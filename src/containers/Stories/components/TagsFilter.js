@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useMemo } from 'react';
 
 import { useTags } from 'containers/Stories/storiesHooks';
 import TagFilter from 'components/TagFilter';
@@ -14,20 +14,23 @@ export const TagsFilter = ({ changeLocationByPath }) => {
         changeDisplayMoreTags,
         getDisplayedTags
     } = useTags();
-    const [filteredTags, setFilteredTags] = useState([]);
+    const filterTagsIds = useMemo(
+        () => Object.keys(tagsData).filter(tagId => tagsData[tagId].selected),
+        [tagsData]
+    );
 
     return (
         <div className={'stories-gallery-container'}>
             <h1>{t('tagsFilter.additionalTestimonies')}</h1>
             <div className="tags-filter-container">
                 {tagsData &&
-                    Object.keys(tagsData).map((tag) => (
+                    Object.keys(tagsData).map(tagId => (
                         <TagFilter
-                            value={tag}
-                            tag={tag}
-                            key={tag}
-                            selected={tagsData[tag]}
-                            onClick={event => changeTagSelected(tag)}
+                            value={tagsData[tagId].value}
+                            tag={tagsData[tagId].value}
+                            key={tagId}
+                            selected={tagsData[tagId].selected}
+                            onClick={event => changeTagSelected(tagId)}
                         />
                     ))}
                 <span className="more-tags" onClick={changeDisplayMoreTags}>
@@ -37,7 +40,7 @@ export const TagsFilter = ({ changeLocationByPath }) => {
                 </span>
             </div>
             <StoriesList
-                tags={filteredTags}
+                tags={filterTagsIds}
                 changeLocationByPath={changeLocationByPath}
             />
         </div>
