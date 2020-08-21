@@ -1,12 +1,29 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 
-import { addStoryDataInit } from 'containers/AddStory/addStoryConstants';
+import { NEW_STORY_INIT_DATA } from './addStoryConstants';
+
+const initialState = NEW_STORY_INIT_DATA;
+
+function reducer(state, action) {
+    switch (action.type) {
+        case 'SET_STORY_DATA':
+            return { ...state, ...action.payload };
+        case 'SET_CONTACT':
+            return {
+                ...state,
+                contact: action.payload
+            };
+        default:
+            throw new Error();
+    }
+}
+
 export const AddStoryContext = React.createContext({});
 
 export function AddStoryProvider({ children }) {
-    const [addStoryData, setAddStoryData] = useState(addStoryDataInit);
+    const [addStoryState, dispatch] = useReducer(reducer, initialState);
     return (
-        <AddStoryContext.Provider value={{ addStoryData, setAddStoryData }}>
+        <AddStoryContext.Provider value={{ addStoryState, dispatch }}>
             {children}
         </AddStoryContext.Provider>
     );

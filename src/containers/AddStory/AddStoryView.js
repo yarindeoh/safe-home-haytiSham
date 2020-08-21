@@ -6,7 +6,7 @@ import { Input } from 'components/Input';
 import { Radio } from 'components/Radio';
 import { TextArea } from 'components/TextArea';
 import {
-    useAddStoryState,
+    useAddStoryContext,
     useCheckedContact,
     useFiledChange,
     useSubmit,
@@ -15,7 +15,7 @@ import {
 import BackArrowIcon from 'src/media/icons/backArrow.svg';
 
 export const AddStoryView = withRoute(props => {
-    const { addStoryData } = useAddStoryState();
+    const { addStoryState } = useAddStoryContext();
     const { t } = useTranslation();
     const { checkedContact, handleCheckedContact } = useCheckedContact();
     const { handleFiledChange } = useFiledChange();
@@ -52,7 +52,7 @@ export const AddStoryView = withRoute(props => {
                             name="name"
                             label={t('addStoryView.nameLabel')}
                             placeholder={t('addStoryView.namePlaceholder')}
-                            value={addStoryData?.name}
+                            value={addStoryState?.name}
                             onChange={e => handleFiledChange(e, 'name')}
                             required
                         />
@@ -60,7 +60,7 @@ export const AddStoryView = withRoute(props => {
                             name="mail"
                             label={t('addStoryView.emailLabel')}
                             placeholder={t('addStoryView.emailPlaceholder')}
-                            value={addStoryData?.mail}
+                            value={addStoryState?.mail}
                             onChange={e => handleFiledChange(e, 'mail')}
                         />
                         <Radio
@@ -79,7 +79,7 @@ export const AddStoryView = withRoute(props => {
                             name="background"
                             placeholder=""
                             label={t('background')}
-                            value={addStoryData?.background}
+                            value={addStoryState?.background}
                             onChange={e => handleFiledChange(e, 'background')}
                             required
                         />
@@ -88,7 +88,7 @@ export const AddStoryView = withRoute(props => {
                             name="storyContent"
                             label={t('storyContent')}
                             placeholder={t('storyContentPlaceholder')}
-                            value={addStoryData?.storyContent}
+                            value={addStoryState?.storyContent}
                             onChange={e => handleFiledChange(e, 'storyContent')}
                             required
                         />
@@ -96,7 +96,7 @@ export const AddStoryView = withRoute(props => {
                             name="howDidYouManged"
                             label={t('howDidYouManged')}
                             placeholder={t('howDidYouMangedPlaceholder')}
-                            value={addStoryData?.howDidYouManged}
+                            value={addStoryState?.howDidYouManged}
                             onChange={e =>
                                 handleFiledChange(e, 'howDidYouManged')
                             }
@@ -106,7 +106,7 @@ export const AddStoryView = withRoute(props => {
                             name="whatHelpedYou"
                             label={t('whatHelpedYou')}
                             placeholder={t('whatHelpedYouPlaceHolder')}
-                            value={addStoryData?.whatHelpedYou}
+                            value={addStoryState?.whatHelpedYou}
                             onChange={e =>
                                 handleFiledChange(e, 'whatHelpedYou')
                             }
@@ -116,7 +116,7 @@ export const AddStoryView = withRoute(props => {
                             name="whatTriggeredChange"
                             label={t('whatTriggeredChange')}
                             placeholder={t('whatTriggeredChangePlaceHolder')}
-                            value={addStoryData?.whatTriggeredChange}
+                            value={addStoryState?.whatTriggeredChange}
                             onChange={e =>
                                 handleFiledChange(e, 'whatTriggeredChange')
                             }
@@ -126,7 +126,7 @@ export const AddStoryView = withRoute(props => {
                             name="quote"
                             label={t('quote')}
                             placeholder={t('quotePlaceHolder')}
-                            value={addStoryData?.quote}
+                            value={addStoryState?.quote}
                             onChange={e => handleFiledChange(e, 'quote')}
                         />
 
@@ -134,7 +134,7 @@ export const AddStoryView = withRoute(props => {
                             name="additionalnfo"
                             placeholder={t('additionalnfoPlaceHolder')}
                             label={t('additionalnfo')}
-                            value={addStoryData?.additionalnfo}
+                            value={addStoryState?.additionalnfo}
                             onChange={e =>
                                 handleFiledChange(e, 'additionalnfo')
                             }
