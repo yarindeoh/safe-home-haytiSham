@@ -1,42 +1,37 @@
 import React, { useState, useEffect } from 'react';
 
-import { useAllTags, useDisplayedTags } from 'containers/Stories/storiesHooks';
+import { useTags } from 'containers/Stories/storiesHooks';
 import TagFilter from 'components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { useTranslation } from 'react-i18next';
 
 export const TagsFilter = ({ changeLocationByPath }) => {
     const { t } = useTranslation();
-    const { tags, showMoreTags, handleShowMoreTagsChange } = useDisplayedTags(
-        useAllTags()
-    );
+    const {
+        tagsData,
+        changeTagSelected,
+        isDisplayMoreTags,
+        changeDisplayMoreTags,
+        getDisplayedTags
+    } = useTags();
     const [filteredTags, setFilteredTags] = useState([]);
 
     return (
         <div className={'stories-gallery-container'}>
             <h1>{t('tagsFilter.additionalTestimonies')}</h1>
             <div className="tags-filter-container">
-                {tags &&
-                    Object.keys(tags).map((key, index) => (
+                {tagsData &&
+                    Object.keys(tagsData).map((tag) => (
                         <TagFilter
-                            value={key}
-                            tag={tags[key]}
-                            key={index}
-                            selected={filteredTags.includes(key.toString())}
-                            onClick={event => {
-                                let tag = event.target.getAttribute('data-id');
-                                if (filteredTags.includes(tag)) {
-                                    setFilteredTags(
-                                        filteredTags.filter(e => e !== tag)
-                                    );
-                                } else {
-                                    setFilteredTags([...filteredTags, tag]);
-                                }
-                            }}
+                            value={tag}
+                            tag={tag}
+                            key={tag}
+                            selected={tagsData[tag]}
+                            onClick={event => changeTagSelected(tag)}
                         />
                     ))}
-                <span className="more-tags" onClick={handleShowMoreTagsChange}>
-                    {showMoreTags
+                <span className="more-tags" onClick={changeDisplayMoreTags}>
+                    {isDisplayMoreTags
                         ? t('tagsFilter.lessCategories')
                         : t('tagsFilter.moreCategories')}
                 </span>

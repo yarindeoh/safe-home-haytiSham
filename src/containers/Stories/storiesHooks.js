@@ -1,30 +1,75 @@
 import Api from 'containers/Stories/storiesApi';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
 
-export const useAllTags = () => {
+export const useTags = () => {
     const [tags, setTags] = useState();
+    const { tagsData, changeTagSelected } = useSelectedTags(tags);
+    const {
+        isDisplayMoreTags,
+        changeDisplayMoreTags,
+        getDisplayedTags
+    } = useShowMoreTags(tags);
+
+    // get tags after mounts
     useEffect(() => {
         (async function fetchData() {
             setTags(await Api.getTagsMap());
         })();
     }, []);
-    return tags;
+
+    return {
+        tagsData: getDisplayedTags(tagsData),
+        changeTagSelected,
+        isDisplayMoreTags,
+        changeDisplayMoreTags,
+        getDisplayedTags
+    };
 };
 
-export const useDisplayedTags = tags => {
-    const [showMoreTags, setShowMoreTags] = useState(false);
+export const useSelectedTags = tags => {
+    const generateTagsData = useCallback(
+        tags =>
+            tags
+                ? tags.reduce((accumulator, tag) => (accumulator[tag] = false))
+                : {},
+        []
+    );
 
-    const tagsToReturn = showMoreTags
-        ? tags
-        : tags && getSlicedTagsObj(tags, 0, 5);
+    const [tagsData, setTagsData] = useState({});
+
+    useEffect(() => {
+        setTagsData(generateTagsData(tags));
+    }, [tags]);
+
     return {
-        tags: tagsToReturn,
-        showMoreTags,
-        handleShowMoreTagsChange: useCallback(() => {
-            setShowMoreTags(showMoreTags => !showMoreTags);
-        }, [])
+        tagsData,
+        changeTagSelected: useCallback(
+            tag =>
+                setTagsData(prevTagsData => {
+                    return {
+                        ...prevTagsData,
+                        tag: !prevTagsData[tag]
+                    };
+                }),
+            []
+        )
+    };
+};
+
+export const useShowMoreTags = () => {
+    const [isDisplayMoreTags, setIsDisplayMoreTags] = useState(false);
+    return {
+        isDisplayMoreTags,
+        changeDisplayMoreTags: useCallback(() => {
+            setIsDisplayMoreTags(showMoreTags => !showMoreTags);
+        }, []),
+        getDisplayedTags: useCallback(
+            tags =>
+                isDisplayMoreTags ? tags : tags && getSlicedTagsObj(tags, 0, 5),
+            []
+        )
     };
 };
 
