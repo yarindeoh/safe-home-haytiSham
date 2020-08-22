@@ -10,7 +10,8 @@ const he = {
             jealousy: 'קנאה'
         },
         storyName: 'שם הסיפור',
-        background: 'רקע* (מה היה טיב מערכת היחסים, מתי זה קרה, לאורך כמה זמן, גיל וכו׳)',
+        background:
+            'רקע* (מה היה טיב מערכת היחסים, מתי זה קרה, לאורך כמה זמן, גיל וכו׳)',
         whatTriggeredChange: 'איך הסיטואציה השתנתה',
         howDidYouManged: 'איך התמודדתי עם המצב',
         howDidYouMangedPlaceholder: 'ההתמודדות שלי...',
@@ -72,7 +73,7 @@ const he = {
             manualSubmition: 'אפשר לדלג ולמלא בכתב או:',
             uploadVideo: 'להעלות סרטון',
             uploadRecording: 'להעלות הקלטה',
-            submittedSuccessHeading: "הסיפור שלך נשלח בהצלחה!",
+            submittedSuccessHeading: 'הסיפור שלך נשלח בהצלחה!',
             submittedSuccessText:
                 'במידה והשארת פרטי קשר, נעדכן אותך לאחר שהוא יעלה לאתר'
         },
