@@ -3,9 +3,12 @@ import { useEffect, useState, useCallback, useRef } from 'react';
 
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
 
-export const useTags = () => {
+export const useTags = (defaultSelectedTags) => {
     const [tags, setTags] = useState();
-    const { tagsData, changeTagSelected } = useSelectedTags(tags);
+    const { tagsData, changeTagSelected, selectAllTags } = useSelectedTags(
+        tags,
+        defaultSelectedTags
+    );
     const {
         isDisplayMoreTags,
         changeDisplayMoreTags,
@@ -24,18 +27,21 @@ export const useTags = () => {
         changeTagSelected,
         isDisplayMoreTags,
         changeDisplayMoreTags,
-        getDisplayedTags
+        selectAllTags
     };
 };
 
-export const useSelectedTags = tags => {
+export const useSelectedTags = (tags, defaultSelectedTags = []) => {
     const generateTagsData = useCallback(
         tags =>
             tags
                 ? Object.keys(tags).reduce((accumulator, tagId) => {
+                      const tagIdNumber = parseInt(tagId);
                       accumulator[tagId] = {
                           value: tags[tagId],
-                          selected: false
+                          selected: tagIdNumber
+                              ? defaultSelectedTags.indexOf(tagIdNumber) > -1
+                              : false
                       };
                       return accumulator;
                   }, {})
@@ -77,7 +83,7 @@ export const useShowMoreTags = () => {
         getDisplayedTags: useCallback(
             tags =>
                 isDisplayMoreTags ? tags : tags && getSlicedTagsObj(tags, 0, 5),
-            []
+            [isDisplayMoreTags]
         )
     };
 };
@@ -91,17 +97,5 @@ export const useFilteredStories = tags => {
     }, [tags]);
     return {
         stories: stories?.result
-    };
-};
-
-export const useTagsMap = () => {
-    const [tags, setTags] = useState();
-    useEffect(() => {
-        (async function fetchData() {
-            setTags(await Api.getAllTags());
-        })();
-    }, [tags]);
-    return {
-        tags
     };
 };

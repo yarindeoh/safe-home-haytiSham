@@ -73,12 +73,14 @@ const he = {
             uploadVideo: 'להעלות סרטון',
             uploadRecording: 'להעלות הקלטה',
             submittedSuccessHeading: "הסיפור שלך נשלח בהצלחה!",
-            submittedSuccessText: "במידה והשארת פרטי קשר, נעדכן אותך לאחר שהוא יעלה לאתר"
+            submittedSuccessText:
+                'במידה והשארת פרטי קשר, נעדכן אותך לאחר שהוא יעלה לאתר'
         },
         tagsFilter: {
+            allTestimonies: 'כל העדויות',
             additionalTestimonies: 'עדויות נוספות',
-            moreCategories: 'עוד קטגוריות',
-            lessCategories: 'פחות קטגוריות'
+            moreCategories: 'עוד קטגוריות +',
+            lessCategories: 'פחות קטגוריות -'
         },
         storiesGalleryView: {
             confessionOf: 'עדותה של {{name}} {{date}}'

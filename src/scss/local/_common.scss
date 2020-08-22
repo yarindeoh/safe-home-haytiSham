@@ -105,39 +105,6 @@
   padding-top: 62px;
 }
 
-.tags-filter-container {
-    display: flex;
-    margin: 0 0 map_get($spaces, medium);
-    flex-wrap: wrap;
-
-    .tag-filter,
-    .more-tags {
-        padding: 3px map_get($spaces, small);
-        color: map_get($colors, blue-300);
-        border-radius: 20px;
-        border: 0;
-        text-align: center;
-        margin: 0 0 map_get($spaces, x-small) map_get($spaces, x-small);
-
-        &:hover{
-            cursor: pointer;
-        }
-    }
-
-    .tag-filter {
-        background-color: map_get($colors, blue-100);
-        &.selected {
-            background-color: #97ccff;
-        }
-    }
-
-    .more-tags {
-        border: 1px solid map_get($colors, blue-300);
-        background-color: transparent;
-        color: map_get($colors, blue-300);
-    }
-}
-
 .const-text {
     color: map_get($colors, black);
     margin: 0 0 map_get($spaces, small);
