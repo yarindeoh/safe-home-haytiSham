@@ -21,7 +21,7 @@ export const LoginView = withRoute(props => {
     const { handleLogin } = useLoginSubmit(loginData);
 
     const { storiesToModerate } = useModerationStories();
-    const { allStories } = useAllStories(moderationState.loggedIn);
+    const { allStories } = useAllStories();
 
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
