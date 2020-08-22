@@ -1,15 +1,19 @@
-import React, { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Api from './moderationApi';
 import { ModerationContext } from './moderationContext';
 import {
     NEW_MODERATE_STORY_INIT_DATA,
     SET_LOGGED_IN,
-    SET_MODERATE_STORY_DATA
+    SET_MODERATE_STORY_DATA,
+    SET_TAGS
 } from './moderationConstants';
-import { extractFieldsFromObj } from 'services/general/generalHelpers';
+import {
+    extractFieldsFromObj,
+    getArrayOfTagsIds
+} from 'services/general/generalHelpers';
 
 export function useModerationContext() {
-    const context = React.useContext(ModerationContext);
+    const context = useContext(ModerationContext);
     if (context === undefined) {
         throw new Error(
             'ModerationContext must be used within a ModerationProvider'
@@ -111,20 +115,23 @@ export const useModerationStory = story => {
                 type: SET_MODERATE_STORY_DATA,
                 payload: { ...moderationState, ...processedStory }
             });
+            dispatch({
+                type: SET_TAGS,
+                payload: []
+            });
         }
     }, []);
     return {};
 };
 
-export const useModerateStorySubmit = selectedTags => {
+export const useModerateStorySubmit = () => {
     const { moderationState, dispatch } = useModerationContext();
     const [submitted, setSubmitted] = useState(false);
     let moderationDataToPost = { ...moderationState };
     delete moderationDataToPost.loggedIn;
     moderationDataToPost.originalStory = moderationState._id;
     delete moderationDataToPost._id;
-
-    //TODO: add to json selectedTags
+    moderationDataToPost.tags = getArrayOfTagsIds(moderationDataToPost.tags);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -167,18 +174,21 @@ export const useBack = (props, setSubmitted, path) => {
 };
 
 export const useSelectedTags = () => {
-    const [selectedTags, setSelectedTags] = useState([]);
+    const { moderationState, dispatch } = useModerationContext();
     function onSelect(selectedList, selectedItem) {
-        setSelectedTags(selectedTags => [...selectedTags, selectedItem]);
+        dispatch({
+            type: SET_TAGS,
+            payload: [...moderationState.tags, selectedItem]
+        });
     }
     function onRemove(selectedList, selectedItem) {
-        setSelectedTags(selectedTags =>
-            selectedTags.filter(e => e !== selectedItem)
-        );
+        dispatch({
+            type: SET_TAGS,
+            payload: moderationState.tags.filter(e => e !== selectedItem)
+        });
     }
 
     return {
-        selectedTags,
         onSelect,
         onRemove
     };

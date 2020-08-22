@@ -29,3 +29,7 @@ export const getTagsAsArray = obj => {
     }
     return arr;
 };
+
+export const getArrayOfTagsIds = arr => {
+    return arr.map(item => item.id);
+};

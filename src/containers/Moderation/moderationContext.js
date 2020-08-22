@@ -3,7 +3,8 @@ import React, { useReducer } from 'react';
 import {
     NEW_MODERATE_STORY_INIT_DATA,
     SET_LOGGED_IN,
-    SET_MODERATE_STORY_DATA
+    SET_MODERATE_STORY_DATA,
+    SET_TAGS
 } from './moderationConstants';
 
 const initialState = {
@@ -19,6 +20,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 loggedIn: action.payload
+            };
+        case SET_TAGS:
+            return {
+                ...state,
+                tags: action.payload
             };
         default:
             throw new Error();

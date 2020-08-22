@@ -121,14 +121,14 @@ export const AddStoryView = withRoute(props => {
                                 handleFiledChange(e, 'whatTriggeredChange')
                             }
                         />
-
+                        {/* 
                         <TextArea
                             name="quote"
                             label={t('quote')}
                             placeholder={t('quotePlaceHolder')}
                             value={addStoryState?.quote}
                             onChange={e => handleFiledChange(e, 'quote')}
-                        />
+                        /> */}
 
                         <TextArea
                             name="additionalnfo"

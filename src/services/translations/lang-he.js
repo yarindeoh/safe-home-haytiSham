@@ -24,7 +24,7 @@ const he = {
         whatTriggeredChange: 'מה גרם לשינוי',
         whatTriggeredChangePlaceHolder: 'השינוי התחיל ש...',
         quote: 'ציטוט נבחר',
-        quotePlaceHolder: '',
+        quotePlaceHolder: 'ציטוט מתוך הטקסט...',
         storyContent: 'הסיפור שלי*',
         storyContentPlaceholder: 'הסיפור שלי הוא...',
         additionalStories: 'עדויות נוספות',

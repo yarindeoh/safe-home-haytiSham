@@ -22,11 +22,8 @@ export const ModerationView = withRoute(props => {
     const { moderationState } = useModerationContext();
     const tags = getTagsAsArray(useAllTags());
     const { handleFiledChange } = useModerationFiledChange();
-    //TODO: add selectedTags to moderationData in order to save data if go back ? or as data to send to server?
-    const { selectedTags, onSelect, onRemove } = useSelectedTags();
-    const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit(
-        selectedTags
-    );
+    const { onSelect, onRemove } = useSelectedTags();
+    const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit();
     const { back } = useBack(props, setSubmitted, '/admin');
 
     const story = props.location.state;
@@ -86,7 +83,7 @@ export const ModerationView = withRoute(props => {
                             <br></br>
                             <Multiselect
                                 options={tags} // Options to display in the dropdown
-                                selectedValues={selectedTags} // Preselected value to persist in dropdown
+                                selectedValues={moderationState?.tags} // Preselected value to persist in dropdown
                                 onSelect={onSelect} // Function will trigger on select event
                                 onRemove={onRemove} // Function will trigger on remove event
                                 displayValue="name"

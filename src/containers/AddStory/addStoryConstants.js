@@ -4,7 +4,7 @@ export const NEW_STORY_INIT_DATA = {
     mail: '',
     howDidYouManged: '',
     name: '',
-    quote: '',
+    // quote: '',
     storyContent: '',
     whatHelpedYou: '',
     whatTriggeredChange: '',
