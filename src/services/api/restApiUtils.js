@@ -17,6 +17,9 @@ export async function handleRequest(url, type, options = {}, data = {}) {
     if (type === 'POST') {
         config.body = JSON.stringify(data);
     }
+    if (sessionStorage.moderatorToken !== undefined) {
+        config.headers.Authorization = `Bearer ${sessionStorage.moderatorToken}`;
+    }
     try {
         // TODO:: add loader state
         const response = await fetch(url, config);

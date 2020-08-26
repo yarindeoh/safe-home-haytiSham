@@ -23,8 +23,8 @@ const he = {
         whatHelpedYouPlaceHolder: 'מאוד עזר לי ש...',
         whatTriggeredChange: 'מה גרם לשינוי',
         whatTriggeredChangePlaceHolder: 'השינוי התחיל ש...',
-        quote: 'תמצית',
-        quotePlaceHolder: '',
+        quote: 'ציטוט נבחר',
+        quotePlaceHolder: 'ציטוט מתוך הטקסט...',
         storyContent: 'הסיפור שלי*',
         storyContentPlaceholder: 'הסיפור שלי הוא...',
         additionalStories: 'עדויות נוספות',
@@ -59,6 +59,7 @@ const he = {
             share: 'שיתוף   '
         },
         addStoryView: {
+            createdAt: 'נכתב ב: ',
             myConfession: 'העדות שלי',
             anonymity: `שימו לב! נעבור על כל עדות שתתקבל,ולא נוכל לפרסם פרטים מזהים של הפוגעים.
                     כמו כן, במידה ותשאירו פרטי קשרֿ נשלח הודעה לאחר פרסום העדות.
@@ -87,6 +88,27 @@ const he = {
         storyVideo: {
             campaign: `צפו בעדות של {{storyteller}} מתוך קמפיין של פרויקט אוף לייף והעמותה ל.א לאלימות
             שפורסמה ב{{timestamp}}`
+        },
+        login: {
+            header: 'התחברי כדי לערוך',
+            userName: 'שם משתמש',
+            password: 'סיסמא',
+            loginButtonText: 'התחבר',
+            listToModerate: 'רשימת הסיפורים שדורשים עריכה',
+            listAllStories: 'רשימת כל הסיפורים'
+        },
+        moderation: {
+            header: 'עריכת העדות',
+            moderationRulesHeader: 'הנחיות למודרציה',
+            moderationRules:
+                '1. יש להסיר שמות או סימנים מזהים ברורים של הפוגעים שעלולים לסכן מפני דיבה <br/><br/>2. יש למחוק שמות של קטינים <br/><br/>3. יש לבחור תגיות לפי הדפוסים שחוזרים על עצמם<br/><br/>4. יש לבחור ציטוט נבחר<br/><br/>5. יש לשלוח הודעה לטלפון/אימייל שהושארו לאחר פרסום העדות<br/><br/>',
+            submittedSuccessHeading: 'העדות נערכה בהצלחה!',
+            submittedSuccessText:
+                'תודה שערכת את העדות,  לא לשכוח לשלוח מייל/הודעה לאחר האישור!',
+            submitText: 'אישור העלאת העדות',
+            phoneMail: 'מייל/טלפון: ',
+            backToAdminPage: 'חזרה לרשימת העדויות הדורשות עריכה',
+            choseTags: 'בחר תגיות'
         }
     }
 };

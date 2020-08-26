@@ -7,14 +7,16 @@ export const Input = ({
     subLabel,
     value,
     required,
-    onChange
+    onChange,
+    disabled
 }) => {
     return (
-        <div className={'question'}>
+        <div className={`question ${disabled ? 'disabled-area' : ''}`}>
             <label>
                 {label}
                 <div>
                     <input
+                        disabled={disabled}
                         type="text"
                         name={name}
                         placeholder={placeholder}
