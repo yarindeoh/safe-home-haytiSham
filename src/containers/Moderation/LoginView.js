@@ -11,13 +11,10 @@ import {
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
 import { useAllStories } from 'containers/Stories/storiesHooks';
 
-// import BackArrowIcon from 'src/media/icons/backArrow.svg';
-
 export const LoginView = withRoute(props => {
     const { t } = useTranslation();
-    const { moderationState, dispatch } = useModerationContext();
-    const [loginData, setLoginData] = useState({ userName: '', password: '' });
-    const { handleFiledChange } = useLoginFiledChange(loginData, setLoginData);
+    const { moderationState } = useModerationContext();
+    const { loginData, handleFiledChange } = useLoginFiledChange();
     const { handleLogin } = useLoginSubmit(loginData);
 
     const { storiesToModerate } = useModerationStories();
@@ -83,10 +80,6 @@ export const LoginView = withRoute(props => {
             ) : (
                 // form to login
                 <div id={'testimony-form'}>
-                    {/* <header>
-                    <BackArrowIcon className={'back-arrow-icon'} onClick={back}/>
-                    <h1>{t('addStoryView.myConfession')}</h1>
-                </header> */}
                     <h3>{t('login.header')}</h3>
 
                     <form onSubmit={handleLogin}>

@@ -22,14 +22,16 @@ export function useModerationContext() {
     return context;
 }
 
-export const useLoginFiledChange = (data, setData) => {
+export const useLoginFiledChange = () => {
+    const [loginData, setLoginData] = useState({ userName: '', password: '' });
     const handleFiledChange = (e, filed) => {
-        let newData = { ...data };
-        newData[filed] = e.target.value;
-        setData(newData);
+        let newLoginData = { ...loginData };
+        newLoginData[filed] = e.target.value;
+        setLoginData(newLoginData);
     };
 
     return {
+        loginData,
         handleFiledChange
     };
 };
@@ -65,7 +67,7 @@ export const useLoginSubmit = loginData => {
                     payload: true
                 });
             } catch (e) {
-                window.alert(e);
+                console.error(e);
             }
         }
         postLogin();
@@ -148,7 +150,7 @@ export const useModerateStorySubmit = () => {
                 });
                 setSubmitted(true);
             } catch (e) {
-                window.alert(e);
+                console.error(e);
             }
         }
         postData();

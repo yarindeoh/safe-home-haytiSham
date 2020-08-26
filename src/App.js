@@ -17,7 +17,6 @@ export const history = createBrowserHistory();
 export const App = () => {
     return (
         <RouterContext.Provider history={history}>
-            <ModerationProvider>
                 <AddStoryProvider>
                     <BrowserRouter>
                         <Switch>
@@ -36,15 +35,16 @@ export const App = () => {
                                 path="/publicStory/:id"
                                 component={StoryVideo}
                             />
-                            <Route path="/admin" component={LoginView} />
-                            <Route
-                                path="/moderateStory"
-                                component={ModerationView}
-                            />
+                            <ModerationProvider>
+                                <Route path="/admin" component={LoginView} />
+                                <Route
+                                    path="/moderateStory"
+                                    component={ModerationView}
+                                    />
+                            </ModerationProvider>
                         </Switch>
                     </BrowserRouter>
                 </AddStoryProvider>
-            </ModerationProvider>
         </RouterContext.Provider>
     );
 };

@@ -5,7 +5,6 @@ import { Radio } from 'components/Radio';
 import { TextArea } from 'components/TextArea';
 import { useTranslation } from 'react-i18next';
 import { useCheckedContact } from '../containers/AddStory/addStoryHooks';
-import moment from 'moment-mini-ts';
 
 export const TestimonyForm = withRoute(
     ({
@@ -26,9 +25,7 @@ export const TestimonyForm = withRoute(
                             <div>
                                 <div>{`${t(
                                     'addStoryView.createdAt'
-                                )}  ${moment
-                                    .utc(formData.createdAt)
-                                    .format('DD.MM.YYYY HH:mm:ss')}`}</div>
+                                )}  ${formData.createdAt}`}</div>
                             </div>
                         )}
                         <Input

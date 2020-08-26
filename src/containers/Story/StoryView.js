@@ -6,7 +6,6 @@ import { SimilarStories } from 'containers/Story/components/SimilarStories';
 import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'src/components/Skeleton';
-import moment from 'moment-mini-ts';
 
 export const StoryView = withRoute(props => {
     const { t } = useTranslation();
@@ -31,9 +30,7 @@ export const StoryView = withRoute(props => {
                         {`
                      ${t('storyView.storyOf')}
                      ${story.name.split('')[0]}׳ 
-                     ${moment
-                         .utc(story.createdAt)
-                         .format('DD.MM.YYYY HH:mm:ss')}
+                     ${story.createdAt}
                    `}
                     </h2>
                     <Tags tags={story.tags} />
