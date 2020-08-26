@@ -7,14 +7,20 @@ export const TextArea = ({
     name,
     value,
     required,
-    onChange
+    onChange,
+    disabled
 }) => {
     return (
-        <div className={'multiply-answer-area'}>
+        <div
+            className={`multiply-answer-area ${
+                disabled ? 'disabled-area' : ''
+            }`}
+        >
             <div className={'question'}>{label}</div>
             <div>{sublabel}</div>
             <div required={required}>
                 <textarea
+                    disabled={disabled}
                     name={name}
                     placeholder={placeholder}
                     value={value}
