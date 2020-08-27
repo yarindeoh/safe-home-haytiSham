@@ -98,15 +98,28 @@ export const useTagsMap = () => {
 };
 
 export const useAllStories = () => {
-    const [stories, setStories] = useState();
+    const [stories, setStories] = useState([]);
     let tags = useAllTags();
     let tags_ids = tags && Object.keys(tags);
+
+    async function getAllStories(){
+        let page = 1; 
+        let pageSize = 5;
+        let tmp_stories = [];
+        let data = await Api.getStoriesByTags(tags_ids || [],pageSize, page);
+        tmp_stories = [...tmp_stories, ...data.result]
+        page+=1;
+        for(page; page<=data.pages; page+=1){
+            data = await Api.getStoriesByTags(tags_ids || [],pageSize, page);
+            tmp_stories = [...tmp_stories, ...data.result]
+        }
+        setStories(tmp_stories);
+    }
+
     useEffect(() => {
-            (async () => {
-                await setStories(await Api.getStoriesByTags(tags_ids || []));
-            })();
+        getAllStories();
     }, [tags]);
     return {
-        allStories: stories?.result
+        allStories: stories
     };
 };
