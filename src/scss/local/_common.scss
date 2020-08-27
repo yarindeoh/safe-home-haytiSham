@@ -235,3 +235,8 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.disabled-area{
+    opacity: 0.7;
+    pointer-events: none;
+}

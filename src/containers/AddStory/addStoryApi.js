@@ -7,8 +7,8 @@ function baseUrl(path) {
 }
 
 const Api = {
-    postAddStory: (data) => {
-        return post(baseUrl('addStory'), data, {no_result:true});
+    postAddStory: data => {
+        return post(baseUrl('addStory'), data, { no_result: true });
     }
 };
 

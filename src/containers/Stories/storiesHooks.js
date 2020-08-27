@@ -99,3 +99,17 @@ export const useFilteredStories = tags => {
         stories: stories?.result
     };
 };
+
+export const useAllStories = () => {
+    const [stories, setStories] = useState();
+    let tags = useAllTags();
+    let tags_ids = tags && Object.keys(tags);
+    useEffect(() => {
+            (async () => {
+                await setStories(await Api.getStoriesByTags(tags_ids || []));
+            })();
+    }, [tags]);
+    return {
+        allStories: stories?.result
+    };
+};

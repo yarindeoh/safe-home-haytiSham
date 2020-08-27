@@ -11,7 +11,7 @@ class StorieService {
     listByTags(tags, page = 1, pageSize = 100, sortField = "createdAt", sortDirection = "DESC"){
         sortDirection = sortDirection === 'ASC' ? '' : '-';
         sortField = sortDirection + sortField;
-        const query = tags? {tags: {'$all': tags}} : {}; 
+        const query = tags? {tags: {'$in': tags}} : {}; 
         return Promise.all([
             ModeratedStrory.countDocuments(query),
             ModeratedStrory.find(query)

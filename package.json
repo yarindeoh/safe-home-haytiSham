@@ -20,6 +20,7 @@
     "i18next": "^19.6.2",
     "i18next-browser-languagedetector": "^5.0.0",
     "isomorphic-fetch": "^2.2.1",
+    "multiselect-react-dropdown": "^1.5.7",
     "node-sass": "^4.14.1",
     "pip": "0.0.1",
     "react": "^16.9.0",

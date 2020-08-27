@@ -1,6 +1,6 @@
 import React from 'react';
 import XIcon from 'src/media/icons/X.svg';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 const PAGES = [
     { title: 'whoWeAre' },
@@ -19,12 +19,16 @@ export function Menu(props) {
 
     return (
         <React.Fragment>
-            {show && <div className="DarkFilter" onClick={onToggle}/>}
+            {show && <div className="DarkFilter" onClick={onToggle} />}
             <div className={`Menu ${show ? 'Visible' : ''}`}>
                 <div className="Title">
                     <XIcon className="CloseIcon" onClick={onToggle} />
-                    <div className="MainTitle">{t('common.iHaveBeenThereHashtag')}</div>
-                    <div className="SubTitle">{t('testimoniesFromRelationships')}</div>
+                    <div className="MainTitle">
+                        {t('common.iHaveBeenThereHashtag')}
+                    </div>
+                    <div className="SubTitle">
+                        {t('testimoniesFromRelationships')}
+                    </div>
                 </div>
                 <ul className="Items">
                     {PAGES.map(({ title, isBold, path }, index) => {
@@ -47,7 +51,8 @@ export function Menu(props) {
                     })}
                 </ul>
             </div>
-        </React.Fragment>)
+        </React.Fragment>
+    );
 }
 
 export default Menu;

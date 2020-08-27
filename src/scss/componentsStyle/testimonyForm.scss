@@ -112,4 +112,9 @@
   }
 
   }
+  .optionContainer li:hover,
+  .optionContainer .highlight {
+    background: map_get($colors, purple-500);
+    color: map_get($colors, white);
+  }
 }

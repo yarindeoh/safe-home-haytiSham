@@ -1,14 +1,31 @@
 import React from 'react';
 
-export const Input = ({ name, placeholder, label, subLabel, value, required, onChange }) => {
+export const Input = ({
+    name,
+    placeholder,
+    label,
+    subLabel,
+    value,
+    required,
+    onChange,
+    disabled
+}) => {
     return (
-        <div className={'question'}>
+        <div className={`question ${disabled ? 'disabled-area' : ''}`}>
             <label>
                 {label}
                 <div>
-                    <input type="text" name={name} placeholder={placeholder} value={value} required={required} onChange={onChange}></input>
+                    <input
+                        disabled={disabled}
+                        type="text"
+                        name={name}
+                        placeholder={placeholder}
+                        value={value}
+                        required={required}
+                        onChange={onChange}
+                    ></input>
                 </div>
             </label>
         </div>
-    )
-}
+    );
+};

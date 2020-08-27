@@ -21,3 +21,15 @@ export const getSlicedTagsObj = (obj, start, end) => {
             return result;
         }, {});
 };
+
+export const getTagsAsArray = obj => {
+    let arr = [];
+    for (let item in obj) {
+        arr.push({ id: item, name: obj[item] });
+    }
+    return arr;
+};
+
+export const getArrayOfTagsIds = arr => {
+    return arr.map(item => item.id);
+};

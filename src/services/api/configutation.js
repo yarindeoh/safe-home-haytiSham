@@ -1,5 +1,5 @@
 const configData = {
-    //TODO:: add env var for api url 
+    //TODO:: add env var for api url
     defaultApiPrefix: `${process.env.API_URL}/api`
 };
 
