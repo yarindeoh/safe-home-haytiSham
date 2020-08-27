@@ -1,4 +1,6 @@
 import React from 'react';
+import { Video, Transformation } from 'cloudinary-react';
+
 import { withRoute } from 'services/routing/routerHOC';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
 import { Footer } from 'components/Footer';
@@ -10,9 +12,6 @@ import Skeleton from 'src/components/Skeleton';
 export const StoryVideo = withRoute(props => {
     const { t } = useTranslation();
     const story = getPublicStoryById(props.match.params.id);
-    const changeLocationByPath = path => {
-        props.history.push(path);
-    };
 
     return (
         <Skeleton>
@@ -26,10 +25,17 @@ export const StoryVideo = withRoute(props => {
                         })}
                     </h2>
                     <Tags tags={story.tags} />
-                    <div>
-                        <iframe
-                            src={`https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FonlifeIL%2Fvideos%${story.id}%2F&show_text=0`}
-                        />
+                    <div className="video-wrapper">
+                        <Video
+                            className="story-video"
+                            cloudName="dh7jncxmb"
+                            publicId={story.id}
+                            format="mp4"
+                            controls
+                            autoplay
+                        >
+                            <Transformation bitRate="250k" />
+                        </Video>
                     </div>
                 </div>
                 {/* //TODO */}
