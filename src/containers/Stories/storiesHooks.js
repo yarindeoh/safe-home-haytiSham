@@ -102,7 +102,7 @@ export const useFilteredStories = tags => {
 
 export const useAllStories = () => {
     const [stories, setStories] = useState();
-    let tags = useAllTags();
+    let tags = useTags();
     let tags_ids = tags && Object.keys(tags);
     useEffect(() => {
             (async () => {
