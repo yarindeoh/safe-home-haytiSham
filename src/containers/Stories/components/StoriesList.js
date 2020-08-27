@@ -15,7 +15,7 @@ export const StoriesList = ({ tags, changeLocationByPath }) => {
                 dataLength={stories.length}
                 next={getByPage}
                 hasMore={hasMore}
-                loader={<h4>Loading...</h4>}
+                loader={stories.length>0 ? <h4>Loading...</h4>: undefined}
             >
             {stories &&
                 Object.keys(stories).map(key => {
