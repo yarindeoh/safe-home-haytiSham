@@ -2,7 +2,7 @@ import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
-import { SimilarStories } from 'containers/Story/components/SimilarStories';
+import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'src/components/Skeleton';
@@ -43,7 +43,8 @@ export const StoryView = withRoute(props => {
                             <br />
                         </div>
                     ))}
-                <SimilarStories
+                <StoriesList
+                    title={t('additionalStories')}
                     tags={story.tags}
                     changeLocationByPath={changeLocationByPath}
                 />

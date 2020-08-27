@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
-import { SimilarStories } from 'containers/Story/components/SimilarStories';
+import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { Footer } from 'components/Footer';
 import { Tags } from 'containers/Story/components/Tags';
 import { getPublicStoryById } from 'src/constants/publicStories';
@@ -32,9 +32,10 @@ export const StoryVideo = withRoute(props => {
                         />
                     </div>
                 </div>
-                {/* //TODO */}
-                <SimilarStories
-                    tags={[t('tags.jealousy'), t('tags.humiliation')]}
+                <StoriesList
+                    title={t('additionalStories')}
+                    tags={story.tags_id}
+                    changeLocationByPath={changeLocationByPath}
                 />
                 <Footer />
             </div>
