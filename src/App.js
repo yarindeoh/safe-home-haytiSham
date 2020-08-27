@@ -17,34 +17,27 @@ export const history = createBrowserHistory();
 export const App = () => {
     return (
         <RouterContext.Provider history={history}>
-                <AddStoryProvider>
-                    <BrowserRouter>
-                        <Switch>
+            <AddStoryProvider>
+                <BrowserRouter>
+                    <Switch>
+                        <Route path="/" exact={true} component={StoriesView} />
+                        <Route path="/story" component={StoryView} />
+                        <Route
+                            path="/addStory"
+                            exact={true}
+                            component={AddStoryView}
+                        />
+                        <Route path="/publicStory/:id" component={StoryVideo} />
+                        <ModerationProvider>
+                            <Route path="/admin" component={LoginView} />
                             <Route
-                                path="/"
-                                exact={true}
-                                component={StoriesView}
+                                path="/moderateStory"
+                                component={ModerationView}
                             />
-                            <Route path="/story" component={StoryView} />
-                            <Route
-                                path="/addStory"
-                                exact={true}
-                                component={AddStoryView}
-                            />
-                            <Route
-                                path="/publicStory/:id"
-                                component={StoryVideo}
-                            />
-                            <ModerationProvider>
-                                <Route path="/admin" component={LoginView} />
-                                <Route
-                                    path="/moderateStory"
-                                    component={ModerationView}
-                                    />
-                            </ModerationProvider>
-                        </Switch>
-                    </BrowserRouter>
-                </AddStoryProvider>
+                        </ModerationProvider>
+                    </Switch>
+                </BrowserRouter>
+            </AddStoryProvider>
         </RouterContext.Provider>
     );
 };

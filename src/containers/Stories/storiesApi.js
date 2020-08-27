@@ -11,7 +11,11 @@ const Api = {
         return get(baseUrl('getAllTags'));
     },
     getStoriesByTags: (tags, pageSize, page) => {
-        return get(baseUrl(`getStoriesByTags?page=${page}&pageSize=${pageSize}&tags=[${tags}]`));
+        return get(
+            baseUrl(
+                `getStoriesByTags?page=${page}&pageSize=${pageSize}&tags=[${tags}]`
+            )
+        );
     },
     getTagsMap: () => {
         return get(baseUrl('getTagsMap'));

@@ -36,28 +36,28 @@ export const useFilteredStories = tags => {
         init: false
     });
 
-
     const pageSize = 5;
 
-    async function getByPage(){
-        let result = await Api.getStoriesByTags(tags || [], pageSize, data.page);
-        let newData = {...data}
+    async function getByPage() {
+        let result = await Api.getStoriesByTags(
+            tags || [],
+            pageSize,
+            data.page
+        );
+        let newData = { ...data };
 
-        if( data.page<result.pages){
-            newData.page+=1;
-        }
-        else if( data.page===result.pages){
+        if (data.page < result.pages) {
+            newData.page += 1;
+        } else if (data.page === result.pages) {
             newData.hasMore = false;
         }
-        newData.stories = [...newData.stories, ...result?.result]
+        newData.stories = [...newData.stories, ...result?.result];
         newData.init = false;
-        setData(newData)
+        setData(newData);
     }
 
-
-
-    function initState(){
-        let newData = {...data}
+    function initState() {
+        let newData = { ...data };
         newData.page = 1;
         newData.hasMore = true;
         newData.stories = [];
@@ -66,17 +66,14 @@ export const useFilteredStories = tags => {
     }
 
     useEffect(() => {
-        initState()
+        initState();
     }, [tags]);
 
     useEffect(() => {
-        if (data.init===true)
-        {
+        if (data.init === true) {
             getByPage();
         }
     }, [data.init]);
-
-   
 
     return {
         stories: data.stories,
@@ -102,16 +99,16 @@ export const useAllStories = () => {
     let tags = useAllTags();
     let tags_ids = tags && Object.keys(tags);
 
-    async function getAllStories(){
-        let page = 1; 
+    async function getAllStories() {
+        let page = 1;
         let pageSize = 5;
         let tmp_stories = [];
-        let data = await Api.getStoriesByTags(tags_ids || [],pageSize, page);
-        tmp_stories = [...tmp_stories, ...data.result]
-        page+=1;
-        for(page; page<=data.pages; page+=1){
-            data = await Api.getStoriesByTags(tags_ids || [],pageSize, page);
-            tmp_stories = [...tmp_stories, ...data.result]
+        let data = await Api.getStoriesByTags(tags_ids || [], pageSize, page);
+        tmp_stories = [...tmp_stories, ...data.result];
+        page += 1;
+        for (page; page <= data.pages; page += 1) {
+            data = await Api.getStoriesByTags(tags_ids || [], pageSize, page);
+            tmp_stories = [...tmp_stories, ...data.result];
         }
         setStories(tmp_stories);
     }
