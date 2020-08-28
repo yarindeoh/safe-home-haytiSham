@@ -28,7 +28,7 @@ export const ModerationView = withRoute(props => {
     const { back } = useBack(props, setSubmitted, '/admin');
 
     const story = props.location.state;
-    useModerationStory(story);
+    useModerationStory(story, tagsMap);
 
     return (
         <>

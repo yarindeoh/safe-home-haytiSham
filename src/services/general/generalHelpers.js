@@ -33,3 +33,16 @@ export const getTagsAsArray = obj => {
 export const getArrayOfTagsIds = arr => {
     return arr.map(item => item.id);
 };
+
+export const filterObjByKey = (raw, allowed) => {
+    const filtered = raw && Object.keys(raw)
+    .filter(key => allowed.includes(parseInt(key)))
+    .reduce((obj, key) => {
+        return {
+        ...obj,
+        [key]: raw[key]
+        };
+    }, {});
+
+    return filtered;
+};
