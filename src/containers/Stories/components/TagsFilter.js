@@ -1,48 +1,59 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 
-import { useAllTags, useDisplayedTags } from 'containers/Stories/storiesHooks';
+import { useTags } from 'containers/Stories/storiesHooks';
 import TagFilter from 'components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { useTranslation } from 'react-i18next';
 
-export const TagsFilter = ({ changeLocationByPath }) => {
+export const TagsFilter = ({ changeLocationByPath, defaultSelectedTags }) => {
     const { t } = useTranslation();
-    const { tags, showMoreTags, handleShowMoreTagsChange } = useDisplayedTags(
-        useAllTags()
-    );
-    const [filteredTags, setFilteredTags] = useState([]);
-
+    const {
+        tagsData,
+        changeTagSelected,
+        isDisplayMoreTags,
+        changeDisplayMoreTags
+    } = useTags(defaultSelectedTags);
+    const [isEnableTags, setIsEnableTags] = useState(true);
+    const filterTagsIds = useMemo(() => {
+        const allIds = Object.keys(tagsData);
+        return isEnableTags
+            ? allIds.filter(tagId => tagsData[tagId].selected)
+            : allIds;
+    }, [tagsData, isEnableTags]);
+    
     return (
         <div className={'stories-gallery-container'}>
             <h1>{t('tagsFilter.additionalTestimonies')}</h1>
             <div className="tags-filter-container">
-                {tags &&
-                    Object.keys(tags).map((key, index) => (
+                {
+                    <TagFilter
+                        tag={t('tagsFilter.allTestimonies')}
+                        selected={!isEnableTags}
+                        onClick={() =>
+                            setIsEnableTags(prevEnableTags => !prevEnableTags)
+                        }
+                    />
+                }
+                {tagsData &&
+                    Object.keys(tagsData).map(tagId => (
                         <TagFilter
-                            value={key}
-                            tag={tags[key]}
-                            key={index}
-                            selected={filteredTags.includes(key.toString())}
-                            onClick={event => {
-                                let tag = event.target.getAttribute('data-id');
-                                if (filteredTags.includes(tag)) {
-                                    setFilteredTags(
-                                        filteredTags.filter(e => e !== tag)
-                                    );
-                                } else {
-                                    setFilteredTags([...filteredTags, tag]);
-                                }
-                            }}
+                            value={tagsData[tagId].value}
+                            tag={tagsData[tagId].value}
+                            key={tagId}
+                            selected={tagsData[tagId].selected && isEnableTags}
+                            onClick={event =>
+                                isEnableTags && changeTagSelected(tagId)
+                            }
                         />
                     ))}
-                <span className="more-tags" onClick={handleShowMoreTagsChange}>
-                    {showMoreTags
-                        ? t('tagsFilter.lessCategories')
-                        : t('tagsFilter.moreCategories')}
-                </span>
             </div>
+            <span className="more-tags" onClick={changeDisplayMoreTags}>
+                {isDisplayMoreTags
+                    ? t('tagsFilter.lessCategories')
+                    : t('tagsFilter.moreCategories')}
+            </span>
             <StoriesList
-                tags={filteredTags}
+                tags={filterTagsIds}
                 changeLocationByPath={changeLocationByPath}
             />
         </div>

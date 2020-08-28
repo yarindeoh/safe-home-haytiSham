@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
@@ -21,19 +21,37 @@ export const StoryView = withRoute(props => {
         'whatHelpedYou',
         'storyContent'
     ]);
+    const defaultTagsSimilarStories = useMemo(
+        () =>
+            story.tags && story.tags.length > 0
+                ? story.tags.slice(0, 3)
+                : undefined,
+        []
+    );
+
     return (
         <Skeleton>
             <div id={'story-page-container'}>
-                <div className={'quote'}>
-                    <h1>"{story.quote}"</h1>
-                    <h2>
-                        {`
+                <div id={'story-page-content'}>
+                    <div className={'quote'}>
+                        <h1>"{story.quote}"</h1>
+                        <h2>
+                            {`
                      ${t('storyView.storyOf')}
                      ${story.name.split('')[0]}׳ 
                      ${story.createdAt}
                    `}
-                    </h2>
-                    <Tags tags={story.tags} />
+                        </h2>
+                        <Tags tags={story.tags} />
+                    </div>
+                    {processedStory &&
+                        Object.keys(processedStory).map((item, key) => (
+                            <div key={key}>
+                                <h6>{t(item)}</h6>
+                                <span>{processedStory[item]}</span>
+                                <br />
+                            </div>
+                        ))}
                 </div>
                 {processedStory &&
                     Object.keys(processedStory).map((item, key) => (
@@ -48,16 +66,6 @@ export const StoryView = withRoute(props => {
                     tags={story.tags}
                     changeLocationByPath={changeLocationByPath}
                 />
-                <button className="footercustom">
-                    <span className="helpright">
-                        <button className="BTX-help2" />
-                        <p>אוזן קשבת</p>
-                    </span>
-                    <span className="shareleft">
-                        <button className="BTX-share" />
-                        <p>שיתוף </p>
-                    </span>
-                </button>
                 <Footer />
             </div>
         </Skeleton>

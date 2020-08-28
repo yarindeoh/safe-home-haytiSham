@@ -1,4 +1,26 @@
 @import '../local/_colors.scss';
+#story-page-content {
+  div {
+    > * {
+      font-weight: normal;
+      font-size: 15px;
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 16px;
+    }
+
+    > span {
+      color: map_get($colors, black);
+    }
+
+    > h6 {
+      font-weight: normal;
+      color: map_get($colors, purple-300);
+    }
+  }
+  margin-bottom: 16px;
+}
 
 #story-page-container {
   display: flex;
@@ -24,24 +46,17 @@
       margin-bottom: 18px;
     }
   }
+}
 
-  div {
-    > * {
-      font-weight: normal;
-      font-size: 15px;
-    }
-
-    &:not(:last-of-type) {
-      margin-bottom: 16px;
-    }
-
-    > span {
-      color: map_get($colors, black);
-    }
-
-    > h6 {
-      font-weight: normal;
-      color: map_get($colors, purple-300);
-    }
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  .story-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
   }
 }

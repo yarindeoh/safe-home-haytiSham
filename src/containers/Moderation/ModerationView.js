@@ -10,7 +10,7 @@ import {
     useModerationStory,
     useSelectedTags
 } from './moderationHooks';
-import { useAllTags } from 'containers/Stories/storiesHooks';
+import { useTags } from 'containers/Stories/storiesHooks';
 
 import BackArrowIcon from 'src/media/icons/backArrow.svg';
 import '../../scss/componentsStyle/moderationView.scss';
@@ -20,7 +20,8 @@ import { Multiselect } from 'multiselect-react-dropdown';
 export const ModerationView = withRoute(props => {
     const { t } = useTranslation();
     const { moderationState } = useModerationContext();
-    const tags = getTagsAsArray(useAllTags());
+    const {tagsMap} = useTags();
+    const tags = getTagsAsArray(tagsMap);
     const { handleFiledChange } = useModerationFiledChange();
     const { onSelect, onRemove } = useSelectedTags();
     const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit();
