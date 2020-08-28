@@ -13,6 +13,9 @@ export const StoryVideo = withRoute(props => {
     const { t } = useTranslation();
     const story = getPublicStoryById(props.match.params.id);
 
+    const changeLocationByPath = path => {
+        props.history.push(path);
+    };
     return (
         <Skeleton>
             <div id="story-page-container">
@@ -32,7 +35,7 @@ export const StoryVideo = withRoute(props => {
                             publicId={story.id}
                             format="mp4"
                             controls
-                            autoplay
+                            autoPlay
                         >
                             <Transformation bitRate="250k" />
                         </Video>
