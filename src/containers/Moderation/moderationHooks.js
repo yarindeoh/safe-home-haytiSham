@@ -126,17 +126,17 @@ export const useModerationStory = (story, tagsMap) => {
         }
     }, []);
 
-
-    useEffect(()=>{
-        if(story.tags?.length>0){
-            let chosenTags = getTagsAsArray(filterObjByKey(tagsMap, story.tags));
+    useEffect(() => {
+        if (story.tags?.length > 0) {
+            let chosenTags = getTagsAsArray(
+                filterObjByKey(tagsMap, story.tags)
+            );
             dispatch({
                 type: SET_TAGS,
                 payload: chosenTags
             });
         }
-    }, [tagsMap])
-
+    }, [tagsMap]);
 
     return {};
 };

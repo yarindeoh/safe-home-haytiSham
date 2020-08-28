@@ -20,7 +20,7 @@ export const TagsFilter = ({ changeLocationByPath, defaultSelectedTags }) => {
             ? allIds.filter(tagId => tagsData[tagId].selected)
             : allIds;
     }, [tagsData, isEnableTags]);
-    
+
     return (
         <div className={'stories-gallery-container'}>
             <h1>{t('tagsFilter.additionalTestimonies')}</h1>

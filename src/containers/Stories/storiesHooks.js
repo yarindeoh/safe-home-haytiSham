@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback, useRef } from 'react';
 
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
 
-export const useTags = (defaultSelectedTags) => {
+export const useTags = defaultSelectedTags => {
     const [tags, setTags] = useState();
     const { tagsData, changeTagSelected, selectAllTags } = useSelectedTags(
         tags,
@@ -65,7 +65,7 @@ export const useSelectedTags = (tags, defaultSelectedTags = []) => {
                         ...prevTagsData,
                         [tag]: {
                             ...prevTagsData[tag],
-                            selected: !(prevTagsData[tag].selected)
+                            selected: !prevTagsData[tag].selected
                         }
                     };
                 }),
@@ -133,7 +133,7 @@ export const useFilteredStories = tags => {
     useEffect(() => {
         if (data.init === true) {
             getByPage();
-            setData((oldData)=>({...oldData, init: false}));
+            setData(oldData => ({ ...oldData, init: false }));
         }
     }, [data.init]);
 
@@ -146,7 +146,7 @@ export const useFilteredStories = tags => {
 
 export const useAllStories = () => {
     const [stories, setStories] = useState();
-    let {tagsMap} = useTags();
+    let { tagsMap } = useTags();
     let tags_ids = tagsMap && Object.keys(tagsMap);
 
     async function getAllStories() {

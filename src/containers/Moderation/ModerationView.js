@@ -20,7 +20,7 @@ import { Multiselect } from 'multiselect-react-dropdown';
 export const ModerationView = withRoute(props => {
     const { t } = useTranslation();
     const { moderationState } = useModerationContext();
-    const {tagsMap} = useTags();
+    const { tagsMap } = useTags();
     const tags = getTagsAsArray(tagsMap);
     const { handleFiledChange } = useModerationFiledChange();
     const { onSelect, onRemove } = useSelectedTags();
