@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
-import { TagsFilter } from 'containers/Stories/components/TagsFilter';
+import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'src/components/Skeleton';
@@ -53,8 +53,17 @@ export const StoryView = withRoute(props => {
                             </div>
                         ))}
                 </div>
-                <TagsFilter
-                    defaultSelectedTags={defaultTagsSimilarStories}
+                {processedStory &&
+                    Object.keys(processedStory).map((item, key) => (
+                        <div key={key}>
+                            <h6>{t(item)}</h6>
+                            <span>{processedStory[item]}</span>
+                            <br />
+                        </div>
+                    ))}
+                <StoriesList
+                    title={t('additionalStories')}
+                    tags={story.tags}
                     changeLocationByPath={changeLocationByPath}
                 />
                 <Footer />

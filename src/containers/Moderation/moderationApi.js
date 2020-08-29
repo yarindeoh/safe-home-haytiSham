@@ -16,7 +16,7 @@ const Api = {
     getModerationStories: (sortField, sortDirection) => {
         return get(
             baseUrl(
-                `getStortiesForModeration?sortField=${sortField},sortDirection=${sortDirection}`
+                `getStortiesForModeration?sortField=${sortField}&sortDirection=${sortDirection}`
             )
         );
     }

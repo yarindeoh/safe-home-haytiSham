@@ -9,7 +9,9 @@ import {
 } from './moderationConstants';
 import {
     extractFieldsFromObj,
-    getArrayOfTagsIds
+    getArrayOfTagsIds,
+    filterObjByKey,
+    getTagsAsArray
 } from 'services/general/generalHelpers';
 
 export function useModerationContext() {
@@ -96,7 +98,7 @@ export const useModerationStories = () => {
     };
 };
 
-export const useModerationStory = story => {
+export const useModerationStory = (story, tagsMap) => {
     const { moderationState, dispatch } = useModerationContext();
     useEffect(() => {
         if (story._id !== moderationState._id) {
@@ -123,6 +125,19 @@ export const useModerationStory = story => {
             });
         }
     }, []);
+
+    useEffect(() => {
+        if (story.tags?.length > 0) {
+            let chosenTags = getTagsAsArray(
+                filterObjByKey(tagsMap, story.tags)
+            );
+            dispatch({
+                type: SET_TAGS,
+                payload: chosenTags
+            });
+        }
+    }, [tagsMap]);
+
     return {};
 };
 
