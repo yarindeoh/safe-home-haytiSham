@@ -3,7 +3,6 @@ import { Video, Transformation } from 'cloudinary-react';
 
 import { withRoute } from 'services/routing/routerHOC';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
-import { Footer } from 'components/Footer';
 import { Tags } from 'containers/Story/components/Tags';
 import { getPublicStoryById } from 'src/constants/publicStories';
 import { useTranslation } from 'react-i18next';
@@ -46,7 +45,6 @@ export const StoryVideo = withRoute(props => {
                     tags={story.tags_id}
                     changeLocationByPath={changeLocationByPath}
                 />
-                <Footer />
             </div>
         </Skeleton>
     );

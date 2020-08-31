@@ -3,7 +3,6 @@ import { withRoute } from 'services/routing/routerHOC';
 import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
-import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'src/components/Skeleton';
 
@@ -66,7 +65,6 @@ export const StoryView = withRoute(props => {
                     tags={story.tags}
                     changeLocationByPath={changeLocationByPath}
                 />
-                <Footer />
             </div>
         </Skeleton>
     );
