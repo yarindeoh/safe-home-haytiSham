@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useTags } from 'containers/Stories/storiesHooks';
-import { useSwitch } from '../../../services/general/generalHooks';
+import { useSwitch } from 'services/general/generalHooks';
 import TagFilter from 'components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { useTranslation } from 'react-i18next';
