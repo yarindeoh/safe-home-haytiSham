@@ -14,7 +14,7 @@ export const StoryVideo = withRoute(props => {
     const story = getPublicStoryById(props.match.params.id);
 
     const changeLocationByPath = path => {
-        props.history.replace(path);
+        props.history.push(path);
     };
     return (
         <Skeleton>

@@ -11,7 +11,7 @@ import { Skeleton } from 'src/components/Skeleton';
 export const StoriesView = withRoute(props => {
     const { t } = useTranslation();
     const changeLocationByPath = (path, params) => {
-        props.history.replace(path, params);
+        props.history.push(path, params);
     };
     return (
         <Skeleton isMainHeader={true}>
