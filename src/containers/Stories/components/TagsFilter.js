@@ -13,12 +13,11 @@ export const TagsFilter = ({ changeLocationByPath, defaultSelectedTags }) => {
         changeDisplayMoreTags,
         unselectAllTags
     } = useTags(defaultSelectedTags);
-    const filterTagsIds = useMemo(() => {
-        return (
-            tagsData &&
-            Object.keys(tagsData).filter(tagId => tagsData[tagId].selected)
-        );
-    }, [tagsData]);
+    const filterTagsIds = useMemo(() =>
+        Object.keys(tagsData).filter(tagId => tagsData[tagId].selected, [
+            tagsData
+        ])
+    );
 
     return (
         <div className={'stories-gallery-container'}>
@@ -49,10 +48,12 @@ export const TagsFilter = ({ changeLocationByPath, defaultSelectedTags }) => {
                     ? t('tagsFilter.lessCategories')
                     : t('tagsFilter.moreCategories')}
             </span>
-            <StoriesList
-                tags={filterTagsIds}
-                changeLocationByPath={changeLocationByPath}
-            />
+            {filterTagsIds ? (
+                <StoriesList
+                    tags={filterTagsIds}
+                    changeLocationByPath={changeLocationByPath}
+                />
+            ) : null}
         </div>
     );
 };
