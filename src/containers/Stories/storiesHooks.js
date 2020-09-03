@@ -117,7 +117,6 @@ export const useFilteredStories = tags => {
 
     async function getByPage() {
         let result = await Api.getStoriesByTags(tags, pageSize, data.page);
-        console.log(result);
         let newData = { ...data };
 
         if (data.page < result.pages) {

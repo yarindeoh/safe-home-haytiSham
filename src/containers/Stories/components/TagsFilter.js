@@ -14,8 +14,10 @@ export const TagsFilter = ({ changeLocationByPath, defaultSelectedTags }) => {
         unselectAllTags
     } = useTags(defaultSelectedTags);
     const filterTagsIds = useMemo(() => {
-        const allIds = Object.keys(tagsData);
-        return allIds.filter(tagId => tagsData[tagId].selected);
+        return (
+            tagsData &&
+            Object.keys(tagsData).filter(tagId => tagsData[tagId].selected)
+        );
     }, [tagsData]);
 
     return (
