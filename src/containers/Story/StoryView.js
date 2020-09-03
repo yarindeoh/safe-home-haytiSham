@@ -11,7 +11,7 @@ export const StoryView = withRoute(props => {
     const { t } = useTranslation();
     const story = props.location.state;
     const changeLocationByPath = (path, params) => {
-        props.history.push(path, params);
+        props.history.replace(path, params);
     };
     const processedStory = extractFieldsFromObj(story, [
         'background',

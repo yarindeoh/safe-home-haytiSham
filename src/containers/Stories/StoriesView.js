@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-
+import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import Carousel from 'containers/Stories/components/Carousel/Carousel';
 import { TagsFilter } from 'containers/Stories/components/TagsFilter';
@@ -13,7 +12,7 @@ import { Skeleton } from 'src/components/Skeleton';
 export const StoriesView = withRoute(props => {
     const { t } = useTranslation();
     const changeLocationByPath = (path, params) => {
-        props.history.push(path, params);
+        props.history.replace(path, params);
     };
     return (
         <Skeleton isMainHeader={true}>
