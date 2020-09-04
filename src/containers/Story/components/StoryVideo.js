@@ -2,7 +2,8 @@ import React from 'react';
 import { Video, Transformation } from 'cloudinary-react';
 
 import { withRoute } from 'services/routing/routerHOC';
-import { StoriesList } from 'containers/Stories/components/StoriesList';
+import { TagsFilter } from 'containers/Stories/components/TagsFilter';
+import { Footer } from 'components/Footer';
 import { Tags } from 'containers/Story/components/Tags';
 import { getPublicStoryById } from 'src/constants/publicStories';
 import { useTranslation } from 'react-i18next';
@@ -40,9 +41,8 @@ export const StoryVideo = withRoute(props => {
                         </Video>
                     </div>
                 </div>
-                <StoriesList
-                    title={t('additionalStories')}
-                    tags={story.tags_id}
+                <TagsFilter
+                    defaultSelectedTags={story.tags_id}
                     changeLocationByPath={changeLocationByPath}
                 />
             </div>

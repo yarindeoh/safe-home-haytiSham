@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
@@ -21,13 +21,7 @@ export const StoryView = withRoute(props => {
         'whatHelpedYou',
         'storyContent'
     ]);
-    const defaultTagsSimilarStories = useMemo(
-        () =>
-            story.tags && story.tags.length > 0
-                ? story.tags.slice(0, 3)
-                : undefined,
-        []
-    );
+    const defaultTagsSimilarStories = story.tags && story.tags.slice(0, 3);
 
     return (
         <Skeleton>
@@ -54,6 +48,7 @@ export const StoryView = withRoute(props => {
                         ))}
                 </div>
                 <TagsFilter
+                    key={props.location.state._id}
                     defaultSelectedTags={defaultTagsSimilarStories}
                     changeLocationByPath={changeLocationByPath}
                 />

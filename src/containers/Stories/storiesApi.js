@@ -13,7 +13,9 @@ const Api = {
     getStoriesByTags: (tags, pageSize, page) => {
         return get(
             baseUrl(
-                `getStoriesByTags?page=${page}&pageSize=${pageSize}&tags=[${tags}]`
+                `getStoriesByTags?page=${page}&pageSize=${pageSize}${
+                    tags && tags.length > 0 ? `&tags=[${tags}]` : ''
+                }`
             )
         );
     },
