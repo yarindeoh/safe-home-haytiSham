@@ -1,5 +1,4 @@
-import React, { useState, useMemo } from 'react';
-
+import React, { useMemo } from 'react';
 import { useTags } from 'containers/Stories/storiesHooks';
 import TagFilter from 'components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
@@ -11,15 +10,14 @@ export const TagsFilter = ({ changeLocationByPath, defaultSelectedTags }) => {
         tagsData,
         changeTagSelected,
         isDisplayMoreTags,
-        changeDisplayMoreTags
+        changeDisplayMoreTags,
+        unselectAllTags
     } = useTags(defaultSelectedTags);
-    const [isEnableTags, setIsEnableTags] = useState(true);
-    const filterTagsIds = useMemo(() => {
-        const allIds = Object.keys(tagsData);
-        return isEnableTags
-            ? allIds.filter(tagId => tagsData[tagId].selected)
-            : allIds;
-    }, [tagsData, isEnableTags]);
+    const filterTagsIds = useMemo(() =>
+        Object.keys(tagsData).filter(tagId => tagsData[tagId].selected, [
+            tagsData
+        ])
+    );
 
     return (
         <div className={'stories-gallery-container'}>
@@ -28,9 +26,9 @@ export const TagsFilter = ({ changeLocationByPath, defaultSelectedTags }) => {
                 {
                     <TagFilter
                         tag={t('tagsFilter.allTestimonies')}
-                        selected={!isEnableTags}
+                        selected={filterTagsIds.length === 0}
                         onClick={() =>
-                            setIsEnableTags(prevEnableTags => !prevEnableTags)
+                            filterTagsIds.length > 0 && unselectAllTags()
                         }
                     />
                 }
@@ -40,10 +38,8 @@ export const TagsFilter = ({ changeLocationByPath, defaultSelectedTags }) => {
                             value={tagsData[tagId].value}
                             tag={tagsData[tagId].value}
                             key={tagId}
-                            selected={tagsData[tagId].selected && isEnableTags}
-                            onClick={event =>
-                                isEnableTags && changeTagSelected(tagId)
-                            }
+                            selected={tagsData[tagId].selected}
+                            onClick={event => changeTagSelected(tagId)}
                         />
                     ))}
             </div>
@@ -52,10 +48,12 @@ export const TagsFilter = ({ changeLocationByPath, defaultSelectedTags }) => {
                     ? t('tagsFilter.lessCategories')
                     : t('tagsFilter.moreCategories')}
             </span>
-            <StoriesList
-                tags={filterTagsIds}
-                changeLocationByPath={changeLocationByPath}
-            />
+            {filterTagsIds ? (
+                <StoriesList
+                    tags={filterTagsIds}
+                    changeLocationByPath={changeLocationByPath}
+                />
+            ) : null}
         </div>
     );
 };

@@ -12,7 +12,7 @@ class StorieController {
             tags = tags.map(x => Number(x)); 
         }
         let page = parseInt(req.query.page) || 1;
-        let pageSize = parseInt(req.query.page) || 100;
+        let pageSize = parseInt(req.query.pageSize) || 100;
         let sortField = req.query.sortField || "sequence";
         let sortDirection = req.query.sortDirection || "DESC";
         return this.storieService.listByTags(tags, page, pageSize, sortField, sortDirection).then((data) =>{

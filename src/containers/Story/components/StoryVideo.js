@@ -2,7 +2,7 @@ import React from 'react';
 import { Video, Transformation } from 'cloudinary-react';
 
 import { withRoute } from 'services/routing/routerHOC';
-import { SimilarStories } from 'containers/Story/components/SimilarStories';
+import { TagsFilter } from 'containers/Stories/components/TagsFilter';
 import { Footer } from 'components/Footer';
 import { Tags } from 'containers/Story/components/Tags';
 import { getPublicStoryById } from 'src/constants/publicStories';
@@ -13,6 +13,9 @@ export const StoryVideo = withRoute(props => {
     const { t } = useTranslation();
     const story = getPublicStoryById(props.match.params.id);
 
+    const changeLocationByPath = path => {
+        props.history.push(path);
+    };
     return (
         <Skeleton>
             <div id="story-page-container">
@@ -32,17 +35,16 @@ export const StoryVideo = withRoute(props => {
                             publicId={story.id}
                             format="mp4"
                             controls
-                            autoplay
+                            autoPlay
                         >
                             <Transformation bitRate="250k" />
                         </Video>
                     </div>
                 </div>
-                {/* //TODO */}
-                <SimilarStories
-                    tags={[t('tags.jealousy'), t('tags.humiliation')]}
+                <TagsFilter
+                    defaultSelectedTags={story.tags_id}
+                    changeLocationByPath={changeLocationByPath}
                 />
-                <Footer />
             </div>
         </Skeleton>
     );

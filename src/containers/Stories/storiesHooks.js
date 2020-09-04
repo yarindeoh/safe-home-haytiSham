@@ -1,11 +1,11 @@
 import Api from 'containers/Stories/storiesApi';
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
 
-export const useTags = (defaultSelectedTags) => {
+export const useTags = defaultSelectedTags => {
     const [tags, setTags] = useState();
-    const { tagsData, changeTagSelected, selectAllTags } = useSelectedTags(
+    const { tagsData, changeTagSelected, unselectAllTags } = useSelectedTags(
         tags,
         defaultSelectedTags
     );
@@ -27,7 +27,7 @@ export const useTags = (defaultSelectedTags) => {
         changeTagSelected,
         isDisplayMoreTags,
         changeDisplayMoreTags,
-        selectAllTags
+        unselectAllTags
     };
 };
 
@@ -57,6 +57,23 @@ export const useSelectedTags = (tags, defaultSelectedTags = []) => {
 
     return {
         tagsData,
+        unselectAllTags: useCallback(
+            () =>
+                setTagsData(prevTagsData => {
+                    return Object.keys(prevTagsData).reduce(
+                        (accumelator, tag) => {
+                            accumelator[tag] = {
+                                ...prevTagsData[tag],
+                                selected: false
+                            };
+
+                            return accumelator;
+                        },
+                        {}
+                    );
+                }),
+            []
+        ),
         changeTagSelected: useCallback(
             tag =>
                 setTagsData(prevTagsData => {
@@ -64,7 +81,7 @@ export const useSelectedTags = (tags, defaultSelectedTags = []) => {
                         ...prevTagsData,
                         [tag]: {
                             ...prevTagsData[tag],
-                            selected: !(prevTagsData[tag].selected)
+                            selected: !prevTagsData[tag].selected
                         }
                     };
                 }),
@@ -89,27 +106,80 @@ export const useShowMoreTags = () => {
 };
 
 export const useFilteredStories = tags => {
-    const [stories, setStories] = useState();
+    const [data, setData] = useState({
+        stories: [],
+        hasMore: true,
+        page: 1,
+        init: false
+    });
+
+    const pageSize = 5;
+
+    async function getByPage() {
+        let result = await Api.getStoriesByTags(tags, pageSize, data.page);
+        let newData = { ...data };
+
+        if (data.page < result.pages) {
+            newData.page += 1;
+        } else if (data.page === result.pages) {
+            newData.hasMore = false;
+        }
+        newData.stories = [...newData.stories, ...result?.result];
+        newData.init = false;
+        setData(newData);
+    }
+
+    function initState() {
+        let newData = { ...data };
+        newData.page = 1;
+        newData.hasMore = true;
+        newData.stories = [];
+        newData.init = true;
+        setData(newData);
+    }
+
     useEffect(() => {
-        (async () => {
-            await setStories(await Api.getStoriesByTags(tags || []));
-        })();
+        initState();
     }, [tags]);
+
+    useEffect(() => {
+        if (data.init === true) {
+            getByPage();
+            setData(oldData => ({ ...oldData, init: false }));
+        }
+    }, [data.init]);
+
     return {
-        stories: stories?.result
+        stories: data.stories,
+        hasMore: data.hasMore,
+        getByPage
     };
 };
 
 export const useAllStories = () => {
     const [stories, setStories] = useState();
-    let tags = useTags();
-    let tags_ids = tags && Object.keys(tags);
+    let { tagsMap } = useTags();
+    let tags_ids = tagsMap && Object.keys(tagsMap);
+
+    async function getAllStories() {
+        let page = 1;
+        let pageSize = 5;
+        let tmp_stories = [];
+        let data = await Api.getStoriesByTags(tags_ids, pageSize, page);
+        tmp_stories = [...tmp_stories, ...data.result];
+        page += 1;
+        for (page; page <= data.pages; page += 1) {
+            data = await Api.getStoriesByTags(tags_ids || [], pageSize, page);
+            tmp_stories = [...tmp_stories, ...data.result];
+        }
+        setStories(tmp_stories);
+    }
+
     useEffect(() => {
-            (async () => {
-                await setStories(await Api.getStoriesByTags(tags_ids || []));
-            })();
-    }, [tags]);
+        getAllStories();
+    }, [tagsMap]);
+
     return {
-        allStories: stories?.result
+        allStories: stories
     };
 };

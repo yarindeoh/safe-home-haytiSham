@@ -10,8 +10,14 @@ const Api = {
     getAllTags: () => {
         return get(baseUrl('getAllTags'));
     },
-    getStoriesByTags: tags => {
-        return get(baseUrl(`getStoriesByTags?tags=[${tags}]`));
+    getStoriesByTags: (tags, pageSize, page) => {
+        return get(
+            baseUrl(
+                `getStoriesByTags?page=${page}&pageSize=${pageSize}${
+                    tags && tags.length > 0 ? `&tags=[${tags}]` : ''
+                }`
+            )
+        );
     },
     getTagsMap: () => {
         return get(baseUrl('getTagsMap'));

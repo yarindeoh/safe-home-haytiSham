@@ -23,9 +23,9 @@ export const TestimonyForm = withRoute(
                     <form onSubmit={!disabled ? handleSubmit : undefined}>
                         {formData?.createdAt && (
                             <div>
-                                <div>{`${t(
-                                    'addStoryView.createdAt'
-                                )}  ${formData.createdAt}`}</div>
+                                <div>{`${t('addStoryView.createdAt')}  ${
+                                    formData.createdAt
+                                }`}</div>
                             </div>
                         )}
                         <Input

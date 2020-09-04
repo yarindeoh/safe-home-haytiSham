@@ -17,9 +17,7 @@ export const StoryHighlight = ({ story, changeLocationByPath, liStyle }) => {
             onClick={() => changeLocationByPath(id, story)}
         >
             <div className="initials">{initials}</div>
-            <span className="date">
-                {createdAt}
-            </span>
+            <span className="date">{createdAt}</span>
             <p className="text">{quote}</p>
             {allTags()}
         </li>
