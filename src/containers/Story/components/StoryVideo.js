@@ -45,7 +45,6 @@ export const StoryVideo = withRoute(props => {
                     defaultSelectedTags={story.tags_id}
                     changeLocationByPath={changeLocationByPath}
                 />
-                <Footer />
             </div>
         </Skeleton>
     );
