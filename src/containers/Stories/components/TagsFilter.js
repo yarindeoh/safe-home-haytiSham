@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
-
+import React, { useMemo } from 'react';
 import { useTags } from 'containers/Stories/storiesHooks';
+import { useSwitch } from 'services/general/generalHooks';
 import TagFilter from 'components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { useTranslation } from 'react-i18next';
@@ -13,7 +13,7 @@ export const TagsFilter = ({ changeLocationByPath, defaultSelectedTags }) => {
         isDisplayMoreTags,
         changeDisplayMoreTags
     } = useTags(defaultSelectedTags);
-    const [isEnableTags, setIsEnableTags] = useState(true);
+    const { isEnable: isEnableTags, changeSwitch } = useSwitch();
     const filterTagsIds = useMemo(() => {
         const allIds = Object.keys(tagsData);
         return isEnableTags
@@ -29,9 +29,7 @@ export const TagsFilter = ({ changeLocationByPath, defaultSelectedTags }) => {
                     <TagFilter
                         tag={t('tagsFilter.allTestimonies')}
                         selected={!isEnableTags}
-                        onClick={() =>
-                            setIsEnableTags(prevEnableTags => !prevEnableTags)
-                        }
+                        onClick={changeSwitch}
                     />
                 }
                 {tagsData &&
