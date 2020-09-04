@@ -5,7 +5,7 @@ import { withRoute } from 'services/routing/routerHOC';
 import { TagsFilter } from 'containers/Stories/components/TagsFilter';
 import { Footer } from 'components/Footer';
 import { Tags } from 'containers/Story/components/Tags';
-import { getPublicStoryById } from 'src/constants/publicStories';
+import { getPublicStoryById } from 'services/general/publicStoriesConfig';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'src/components/Skeleton';
 

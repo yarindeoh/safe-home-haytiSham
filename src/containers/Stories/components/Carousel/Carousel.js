@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Slider from 'react-slick';
-import { PUBLIC_STORIES } from 'src/constants/publicStories';
+import { PUBLIC_STORIES } from 'services/general/publicStoriesConfig';
 import { CarouselItem } from './CarouselItem';
 
 export const Carousel = ({ changeLocationByPath }) => {
