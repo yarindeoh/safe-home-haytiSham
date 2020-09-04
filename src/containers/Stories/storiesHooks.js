@@ -23,6 +23,7 @@ export const useTags = defaultSelectedTags => {
     }, []);
 
     return {
+        tagsMap: tags,
         tagsData: getDisplayedTags(tagsData),
         changeTagSelected,
         isDisplayMoreTags,
@@ -153,33 +154,5 @@ export const useFilteredStories = tags => {
         stories: data.stories,
         hasMore: data.hasMore,
         getByPage
-    };
-};
-
-export const useAllStories = () => {
-    const [stories, setStories] = useState();
-    let { tagsMap } = useTags();
-    let tags_ids = tagsMap && Object.keys(tagsMap);
-
-    async function getAllStories() {
-        let page = 1;
-        let pageSize = 5;
-        let tmp_stories = [];
-        let data = await Api.getStoriesByTags(tags_ids, pageSize, page);
-        tmp_stories = [...tmp_stories, ...data.result];
-        page += 1;
-        for (page; page <= data.pages; page += 1) {
-            data = await Api.getStoriesByTags(tags_ids || [], pageSize, page);
-            tmp_stories = [...tmp_stories, ...data.result];
-        }
-        setStories(tmp_stories);
-    }
-
-    useEffect(() => {
-        getAllStories();
-    }, [tagsMap]);
-
-    return {
-        allStories: stories
     };
 };

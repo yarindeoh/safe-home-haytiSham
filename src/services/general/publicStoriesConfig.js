@@ -34,7 +34,7 @@ export const PUBLIC_STORIES = [
         tags_id: [5, 14],
         timestamp: '12/04/2020',
         storyteller: 'יאנה בריקסמן',
-        img: 'img4.png',
+        img: 'img4.png'
     },
     {
         id: '2F234311144373734',

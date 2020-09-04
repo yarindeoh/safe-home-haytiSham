@@ -2,4 +2,5 @@
     display: grid;
     grid-template-columns: 50% 50%;
     grid-auto-flow: row;
+    min-height: 102vh; //This is important for infinite-scroll to work
 }

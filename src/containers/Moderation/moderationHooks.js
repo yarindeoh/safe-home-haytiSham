@@ -88,7 +88,7 @@ export const useModerationStories = () => {
         page: 1,
         init: false
     });
-    const pageSize = 10;
+    const pageSize = 5;
 
     async function getByPage() {
         let result = await Api.getModerationStories(
