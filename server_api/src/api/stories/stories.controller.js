@@ -59,7 +59,7 @@ class StorieController {
 
     getStortiesForModeration(req,res){
         let page = parseInt(req.query.page) || 1;
-        let pageSize = parseInt(req.query.page) || 100;
+        let pageSize = parseInt(req.query.pageSize) || 100;
         let sortField = req.query.sortField || "sequence";
         let sortDirection = req.query.sortDirection || "DESC";
         return this.storieService.listStriesToModerate(page, pageSize, sortField, sortDirection).then((data) =>{

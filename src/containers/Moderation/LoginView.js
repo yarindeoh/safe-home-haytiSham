@@ -10,6 +10,8 @@ import {
 } from './moderationHooks';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
 import { useAllStories } from 'containers/Stories/storiesHooks';
+import { ModerateStoriesList } from 'containers/Moderation/components/ModerateStoriesList';
+import '../../scss/componentsStyle/LoginView.scss';
 
 export const LoginView = withRoute(props => {
     const { t } = useTranslation();
@@ -17,7 +19,7 @@ export const LoginView = withRoute(props => {
     const { loginData, handleFiledChange } = useLoginFiledChange();
     const { handleLogin } = useLoginSubmit(loginData);
 
-    const { storiesToModerate } = useModerationStories();
+    // const { storiesToModerate } = useModerationStories();
     const { allStories } = useAllStories();
 
     const changeLocationByPath = (path, params) => {
@@ -27,9 +29,13 @@ export const LoginView = withRoute(props => {
     return (
         <div>
             {moderationState?.loggedIn ? (
-                <div>
+                <div className={'login-view-container'}>
+                    <ModerateStoriesList
+                        changeLocationByPath={changeLocationByPath}
+                        title={t('login.listToModerate')}
+                    ></ModerateStoriesList>
                     {/* list with stories before moderation */}
-                    <header>
+                    {/* <header>
                         <h3>{t('login.listToModerate')}</h3>
                     </header>
                     <main className={'stories'}>
@@ -51,31 +57,33 @@ export const LoginView = withRoute(props => {
                                     );
                                 })}
                         </ol>
-                    </main>
+                    </main> */}
                     {/* All Stories */}
-                    <header>
-                        <h3>{t('login.listAllStories')}</h3>
-                    </header>
-                    <main className={'stories'}>
-                        <ol>
-                            {allStories &&
-                                Object.keys(allStories).map(key => {
-                                    return (
-                                        <StoryHighlight
-                                            liStyle={{ margin: '10px' }}
-                                            story={allStories[key]}
-                                            key={key}
-                                            changeLocationByPath={() =>
-                                                changeLocationByPath(
-                                                    `moderateStory/${allStories[key]._id}`,
-                                                    allStories[key]
-                                                )
-                                            }
-                                        />
-                                    );
-                                })}
-                        </ol>
-                    </main>
+                    <div>
+                        <header>
+                            <h3>{t('login.listAllStories')}</h3>
+                        </header>
+                        <main className={'stories'}>
+                            <ol>
+                                {allStories &&
+                                    Object.keys(allStories).map(key => {
+                                        return (
+                                            <StoryHighlight
+                                                liStyle={{ margin: '10px' }}
+                                                story={allStories[key]}
+                                                key={key}
+                                                changeLocationByPath={() =>
+                                                    changeLocationByPath(
+                                                        `moderateStory/${allStories[key]._id}`,
+                                                        allStories[key]
+                                                    )
+                                                }
+                                            />
+                                        );
+                                    })}
+                            </ol>
+                        </main>
+                    </div>
                 </div>
             ) : (
                 // form to login
