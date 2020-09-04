@@ -8,16 +8,13 @@ export const ModerateStoriesList = ({ changeLocationByPath, title }) => {
     const { stories, hasMore, getByPage } = useModerationStories();
 
     return (
-        //id={scrollableDiv} style={{ height: 300 ,overflowY: "scroll"}}
         <div className={'more-testimonies'}>
-            {title}
+            <h1 style={{ paddingBottom: '10px' }}>{title}</h1>
             <InfiniteScroll
                 dataLength={stories.length}
                 next={getByPage}
                 hasMore={hasMore}
                 loader={stories.length > 0 ? <h4>Loading...</h4> : undefined}
-                // height={300}
-                // scrollableTarget="scrollableDiv"
             >
                 <ul className="stories">
                     {stories &&

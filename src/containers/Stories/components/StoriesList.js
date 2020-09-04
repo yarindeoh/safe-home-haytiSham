@@ -4,7 +4,12 @@ import { useFilteredStories } from 'containers/Stories/storiesHooks';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-export const StoriesList = ({ tags, changeLocationByPath, title }) => {
+export const StoriesList = ({
+    tags,
+    changeLocationByPath,
+    title,
+    rootPath
+}) => {
     const { stories, hasMore, getByPage } = useFilteredStories(tags);
 
     return (
@@ -25,7 +30,11 @@ export const StoriesList = ({ tags, changeLocationByPath, title }) => {
                                     key={key}
                                     changeLocationByPath={() =>
                                         changeLocationByPath(
-                                            `/story/${stories[key]._id}`,
+                                            `${
+                                                rootPath !== undefined
+                                                    ? rootPath
+                                                    : '/story'
+                                            }/${stories[key]._id}`,
                                             stories[key]
                                         )
                                     }
