@@ -9,7 +9,7 @@ import { StoryView } from 'containers/Story/StoryView';
 import { AddStoryView } from 'containers/AddStory/AddStoryView';
 import { StoryVideo } from 'containers/Story/components/StoryVideo';
 import { RouterContext } from 'services/routing/routerContext';
-import { LoginView } from 'containers/Moderation/loginView';
+import { LoginView } from 'containers/Moderation/LoginView';
 import { ModerationView } from 'containers/Moderation/ModerationView';
 import { ModerationProvider } from 'containers/Moderation/moderationContext';
 

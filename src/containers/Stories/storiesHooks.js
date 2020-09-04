@@ -1,11 +1,11 @@
 import Api from 'containers/Stories/storiesApi';
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
 
 export const useTags = defaultSelectedTags => {
     const [tags, setTags] = useState();
-    const { tagsData, changeTagSelected, selectAllTags } = useSelectedTags(
+    const { tagsData, changeTagSelected, unselectAllTags } = useSelectedTags(
         tags,
         defaultSelectedTags
     );
@@ -23,12 +23,11 @@ export const useTags = defaultSelectedTags => {
     }, []);
 
     return {
-        tagsMap: tags,
         tagsData: getDisplayedTags(tagsData),
         changeTagSelected,
         isDisplayMoreTags,
         changeDisplayMoreTags,
-        selectAllTags
+        unselectAllTags
     };
 };
 
@@ -58,6 +57,23 @@ export const useSelectedTags = (tags, defaultSelectedTags = []) => {
 
     return {
         tagsData,
+        unselectAllTags: useCallback(
+            () =>
+                setTagsData(prevTagsData => {
+                    return Object.keys(prevTagsData).reduce(
+                        (accumelator, tag) => {
+                            accumelator[tag] = {
+                                ...prevTagsData[tag],
+                                selected: false
+                            };
+
+                            return accumelator;
+                        },
+                        {}
+                    );
+                }),
+            []
+        ),
         changeTagSelected: useCallback(
             tag =>
                 setTagsData(prevTagsData => {
@@ -100,11 +116,7 @@ export const useFilteredStories = tags => {
     const pageSize = 5;
 
     async function getByPage() {
-        let result = await Api.getStoriesByTags(
-            tags || [],
-            pageSize,
-            data.page
-        );
+        let result = await Api.getStoriesByTags(tags, pageSize, data.page);
         let newData = { ...data };
 
         if (data.page < result.pages) {
@@ -153,7 +165,7 @@ export const useAllStories = () => {
         let page = 1;
         let pageSize = 5;
         let tmp_stories = [];
-        let data = await Api.getStoriesByTags(tags_ids || [], pageSize, page);
+        let data = await Api.getStoriesByTags(tags_ids, pageSize, page);
         tmp_stories = [...tmp_stories, ...data.result];
         page += 1;
         for (page; page <= data.pages; page += 1) {

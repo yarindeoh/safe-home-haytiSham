@@ -25,7 +25,7 @@ export const StoriesList = ({ tags, changeLocationByPath, title }) => {
                                     key={key}
                                     changeLocationByPath={() =>
                                         changeLocationByPath(
-                                            `story/${stories[key]._id}`,
+                                            `/story/${stories[key]._id}`,
                                             stories[key]
                                         )
                                     }

@@ -6,7 +6,8 @@ export const PUBLIC_STORIES = [
         tags: ['אלימות פיזית', 'אלימות מילולית'],
         tags_id: [5, 4],
         timestamp: '15/03/2020',
-        storyteller: 'יעל יהודה'
+        storyteller: 'יעל יהודה',
+        img: 'img1.png'
     },
     {
         id: '2F610082766499736',
@@ -14,7 +15,8 @@ export const PUBLIC_STORIES = [
         tags: ['אלימות פיזית', 'קנאה ואובססיביות'],
         tags_id: [4, 9],
         timestamp: '25/02/2020',
-        storyteller: 'דנה אינטרנשיונל'
+        storyteller: 'דנה אינטרנשיונל',
+        img: 'img2.png'
     },
     {
         id: '2F527567764562364',
@@ -22,7 +24,8 @@ export const PUBLIC_STORIES = [
         tags: ['אלימות פיזית', 'משטרה'],
         tags_id: [4, 18],
         timestamp: '10/03/2020',
-        storyteller: 'שירן וקארין סנדל'
+        storyteller: 'שירן וקארין סנדל',
+        img: 'img3.png'
     },
     {
         id: '2F243174673491976',
@@ -31,7 +34,7 @@ export const PUBLIC_STORIES = [
         tags_id: [5, 14],
         timestamp: '12/04/2020',
         storyteller: 'יאנה בריקסמן',
-        img: 'img4.png'
+        img: 'img4.png',
     },
     {
         id: '2F234311144373734',
@@ -39,7 +42,8 @@ export const PUBLIC_STORIES = [
         tags: ['אלימות פיזית', 'אלימות מילולית', 'משטרה'],
         tags_id: [4, 5, 18],
         timestamp: '08/03/2020',
-        storyteller: 'שרית קרול'
+        storyteller: 'שרית קרול',
+        img: 'img5.png'
     }
 ];
 
