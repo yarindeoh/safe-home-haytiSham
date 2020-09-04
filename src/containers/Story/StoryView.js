@@ -57,7 +57,6 @@ export const StoryView = withRoute(props => {
                     defaultSelectedTags={defaultTagsSimilarStories}
                     changeLocationByPath={changeLocationByPath}
                 />
-                <Footer />
             </div>
         </Skeleton>
     );

@@ -3,8 +3,6 @@ import React, { useContext } from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import Carousel from 'containers/Stories/components/Carousel/Carousel';
 import { TagsFilter } from 'containers/Stories/components/TagsFilter';
-import Header from 'components/Header';
-import { Footer } from 'components/Footer';
 import { useTranslation } from 'react-i18next';
 
 import HelpButton from 'src/components/HelpButton.js';
@@ -27,7 +25,6 @@ export const StoriesView = withRoute(props => {
             </button>
             <TagsFilter changeLocationByPath={changeLocationByPath} />
             <HelpButton />
-            <Footer />
         </Skeleton>
     );
 });
