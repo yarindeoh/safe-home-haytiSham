@@ -15,17 +15,16 @@
   .tag-filter {
     text-align: center;
     border-radius: 20px;
-    color: map_get($colors, blue-300);
     padding: 3px map_get($spaces, small);
     &.not-selected {
-      border: 1px solid map_get($colors, blue-300);
-      background-color: transparent;
+      background-color: map_get($colors, blue-150);
+      color: map_get($colors, grey-400);
       font-weight: normal;
     }
 
     &.selected {
-      background-color: map_get($colors, blue-400);
-      border: none;
+      background-color: map_get($colors, blue-180);
+      color: map_get($colors, blue-250);
     }
   }
 }
