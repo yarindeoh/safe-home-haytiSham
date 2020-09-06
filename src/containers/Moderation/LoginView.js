@@ -1,24 +1,22 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import { Input } from 'components/Input';
 import { useTranslation } from 'react-i18next';
 import {
     useModerationContext,
     useLoginFiledChange,
-    useLoginSubmit,
-    useModerationStories
+    useLoginSubmit
 } from './moderationHooks';
-import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
-import { useAllStories } from 'containers/Stories/storiesHooks';
+import { ModerateStoriesList } from 'containers/Moderation/components/ModerateStoriesList';
+import { TagsFilter } from 'containers/Stories/components/TagsFilter';
+
+import '../../scss/componentsStyle/LoginView.scss';
 
 export const LoginView = withRoute(props => {
     const { t } = useTranslation();
     const { moderationState } = useModerationContext();
     const { loginData, handleFiledChange } = useLoginFiledChange();
     const { handleLogin } = useLoginSubmit(loginData);
-
-    const { storiesToModerate } = useModerationStories();
-    const { allStories } = useAllStories();
 
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
@@ -28,54 +26,18 @@ export const LoginView = withRoute(props => {
         <div>
             {moderationState?.loggedIn ? (
                 <div>
-                    {/* list with stories before moderation */}
-                    <header>
-                        <h3>{t('login.listToModerate')}</h3>
-                    </header>
-                    <main className={'stories'}>
-                        <ol>
-                            {storiesToModerate &&
-                                Object.keys(storiesToModerate).map(key => {
-                                    return (
-                                        <StoryHighlight
-                                            liStyle={{ margin: '10px' }}
-                                            story={storiesToModerate[key]}
-                                            key={key}
-                                            changeLocationByPath={() =>
-                                                changeLocationByPath(
-                                                    `moderateStory/${storiesToModerate[key]._id}`,
-                                                    storiesToModerate[key]
-                                                )
-                                            }
-                                        />
-                                    );
-                                })}
-                        </ol>
-                    </main>
-                    {/* All Stories */}
-                    <header>
-                        <h3>{t('login.listAllStories')}</h3>
-                    </header>
-                    <main className={'stories'}>
-                        <ol>
-                            {allStories &&
-                                Object.keys(allStories).map(key => {
-                                    return (
-                                        <StoryHighlight
-                                            liStyle={{ margin: '10px' }}
-                                            story={allStories[key]}
-                                            key={key}
-                                            changeLocationByPath={() =>
-                                                changeLocationByPath(
-                                                    `moderateStory/${allStories[key]._id}`,
-                                                    allStories[key]
-                                                )
-                                            }
-                                        />
-                                    );
-                                })}
-                        </ol>
-                    </main>
+                    <div className={'login-view-container'}>
+                        <ModerateStoriesList
+                            changeLocationByPath={changeLocationByPath}
+                            title={t('login.listToModerate')}
+                        />
+                        <div style={{ gridArea: 'auto' }}>
+                            <TagsFilter
+                                changeLocationByPath={changeLocationByPath}
+                                rootPath={'/moderateStory'}
+                            />
+                        </div>
+                    </div>
                 </div>
             ) : (
                 // form to login

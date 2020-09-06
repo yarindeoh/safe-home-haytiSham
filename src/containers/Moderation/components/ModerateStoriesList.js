@@ -1,20 +1,15 @@
 import React from 'react';
 
-import { useFilteredStories } from 'containers/Stories/storiesHooks';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { useModerationStories } from 'containers/Moderation/moderationHooks';
 
-export const StoriesList = ({
-    tags,
-    changeLocationByPath,
-    title,
-    rootPath
-}) => {
-    const { stories, hasMore, getByPage } = useFilteredStories(tags);
+export const ModerateStoriesList = ({ changeLocationByPath, title }) => {
+    const { stories, hasMore, getByPage } = useModerationStories();
 
     return (
         <div className={'more-testimonies'}>
-            {title}
+            <h1 style={{ paddingBottom: '10px' }}>{title}</h1>
             <InfiniteScroll
                 dataLength={stories.length}
                 next={getByPage}
@@ -30,11 +25,7 @@ export const StoriesList = ({
                                     key={key}
                                     changeLocationByPath={() =>
                                         changeLocationByPath(
-                                            `${
-                                                rootPath !== undefined
-                                                    ? rootPath
-                                                    : '/story'
-                                            }/${stories[key]._id}`,
+                                            `moderateStory/${stories[key]._id}`,
                                             stories[key]
                                         )
                                     }

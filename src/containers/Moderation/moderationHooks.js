@@ -82,19 +82,42 @@ export const useLoginSubmit = loginData => {
 
 export const useModerationStories = () => {
     const { moderationState } = useModerationContext();
+    const [data, setData] = useState({
+        stories: [],
+        hasMore: true,
+        page: 1,
+        init: false
+    });
+    const pageSize = 5;
 
-    const [stories, setStories] = useState();
+    async function getByPage() {
+        let result = await Api.getModerationStories(
+            pageSize,
+            data.page,
+            'createdAt',
+            'ASC'
+        );
+        let newData = { ...data };
+
+        if (data.page < result.pages) {
+            newData.page += 1;
+        } else if (data.page === result.pages) {
+            newData.hasMore = false;
+        }
+        newData.stories = [...newData.stories, ...result?.result];
+        setData(newData);
+    }
+
     useEffect(() => {
         if (moderationState.loggedIn) {
-            (async () => {
-                await setStories(
-                    await Api.getModerationStories('createdAt', 'ASC')
-                );
-            })();
+            getByPage();
         }
     }, [moderationState.loggedIn]);
+
     return {
-        storiesToModerate: stories?.result
+        stories: data.stories,
+        hasMore: data.hasMore,
+        getByPage
     };
 };
 
