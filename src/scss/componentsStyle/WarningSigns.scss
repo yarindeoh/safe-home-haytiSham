@@ -1,0 +1,42 @@
+.warning-signs {
+  margin: map_get($spaces, medium);
+  font-family: Assistant;
+  font-style: normal;
+
+  h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: map_get($spaces, small);
+    color: map_get($colors, black);
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: map_get($spaces, small);
+    color: map_get($colors, black);
+  }
+
+  .divider {
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: map_get($spaces, small);
+  }
+
+  p {
+    color: map_get($colors, black);
+    margin-bottom: map_get($spaces, small);
+
+    strong {
+      color: map_get($colors, purple-500);
+    }
+  }
+
+  .phones {
+    strong {
+      color: map_get($colors, black);
+      display: block;
+    }
+  }
+}

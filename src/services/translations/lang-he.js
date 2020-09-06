@@ -34,7 +34,6 @@ const he = {
             'שימו לב שלא נוכל לפרסם פרטים מזהים של הפוגעים. \n כמו כן, נשלח הודעה אנונימית לאחר פרסום העדות לאמצעי שהשארת למטה.',
         getHelp: 'עזרה וסיוע',
         whoWeAre: 'מי אנחנו',
-        warningSigns: 'סימני אזהרה',
         michalSelaForum: 'פורום מיכל סלע',
         testimonySubmission: 'שליחת עדות',
         accessability: 'נגישות',
@@ -110,6 +109,12 @@ const he = {
             phoneMail: 'מייל/טלפון: ',
             backToAdminPage: 'חזרה לרשימת העדויות הדורשות עריכה',
             choseTags: 'בחר תגיות'
+        },
+        warningSigns: {
+            header: 'סימני אזהרה',
+            charactersOfReletionship: 'מאפיינים של מערכת יחסים אלימה',
+            how: 'איך?',
+            violenceType: 'הגדרות של סוגי אלימות'
         }
     }
 };

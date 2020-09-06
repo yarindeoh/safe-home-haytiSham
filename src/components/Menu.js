@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 const PAGES = [
     { title: 'whoWeAre' },
     { title: 'getHelp' },
-    { title: 'warningSigns', isBold: true },
+    { title: 'warningSigns.header', path: '/warning-signs', isBold: true },
     { title: 'statistic' },
     { title: 'testimonySubmission', path: '/addStory' },
     { title: 'michalSelaForum' },

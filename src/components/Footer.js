@@ -8,7 +8,7 @@ export const Footer = () => {
     const footerMenu = [
         { name: t('getHelp'), url: '/get-help' },
         { name: t('whoWeAre'), url: '/about' },
-        { name: t('warningSigns'), url: '/warning-signs' },
+        { name: t('warningSigns.header'), url: '/warning-signs' },
         { name: t('michalSelaForum'), url: '/michal-sela-forum' },
         { name: t('testimonySubmission'), url: '/testimony' },
         { name: t('accessability'), url: '/accessability' },
