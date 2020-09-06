@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(function applyHeaders(req, res, next) {
     res.set('X-Frame-Options', 'DENY');
     res.set('Content-Security-Policy', "frame-ancestors 'none';");
-    next(); 
+    next();
 });
 
 /* api router */
@@ -43,12 +43,16 @@ const staticPath = path.join(__dirname, '../../build');
 console.log("Static files from folder " + staticPath);
 app.use(express.static(staticPath));
 
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(staticPath, 'index.html'));
+});
+
 /* DB connection */
 const mongoose = require('mongoose');
 const dbURI = process.env.DB_URI;
 if (!dbURI) {
     console.error("No DB_URI in config file. Please check");
-    process.exit(); 
+    process.exit();
 }
 const options = {
     autoIndex: false,
