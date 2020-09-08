@@ -54,6 +54,7 @@ const he = {
         },
         storyView: {
             storyOf: 'עדותה של',
+            anonymousTeller: 'אנונימית',
             listeningEar: 'אוזן קשבת',
             share: 'שיתוף   '
         },
