@@ -29,8 +29,14 @@
 
   .quote {
     box-sizing: border-box;
-    padding: 0 24px 16px;
     margin-bottom: 21px;
+
+    @include breakpoint-1 {
+      padding: 0 24px 16px;
+    }
+    @include breakpoint-2 {
+      padding: 0 0 16px;
+    }
 
     > h1 {
       font-size: 22px;

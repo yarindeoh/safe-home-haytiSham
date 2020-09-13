@@ -9,7 +9,7 @@ export const Carousel = ({ changeLocationByPath }) => {
 
     const sliderSettings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 1000,
         slidesToShow: 1,
         slidesToScroll: 1,
