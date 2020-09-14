@@ -120,6 +120,10 @@
     align-self: flex-start;
     text-align: center;
     font-size: 18px;
+
+    @include breakpoint-2{
+        display: none;
+    }
 }
 
 .more-testimonies {
