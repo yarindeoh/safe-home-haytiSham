@@ -5,13 +5,21 @@
   grid-area: gallery;
   display: flex;
   flex-direction: column;
-  padding: map_get($spaces, small);
-  border-top: 1px solid map_get($colors, grey-200);
 
   > h1 {
     font-weight: normal;
     font-size: 22px;
     color: #212121;
     margin-bottom: map_get($spaces, x-small);
+  }
+
+  @include breakpoint-1 {
+    padding: map_get($spaces, small);
+    border-top: 1px solid map_get($colors, grey-200);
+  }
+
+  @include breakpoint-2 {
+    width: 100%;
+    padding: map_get($spaces, small) 0;
   }
 }

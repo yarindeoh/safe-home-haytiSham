@@ -103,11 +103,18 @@
 
 .Content {
   padding-top: 62px;
+    @include breakpoint-2 {
+        width: 65%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .const-text {
     color: map_get($colors, black);
-    margin: 0 0 map_get($spaces, small);
+    margin: 0 auto map_get($spaces, small);
     grid-area: const-text;
     justify-self: center;
     align-self: flex-start;
@@ -117,12 +124,19 @@
 
 .more-testimonies {
     box-sizing: border-box;
-    padding: 18px 24px 32px;
 
     >h1 {
         font-weight: normal;
         font-size: 22px;
         color: #212121;
+    }
+
+    @include breakpoint-1{
+        padding: 18px 24px 32px;
+    }
+
+    @include breakpoint-2{
+        padding: 18px 0 32px;
     }
 }
 
@@ -213,26 +227,16 @@ footer {
     }
 }
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    footer {
-        
-        ul,
-        .emergency-dial-wrapper li,
-        .legal-bar li {
-            margin: 10px 0.5vw;
-        }
-    }
-}
-
 .stories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
     grid-gap: 10px;
-}
 
-@media only screen and (max-width: map_get($breakpoints, mobile)) {
-    .stories {
+    @include breakpoint-1 {
         grid-template-columns: 1fr;
+    }
+
+    @include breakpoint-2 {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
