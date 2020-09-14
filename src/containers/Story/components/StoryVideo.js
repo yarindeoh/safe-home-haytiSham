@@ -35,7 +35,6 @@ export const StoryVideo = withRoute(props => {
                             publicId={story.id}
                             format="mp4"
                             controls
-                            autoPlay
                         >
                             <Transformation bitRate="250k" />
                         </Video>
