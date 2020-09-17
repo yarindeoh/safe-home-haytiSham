@@ -1,44 +1,64 @@
-import React, { useState } from 'react';
-
-import { useAllTags } from 'containers/Stories/storiesHooks';
-import { Tag } from 'components/Tag';
+import React, { useMemo } from 'react';
+import { useTags } from 'containers/Stories/storiesHooks';
+import TagFilter from 'components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
+import { useTranslation } from 'react-i18next';
 
-export const TagsFilter = ({ changeLocationByPath }) => {
-    const tags = useAllTags();
-    const [filteredTags, setFilteredTags] = useState([]);
+export const TagsFilter = ({
+    changeLocationByPath,
+    defaultSelectedTags,
+    rootPath
+}) => {
+    const { t } = useTranslation();
+    const {
+        tagsData,
+        changeTagSelected,
+        isDisplayMoreTags,
+        changeDisplayMoreTags,
+        unselectAllTags
+    } = useTags(defaultSelectedTags);
+    const filterTagsIds = useMemo(() =>
+        Object.keys(tagsData).filter(tagId => tagsData[tagId].selected, [
+            tagsData
+        ])
+    );
+
     return (
         <div className={'stories-gallery-container'}>
-            <h1>עדויות נוספות</h1>
-            <div id={'tags-container'}>
-                <div className="tagsFilter">
-                    {tags &&
-                        tags.map((tag, key) => (
-                            <Tag
-                                value={tag}
-                                key={key}
-                                selected={filteredTags.includes(tag)}
-                                onClick={() => {
-                                    filteredTags.includes(tag)
-                                        ? setFilteredTags(
-                                              filteredTags.filter(
-                                                  (e) => e !== tag
-                                              )
-                                          )
-                                        : setFilteredTags([
-                                              ...filteredTags,
-                                              tag,
-                                          ]);
-                                }}
-                            />
-                        ))}
-                    <span id="moreTags">עוד קטגוריות </span>
-                </div>
+            <h1>{t('tagsFilter.additionalTestimonies')}</h1>
+            <div className="tags-filter-container">
+                {
+                    <TagFilter
+                        tag={t('tagsFilter.allTestimonies')}
+                        selected={filterTagsIds.length === 0}
+                        onClick={() =>
+                            filterTagsIds.length > 0 && unselectAllTags()
+                        }
+                    />
+                }
+                {tagsData &&
+                    Object.keys(tagsData).map(tagId => (
+                        <TagFilter
+                            value={tagsData[tagId].value}
+                            tag={tagsData[tagId].value}
+                            key={tagId}
+                            selected={tagsData[tagId].selected}
+                            onClick={event => changeTagSelected(tagId)}
+                        />
+                    ))}
             </div>
-            <StoriesList
-                tags={filteredTags}
-                changeLocationByPath={changeLocationByPath}
-            />
+            <span className="more-tags" onClick={changeDisplayMoreTags}>
+                {isDisplayMoreTags
+                    ? t('tagsFilter.lessCategories')
+                    : t('tagsFilter.moreCategories')}
+            </span>
+            {filterTagsIds ? (
+                <StoriesList
+                    tags={filterTagsIds}
+                    changeLocationByPath={changeLocationByPath}
+                    rootPath={rootPath}
+                />
+            ) : null}
         </div>
     );
 };

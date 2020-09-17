@@ -11,10 +11,12 @@ const storySchema = new Schema({
     storyContent: String,
     mail: String,
     name: String,
-    moderated: false,  
-}, { timestamps: { createdAt: 'creation_date' } });
+    sequence: Number,
+    contact: {type: Boolean, default: false},
+    moderated: {type: Boolean, default: false},  
+}, { timestamps: { createdAt: 'createdAt' } });
 
-storySchema.index({ _id: 1, moderated: 1 });
+storySchema.index({ _id: 1, moderated: 1, sequence:1 });
 
 const Story = mongoose.model('Story', storySchema, 'original_stories');
 module.exports = Story;

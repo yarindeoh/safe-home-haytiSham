@@ -27,10 +27,15 @@ export const Footer = ({ title, footerMenuItemsAndUrls }) => {
                     </div>
                     <span> | </span>
                     <div>
-                        <Link to="/privacy-policy"> {t('privacyPolicy')} </Link>
+                        <Link to="/privacy-policy">
+                            {' '}
+                            <u>{t('privacyPolicy')} </u>
+                        </Link>
                     </div>
                 </div>
             </div>
         </footer>
     );
 };
+
+export default Footer;

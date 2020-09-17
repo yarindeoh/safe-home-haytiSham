@@ -1,153 +1,143 @@
 @import '../local/_colors.scss';
+@import '../local/_spaces.scss';
+@import '../local/_breakpoints.scss';
 
-header {
+.AppHeader {
     width: 100%;
     height: 46px;
     position: fixed;
-    z-index: 2;
-    background-color: map_get($colors, header-background);
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background-color: map_get($colors, black);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-sizing: border-box;
-    padding-right: 10px;
-    left: 0;
+    font-size: 27px;
+    line-height: 35px;
 
-    button {
+    span {
+        color: map_get($colors, white);
+    }
+
+    & > svg {
+        margin: 18px;
+        cursor: pointer;
+    }
+
+    .DarkFilter {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
         height: 100%;
-        width: 50px;
-        background-color: transparent;
+        background: #000;
+        opacity: 0.6;
+        z-index: 3;
     }
 
-    >ul {
+    .Menu {
+        width: 0;
+        background-color: white;
+        color: map_get($colors, black);
         height: 100%;
-
-        >button:not(:first-of-type) {
-            margin-right: 5px;
-        }
-    }
-
-    .logo {
-        margin-left: 50px;
-        margin-bottom: 6px;
-        width: 114px;
-        height: 29px;
-        background-image: url('../../media/icons/logo.png');
-    }
-}
-
-.tagsFilter {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50px, 150px));
-    white-space: nowrap;
-    grid-row-gap: 9px;
-    grid-column-gap: 12px;
-    //justify-content: flex-start;
-    //align-items: center;
-    margin: 5px;
-    box-sizing: border-box;
-    border: 0 !important;
-
-    .tag,
-    .more-tag {
-        padding: 3px 10px 2px 10px;
-        color: map_get($colors, text-tag);
-        border-radius: 30px;
-        border: 0;
-        text-align: center;
-    }
-
-    .tag {
-        background-color: map_get($colors, tag-background);
-    }
-
-    .more-tag {
-        border: 1px solid map_get($colors, text-tag);
-    }
-}
-
-.story {
-    direction: ltr;
-    padding: 10px 16px 20px;
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 1fr 60px;
-    grid-template-rows: 20px 1fr;
-    grid-template-areas:
-        'date letter'
-        'text letter'
-        'tags tags';
-    border-radius: 11px;
-    background-color: map_get($colors, white-background);
-
-    >figure {
-        $size: 33px;
-
-        grid-area: letter;
-        align-self: center;
-        justify-self: center;
-        width: $size;
-        height: $size;
-        border-radius: 50%;
-        background-color: map_get($colors, light-purple-header-background);
+        position: fixed;
+        left: 0;
+        top: 0;
+        transition: 0.3s;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
+        z-index: 4;
 
-        >h2 {
-            font-size: 20px;
-            font-weight: normal;
-            margin: -2px 2px 0 0;
-            color: map_get($colors, text-dark-purple);
+        &.Visible {
+            width: 288px;
         }
-    }
 
-    >h6 {
-        color: #b3b3b3;
-        grid-area: date;
-        width: 100%;
-        height: 100%;
-    }
+        .Title {
+                padding: 8px 28px 16px;
+                background-color: map_get($colors, purple-200);
+                color: inherit;
 
-    >p {
-        grid-area: text;
-        width: 100%;
-        height: 100%;
-        font-weight: bold;
-    }
+                .CloseIcon {
+                    cursor: pointer;
+                }
 
-    >#tags-container {
-        grid-area: tags;
-        width: 100%;
-        height: 100%;
+                .MainTitle {
+                    color: inherit;
+                    font-size: 32px;
+                    line-height: 42px;
+                }
+
+                .SubTitle {
+                    color: inherit;
+                    font-size: 18px;
+                }
+            }
+
+        .Items {
+                color: inherit;
+                padding: 28px;
+                flex: 1;
+                width: fit-content;
+
+                div {
+                    color: inherit;
+                    font-size: 18px;
+                    line-height: 24px;
+                    margin-bottom: 20px;
+
+                    &.Bold {
+                        color: map_get($colors, purple-500);
+                    }
+                    &.EndSection {
+                        padding-bottom: 20px;
+                        border-bottom: 1px solid  map_get($colors, black);
+                    }
+                    &.Clickable {
+                        cursor: pointer;
+                    }
+                }
+            }
+    }
+}
+
+.Content {
+  padding-top: 62px;
+    @include breakpoint-2 {
+        width: 65%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
 .const-text {
-    color: map_get($colors, text-black);
-    padding-top: 15px;
+    color: map_get($colors, black);
+    margin: 0 auto map_get($spaces, small);
     grid-area: const-text;
     justify-self: center;
     align-self: flex-start;
+    text-align: center;
+    font-size: 18px;
 }
 
 .more-testimonies {
     box-sizing: border-box;
-    padding: 18px 24px 32px;
 
     >h1 {
         font-weight: normal;
         font-size: 22px;
         color: #212121;
     }
-}
 
-#moreTags {
-    background-color: transparent;
-    padding: 3px 10px 2px 10px;
-    color: #125a9e;
-    border-radius: 30px;
-    border: 1px solid #125a9e;
+    @include breakpoint-1{
+        padding: 18px 24px 32px;
+    }
+
+    @include breakpoint-2{
+        padding: 18px 0 32px;
+    }
 }
 
 .videoStory {
@@ -158,36 +148,32 @@ label {
     padding: 0 10px;
 }
 
-.tagsFilter .selected {
-    background: #97ccff;
-}
-
 .test {
     width: 100% !important;
     height: calc(100vh - 36px) !important;
 }
 
-.footer {
+footer {
     display: flex;
     text-align: center;
 
     li {
         list-style-type: none;
-        color: map_get($colors, text-white);
+        color: map_get($colors, white);
         font-style: normal;
         font-size: 15px;
     }
 
-    div {
-        background-color: map_get($colors, text-black);
-    }
-
-    a {
-        color: map_get($colors, text-white);
+    div a, u {
+        color: map_get($colors, white);
     }
 
     a:link {
         text-decoration: none;
+    }
+
+    div {
+        background-color: map_get($colors, black);
     }
 
     .footer-inner {
@@ -206,13 +192,16 @@ label {
 
         .copyright {
 
-                display: flex;
-                justify-content: center;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
 
-                span {
-                    margin: auto 5px;
-                }
+            span {
+                margin: auto 5px;
+            }
 
+            height: 45px;
+            align-items: center;
 
             li {
                 margin: 10px;
@@ -224,14 +213,19 @@ label {
         display: flex;
         flex-direction: column;
 
-        ul li {
+        ul {
+            max-width: 320px;
+            margin: 5px auto;
+
+            li {
             flex: 50%;
             margin: 8px auto;
+            }
         }
 
         h1 {
             font-weight: normal;
-            color: map_get($colors, text-dark-purple);
+            color: map_get($colors, purple-400);
             margin: 15px;
             font-size: 35px;
         }
@@ -250,6 +244,18 @@ label {
 
 .stories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
     grid-gap: 10px;
+
+    @include breakpoint-1 {
+        grid-template-columns: 1fr;
+    }
+
+    @include breakpoint-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.disabled-area{
+    opacity: 0.7;
+    pointer-events: none;
 }

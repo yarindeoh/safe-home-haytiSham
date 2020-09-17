@@ -1,126 +1,152 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { withRoute } from 'services/routing/routerHOC';
 import { Input } from 'components/Input';
 import { Radio } from 'components/Radio';
 import { TextArea } from 'components/TextArea';
-import lang from 'services/lang.json';
-import { Header } from '../../components/Header';
+import {
+    useAddStoryContext,
+    useCheckedContact,
+    useFiledChange,
+    useSubmit,
+    useBack
+} from './addStoryHooks';
+import BackArrowIcon from 'src/media/icons/backArrow.svg';
 
-const uploadVideo = () => {
-    //TODO;
-};
+export const AddStoryView = withRoute(props => {
+    const { addStoryState } = useAddStoryContext();
+    const { t } = useTranslation();
+    const { checkedContact, handleCheckedContact } = useCheckedContact();
+    const { handleFiledChange } = useFiledChange();
+    const { submitted, setSubmitted, handleSubmit } = useSubmit();
+    const { back } = useBack(props, setSubmitted);
 
-const uploadSound = () => {
-    //TODO;
-};
-
-const submitForm = () => {
-    //TODO;
-};
-
-export const AddStoryView = withRoute((props) => {
-    const submit = (e) => {
-        e.preventDefault();
-        props.history.push('/');
-    };
-    const back = (e) => {
-        e.preventDefault();
-        props.history.push('/');
-    };
     return (
         <>
-            <div id={'testimony-form'}>
-                <header>
-                    <button className={'BTX-back'} onClick={back} />
-                    <h1>העדות שלי</h1>
-                </header>
-                <button className={'BTN-accessibility'} />
-                <h3>
-                    על מנת שנוכל לשמור על צנעת הפרט, נסיר פרטים מזהים של אנשים
-                    אחרים. כמו כן, נשלח הודעה אנונימית לאחר פרסום העדות לאמצעי
-                    שהשארת למטה
-                </h3>
-                <form onSubmit={submit}>
-                    <Input
-                        name="name"
-                        label="תחת איזה שם היית רוצה שהסיפור יפורסם?"
-                        placeholder="שמך המלא או באופן אנונימי/בדוי"
-                    />
-                    <Input
-                        name="email"
-                        label="כתובת מייל או טלפון ליצירת קשר (לא חובה, לא יפורסם באתר)"
-                        placeholder="כתובת אימייל"
-                    />
-                    <Radio
-                        name="contact"
-                        label="שניצור איתך קשר לקבלת תמיכה (לא חובה, לא יפורסם)"
-                        notes="אפשר גם ליצור קשר 24/7 דרך כפתור התמיכה"
-                        checked={0}
-                        options={[
-                            { value: 'yes', label: 'כן' },
-                            { value: 'no', label: 'לא' },
-                        ]}
-                    />
-
-                    <div>
-                        <label>אפשר לדלג ולמלא בכתב או:</label>
-                        <div>
-                            <button onClick={uploadVideo}>
-                                {' '}
-                                להעלות סרטון{' '}
-                            </button>
-                            <button onClick={uploadSound}>
-                                {' '}
-                                להעלות הקלטה{' '}
-                            </button>
-                        </div>
+            {submitted ? (
+                <div id={'testimony-form'}>
+                    <div className="submitted-success-heading">
+                        {t('addStoryView.submittedSuccessHeading')}
                     </div>
+                    <div className="submitted-success-text">
+                        {t('addStoryView.submittedSuccessText')}
+                    </div>
+                    <button className={'submit-button'} onClick={back}>
+                        {t('backFromForm')}
+                    </button>
+                </div>
+            ) : (
+                <div id={'testimony-form'}>
+                    <header>
+                        <BackArrowIcon
+                            className={'back-arrow-icon'}
+                            onClick={back}
+                        />
+                        <h1>{t('addStoryView.myConfession')}</h1>
+                    </header>
+                    <button className={'BTN-accessibility'} />
+                    <h3>{t('addStoryView.anonymity')}</h3>
+                    <form onSubmit={handleSubmit} id={'addStoryForm'}>
+                        <Input
+                            name="name"
+                            label={t('addStoryView.nameLabel')}
+                            placeholder={t('addStoryView.namePlaceholder')}
+                            value={addStoryState?.name}
+                            onChange={e => handleFiledChange(e, 'name')}
+                            required
+                        />
+                        <Input
+                            name="mail"
+                            label={t('addStoryView.emailLabel')}
+                            placeholder={t('addStoryView.emailPlaceholder')}
+                            value={addStoryState?.mail}
+                            onChange={e => handleFiledChange(e, 'mail')}
+                        />
+                        <Radio
+                            name="contact"
+                            label={t('addStoryView.contactLabel')}
+                            notes={t('addStoryView.contactNotes')}
+                            checked={checkedContact}
+                            options={[
+                                { value: 'yes', label: t('common.yes') },
+                                { value: 'no', label: t('common.no') }
+                            ]}
+                            onClick={e => handleCheckedContact(e)}
+                        />
 
-                    <TextArea
-                        name="background"
-                        placeholder=""
-                        label={lang.background}
-                        sublabel={lang.backgroundSublabel}
-                    />
+                        <TextArea
+                            name="background"
+                            placeholder=""
+                            label={t('background')}
+                            value={addStoryState?.background}
+                            onChange={e => handleFiledChange(e, 'background')}
+                            required
+                        />
 
-                    <TextArea
-                        name="storyContent"
-                        placeholder=""
-                        label={lang.storyContent}
-                        sublabel=""
-                    />
+                        <TextArea
+                            name="storyContent"
+                            label={t('storyContent')}
+                            placeholder={t('storyContentPlaceholder')}
+                            value={addStoryState?.storyContent}
+                            onChange={e => handleFiledChange(e, 'storyContent')}
+                            required
+                        />
+                        <TextArea
+                            name="howDidYouManged"
+                            label={t('howDidYouManged')}
+                            placeholder={t('howDidYouMangedPlaceholder')}
+                            value={addStoryState?.howDidYouManged}
+                            onChange={e =>
+                                handleFiledChange(e, 'howDidYouManged')
+                            }
+                        />
 
-                    <TextArea
-                        name="howDidYouManged"
-                        placeholder=""
-                        label={lang.howDidYouManged}
-                        sublabel=""
-                    />
+                        <TextArea
+                            name="whatHelpedYou"
+                            label={t('whatHelpedYou')}
+                            placeholder={t('whatHelpedYouPlaceHolder')}
+                            value={addStoryState?.whatHelpedYou}
+                            onChange={e =>
+                                handleFiledChange(e, 'whatHelpedYou')
+                            }
+                        />
 
-                    <TextArea
-                        name="whatTriggeredChange"
-                        placeholder=""
-                        label={lang.whatTriggeredChange}
-                        sublabel=""
-                    />
+                        <TextArea
+                            name="whatTriggeredChange"
+                            label={t('whatTriggeredChange')}
+                            placeholder={t('whatTriggeredChangePlaceHolder')}
+                            value={addStoryState?.whatTriggeredChange}
+                            onChange={e =>
+                                handleFiledChange(e, 'whatTriggeredChange')
+                            }
+                        />
+                        {/* 
+                        <TextArea
+                            name="quote"
+                            label={t('quote')}
+                            placeholder={t('quotePlaceHolder')}
+                            value={addStoryState?.quote}
+                            onChange={e => handleFiledChange(e, 'quote')}
+                        /> */}
 
-                    <TextArea
-                        name="howDidYouManged"
-                        placeholder=""
-                        label={lang.howDidYouManged}
-                        sublabel=""
-                    />
-
-                    <TextArea
-                        name="additionalnfo"
-                        placeholder=""
-                        label={lang.additionalnfo}
-                        sublabel=""
-                    />
-
-                    <button onClick={submit}> {lang.submitForm} </button>
-                </form>
-            </div>
+                        <TextArea
+                            name="additionalnfo"
+                            placeholder={t('additionalnfoPlaceHolder')}
+                            label={t('additionalnfo')}
+                            value={addStoryState?.additionalnfo}
+                            onChange={e =>
+                                handleFiledChange(e, 'additionalnfo')
+                            }
+                        />
+                        <input
+                            className="submit-button"
+                            type="submit"
+                            value={t('submitForm')}
+                        ></input>
+                    </form>
+                </div>
+            )}
         </>
     );
 });

@@ -1,8 +1,5 @@
-@import '../local/_breakpoints.scss', '../local/_colors.scss',
-    '../local/_common.scss';
-
-@import '../config/_reset.scss';
-@import '../config/partials/_buttons';
+@import '../local/_colors.scss';
+@import '../local/_spaces.scss';
 
 .stories-gallery-container {
   grid-area: gallery;
@@ -13,10 +10,16 @@
     font-weight: normal;
     font-size: 22px;
     color: #212121;
-    margin-bottom: 27px;
+    margin-bottom: map_get($spaces, x-small);
   }
 
-  > main {
-    margin-top: 12px;
+  @include breakpoint-1 {
+    padding: map_get($spaces, small);
+    border-top: 1px solid map_get($colors, grey-200);
+  }
+
+  @include breakpoint-2 {
+    width: 100%;
+    padding: map_get($spaces, small) 0;
   }
 }

@@ -1,6 +1,16 @@
 $breakpoints: (
-  mobie: 480px,
+  mobile: 480px,
   small-tablet: 768px,
   big-tablet: 1279px,
-  desktop: 1280px
+  desktop: 1280px,
 );
+
+// mobile
+@mixin breakpoint-1 {
+  @media (max-width: 480px) { @content; }
+}
+
+// desktop
+@mixin breakpoint-2 {
+  @media (min-width: 481px) { @content; }
+}

@@ -1,0 +1,42 @@
+@import '../local/_colors.scss';
+@import '../local/_spaces.scss';
+
+.stories-carousel-container {
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.NavItem {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: map_get($colors, purple-200);
+    margin: 0 4px;
+    cursor: pointer;
+}
+
+/// Slick overrides - http://kenwheeler.github.io/slick/
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    direction: ltr;
+    align-items: center;
+    display: flex;
+}
+
+.slick-slider .slick-dots {
+    position: unset;
+    direction: ltr;
+    margin-top: map_get($spaces, small);
+    li {
+        height: auto
+    }
+}
+.slick-active {
+    .NavItem {
+        background-color: map_get($colors, purple-500);
+    }
+}

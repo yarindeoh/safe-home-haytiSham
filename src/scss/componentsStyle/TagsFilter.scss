@@ -1,0 +1,36 @@
+.tag-filter, .more-tags {
+  font-size: 15px;
+  line-height: 130%;
+  font-weight: 600;
+  margin: 0 0 map_get($spaces, x-small) map_get($spaces, x-small);
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.tags-filter-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .tag-filter {
+    text-align: center;
+    border-radius: 20px;
+    padding: 3px map_get($spaces, small);
+    &.not-selected {
+      background-color: map_get($colors, blue-150);
+      color: map_get($colors, grey-400);
+      font-weight: normal;
+    }
+
+    &.selected {
+      background-color: map_get($colors, blue-180);
+      color: map_get($colors, blue-250);
+    }
+  }
+}
+
+.more-tags {
+  color: map_get($colors, blue-200);
+  margin: 0 0 map_get($spaces, medium);
+  width: max-content;
+}

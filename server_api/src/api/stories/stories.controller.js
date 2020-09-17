@@ -5,13 +5,16 @@ class StorieController {
         this.storieService = new StorieService();
     }
 
-    getStoriesByTags(req,res) {
-        //TODO read parameters from the request
-        let tags = '';
-        let page = 1;
-        let pageSize = 100;
-        let sortField = "createdAt";
-        let sortDirection = "ASC";
+    getStoriesByTags(req,res) {        
+        let tags = req.query.tags || '';
+        if(tags){
+            tags = JSON.parse(tags);
+            tags = tags.map(x => Number(x)); 
+        }
+        let page = parseInt(req.query.page) || 1;
+        let pageSize = parseInt(req.query.pageSize) || 100;
+        let sortField = req.query.sortField || "sequence";
+        let sortDirection = req.query.sortDirection || "DESC";
         return this.storieService.listByTags(tags, page, pageSize, sortField, sortDirection).then((data) =>{
             res.json(data);
         });  
@@ -19,15 +22,16 @@ class StorieController {
 
     addStory(req, res) {
         const instance = {
-            whatTriggeredChange: req.body.whatTriggeredChange,
-            howDidYouManged: req.body.howDidYouManged,
-            additionalnfo: req.body.additionalnfo,            
-            quote: req.body.quote,
-            whatHelpedYou: req.body.whatHelpedYou,
-            background: req.body.background,
+            whatTriggeredChange: req.body.whatTriggeredChange || '',
+            howDidYouManged: req.body.howDidYouManged || '',
+            additionalnfo: req.body.additionalnfo || '',            
+            quote: req.body.quote || '',
+            whatHelpedYou: req.body.whatHelpedYou || '',
+            background: req.body.background || '',
             storyContent: req.body.storyContent,
             mail: req.body.mail || '',
-            name: req.body.name || ''
+            name: req.body.name || '',
+            contact: req.body.contact || false
         }
         return this.storieService.createStory(instance).then(() =>{
             res.sendStatus(200);
@@ -54,11 +58,10 @@ class StorieController {
     }
 
     getStortiesForModeration(req,res){
-        //TODO read parameters from the request
-        let page = 1;
-        let pageSize = 100;
-        let sortField = "createdAt";
-        let sortDirection = "ASC";
+        let page = parseInt(req.query.page) || 1;
+        let pageSize = parseInt(req.query.pageSize) || 100;
+        let sortField = req.query.sortField || "sequence";
+        let sortDirection = req.query.sortDirection || "DESC";
         return this.storieService.listStriesToModerate(page, pageSize, sortField, sortDirection).then((data) =>{
             res.json(data);
         });     

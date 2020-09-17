@@ -1,0 +1,67 @@
+@import '../local/_colors.scss';
+#story-page-content {
+  div {
+    > * {
+      font-weight: normal;
+      font-size: 15px;
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 16px;
+    }
+
+    > span {
+      color: map_get($colors, black);
+    }
+
+    > h6 {
+      font-weight: normal;
+      color: map_get($colors, purple-300);
+    }
+  }
+  margin-bottom: 16px;
+}
+
+#story-page-container {
+  display: flex;
+  flex-direction: column;
+  background-color: map_get($colors, grey-100);
+
+  .quote {
+    box-sizing: border-box;
+    margin-bottom: 21px;
+
+    @include breakpoint-1 {
+      padding: 0 24px 16px;
+    }
+    @include breakpoint-2 {
+      padding: 0 0 16px;
+    }
+
+    > h1 {
+      font-size: 22px;
+      font-weight: normal;
+      color: map_get($colors, black);
+    }
+
+    > h2 {
+      font-size: 15px;
+      font-weight: lighter;
+      color: map_get($colors, purple-300);
+      margin-bottom: 18px;
+    }
+  }
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  .story-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+}

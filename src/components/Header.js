@@ -1,14 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import HamburgerIcon from 'src/media/icons/hamburger.svg';
+import ArrowBackIcon from 'src/media/icons/ArrowBack.svg';
+import SearchIcon from 'src/media/icons/Search.svg';
+import Menu from 'src/components/Menu';
 
-export const Header = () => {
+export const Header = ({ isMainHeader = false }) => {
+    const [showMenu, setShowMenu] = useState(false);
+    const { t } = useTranslation();
+    let history = useHistory();
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+    };
+
+    const goBack = () => {
+        history.goBack();
+    };
+
+    const goTo = path => {
+        history.push(path);
+    };
+
     return (
-        <header>
-            <ul className={'header-menu-container'}>
-                <button className={'BTN-hamburger-menu'} />
-                <button className={'BTN-search'} />
-            </ul>
-            <div className={'logo'} />
-            <button className={'BTN-lang-changer'} />
-        </header>
+        <div className="AppHeader">
+            <Menu show={showMenu} onToggle={toggleMenu} onGoTo={goTo} />
+            <SearchIcon />
+            <span>{t('common.iHaveBeenThereHashtag')}</span>
+            {isMainHeader ? (
+                <HamburgerIcon onClick={toggleMenu} />
+            ) : (
+                <ArrowBackIcon onClick={goBack} />
+            )}
+        </div>
     );
 };
+
+export default Header;

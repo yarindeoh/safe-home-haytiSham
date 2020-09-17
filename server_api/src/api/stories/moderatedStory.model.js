@@ -5,7 +5,6 @@ const storySchema = new Schema({
     whatTriggeredChange: String,
     howDidYouManged: String,
     additionalnfo: String,
-    mail: String,
     quote: String,
     whatHelpedYou: String, 
     background: String,
@@ -14,9 +13,9 @@ const storySchema = new Schema({
     sequence: Number,
     tags: [Number],    
     originalStory: { type: 'ObjectId', ref: 'Story'},    
-}, { timestamps: { createdAt: 'creation_date' } });
+}, { timestamps: { createdAt: 'createdAt' } });
 
-storySchema.index({ _id: 1, submission: 1,table:1 });
+storySchema.index({ _id: 1, sequence: 1 });
 
 const ModeratedStrory = mongoose.model('ModeratedStrort', storySchema, 'moderated_stories');
 module.exports = ModeratedStrory;
