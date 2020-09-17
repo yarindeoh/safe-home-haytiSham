@@ -170,28 +170,30 @@ label {
 .footer {
     display: flex;
     text-align: center;
-    flex-direction: column;
 
     li {
         list-style-type: none;
         color: map_get($colors, text-white);
         font-style: normal;
         font-size: 15px;
-
-        a {
-            color: map_get($colors, text-white);
-        }
-
-        a:link {
-            text-decoration: none;
-        }
     }
 
     div {
         background-color: map_get($colors, text-black);
     }
 
+    a {
+        color: map_get($colors, text-white);
+    }
+
+    a:link {
+        text-decoration: none;
+    }
+
     .footer-inner {
+        width: 100%;
+        flex: 3;
+
         ul {
             margin: 10px;
         }
@@ -201,10 +203,21 @@ label {
             flex-wrap: wrap;
             justify-content: center;
         }
-    }
 
-    .emergency-dial-wrapper.purple {
-        background: map_get($colors, dark-purple-footer-background);
+        .copyright {
+
+                display: flex;
+                justify-content: center;
+
+                span {
+                    margin: auto 5px;
+                }
+
+
+            li {
+                margin: 10px;
+            }
+        }
     }
 
     .footer-menu {
@@ -223,62 +236,12 @@ label {
             font-size: 35px;
         }
     }
-
-    .emergency-dial-wrapper ul {
-        display: flex;
-        justify-content: center;
-
-        li {
-            display: flex;
-            flex-direction: column;
-            margin: 10px;
-        }
-
-        li span p {
-            color: white;
-            max-width: 130px;
-        }
-
-    }
-
-    .legal-bar {
-        ul {
-            display: flex;
-            justify-content: center;
-
-            span {
-                margin: auto 5px;
-            }
-        }
-
-        li {
-            margin: 10px;
-        }
-    }
-
-    .hotline-dial {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        svg,
-        p {
-            height: auto;
-            margin: 5px;
-            margin-bottom: 0;
-        }
-
-        svg path {
-            fill: #ffffff;
-        }
-    }
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     .footer {
 
         .footer-inner ul,
-        .emergency-dial-wrapper li,
         .legal-bar li {
             margin: 10px 0.5vw;
         }

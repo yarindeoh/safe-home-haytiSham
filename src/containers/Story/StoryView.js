@@ -5,7 +5,7 @@ import lang from 'services/lang.json';
 import { Tags } from './components/Tags';
 import { extractFieldsFromObj } from 'services/general/generalHelpers';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
-import { Footer } from 'components/Footer';
+import { FooterWrapper } from 'containers/Story/components/FooterWrapper';
 import { Header } from 'components/Header';
 
 export const StoryView = withRoute((props) => {
@@ -39,9 +39,9 @@ export const StoryView = withRoute((props) => {
                 <h1>"{story.quote}"</h1>
                 <h2>
                     {`
-                    עדותה של 
-                     ${story.name.split('')[0]}׳ 
-                     ${story.timestamp.split(' ')[0]} 
+                    עדותה של
+                     ${story.name.split('')[0]}׳
+                     ${story.timestamp.split(' ')[0]}
                    `}
                 </h2>
                 <Tags tags={story.tags} />
@@ -68,7 +68,7 @@ export const StoryView = withRoute((props) => {
                     <p>שיתוף   </p>
                 </span>
             </button>
-            <Footer />
+            <FooterWrapper />
         </div>
     );
 });

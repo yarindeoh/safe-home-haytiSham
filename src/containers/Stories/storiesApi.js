@@ -26,7 +26,7 @@ const Api = {
     },
     getPublicStories: () => {
         return get(baseUrl('getPublicStories'));
-    },
+    }
 };
 
 export default Api;

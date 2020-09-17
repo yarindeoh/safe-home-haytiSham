@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const apiMocker = require('webpack-api-mocker');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const dotenv = require('dotenv');
@@ -25,7 +24,6 @@ module.exports = (env, argv) => {
     }, {});
     return {
         performance: { hints: false },
-        mode: argv.mode,
         entry: path.resolve(__dirname, 'src/index.js'),
         devtool: argv.mode === 'development' ? 'inline-source-map' : 'none',
         resolve: {
@@ -34,14 +32,15 @@ module.exports = (env, argv) => {
                 resources: path.resolve(__dirname, 'resources'),
                 src: path.resolve(__dirname, 'src'),
                 components: path.resolve(__dirname, 'src/components'),
-                containers: path.resolve(__dirname, 'src/containers'),
                 services: path.resolve(__dirname, 'src/services'),
-            },
+                media: path.resolve(__dirname, 'src/media'),
+                containers: path.resolve(__dirname, 'src/containers')
+            }
         },
         output: {
             filename: 'bundle.js',
-            path: path.resolve('server/static'),
-            publicPath: '/',
+            path: path.resolve('build'),
+            publicPath: '/'
         },
         module: {
             rules: [
@@ -53,7 +52,11 @@ module.exports = (env, argv) => {
                 {
                     test: /\.(css|scss)$/,
                     loaders: ['style-loader', 'css-loader', 'sass-loader'],
-                    include: path.resolve(__dirname, '../'),
+                    include: path.resolve(__dirname, '../')
+                },
+                {
+                    test: /\.(svg)$/,
+                    use: ['@svgr/webpack']
                 },
                 {
                     test: /\.(jpg|png|gif|ico|ttf|woff|woff2|eot)(\?.*)?$/,
@@ -61,29 +64,30 @@ module.exports = (env, argv) => {
                         {
                             loader: 'file-loader',
                             options: {
+                                name: '[path][name].[ext]',
                                 output: {
-                                    path: path.join(__dirname, 'server/static'),
-                                },
-                            },
-                        },
-                    ],
-                },
-            ],
+                                    path: path.join(__dirname, 'build')
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
         },
         devServer: {
-            before(app) {
-                apiMocker(app, path.resolve('./mockers/index.js'), {});
-            },
             port: 9000,
             hot: true,
             historyApiFallback: true,
+            proxy: {
+                '/api': 'localhost:5000'
+            }
         },
         plugins: [
             new webpack.DefinePlugin(envKeys),
             new HtmlWebpackPlugin({
                 filename: 'index.html',
-                template: path.resolve(__dirname, 'index.html'),
-            }),
-        ],
+                template: path.resolve(__dirname, 'index.html')
+            })
+        ]
     };
 };

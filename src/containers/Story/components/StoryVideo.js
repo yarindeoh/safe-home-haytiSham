@@ -2,12 +2,12 @@ import React from 'react';
 
 import { withRoute } from 'services/routing/routerHOC';
 import { SimilarStories } from 'containers/Story/components/SimilarStories';
-import { Footer } from 'components/Footer';
+import { FooterWrapper } from 'containers/Story/components/FooterWrapper';
 import { Tags } from 'containers/Story/components/Tags';
 
-export const StoryViedo = withRoute((props) => {
+export const StoryViedo = withRoute(props => {
     const story = props.location.state;
-    const changeLocationByPath = (path) => {
+    const changeLocationByPath = path => {
         props.history.push(path);
     };
 
@@ -40,7 +40,7 @@ export const StoryViedo = withRoute((props) => {
             </div>
             {/* //TODO */}
             <SimilarStories tags={['השפלה', 'קנאה']} />
-            <Footer />
+            <FooterWrapper />
         </div>
     );
 });

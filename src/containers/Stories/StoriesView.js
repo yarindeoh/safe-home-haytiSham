@@ -5,7 +5,7 @@ import { withRoute } from 'services/routing/routerHOC';
 import { StoriesGalleryView } from 'containers/Stories/components/StoriesGallery/StoriesGalleryView';
 import { TagsFilter } from 'containers/Stories/components/TagsFilter';
 import { Header } from 'components/Header';
-import { Footer } from 'components/Footer';
+import { FooterWrapper } from 'containers/Story/components/FooterWrapper';
 
 export const StoriesView = withRoute(props => {
     const changeLocationByPath = (path, params) => {
@@ -26,7 +26,7 @@ export const StoriesView = withRoute(props => {
             <hr />
             <TagsFilter changeLocationByPath={changeLocationByPath} />
             <button className="BTN-help" />
-            <Footer />
+            <FooterWrapper />
         </div>
     );
 });
