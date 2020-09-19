@@ -12,31 +12,25 @@
 
     > span {
       color: map_get($colors, black);
+      padding: 16px 0;
     }
 
     > h6 {
-      font-weight: normal;
-      color: map_get($colors, purple-300);
+      font-weight: bold;
+      color: map_get($colors, black);
     }
   }
-  margin-bottom: 16px;
 }
 
 #story-page-container {
   display: flex;
   flex-direction: column;
   background-color: map_get($colors, grey-100);
+  // margin: map_get($spaces, medium);
 
   .quote {
     box-sizing: border-box;
     margin-bottom: 21px;
-
-    @include breakpoint-1 {
-      padding: 0 24px 16px;
-    }
-    @include breakpoint-2 {
-      padding: 0 0 16px;
-    }
 
     > h1 {
       font-size: 22px;
@@ -46,10 +40,18 @@
 
     > h2 {
       font-size: 15px;
-      font-weight: lighter;
-      color: map_get($colors, purple-300);
-      margin-bottom: 18px;
+      font-weight: bold;
+      color: map_get($colors, purple-500);
+      margin-top: 10px;
+      margin-bottom: 4px;
     }
+  }
+
+  @include breakpoint-1 {
+    padding: 0 24px 16px;
+  }
+  @include breakpoint-2 {
+    padding: 0 0 16px;
   }
 }
 

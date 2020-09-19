@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import { Tags } from './components/Tags';
-import { extractFieldsFromObj } from 'services/general/generalHelpers';
-import { TagsFilter } from 'containers/Stories/components/TagsFilter';
-import { Footer } from 'components/Footer';
+import { extractFieldsFromObjOrdered } from 'services/general/generalHelpers';
+import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'src/components/Skeleton';
+import HelpButton from 'src/components/HelpButton.js';
 
 export const StoryView = withRoute(props => {
     const { t } = useTranslation();
@@ -13,13 +13,13 @@ export const StoryView = withRoute(props => {
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
     };
-    const processedStory = extractFieldsFromObj(story, [
+    const processedStory = extractFieldsFromObjOrdered(story, [
         'background',
-        'whatTriggeredChange',
+        'storyContent',
         'howDidYouManged',
+        'whatTriggeredChange',
         'additionalnfo',
-        'whatHelpedYou',
-        'storyContent'
+        'whatHelpedYou'
     ]);
     const defaultTagsSimilarStories = story.tags && story.tags.slice(0, 3);
 
@@ -32,27 +32,33 @@ export const StoryView = withRoute(props => {
                         <h2>
                             {`
                      ${t('storyView.storyOf')}
-                     ${story.name ? story.name.split('')[0] : t('storyView.anonymousTeller')}
+                     ${
+                         story.name
+                             ? story.name.split('')[0]
+                             : t('storyView.anonymousTeller')
+                     }
                      ${story.createdAt}
                    `}
                         </h2>
                         <Tags tags={story.tags} />
                     </div>
                     {processedStory &&
-                        Object.keys(processedStory).map((item, key) => (
+                        processedStory.map((item, key) => (
                             <div key={key}>
-                                <h6>{t(item)}</h6>
-                                <span>{processedStory[item]}</span>
+                                <h6>{t(`storyView.${item.titleKey}`)}</h6>
+                                <span>{item.text}</span>
                                 <br />
                             </div>
                         ))}
                 </div>
-                <TagsFilter
-                    key={props.location.state._id}
-                    defaultSelectedTags={defaultTagsSimilarStories}
-                    changeLocationByPath={changeLocationByPath}
-                />
             </div>
+            <StoriesList
+                key={props.location.state._id}
+                defaultSelectedTags={defaultTagsSimilarStories}
+                title={t('tagsFilter.additionalTestimonies')}
+                changeLocationByPath={changeLocationByPath}
+            />
+            <HelpButton />
         </Skeleton>
     );
 });

@@ -129,6 +129,7 @@
         font-weight: normal;
         font-size: 22px;
         color: #212121;
+        margin-bottom: map_get($spaces, x-small);
     }
 
     @include breakpoint-1{

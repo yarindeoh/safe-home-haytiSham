@@ -8,6 +8,16 @@ export function extractFieldsFromObj(obj, fields) {
     return res;
 }
 
+export function extractFieldsFromObjOrdered(obj, fields) {
+    let res = [];
+    fields.forEach(element => {
+        if (obj[element] !== undefined) {
+            res.push({ text: obj[element], titleKey: element });
+        }
+    });
+    return res;
+}
+
 export const changeLocationByPath = (history, path, params) => {
     history.push(path, params);
 };
