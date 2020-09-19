@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTags } from 'containers/Stories/storiesHooks';
 import TagFilter from 'components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
-import { useTranslation } from 'react-i18next';
 
 export const TagsFilter = ({
     changeLocationByPath,

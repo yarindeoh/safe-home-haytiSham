@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useFilteredStories } from 'containers/Stories/storiesHooks';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
+import { Loader } from 'components/Loader';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export const StoriesList = ({
@@ -10,37 +11,41 @@ export const StoriesList = ({
     title,
     rootPath
 }) => {
-    const { stories, hasMore, getByPage } = useFilteredStories(tags);
+    const { stories, hasMore, getNextPage, init } = useFilteredStories(tags);
 
     return (
         <div className={'more-testimonies'}>
             {title}
             <InfiniteScroll
                 dataLength={stories.length}
-                next={getByPage}
+                next={getNextPage}
                 hasMore={hasMore}
-                loader={stories.length > 0 ? <h4>Loading...</h4> : undefined}
+                loader={stories.length > 0 ? <Loader /> : undefined}
             >
                 <ul className="stories">
                     {stories &&
-                        Object.keys(stories).map(key => {
-                            return (
-                                <StoryHighlight
-                                    story={stories[key]}
-                                    key={key}
-                                    changeLocationByPath={() =>
-                                        changeLocationByPath(
-                                            `${
-                                                rootPath !== undefined
-                                                    ? rootPath
-                                                    : '/story'
-                                            }/${stories[key]._id}`,
-                                            stories[key]
-                                        )
-                                    }
-                                />
-                            );
-                        })}
+                        (init ? (
+                            Object.keys(stories).map(key => {
+                                return (
+                                    <StoryHighlight
+                                        story={stories[key]}
+                                        key={key}
+                                        changeLocationByPath={() =>
+                                            changeLocationByPath(
+                                                `${
+                                                    rootPath !== undefined
+                                                        ? rootPath
+                                                        : '/story'
+                                                }/${stories[key]._id}`,
+                                                stories[key]
+                                            )
+                                        }
+                                    />
+                                );
+                            })
+                        ) : (
+                            <Loader />
+                        ))}
                 </ul>
             </InfiniteScroll>
         </div>
