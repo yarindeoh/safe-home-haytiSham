@@ -1,7 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'src/components/Skeleton';
-import { intro, how, charactersOfRelationship, violenceType, phones } from './warningSignsUtils';
+import {
+    intro,
+    how,
+    charactersOfRelationship,
+    violenceType,
+    phones
+} from './warningSignsUtils';
 
 export const WarningSigns = () => {
     const { t } = useTranslation();
@@ -15,12 +21,14 @@ export const WarningSigns = () => {
         </React.Fragment>
     );
 
-    const charactersOfRelationshipSection = charactersOfRelationship.map(({ title, text }) => (
-        <p key={`character_${title}`}>
-            <strong>{title} - </strong>
-            {text}
-        </p>
-    ));
+    const charactersOfRelationshipSection = charactersOfRelationship.map(
+        ({ title, text }) => (
+            <p key={`character_${title}`}>
+                <strong>{title} - </strong>
+                {text}
+            </p>
+        )
+    );
 
     const howSection = <p>{how}</p>;
 
