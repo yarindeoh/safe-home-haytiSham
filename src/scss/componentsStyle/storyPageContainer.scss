@@ -23,11 +23,8 @@
 }
 
 #story-page-container {
-  display: flex;
-  flex-direction: column;
-  background-color: map_get($colors, grey-100);
-
   .quote {
+    width: 100%;
     box-sizing: border-box;
     margin-bottom: 21px;
 
