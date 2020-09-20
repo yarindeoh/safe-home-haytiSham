@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export const WideHeader = () => {
     const { t } = useTranslation();
@@ -8,16 +9,16 @@ export const WideHeader = () => {
 
     return (<div className="app-header-wide">
         <div className="right-section">
-            <a className="title" href="/">{t('common.iHaveBeenThereHashtag')}</a>
+            <Link to="/" className="title">{t('common.iHaveBeenThereHashtag')}</Link>
             { pipe }
             <span>{t('storiesView.header')}</span>
         </div>
         <div className="left-section">
-            <a href="/addStory">{t('testimonySubmission')}</a>
+            <Link to="/addStory">{t('testimonySubmission')}</Link>
             { pipe }
-            <a href="/warning-signs">{t('warningSigns.header')}</a>
+            <Link to="/warning-signs">{t('warningSigns.header')}</Link>
             { pipe }
-            <a href="/about">{t('whoWeAre')}</a>
+            <Link to="/about">{t('whoWeAre')}</Link>
             { pipe }
             <span className="phone">#6724</span>
         </div>
