@@ -8,7 +8,7 @@ import {
 } from 'src/services/general/breakpoints';
 
 export function Skeleton(props) {
-    const { children, isMainHeader } = props;
+    const { children, isMainHeader, id } = props;
     const [breakpoint, setBreakpoint] = useState(getBreakpoint());
 
     useEffect(() => {
@@ -30,7 +30,7 @@ export function Skeleton(props) {
             ) : (
                 <WideHeader />
             )}
-            <div className="Content">{children}</div>
+            <div id={id} className="Content">{children}</div>
             <Footer />
         </React.Fragment>
     );
