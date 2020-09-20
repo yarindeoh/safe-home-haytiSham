@@ -1,7 +1,13 @@
-export const isBreakpoint1 = () => {
-    return window.innerWidth <= 480;
+export const BREAKPOINT_MAP = {
+    BREAKPOINT_1: 'BREAKPOINT_1',
+    BREAKPOINT_2: 'BREAKPOINT_2'
 };
 
-export const isBreakpoint2 = () => {
-    return window.innerWidth > 480;
+export const getBreakpoint = () => {
+    const { innerWidth } = window;
+    if (innerWidth <= 480) {
+        return BREAKPOINT_MAP.BREAKPOINT_1
+    } else {
+        return BREAKPOINT_MAP.BREAKPOINT_2;
+    }
 };
