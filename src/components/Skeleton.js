@@ -1,27 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Header } from './Header';
 import Footer from './Footer';
 import WideHeader from './WideHeader';
-import {
-    getBreakpoint,
-    BREAKPOINT_MAP
-} from 'src/services/general/breakpoints';
+import { BREAKPOINT_MAP } from 'src/services/general/breakpoints';
+import { useResize } from 'src/services/general/generalHooks';
 
 export function Skeleton(props) {
     const { children, isMainHeader, id } = props;
-    const [breakpoint, setBreakpoint] = useState(getBreakpoint());
-
-    useEffect(() => {
-        function handleResize() {
-            setBreakpoint(getBreakpoint());
-        }
-
-        window.addEventListener('resize', handleResize);
-
-        return _ => {
-            window.removeEventListener('resize', handleResize);
-        };
-    });
+    const breakpoint = useResize();
 
     return (
         <React.Fragment>
@@ -30,7 +16,9 @@ export function Skeleton(props) {
             ) : (
                 <WideHeader />
             )}
-            <div id={id} className="Content">{children}</div>
+            <div id={id} className="Content">
+                {children}
+            </div>
             <Footer />
         </React.Fragment>
     );
