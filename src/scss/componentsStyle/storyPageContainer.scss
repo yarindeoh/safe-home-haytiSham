@@ -26,6 +26,7 @@
   display: flex;
   flex-direction: column;
   background-color: map_get($colors, grey-100);
+  border-bottom: 1px solid map_get($colors, grey-200);
   // margin: map_get($spaces, medium);
 
   .quote {

@@ -2,11 +2,11 @@ import React from 'react';
 import { Video, Transformation } from 'cloudinary-react';
 
 import { withRoute } from 'services/routing/routerHOC';
-import { TagsFilter } from 'containers/Stories/components/TagsFilter';
-import { Footer } from 'components/Footer';
+import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { Tags } from 'containers/Story/components/Tags';
 import { getPublicStoryById } from 'services/general/publicStoriesConfig';
 import { useTranslation } from 'react-i18next';
+import HelpButton from 'src/components/HelpButton.js';
 import Skeleton from 'src/components/Skeleton';
 
 export const StoryVideo = withRoute(props => {
@@ -40,11 +40,13 @@ export const StoryVideo = withRoute(props => {
                         </Video>
                     </div>
                 </div>
-                <TagsFilter
-                    defaultSelectedTags={story.tags_id}
-                    changeLocationByPath={changeLocationByPath}
-                />
             </div>
+            <StoriesList
+                efaultSelectedTags={story.tags_id}
+                title={t('tagsFilter.additionalTestimonies')}
+                changeLocationByPath={changeLocationByPath}
+            />
+            <HelpButton />
         </Skeleton>
     );
 });

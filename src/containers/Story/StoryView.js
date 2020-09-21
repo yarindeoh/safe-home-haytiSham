@@ -18,8 +18,8 @@ export const StoryView = withRoute(props => {
         'storyContent',
         'howDidYouManged',
         'whatTriggeredChange',
-        'additionalnfo',
-        'whatHelpedYou'
+        'whatHelpedYou',
+        'additionalnfo'
     ]);
     const defaultTagsSimilarStories = story.tags && story.tags.slice(0, 3);
 
