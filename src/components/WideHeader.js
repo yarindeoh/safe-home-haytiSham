@@ -20,7 +20,7 @@ export const WideHeader = () => {
             { pipe }
             <Link to="/about">{t('whoWeAre')}</Link>
             { pipe }
-            <span className="phone">#6724</span>
+            <span className="phone">*6724</span>
         </div>
     </div>);
 };
