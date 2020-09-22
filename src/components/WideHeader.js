@@ -7,22 +7,26 @@ export const WideHeader = () => {
 
     const pipe = <span className="pipe">|</span>;
 
-    return (<div className="app-header-wide">
-        <div className="right-section">
-            <Link to="/" className="title">{t('common.iHaveBeenThereHashtag')}</Link>
-            { pipe }
-            <span>{t('storiesView.header')}</span>
+    return (
+        <div className="app-header-wide">
+            <div className="right-section">
+                <Link to="/" className="title">
+                    {t('common.iHaveBeenThereHashtag')}
+                </Link>
+                {pipe}
+                <span>{t('storiesView.header')}</span>
+            </div>
+            <div className="left-section">
+                <Link to="/addStory">{t('testimonySubmission')}</Link>
+                {pipe}
+                <Link to="/warning-signs">{t('warningSigns.header')}</Link>
+                {pipe}
+                <Link to="/about">{t('whoWeAre')}</Link>
+                {pipe}
+                <span className="phone">6724*</span>
+            </div>
         </div>
-        <div className="left-section">
-            <Link to="/addStory">{t('testimonySubmission')}</Link>
-            { pipe }
-            <Link to="/warning-signs">{t('warningSigns.header')}</Link>
-            { pipe }
-            <Link to="/about">{t('whoWeAre')}</Link>
-            { pipe }
-            <span className="phone">6724*</span>
-        </div>
-    </div>);
+    );
 };
 
 export default WideHeader;

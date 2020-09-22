@@ -56,7 +56,13 @@ const he = {
             storyOf: 'עדותה של',
             anonymousTeller: 'אנונימית',
             listeningEar: 'אוזן קשבת',
-            share: 'שיתוף   '
+            share: 'שיתוף   ',
+            background: 'רקע (מי, מה, מתי)',
+            storyContent: 'העדות שלי',
+            howDidYouManged: 'איך התמודדתי עם זה?',
+            whatTriggeredChange: 'איך הסיטואציה השתנתה?',
+            additionalnfo: 'בכמה משפטים, מה הכי היית רוצה לומר למי שבמצב דומה?',
+            whatHelpedYou: 'מה עזר לך להתמודד?'
         },
         addStoryView: {
             createdAt: 'נכתב ב: ',
