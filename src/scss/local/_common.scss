@@ -104,7 +104,7 @@
 .Content {
   padding-top: 62px;
     @include breakpoint-2 {
-        width: 65%;
+        width: 85%;
         margin: auto;
         display: flex;
         flex-direction: column;
@@ -120,6 +120,10 @@
     align-self: flex-start;
     text-align: center;
     font-size: 18px;
+
+    @include breakpoint-2{
+        display: none;
+    }
 }
 
 .more-testimonies {

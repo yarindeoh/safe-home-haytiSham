@@ -17,34 +17,32 @@ export const StoryVideo = withRoute(props => {
         props.history.push(path);
     };
     return (
-        <Skeleton>
-            <div id="story-page-container">
-                <div className="quote">
-                    <h1>{story.quote}</h1>
-                    <h2>
-                        {t('storyVideo.campaign', {
-                            storyteller: story.storyteller,
-                            timestamp: story.timestamp
-                        })}
-                    </h2>
-                    <Tags tags={story.tags} />
-                    <div className="video-wrapper">
-                        <Video
-                            className="story-video"
-                            cloudName="dh7jncxmb"
-                            publicId={story.id}
-                            format="mp4"
-                            controls
-                        >
-                            <Transformation bitRate="250k" />
-                        </Video>
-                    </div>
+        <Skeleton id="story-page-container">
+            <div className="quote">
+                <h1>{story.quote}</h1>
+                <h2>
+                    {t('storyVideo.campaign', {
+                        storyteller: story.storyteller,
+                        timestamp: story.timestamp
+                    })}
+                </h2>
+                <Tags tags={story.tags}/>
+                <div className="video-wrapper">
+                    <Video
+                        className="story-video"
+                        cloudName="dh7jncxmb"
+                        publicId={story.id}
+                        format="mp4"
+                        controls
+                    >
+                        <Transformation bitRate="250k"/>
+                    </Video>
                 </div>
-                <TagsFilter
-                    defaultSelectedTags={story.tags_id}
-                    changeLocationByPath={changeLocationByPath}
-                />
             </div>
+            <TagsFilter
+                defaultSelectedTags={story.tags_id}
+                changeLocationByPath={changeLocationByPath}
+            />
         </Skeleton>
     );
 });

@@ -9,6 +9,8 @@
 @import '../local/_spaces.scss';
 @import '../config/partials/_buttons';
 
+@import "./Header";
+@import "./Footer";
 @import "./Tag";
 @import "./TagsFilter";
 @import 'Carousel';

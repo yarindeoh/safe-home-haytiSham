@@ -12,6 +12,10 @@
     text-decoration: underline;
     margin: map_get($spaces, small);
     background: transparent;
+
+    @include breakpoint-2 {
+        display: none;
+    }
 }
 
 .BTN-hamburger-menu {

@@ -1,5 +1,6 @@
 @import '../local/_colors.scss';
 @import '../local/_spaces.scss';
+@import '../local/_breakpoints.scss';
 
 .stories-carousel-container {
     width: 100vw;
@@ -25,6 +26,11 @@
     direction: ltr;
     align-items: center;
     display: flex;
+
+    @include breakpoint-2 {
+        transform: translate3d(0px, 0px, 0px)!important;
+        justify-content: center;
+    }
 }
 
 .slick-slider .slick-dots {

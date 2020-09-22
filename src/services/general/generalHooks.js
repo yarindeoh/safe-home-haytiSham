@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import { getBreakpoint } from './breakpoints';
 
 export function useSwitch() {
     const [isEnable, setIsEnable] = useState(true);
@@ -8,4 +9,22 @@ export function useSwitch() {
     );
 
     return { isEnable, changeSwitch };
+}
+
+export function useResize() {
+    const [breakpoint, setBreakpoint] = useState(getBreakpoint());
+
+    useEffect(() => {
+        function handleResize() {
+            setBreakpoint(getBreakpoint());
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        return _ => {
+            window.removeEventListener('resize', handleResize);
+        };
+    });
+
+    return breakpoint;
 }
