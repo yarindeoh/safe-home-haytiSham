@@ -24,4 +24,8 @@
     font-size: 12px;
     padding-bottom: 7px;
   }
+
+  @include breakpoint-2{
+    display: none;
+  }
 }

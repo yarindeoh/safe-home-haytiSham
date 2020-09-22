@@ -10,7 +10,7 @@
       margin-bottom: 16px;
     }
 
-    > span {
+    .story-text {
       color: map_get($colors, black);
       padding: 16px 0;
     }
@@ -20,16 +20,15 @@
       color: map_get($colors, black);
     }
   }
+
+  margin-bottom: 16px;
 }
 
 #story-page-container {
-  display: flex;
-  flex-direction: column;
-  background-color: map_get($colors, grey-100);
   border-bottom: 1px solid map_get($colors, grey-200);
-  // margin: map_get($spaces, medium);
-
+  
   .quote {
+    width: 100%;
     box-sizing: border-box;
     margin-bottom: 21px;
 
@@ -53,6 +52,7 @@
   }
   @include breakpoint-2 {
     padding: 0 0 16px;
+    width: 100%;
   }
 }
 

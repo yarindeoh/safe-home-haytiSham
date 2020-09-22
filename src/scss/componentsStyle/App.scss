@@ -9,6 +9,8 @@
 @import '../local/_spaces.scss';
 @import '../config/partials/_buttons';
 
+@import "./Header";
+@import "./Footer";
 @import "./Tag";
 @import "./TagsFilter";
 @import 'Carousel';
@@ -19,6 +21,7 @@
 @import './StoryHightlight';
 @import 'CarouselItem';
 @import 'WarningSigns';
+@import 'About';
 
 #root {
     background-color: map_get($colors, grey-100);

@@ -13,6 +13,7 @@ import { LoginView } from 'containers/Moderation/LoginView';
 import { ModerationView } from 'containers/Moderation/ModerationView';
 import { ModerationProvider } from 'containers/Moderation/moderationContext';
 import WarningSigns from 'containers/WarningSigns';
+import About from 'containers/About';
 
 export const history = createBrowserHistory();
 
@@ -31,6 +32,7 @@ export const App = () => {
                         />
                         <Route path="/publicStory/:id" component={StoryVideo} />
                         <Route path="/warning-signs" component={WarningSigns} />
+                        <Route path="/about" component={About} />
                         <ModerationProvider>
                             <Route path="/admin" component={LoginView} />
                             <Route

@@ -46,7 +46,7 @@ export const StoryView = withRoute(props => {
                         processedStory.map((item, key) => (
                             <div key={key}>
                                 <h6>{t(`storyView.${item.titleKey}`)}</h6>
-                                <span>{item.text}</span>
+                                <span className="story-text">{item.text}</span>
                                 <br />
                             </div>
                         ))}
@@ -54,7 +54,7 @@ export const StoryView = withRoute(props => {
             </div>
             <StoriesList
                 key={props.location.state._id}
-                defaultSelectedTags={defaultTagsSimilarStories}
+                tags={defaultTagsSimilarStories}
                 title={t('tagsFilter.additionalTestimonies')}
                 changeLocationByPath={changeLocationByPath}
             />
