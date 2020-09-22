@@ -1,0 +1,56 @@
+.about {
+    margin: map_get($spaces, medium);
+    font-family: Assistant;
+    font-style: normal;
+  
+    h1 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: map_get($spaces, small);
+      color: map_get($colors, black);
+    }
+  
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: map_get($spaces, small);
+      color: map_get($colors, black);
+    }
+  
+    p {
+      color: map_get($colors, black);
+      margin-bottom: map_get($spaces, small);
+
+      b {
+        color: map_get($colors, black);
+      }
+    }
+
+    h3 {
+        width: 100%; 
+        text-align: center; 
+        border-bottom: 1px solid map_get($colors, grey-200); 
+        line-height: 0.1em;
+        margin: 30px 0 30px; 
+     } 
+     
+     h3 span { 
+        font-weight: 600;
+        font-size: 15px;
+        color: map_get($colors, black);
+        background: map_get($colors, grey-100);
+        padding:0 20px; 
+     }
+
+     .logo-container{
+        padding-bottom: 30px;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        column-gap: 10px;
+        row-gap: 30px;
+     }
+  
+  }

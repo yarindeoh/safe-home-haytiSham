@@ -21,6 +21,7 @@
 @import './StoryHightlight';
 @import 'CarouselItem';
 @import 'WarningSigns';
+@import 'About';
 
 #root {
     background-color: map_get($colors, grey-100);
