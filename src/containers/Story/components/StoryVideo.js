@@ -28,7 +28,7 @@ export const StoryVideo = withRoute(props => {
                                 timestamp: story.timestamp
                             })}
                         </h2>
-                        <Tags tags={story.tags}/>
+                        <Tags tags={story.tags} />
                         <div className="video-wrapper">
                             <Video
                                 className="story-video"
@@ -37,7 +37,7 @@ export const StoryVideo = withRoute(props => {
                                 format="mp4"
                                 controls
                             >
-                                <Transformation bitRate="250k"/>
+                                <Transformation bitRate="250k" />
                             </Video>
                         </div>
                     </div>
