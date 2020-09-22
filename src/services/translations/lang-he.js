@@ -57,7 +57,13 @@ const he = {
             storyOf: 'עדותה של',
             anonymousTeller: 'אנונימית',
             listeningEar: 'אוזן קשבת',
-            share: 'שיתוף   '
+            share: 'שיתוף   ',
+            background: 'רקע (מי, מה, מתי)',
+            storyContent: 'העדות שלי',
+            howDidYouManged: 'איך התמודדתי עם זה?',
+            whatTriggeredChange: 'איך הסיטואציה השתנתה?',
+            additionalnfo: 'בכמה משפטים, מה הכי היית רוצה לומר למי שבמצב דומה?',
+            whatHelpedYou: 'מה עזר לך להתמודד?'
         },
         addStoryView: {
             createdAt: 'נכתב ב: ',
@@ -117,6 +123,15 @@ const he = {
             charactersOfReletionship: 'מאפיינים של מערכת יחסים אלימה',
             how: 'איך?',
             violenceType: 'הגדרות של סוגי אלימות'
+        },
+        about: {
+            header: 'מי אנחנו',
+            intro:
+                'האתר הוקם ע״י מתנדבות במסגרת <b>ההאקתון לזכרה של מיכל סלה במאי 2020, </b> ובשיתוף עם: פוליטיקלי קוראת, אתר און לייף, פורום מיכל סלה ועמותת לא לאלימות.',
+            volunteersNamesTitle: 'שמות המתנדבות בצוות:',
+            volunteersNames:
+                'מורן וובר<br/>לישי נועם<br/>ירין דקל<br/>מיכל פורג<br/>שחר גצוביץ׳<br/>נועה נובק<br/>אור מנור<br/>אורלי לבקוביץ שוורץ<br/>הדס פרחי<br/>רומי ווינטר<br/>רותם שפרינגר<br/>יעל רמוס דר<br/>דניאל גרונט<br/>לאה אליאגוייב',
+            inCollaboration: 'פרוייקט בשיתוף'
         }
     }
 };
