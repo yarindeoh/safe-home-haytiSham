@@ -42,17 +42,17 @@ export const TagsFilter = ({
                             }
                         />
                     }
+                    {tagsData &&
+                        Object.keys(tagsData).map(tagId => (
+                            <TagFilter
+                                value={tagsData[tagId].value}
+                                tag={tagsData[tagId].value}
+                                key={tagId}
+                                selected={tagsData[tagId].selected}
+                                onClick={event => changeTagSelected(tagId)}
+                            />
+                        ))}
                 </div>
-                {tagsData &&
-                    Object.keys(tagsData).map(tagId => (
-                        <TagFilter
-                            value={tagsData[tagId].value}
-                            tag={tagsData[tagId].value}
-                            key={tagId}
-                            selected={tagsData[tagId].selected}
-                            onClick={event => changeTagSelected(tagId)}
-                        />
-                    ))}
                 <span className="more-tags" onClick={changeDisplayMoreTags}>
                     {isDisplayMoreTags
                         ? t('tagsFilter.lessCategories')

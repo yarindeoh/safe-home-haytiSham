@@ -117,7 +117,7 @@ export const useFilteredStories = tags => {
     const pageSize = 5;
 
     async function addNextPageData(tags, storiesSoFar, pageNumber) {
-        let result = await Api.getStoriesByTags(tags, pageSize, pageNumber);
+        let result = await Api.getStoriesByTags(tags, pageSize, pageNumber + 1);
         let newData = { ...data };
 
         if (pageNumber < result.pages) {
@@ -132,7 +132,7 @@ export const useFilteredStories = tags => {
     }
 
     async function replaceRelatedTags(tags) {
-        await addNextPageData(tags, [], 1);
+        await addNextPageData(tags, [], 0);
     }
     async function getNextPage() {
         await addNextPageData(tags, data.stories, data.page);
