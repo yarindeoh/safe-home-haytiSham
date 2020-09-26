@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTags } from 'containers/Stories/storiesHooks';
 import TagFilter from 'components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
-import { useTranslation } from 'react-i18next';
+import { Loader } from '../../../components/Loader';
 
 export const TagsFilter = ({
     changeLocationByPath,
@@ -18,24 +19,30 @@ export const TagsFilter = ({
         unselectAllTags
     } = useTags(defaultSelectedTags);
     const filterTagsIds = useMemo(() =>
-        Object.keys(tagsData).filter(tagId => tagsData[tagId].selected, [
-            tagsData
-        ])
+        tagsData
+            ? Object.keys(tagsData).filter(tagId => tagsData[tagId].selected, [
+                  tagsData
+              ])
+            : null
     );
 
     return (
         <div className={'stories-gallery-container'}>
             <h1>{t('tagsFilter.additionalTestimonies')}</h1>
-            <div className="tags-filter-container">
-                {
-                    <TagFilter
-                        tag={t('tagsFilter.allTestimonies')}
-                        selected={filterTagsIds.length === 0}
-                        onClick={() =>
-                            filterTagsIds.length > 0 && unselectAllTags()
-                        }
-                    />
-                }
+            <Loader data={[tagsData, filterTagsIds]}>
+                <div className="tags-filter-container">
+                    {
+                        <TagFilter
+                            tag={t('tagsFilter.allTestimonies')}
+                            selected={
+                                filterTagsIds && filterTagsIds.length === 0
+                            }
+                            onClick={() =>
+                                filterTagsIds.length > 0 && unselectAllTags()
+                            }
+                        />
+                    }
+                </div>
                 {tagsData &&
                     Object.keys(tagsData).map(tagId => (
                         <TagFilter
@@ -46,19 +53,17 @@ export const TagsFilter = ({
                             onClick={event => changeTagSelected(tagId)}
                         />
                     ))}
-            </div>
-            <span className="more-tags" onClick={changeDisplayMoreTags}>
-                {isDisplayMoreTags
-                    ? t('tagsFilter.lessCategories')
-                    : t('tagsFilter.moreCategories')}
-            </span>
-            {filterTagsIds ? (
+                <span className="more-tags" onClick={changeDisplayMoreTags}>
+                    {isDisplayMoreTags
+                        ? t('tagsFilter.lessCategories')
+                        : t('tagsFilter.moreCategories')}
+                </span>
                 <StoriesList
                     tags={filterTagsIds}
                     changeLocationByPath={changeLocationByPath}
                     rootPath={rootPath}
                 />
-            ) : null}
+            </Loader>
         </div>
     );
 };
