@@ -1,30 +1,40 @@
-const StorieService = require("./stories.service");
+const StorieService = require('./stories.service');
+const Mailer = require('../../services/mailer');
+const path = require('path');
+let envPath = path.join(__dirname, '../../../.env');
+require('dotenv').config({ path: envPath });
 
 class StorieController {
     constructor() {
         this.storieService = new StorieService();
+        this.mailer = new Mailer({
+            user: process.env.MAIL_ADDRESS,
+            pass: process.env.MAIL_PASSWORD
+        });
     }
 
-    getStoriesByTags(req,res) {        
+    getStoriesByTags(req, res) {
         let tags = req.query.tags || '';
-        if(tags){
+        if (tags) {
             tags = JSON.parse(tags);
-            tags = tags.map(x => Number(x)); 
+            tags = tags.map(x => Number(x));
         }
         let page = parseInt(req.query.page) || 1;
         let pageSize = parseInt(req.query.pageSize) || 100;
-        let sortField = req.query.sortField || "sequence";
-        let sortDirection = req.query.sortDirection || "DESC";
-        return this.storieService.listByTags(tags, page, pageSize, sortField, sortDirection).then((data) =>{
-            res.json(data);
-        });  
+        let sortField = req.query.sortField || 'sequence';
+        let sortDirection = req.query.sortDirection || 'DESC';
+        return this.storieService
+            .listByTags(tags, page, pageSize, sortField, sortDirection)
+            .then(data => {
+                res.json(data);
+            });
     }
 
     addStory(req, res) {
         const instance = {
             whatTriggeredChange: req.body.whatTriggeredChange || '',
             howDidYouManged: req.body.howDidYouManged || '',
-            additionalnfo: req.body.additionalnfo || '',            
+            additionalnfo: req.body.additionalnfo || '',
             quote: req.body.quote || '',
             whatHelpedYou: req.body.whatHelpedYou || '',
             background: req.body.background || '',
@@ -32,39 +42,57 @@ class StorieController {
             mail: req.body.mail || '',
             name: req.body.name || '',
             contact: req.body.contact || false
-        }
-        return this.storieService.createStory(instance).then(() =>{
+        };
+
+        const mailData = {
+            from: 'haytisham@gmail.com', // sender address
+            to: 'haytisham@gmail.com', // list of receivers
+            subject: 'התקבלה עדות חדשה באתר', // Subject line
+            text:
+                ' היי! קיבלנו עדות חדשה שממתינה למודרציה לפני העלאה לאתר. אנא היכנסו אל וערכו את העדות וערכו אותה כדי שתעלה אל האתר.', // plain text body
+            html:
+                '<p dir="rtl"> היי! <br/> קיבלנו עדות חדשה שממתינה למודרציה לפני העלאה לאתר. אנא היכנסו וערכו את העדות כדי שתעלה אל האתר. </p>'
+        };
+
+        return this.storieService.createStory(instance).then(() => {
+            this.mailer.send(mailData);
             res.sendStatus(200);
         });
     }
 
-    addModerateStory(req,res){
+    addModerateStory(req, res) {
         const instance = {
             whatTriggeredChange: req.body.whatTriggeredChange,
             howDidYouManged: req.body.howDidYouManged,
-            additionalnfo: req.body.additionalnfo,            
+            additionalnfo: req.body.additionalnfo,
             quote: req.body.quote,
             whatHelpedYou: req.body.whatHelpedYou,
             background: req.body.background,
             storyContent: req.body.storyContent
-        }
+        };
         const originalStoryID = req.body.originalStory;
-        if(!originalStoryID){
-            return res.status(400).json({error: "missing originalStory this is the original story ID"});
+        if (!originalStoryID) {
+            return res.status(400).json({
+                error: 'missing originalStory this is the original story ID'
+            });
         }
-        return this.storieService.createModeratedStory(instance, originalStoryID).then(() =>{
-            res.sendStatus(200);
-        });
+        return this.storieService
+            .createModeratedStory(instance, originalStoryID)
+            .then(() => {
+                res.sendStatus(200);
+            });
     }
 
-    getStortiesForModeration(req,res){
+    getStortiesForModeration(req, res) {
         let page = parseInt(req.query.page) || 1;
         let pageSize = parseInt(req.query.pageSize) || 100;
-        let sortField = req.query.sortField || "sequence";
-        let sortDirection = req.query.sortDirection || "DESC";
-        return this.storieService.listStriesToModerate(page, pageSize, sortField, sortDirection).then((data) =>{
-            res.json(data);
-        });     
+        let sortField = req.query.sortField || 'sequence';
+        let sortDirection = req.query.sortDirection || 'DESC';
+        return this.storieService
+            .listStriesToModerate(page, pageSize, sortField, sortDirection)
+            .then(data => {
+                res.json(data);
+            });
     }
 }
 module.exports = StorieController;

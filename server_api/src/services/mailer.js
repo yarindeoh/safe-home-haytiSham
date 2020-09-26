@@ -1,15 +1,24 @@
-/* eslint-disable prettier/prettier */
 'use strict';
 const nodemailer = require('nodemailer');
 
+//default is gmail host
 class Mailer {
-    constructor(auth, host = 'smtp.gmail.com', port = 465, secure = true) {
-        let transporter = nodemailer.createTransport({
-            host,
-            port,
-            secure,
-            auth
-        });
+    constructor(
+        auth = { user, pass },
+        host = 'smtp.gmail.com',
+        port = 465,
+        secure = true
+    ) {
+        if (!auth) {
+            this.transporter = null;
+        } else {
+            this.transporter = nodemailer.createTransport({
+                host,
+                port,
+                secure,
+                auth
+            });
+        }
     }
 
     /**
@@ -22,7 +31,8 @@ class Mailer {
      * @property {html} data.html       - Mail body html text.
      */
     send({ from, to, subject, text, html }) {
-        return transporter.sendMail({
+        if (!this.transporter) return Promise.reject();
+        return this.transporter.sendMail({
             from,
             to,
             subject,
