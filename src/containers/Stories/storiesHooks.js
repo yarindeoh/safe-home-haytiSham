@@ -50,7 +50,7 @@ export const useSelectedTags = (tags, defaultSelectedTags = []) => {
         []
     );
 
-    const [tagsData, setTagsData] = useState({});
+    const [tagsData, setTagsData] = useState();
 
     useEffect(() => {
         setTagsData(generateTagsData(tags));

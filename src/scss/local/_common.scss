@@ -129,6 +129,10 @@
 .more-testimonies {
     box-sizing: border-box;
 
+    .loader-container {
+        margin-top: 30px;
+    }
+
     >h1 {
         font-weight: normal;
         font-size: 22px;
