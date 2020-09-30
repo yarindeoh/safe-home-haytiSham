@@ -13,8 +13,8 @@ export const WideFooter = () => {
                 </Link>
                 <div className="left-area">
                     <Link to="/addStory">{t('testimonySubmission')}</Link>
-                    <Link to="/warning-signs">{t('warningSigns.header')}</Link>
-                    <Link to="/about">{t('whoWeAre')}</Link>
+                    <Link to="/pages/warning-signs">{t('warningSigns.header')}</Link>
+                    <Link to="/pages/about">{t('whoWeAre')}</Link>
                 </div>
             </div>
             <span>

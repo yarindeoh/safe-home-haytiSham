@@ -3,9 +3,9 @@ import XIcon from 'src/media/icons/X.svg';
 import { useTranslation } from 'react-i18next';
 
 const PAGES = [
-    { title: 'whoWeAre', path: '/about' },
+    { title: 'whoWeAre', path: '/pages/about' },
     { title: 'getHelp' },
-    { title: 'warningSigns.header', path: '/warning-signs', isBold: true },
+    { title: 'warningSigns.header', path: '/pages/warning-signs', isBold: true },
     { title: 'statistic' },
     { title: 'testimonySubmission', path: '/addStory' },
     { title: 'michalSelaForum' },
