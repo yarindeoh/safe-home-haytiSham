@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useTags } from 'containers/Stories/storiesHooks';
 import TagFilter from 'components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
-import { Loader } from '../../../components/Loader';
+import { Loader } from 'components/Loader';
 
 export const TagsFilter = ({
     changeLocationByPath,
