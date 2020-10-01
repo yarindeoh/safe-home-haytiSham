@@ -46,11 +46,11 @@ export const useSelectedTags = (tags, defaultSelectedTags = []) => {
                       };
                       return accumulator;
                   }, {})
-                : {},
+                : null,
         []
     );
 
-    const [tagsData, setTagsData] = useState({});
+    const [tagsData, setTagsData] = useState();
 
     useEffect(() => {
         setTagsData(generateTagsData(tags));
@@ -116,43 +116,36 @@ export const useFilteredStories = tags => {
 
     const pageSize = 5;
 
-    async function getByPage() {
-        let result = await Api.getStoriesByTags(tags, pageSize, data.page);
+    async function addNextPageData(tags, storiesSoFar, pageNumber) {
+        let result = await Api.getStoriesByTags(tags, pageSize, pageNumber + 1);
         let newData = { ...data };
 
-        if (data.page < result.pages) {
-            newData.page += 1;
+        if (pageNumber < result.pages) {
+            newData.page = pageNumber + 1;
         } else if (data.page === result.pages) {
+            newData.page = pageNumber;
             newData.hasMore = false;
         }
-        newData.stories = [...newData.stories, ...result?.result];
-        newData.init = false;
-        setData(newData);
-    }
-
-    function initState() {
-        let newData = { ...data };
-        newData.page = 1;
-        newData.hasMore = true;
-        newData.stories = [];
+        newData.stories = [...storiesSoFar, ...result?.result];
         newData.init = true;
         setData(newData);
     }
 
-    useEffect(() => {
-        initState();
-    }, [tags]);
+    async function replaceRelatedTags(tags) {
+        await addNextPageData(tags, [], 0);
+    }
+    async function getNextPage() {
+        await addNextPageData(tags, data.stories, data.page);
+    }
 
     useEffect(() => {
-        if (data.init === true) {
-            getByPage();
-            setData(oldData => ({ ...oldData, init: false }));
-        }
-    }, [data.init]);
+        replaceRelatedTags(tags);
+    }, [tags]);
 
     return {
         stories: data.stories,
         hasMore: data.hasMore,
-        getByPage
+        getNextPage,
+        init: data.init
     };
 };
