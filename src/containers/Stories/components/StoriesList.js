@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useFilteredStories } from 'containers/Stories/storiesHooks';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
-import { Loader } from '../../../components/Loader';
+import { Loader } from 'components/Loader';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export const StoriesList = ({
