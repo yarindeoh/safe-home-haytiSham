@@ -45,9 +45,10 @@ const he = {
         emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber: '1202/3',
         emergencyHotlineOfMinistryOfLaborAndSocialAffairs:
             'קו החירום החברתי של \n משרד העבודה והרווחה',
-        IHaveBeenThere2020: 'הייתי שם 2020',
+        IHaveBeenThere2020: "© 'הייתי שם' 2020",
         privacyPolicy: 'מדיניות הפרטיות',
         testimoniesFromRelationships: 'עדויות ממערכות יחסים אלימות',
+        IHaveBeenThereHashtag: '#הייתי_שם',
         storiesView: {
             header: 'בית לעדויות ממערכות יחסים אלימות',
             addStory: 'לשליחת העדות שלך'

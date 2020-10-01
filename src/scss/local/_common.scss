@@ -165,7 +165,6 @@ label {
 footer {
     display: flex;
     text-align: center;
-    flex-direction: column;
 
     li {
         list-style-type: none;
@@ -174,11 +173,11 @@ footer {
         font-size: 15px;
     }
 
-    li a {
+    div a, u {
         color: map_get($colors, white);
     }
 
-    li a:link {
+    a:link {
         text-decoration: none;
     }
 
@@ -186,53 +185,69 @@ footer {
         background-color: map_get($colors, black);
     }
 
-    .footer-menu h1 {
-        font-weight: normal;
-        color: map_get($colors, purple-400);
-        margin: 15px;
-        font-size: 35px;
+    .footer-inner {
+        width: 100%;
+        flex: 3;
+
+        ul {
+            margin: 10px;
+        }
+
+        ul:first-of-type {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .copyright {
+
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
+
+            span {
+                margin: auto 5px;
+            }
+
+            height: 45px;
+            align-items: center;
+
+            li {
+                margin: 10px;
+            }
+        }
     }
 
-    ul:first-of-type {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .footer-menu ul li {
-        flex: 50%;
-        margin: 8px auto;
-    }
-
-    .emergency-dial-wrapper.purple {
-        background: map_get($colors, purple-400);
-    }
-
-    .emergency-dial-wrapper li,
     .footer-menu {
         display: flex;
         flex-direction: column;
-    }
 
-    .emergency-dial-wrapper li span p {
-        color: white;
-        max-width: 130px;
-    }
+        ul {
+            max-width: 320px;
+            margin: 5px auto;
 
-    .emergency-dial-wrapper ul,
-    .legal-bar ul {
-        display: flex;
-        justify-content: center;
-    }
+            li {
+            flex: 50%;
+            margin: 8px auto;
+            }
+        }
 
-    ul,
-    .emergency-dial-wrapper li,
-    .legal-bar li {
-        margin: 10px;
+        h1 {
+            font-weight: normal;
+            color: map_get($colors, purple-400);
+            margin: 15px;
+            font-size: 35px;
+        }
     }
+}
 
-    .legal-bar ul span {
-        margin: auto 5px;
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .footer {
+
+        .footer-inner ul,
+        .legal-bar li {
+            margin: 10px 0.5vw;
+        }
     }
 }
 

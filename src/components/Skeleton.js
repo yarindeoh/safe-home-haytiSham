@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from './Header';
-import Footer from './Footer';
+import { FooterWrapper } from '../containers/Story/components/FooterWrapper';
 import WideHeader from './WideHeader';
 import WideFooter from './WideFooter';
 import { BREAKPOINT_MAP } from 'src/services/general/breakpoints';
@@ -11,7 +11,7 @@ export function Skeleton(props) {
     const breakpoint = useResize();
 
     let header = <Header isMainHeader={isMainHeader} />;
-    let footer = <Footer />;
+    let footer = <FooterWrapper />;
     if (breakpoint === BREAKPOINT_MAP.BREAKPOINT_2) {
         header = <WideHeader />;
         footer = <WideFooter />;

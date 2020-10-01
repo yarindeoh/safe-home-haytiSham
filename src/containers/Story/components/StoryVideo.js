@@ -1,6 +1,5 @@
 import React from 'react';
 import { Video, Transformation } from 'cloudinary-react';
-
 import { withRoute } from 'services/routing/routerHOC';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { Tags } from 'containers/Story/components/Tags';
