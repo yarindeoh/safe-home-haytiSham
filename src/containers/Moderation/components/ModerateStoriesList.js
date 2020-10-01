@@ -3,7 +3,7 @@ import React from 'react';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useModerationStories } from 'containers/Moderation/moderationHooks';
-import { Loader } from '../../../components/Loader';
+import { Loader } from 'components/Loader';
 
 export const ModerateStoriesList = ({ changeLocationByPath, title }) => {
     const { stories, hasMore, getByPage } = useModerationStories();
