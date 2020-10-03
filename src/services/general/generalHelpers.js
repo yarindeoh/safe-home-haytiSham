@@ -12,7 +12,7 @@ export function extractFieldsFromObjOrdered(obj, fields) {
     let res = [];
     fields.forEach(element => {
         //display just the question with answer
-        if (obj[element] !== undefined && obj[element]!=="") {
+        if (obj[element] !== undefined && obj[element] !== '') {
             res.push({ text: obj[element], titleKey: element });
         }
     });
