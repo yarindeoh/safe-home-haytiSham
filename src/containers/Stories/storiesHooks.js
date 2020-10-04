@@ -1,10 +1,11 @@
 import Api from 'containers/Stories/storiesApi';
 import { useEffect, useState, useCallback } from 'react';
+import { useFetchApiData } from 'services/general/generalHooks';
 
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
 
 export const useTags = defaultSelectedTags => {
-    const [tags, setTags] = useState();
+    const { localState: tags } = useFetchApiData(Api.getTagsMap, []);
     const { tagsData, changeTagSelected, unselectAllTags } = useSelectedTags(
         tags,
         defaultSelectedTags
@@ -14,13 +15,6 @@ export const useTags = defaultSelectedTags => {
         changeDisplayMoreTags,
         getDisplayedTags
     } = useShowMoreTags(tags);
-
-    // get tags after mounts
-    useEffect(() => {
-        (async function fetchData() {
-            setTags(await Api.getTagsMap());
-        })();
-    }, []);
 
     return {
         tagsMap: tags,
@@ -117,7 +111,11 @@ export const useFilteredStories = tags => {
     const pageSize = 5;
 
     async function addNextPageData(tags, storiesSoFar, pageNumber) {
-        let result = await Api.getStoriesByTags(tags, pageSize, pageNumber + 1);
+        let result = await Api.getStoriesByTags({
+            tags,
+            pageSize,
+            page: pageNumber++
+        });
         let newData = { ...data };
 
         if (pageNumber < result.pages) {
@@ -130,7 +128,6 @@ export const useFilteredStories = tags => {
         newData.init = true;
         setData(newData);
     }
-
     async function replaceRelatedTags(tags) {
         await addNextPageData(tags, [], 0);
     }

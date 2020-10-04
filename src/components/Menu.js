@@ -3,18 +3,13 @@ import XIcon from 'src/media/icons/X.svg';
 import { useTranslation } from 'react-i18next';
 
 const PAGES = [
-    { title: 'whoWeAre', path: '/pages/about' },
-    { title: 'getHelp' },
+    { title: 'testimonySubmission', path: '/addStory' },
     {
         title: 'warningSigns.header',
         path: '/pages/warning-signs',
         isBold: true
     },
-    { title: 'statistic' },
-    { title: 'testimonySubmission', path: '/addStory' },
-    { title: 'michalSelaForum' },
-    { title: 'accessability' },
-    { title: 'technicSupport' }
+    { title: 'whoWeAre', path: '/pages/about' }
 ];
 
 export function Menu(props) {

@@ -16,21 +16,27 @@ export const Footer = ({ title, footerMenuItemsAndUrls }) => {
         <footer className="footer">
             <div className="footer-inner">
                 <div className="footer-menu">
-                    <h1> {title} </h1>
+                    <Link to="/" className="footer-title">
+                        {t('common.iHaveBeenThereHashtag')}
+                    </Link>
                     <ul>{displayFooterMenu()}</ul>
                 </div>
+                <div className="phone-section">
+                    <span className={'phone-number'}>6724*</span>
+                    <span className={'phone-text'}>
+                        {t('loLalimotPhoneText')}
+                    </span>
+                </div>
+
                 <div className="copyright">
                     <div>
-                        <Link to="/been-there-2020">
-                            {t('IHaveBeenThere2020')}
-                        </Link>
+                        <Link to="/">{t('IHaveBeenThere2020')}</Link>
                     </div>
                     <span> | </span>
                     <div>
-                        <Link to="/privacy-policy">
-                            {' '}
-                            <u>{t('privacyPolicy')} </u>
-                        </Link>
+                        {/* <Link to="/pages/privacy-policy"> */}{' '}
+                        <u>{t('privacyPolicy')} </u>
+                        {/* </Link> */}
                     </div>
                 </div>
             </div>

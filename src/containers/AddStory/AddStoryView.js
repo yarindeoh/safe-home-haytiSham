@@ -9,9 +9,9 @@ import {
     useAddStoryContext,
     useCheckedContact,
     useFiledChange,
-    useSubmit,
-    useBack
+    useSubmit
 } from './addStoryHooks';
+import { useBack } from 'services/general/generalHooks';
 import BackArrowIcon from 'src/media/icons/backArrow.svg';
 
 export const AddStoryView = withRoute(props => {
@@ -47,7 +47,11 @@ export const AddStoryView = withRoute(props => {
                     </header>
                     <button className={'BTN-accessibility'} />
                     <h3>{t('addStoryView.anonymity')}</h3>
-                    <form onSubmit={handleSubmit} id={'addStoryForm'}>
+                    <form
+                        onSubmit={handleSubmit}
+                        id={'addStoryForm'}
+                        autoComplete="off"
+                    >
                         <Input
                             name="name"
                             label={t('addStoryView.nameLabel')}
@@ -121,7 +125,7 @@ export const AddStoryView = withRoute(props => {
                                 handleFiledChange(e, 'whatTriggeredChange')
                             }
                         />
-                        {/* 
+                        {/*
                         <TextArea
                             name="quote"
                             label={t('quote')}

@@ -45,6 +45,7 @@ const he = {
         emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber: '1202/3',
         emergencyHotlineOfMinistryOfLaborAndSocialAffairs:
             'קו החירום החברתי של \n משרד העבודה והרווחה',
+        loLalimotPhoneText: 'קו החירום של לא לאלימות',
         IHaveBeenThere2020: "© 'הייתי שם' 2020",
         privacyPolicy: 'מדיניות הפרטיות',
         testimoniesFromRelationships: 'עדויות ממערכות יחסים אלימות',
@@ -130,7 +131,7 @@ const he = {
                 'האתר הוקם ע״י מתנדבות במסגרת <b>ההאקתון לזכרה של מיכל סלה במאי 2020, </b> ובשיתוף עם: פוליטיקלי קוראת, אתר און לייף, פורום מיכל סלה ועמותת לא לאלימות.',
             volunteersNamesTitle: 'שמות המתנדבות בצוות:',
             volunteersNames:
-                'מורן וובר<br/>לישי נועם<br/>ירין דקל<br/>מיכל פורג<br/>שחר גצוביץ׳<br/>נועה נובק<br/>אור מנור<br/>אורלי לבקוביץ שוורץ<br/>הדס פרחי<br/>רומי ווינטר<br/>רותם שפרינגר<br/>יעל רמוס דר<br/>דניאל גרונט<br/>לאה אליאגוייב',
+                'מורן וובר<br/>לישי נועם<br/>ירין דקל<br/>מיכל פורג<br/>שחר גצוביץ׳<br/>נועה נובק<br/>אור מנור<br/>אורלי לבקוביץ שוורץ<br/>הדס פרחי<br/>רומי ווינטר<br/>רותם שפרינגר<br/>יעל רמוס דר<br/>דניאל גרונת<br/>לאה גרונת',
             inCollaboration: 'פרוייקט בשיתוף'
         }
     }
