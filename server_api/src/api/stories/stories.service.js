@@ -69,18 +69,12 @@ class StorieService {
         });        
     }
 
-    createModeratedStory(storyInstance, originalStoryID){
+    createModeratedStory(storyInstance, originalStoryID){        
         const o_id = new mongoose.mongo.ObjectId(originalStoryID);
-        let promises = [];
-        const p1 = Story.findOneAndUpdate({'_id': o_id}, {moderated:true} );
-        promises.push(p1);
-        const p2 = this.getValueForNextSequence('stories').then((number) => {
-            storyInstance.sequence = number;
-            storyInstance.originalStory = o_id;
+        return Story.findOneAndUpdate({'_id': o_id}, {moderated:true} ).lean().then((story) =>{
+            storyInstance.sequence = story.sequence;
             return ModeratedStrory.create(storyInstance);
         });
-        promises.push(p2);
-        return Promise.all(promises);
     }
 
     getValueForNextSequence(sequenceOfName)  {
