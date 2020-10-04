@@ -72,6 +72,9 @@ class StorieService {
     createModeratedStory(storyInstance, originalStoryID){        
         const o_id = new mongoose.mongo.ObjectId(originalStoryID);
         return Story.findOneAndUpdate({'_id': o_id}, {moderated:true} ).lean().then((story) =>{
+            if(story === null){
+                throw 'error no original story found';
+            }
             storyInstance.sequence = story.sequence;
             return ModeratedStrory.create(storyInstance);
         });

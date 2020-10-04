@@ -32,7 +32,7 @@ class StorieController {
             mail: req.body.mail || '',
             name: req.body.name || '',
             contact: req.body.contact || false
-        }
+        }        
         return this.storieService.createStory(instance).then(() =>{
             res.sendStatus(200);
         });
@@ -52,8 +52,15 @@ class StorieController {
         if(!originalStoryID){
             return res.status(400).json({error: "missing originalStory this is the original story ID"});
         }
+        if(req.body.tags){
+            instance.tags = req.body.tags;
+            instance.tags = instance.tags.map(x => Number(x)); 
+        }
         return this.storieService.createModeratedStory(instance, originalStoryID).then(() =>{
             res.sendStatus(200);
+        }).catch((error) =>{
+            console.error(error);
+            return res.status(503).json({error});
         });
     }
 
