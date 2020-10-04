@@ -17,7 +17,7 @@ export const StoriesList = ({
         <div className={'more-testimonies'}>
             <h1>{title}</h1>
             <InfiniteScroll
-                dataLength={stories ? stories.length : 0}
+                dataLength={stories?.length}
                 next={getNextPage}
                 hasMore={hasMore}
                 loader={stories && stories.length > 0 ? <Loader /> : undefined}
