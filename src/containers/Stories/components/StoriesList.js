@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useFilteredStories } from 'containers/Stories/storiesHooks';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
+import { Loader } from 'components/Loader';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export const StoriesList = ({
@@ -14,12 +15,12 @@ export const StoriesList = ({
 
     return (
         <div className={'more-testimonies'}>
-            {title}
+            <h1>{title}</h1>
             <InfiniteScroll
-                dataLength={stories.length}
+                dataLength={stories?.length}
                 next={getNextPage}
                 hasMore={hasMore}
-                loader={stories.length > 0 ? <h4>Loading...</h4> : undefined}
+                loader={stories && stories.length > 0 ? <Loader /> : undefined}
             >
                 <ul className="stories">
                     {stories &&

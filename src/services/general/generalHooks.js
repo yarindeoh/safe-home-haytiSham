@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import { getBreakpoint } from './breakpoints';
 
 export function useSwitch() {
     const [isEnable, setIsEnable] = useState(true);
@@ -34,12 +35,17 @@ export const useFetchApiData = (apiCall, state) => {
     };
 };
 
-const useFetch = (url, options = {}) => {
-    const [response, setResponse] = useState(null);
-    useEffect(async () => {
-        const res = await fetch(url, options);
-        const json = await res.json();
-        setResponse(json);
+export function useResize() {
+    const [breakpoint, setBreakpoint] = useState(getBreakpoint());
+    useEffect(() => {
+        function handleResize() {
+            setBreakpoint(getBreakpoint());
+        }
+        window.addEventListener('resize', handleResize);
+        return _ => {
+            window.removeEventListener('resize', handleResize);
+        };
     });
-    return response;
-};
+
+    return breakpoint;
+}

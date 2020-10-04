@@ -103,26 +103,49 @@
 
 .Content {
   padding-top: 62px;
+    @include breakpoint-2 {
+        width: 85%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .const-text {
     color: map_get($colors, black);
-    margin: 0 0 map_get($spaces, small);
+    margin: 0 auto map_get($spaces, small);
     grid-area: const-text;
     justify-self: center;
     align-self: flex-start;
     text-align: center;
     font-size: 18px;
+
+    @include breakpoint-2{
+        display: none;
+    }
 }
 
 .more-testimonies {
     box-sizing: border-box;
-    padding: 18px 24px 32px;
+
+    .loader-container {
+        margin: 20px 0 0 0;
+    }
 
     >h1 {
         font-weight: normal;
         font-size: 22px;
         color: #212121;
+        margin-bottom: map_get($spaces, x-small);
+    }
+
+    @include breakpoint-1{
+        padding: 18px 24px 32px;
+    }
+
+    @include breakpoint-2{
+        padding: 18px 0 32px;
     }
 }
 
@@ -142,7 +165,6 @@ label {
 footer {
     display: flex;
     text-align: center;
-    flex-direction: column;
 
     li {
         list-style-type: none;
@@ -151,11 +173,11 @@ footer {
         font-size: 15px;
     }
 
-    li a {
+    div a, u {
         color: map_get($colors, white);
     }
 
-    li a:link {
+    a:link {
         text-decoration: none;
     }
 
@@ -163,61 +185,66 @@ footer {
         background-color: map_get($colors, black);
     }
 
-    .footer-menu h1 {
-        font-weight: normal;
-        color: map_get($colors, purple-400);
-        margin: 15px;
-        font-size: 35px;
+    .footer-inner {
+        width: 100%;
+        flex: 3;
+
+        ul {
+            margin: 10px;
+        }
+
+        ul:first-of-type {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .copyright {
+
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
+
+            span {
+                margin: auto 5px;
+            }
+
+            height: 45px;
+            align-items: center;
+
+            li {
+                margin: 10px;
+            }
+        }
     }
 
-    ul:first-of-type {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .footer-menu ul li {
-        flex: 50%;
-        margin: 8px auto;
-    }
-
-    .emergency-dial-wrapper.purple {
-        background: map_get($colors, purple-400);
-    }
-
-    .emergency-dial-wrapper li,
     .footer-menu {
         display: flex;
         flex-direction: column;
-    }
 
-    .emergency-dial-wrapper li span p {
-        color: white;
-        max-width: 130px;
-    }
+        ul {
+            max-width: 320px;
+            margin: 5px auto;
 
-    .emergency-dial-wrapper ul,
-    .legal-bar ul {
-        display: flex;
-        justify-content: center;
-    }
+            li {
+            flex: 50%;
+            margin: 8px auto;
+            }
+        }
 
-    ul,
-    .emergency-dial-wrapper li,
-    .legal-bar li {
-        margin: 10px;
-    }
-
-    .legal-bar ul span {
-        margin: auto 5px;
+        h1 {
+            font-weight: normal;
+            color: map_get($colors, purple-400);
+            margin: 15px;
+            font-size: 35px;
+        }
     }
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    footer {
-        
-        ul,
-        .emergency-dial-wrapper li,
+    .footer {
+
+        .footer-inner ul,
         .legal-bar li {
             margin: 10px 0.5vw;
         }
@@ -226,13 +253,14 @@ footer {
 
 .stories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
     grid-gap: 10px;
-}
 
-@media only screen and (max-width: map_get($breakpoints, mobile)) {
-    .stories {
+    @include breakpoint-1 {
         grid-template-columns: 1fr;
+    }
+
+    @include breakpoint-2 {
+        grid-template-columns: 1fr 1fr;
     }
 }
 

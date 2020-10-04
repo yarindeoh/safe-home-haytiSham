@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-
 import { AddStoryProvider } from 'containers/AddStory/addStoryContext';
 import { StoriesView } from 'containers/Stories/StoriesView';
 import './scss/componentsStyle/App.scss';
@@ -12,7 +11,7 @@ import { RouterContext } from 'services/routing/routerContext';
 import { LoginView } from 'containers/Moderation/LoginView';
 import { ModerationView } from 'containers/Moderation/ModerationView';
 import { ModerationProvider } from 'containers/Moderation/moderationContext';
-import WarningSigns from 'containers/WarningSigns';
+import Pages from 'containers/StaticPages/Pages';
 
 export const history = createBrowserHistory();
 
@@ -30,7 +29,7 @@ export const App = () => {
                             component={AddStoryView}
                         />
                         <Route path="/publicStory/:id" component={StoryVideo} />
-                        <Route path="/warning-signs" component={WarningSigns} />
+                        <Route path="/pages" component={Pages} />
                         <ModerationProvider>
                             <Route path="/admin" component={LoginView} />
                             <Route

@@ -1,8 +1,8 @@
 import Api from 'containers/Stories/storiesApi';
 import { useEffect, useState, useCallback } from 'react';
+import { useFetchApiData } from 'services/general/generalHooks';
 
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
-import { useFetchApiData } from 'services/general/generalHooks';
 
 export const useTags = defaultSelectedTags => {
     const { localState: tags } = useFetchApiData(Api.getTagsMap, []);
@@ -26,7 +26,6 @@ export const useTags = defaultSelectedTags => {
     };
 };
 
-//TODO
 export const useSelectedTags = (tags, defaultSelectedTags = []) => {
     const generateTagsData = useCallback(
         tags =>
@@ -41,11 +40,11 @@ export const useSelectedTags = (tags, defaultSelectedTags = []) => {
                       };
                       return accumulator;
                   }, {})
-                : {},
+                : null,
         []
     );
 
-    const [tagsData, setTagsData] = useState({});
+    const [tagsData, setTagsData] = useState();
 
     useEffect(() => {
         setTagsData(generateTagsData(tags));
@@ -105,99 +104,45 @@ export const useFilteredStories = tags => {
     const [data, setData] = useState({
         stories: [],
         hasMore: true,
-        page: 1
+        page: 1,
+        init: false
     });
 
     const pageSize = 5;
 
-    async function getByPage(apiCall, payload) {
-        let result = await apiCall(payload);
-        let newData = { ...data };
-
-        if (data.page < result.pages) {
-            newData.page += 1;
-        } else if (data.page === result.pages) {
-            newData.hasMore = false;
-        }
-        newData.stories = [...newData.stories, ...result?.result];
-        setData(newData);
-    }
-
-    function initState() {
-        let newData = { ...data };
-        newData.page = 1;
-        newData.hasMore = true;
-        newData.stories = [];
-        setData(newData);
-    }
-
-    useEffect(() => {
-        initState();
-    }, [tags]);
-
-    useEffect(() => {
-        getByPage(Api.getStoriesByTags, {
+    async function addNextPageData(tags, storiesSoFar, pageNumber) {
+        let result = await Api.getStoriesByTags({
             tags,
             pageSize,
-            page: data.page
+            page: pageNumber++
         });
-        setData(oldData => ({ ...oldData }));
-    }, []);
+        let newData = { ...data };
+
+        if (pageNumber < result.pages) {
+            newData.page = pageNumber + 1;
+        } else if (data.page === result.pages) {
+            newData.page = pageNumber;
+            newData.hasMore = false;
+        }
+        newData.stories = [...storiesSoFar, ...result?.result];
+        newData.init = true;
+        setData(newData);
+    }
+    async function replaceRelatedTags(tags) {
+        await addNextPageData(tags, [], 0);
+    }
+    async function getNextPage() {
+        await addNextPageData(tags, data.stories, data.page);
+    }
+
+    useEffect(() => {
+        replaceRelatedTags(tags);
+    }, [tags]);
 
     return {
         stories: data.stories,
         hasMore: data.hasMore,
-        getNextPage: useCallback(() => {
-            getByPage(
-                Api.getStoriesByTags,
-                {
-                    tags,
-                    pageSize,
-                    page: data.page
-                },
-                []
-            );
-        })
+        getNextPage,
+        init: data.init
     };
 };
-//
-// export const usePagedStories = (apiCall, payload) => {
-//     const [state, setState] = useState({
-//         stories: [],
-//         hasMore: true,
-//         page: 1
-//     });
-//
-//     const pageSize = 5;
-//
-//     async function getByPage(apiCall, payload) {
-//         let result = await apiCall(payload);
-//         let newData = { ...data };
-//
-//         if (state.page < result.pages) {
-//             newData.page += 1;
-//         } else if (data.page === result.pages) {
-//             newData.hasMore = false;
-//         }
-//         newData.stories = [...newData.stories, ...result?.result];
-//         setState(newData);
-//     }
-//
-//     function initState() {
-//         let newData = { ...data };
-//         newData.page = 1;
-//         newData.hasMore = true;
-//         newData.stories = [];
-//         setState(newData);
-//     }
-//
-//     useEffect(() => {
-//         getByPage(apiCall, payload);
-//         setState(oldData => ({ ...oldData }));
-//     });
-//
-//     return {
-//         stories: data.stories,
-//         hasMore: data.hasMore
-//     };
-// };
