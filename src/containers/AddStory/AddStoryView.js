@@ -47,7 +47,11 @@ export const AddStoryView = withRoute(props => {
                     </header>
                     <button className={'BTN-accessibility'} />
                     <h3>{t('addStoryView.anonymity')}</h3>
-                    <form onSubmit={handleSubmit} id={'addStoryForm'}>
+                    <form
+                        onSubmit={handleSubmit}
+                        id={'addStoryForm'}
+                        autoComplete="off"
+                    >
                         <Input
                             name="name"
                             label={t('addStoryView.nameLabel')}
