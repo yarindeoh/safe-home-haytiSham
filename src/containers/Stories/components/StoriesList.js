@@ -10,14 +10,14 @@ export const StoriesList = ({
     title,
     rootPath
 }) => {
-    const { stories, hasMore, getByPage } = useFilteredStories(tags);
+    const { stories, hasMore, getNextPage } = useFilteredStories(tags);
 
     return (
         <div className={'more-testimonies'}>
             {title}
             <InfiniteScroll
                 dataLength={stories.length}
-                next={getByPage}
+                next={getNextPage}
                 hasMore={hasMore}
                 loader={stories.length > 0 ? <h4>Loading...</h4> : undefined}
             >

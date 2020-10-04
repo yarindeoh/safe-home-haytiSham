@@ -6,10 +6,10 @@ import {
     useModerationContext,
     useModerationFiledChange,
     useModerateStorySubmit,
-    useBack,
     useModerationStory,
     useSelectedTags
 } from './moderationHooks';
+import { useBack } from 'services/general/generalHooks';
 import { useTags } from 'containers/Stories/storiesHooks';
 
 import BackArrowIcon from 'src/media/icons/backArrow.svg';

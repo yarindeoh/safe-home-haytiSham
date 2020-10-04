@@ -45,6 +45,10 @@ export const useFiledChange = () => {
     };
 };
 
+export const useSubmit2 = () => {
+    const [submitted, setSubmitted] = useState(false);
+};
+
 export const useSubmit = () => {
     const { addStoryState, dispatch } = useAddStoryContext();
     const [submitted, setSubmitted] = useState(false);
@@ -72,17 +76,5 @@ export const useSubmit = () => {
         submitted,
         setSubmitted,
         handleSubmit
-    };
-};
-
-export const useBack = (props, setSubmitted) => {
-    const back = e => {
-        e.preventDefault();
-        setSubmitted(false);
-        props.history.push('/');
-    };
-
-    return {
-        back
     };
 };

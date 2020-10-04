@@ -9,9 +9,9 @@ import {
     useAddStoryContext,
     useCheckedContact,
     useFiledChange,
-    useSubmit,
-    useBack
+    useSubmit
 } from './addStoryHooks';
+import { useBack } from 'services/general/generalHooks';
 import BackArrowIcon from 'src/media/icons/backArrow.svg';
 
 export const AddStoryView = withRoute(props => {
@@ -121,7 +121,7 @@ export const AddStoryView = withRoute(props => {
                                 handleFiledChange(e, 'whatTriggeredChange')
                             }
                         />
-                        {/* 
+                        {/*
                         <TextArea
                             name="quote"
                             label={t('quote')}

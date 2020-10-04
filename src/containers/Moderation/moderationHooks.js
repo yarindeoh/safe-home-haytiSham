@@ -201,18 +201,6 @@ export const useModerateStorySubmit = () => {
     };
 };
 
-export const useBack = (props, setSubmitted, path) => {
-    const back = e => {
-        e.preventDefault();
-        setSubmitted(false);
-        props.history.push(path);
-    };
-
-    return {
-        back
-    };
-};
-
 export const useSelectedTags = () => {
     const { moderationState, dispatch } = useModerationContext();
     function onSelect(selectedList, selectedItem) {

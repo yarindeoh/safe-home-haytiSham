@@ -2,9 +2,10 @@ import Api from 'containers/Stories/storiesApi';
 import { useEffect, useState, useCallback } from 'react';
 
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
+import { useFetchApiData } from 'services/general/generalHooks';
 
 export const useTags = defaultSelectedTags => {
-    const [tags, setTags] = useState();
+    const { localState: tags } = useFetchApiData(Api.getTagsMap, []);
     const { tagsData, changeTagSelected, unselectAllTags } = useSelectedTags(
         tags,
         defaultSelectedTags
@@ -14,13 +15,6 @@ export const useTags = defaultSelectedTags => {
         changeDisplayMoreTags,
         getDisplayedTags
     } = useShowMoreTags(tags);
-
-    // get tags after mounts
-    useEffect(() => {
-        (async function fetchData() {
-            setTags(await Api.getTagsMap());
-        })();
-    }, []);
 
     return {
         tagsMap: tags,
@@ -32,6 +26,7 @@ export const useTags = defaultSelectedTags => {
     };
 };
 
+//TODO
 export const useSelectedTags = (tags, defaultSelectedTags = []) => {
     const generateTagsData = useCallback(
         tags =>
@@ -110,14 +105,13 @@ export const useFilteredStories = tags => {
     const [data, setData] = useState({
         stories: [],
         hasMore: true,
-        page: 1,
-        init: false
+        page: 1
     });
 
     const pageSize = 5;
 
-    async function getByPage() {
-        let result = await Api.getStoriesByTags(tags, pageSize, data.page);
+    async function getByPage(apiCall, payload) {
+        let result = await apiCall(payload);
         let newData = { ...data };
 
         if (data.page < result.pages) {
@@ -126,7 +120,6 @@ export const useFilteredStories = tags => {
             newData.hasMore = false;
         }
         newData.stories = [...newData.stories, ...result?.result];
-        newData.init = false;
         setData(newData);
     }
 
@@ -135,7 +128,6 @@ export const useFilteredStories = tags => {
         newData.page = 1;
         newData.hasMore = true;
         newData.stories = [];
-        newData.init = true;
         setData(newData);
     }
 
@@ -144,15 +136,68 @@ export const useFilteredStories = tags => {
     }, [tags]);
 
     useEffect(() => {
-        if (data.init === true) {
-            getByPage();
-            setData(oldData => ({ ...oldData, init: false }));
-        }
-    }, [data.init]);
+        getByPage(Api.getStoriesByTags, {
+            tags,
+            pageSize,
+            page: data.page
+        });
+        setData(oldData => ({ ...oldData }));
+    }, []);
 
     return {
         stories: data.stories,
         hasMore: data.hasMore,
-        getByPage
+        getNextPage: useCallback(() => {
+            getByPage(
+                Api.getStoriesByTags,
+                {
+                    tags,
+                    pageSize,
+                    page: data.page
+                },
+                []
+            );
+        })
     };
 };
+//
+// export const usePagedStories = (apiCall, payload) => {
+//     const [state, setState] = useState({
+//         stories: [],
+//         hasMore: true,
+//         page: 1
+//     });
+//
+//     const pageSize = 5;
+//
+//     async function getByPage(apiCall, payload) {
+//         let result = await apiCall(payload);
+//         let newData = { ...data };
+//
+//         if (state.page < result.pages) {
+//             newData.page += 1;
+//         } else if (data.page === result.pages) {
+//             newData.hasMore = false;
+//         }
+//         newData.stories = [...newData.stories, ...result?.result];
+//         setState(newData);
+//     }
+//
+//     function initState() {
+//         let newData = { ...data };
+//         newData.page = 1;
+//         newData.hasMore = true;
+//         newData.stories = [];
+//         setState(newData);
+//     }
+//
+//     useEffect(() => {
+//         getByPage(apiCall, payload);
+//         setState(oldData => ({ ...oldData }));
+//     });
+//
+//     return {
+//         stories: data.stories,
+//         hasMore: data.hasMore
+//     };
+// };
