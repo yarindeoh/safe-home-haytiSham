@@ -45,6 +45,7 @@ const he = {
         emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber: '1202/3',
         emergencyHotlineOfMinistryOfLaborAndSocialAffairs:
             'קו החירום החברתי של \n משרד העבודה והרווחה',
+        loLalimotPhoneText: 'קו החירום של לא לאלימות',
         IHaveBeenThere2020: "© 'הייתי שם' 2020",
         privacyPolicy: 'מדיניות הפרטיות',
         testimoniesFromRelationships: 'עדויות ממערכות יחסים אלימות',

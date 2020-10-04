@@ -227,29 +227,40 @@ footer {
             margin: 5px auto;
 
             li {
-            flex: 50%;
+            flex: 100%;
             margin: 8px auto;
             }
         }
+ 
+    }
 
-        h1 {
-            font-weight: normal;
-            color: map_get($colors, purple-400);
-            margin: 15px;
-            font-size: 35px;
-        }
+    .footer-title {
+        color: map_get($colors, purple-500);
+        font-size: 40px;
+        align-self: center;
+    }
+
+    .phone-section{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 56px;
+        background: map_get($colors, purple-600);
+    }
+
+    .phone-number{
+        font-size: 24px;
+        color: map_get($colors, grey-100);
+        padding-left: 2%;
+    }
+
+    .phone-text{
+        font-size: 12px;
+        width: 70px;
+        color: map_get($colors, grey-100);
     }
 }
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    .footer {
-
-        .footer-inner ul,
-        .legal-bar li {
-            margin: 10px 0.5vw;
-        }
-    }
-}
 
 .stories {
     display: grid;
