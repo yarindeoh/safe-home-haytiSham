@@ -21,7 +21,8 @@ export const StoryView = withRoute(props => {
         'whatHelpedYou',
         'additionalnfo'
     ]);
-    const defaultTagsSimilarStories = story.tags && story.tags.slice(0, 3);
+    const defaultTagsSimilarStories =
+        story.tagsIds && story.tagsIds.slice(0, 3);
 
     return (
         <Skeleton>

@@ -19,7 +19,9 @@ export const WideHeader = () => {
             <div className="left-section">
                 <Link to="/addStory">{t('testimonySubmission')}</Link>
                 {pipe}
-                <Link to="/pages/warning-signs">{t('warningSigns.header')}</Link>
+                <Link to="/pages/warning-signs">
+                    {t('warningSigns.header')}
+                </Link>
                 {pipe}
                 <Link to="/pages/about">{t('whoWeAre')}</Link>
                 {pipe}
