@@ -6,6 +6,7 @@ import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'src/components/Skeleton';
 import HelpButton from 'src/components/HelpButton.js';
+import dayjs from 'dayjs';
 
 export const StoryView = withRoute(props => {
     const { t } = useTranslation();
@@ -38,7 +39,7 @@ export const StoryView = withRoute(props => {
                              ? story.name.split('')[0]
                              : t('storyView.anonymousTeller')
                      }
-                     ${story.createdAt}
+                     ${dayjs(story.createdAt).format('DD.MM.YY')}
                    `}
                         </h2>
                         <Tags tags={story.tags} />
