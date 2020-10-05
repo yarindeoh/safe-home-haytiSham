@@ -114,12 +114,13 @@ export const useFilteredStories = tags => {
         let result = await Api.getStoriesByTags({
             tags,
             pageSize,
-            page: pageNumber++
+            page: pageNumber
         });
         let newData = { ...data };
 
         if (pageNumber < result.pages) {
             newData.page = pageNumber + 1;
+            newData.hasMore = true;
         } else if (data.page === result.pages) {
             newData.page = pageNumber;
             newData.hasMore = false;
@@ -129,7 +130,7 @@ export const useFilteredStories = tags => {
         setData(newData);
     }
     async function replaceRelatedTags(tags) {
-        await addNextPageData(tags, [], 0);
+        await addNextPageData(tags, [], 1);
     }
     async function getNextPage() {
         await addNextPageData(tags, data.stories, data.page);
