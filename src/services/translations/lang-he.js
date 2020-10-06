@@ -99,10 +99,10 @@ const he = {
             שפורסמה ב{{timestamp}}`
         },
         login: {
-            header: 'התחברי כדי לערוך',
+            header: 'התחברו כדי לערוך עדויות',
             userName: 'שם משתמש',
             password: 'סיסמא',
-            loginButtonText: 'התחבר',
+            loginButtonText: 'אישור',
             listToModerate: 'רשימת הסיפורים שדורשים עריכה',
             listAllStories: 'רשימת כל הסיפורים'
         },
