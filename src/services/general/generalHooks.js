@@ -11,11 +11,11 @@ export function useSwitch() {
     return { isEnable, changeSwitch };
 }
 
-export const useBack = (props, setSubmitted) => {
+export const useBack = (props, setSubmitted, path='/') => {
     const back = e => {
         e.preventDefault();
         setSubmitted(false);
-        props.history.push('/');
+        props.history.push(path);
     };
 
     return {
