@@ -40,7 +40,7 @@ export const LoginView = withRoute(props => {
                 </div>
             ) : (
                 // form to login
-                <LoginForm/>
+                <LoginForm />
             )}
         </div>
     );
