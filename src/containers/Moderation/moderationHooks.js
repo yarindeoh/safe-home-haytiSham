@@ -69,7 +69,7 @@ export const useLoginSubmit = loginData => {
                     payload: true
                 });
             } catch (e) {
-                console.error(e);
+                window.alert(e);
             }
         }
         postLogin();

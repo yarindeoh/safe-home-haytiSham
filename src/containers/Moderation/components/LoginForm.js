@@ -33,6 +33,7 @@ export const LoginForm = withRoute(props => {
                         onChange={e => handleFiledChange(e, 'password')}
                         required
                     />
+                    <div className={'separator'}></div>
                     <input
                         className="submit-button"
                         type="submit"

@@ -289,4 +289,8 @@ footer {
     font-size: 22px;
     color: map_get($colors, white);
     border-radius: 80px;
+
+    &:focus{
+        outline: none;
+    }
   }

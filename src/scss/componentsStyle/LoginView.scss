@@ -22,7 +22,7 @@
         font-size: 20px;
         text-align: center;
         color: map_get($colors, grey-500);
-        margin-bottom: 30px;
+        padding-bottom: 38px;
     }
 }
 
@@ -40,27 +40,51 @@
 
 .login-input-wrap{
     position: relative;
-    width: 100%;
-    border-bottom: 2px solid map_get($colors, purple-500);
-    padding-bottom: 8px;
-    margin-bottom: 30px;
+    padding-bottom: 38px;
+
+    > span{
+        position: absolute;
+        top:0;
+        right: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        color: map_get($colors, grey-700);
+        transition: .5s;
+        pointer-events: none;
+    }
+
+    > input{
+        display: block;
+        width: 100%;
+        background: transparent;
+        font-size: 16px;
+        color: map_get($colors, grey-500);
+        line-height: 1.2;
+        outline: none;
+        border: none;
+        overflow: visible;
+        padding-top: 3px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid map_get($colors, grey-600);
+
+        &:focus~span,
+        &:valid~span {
+            width: 100%;
+            top:-20px;
+            right: 0;
+            padding-bottom: 28px;
+            font-size: 13px;
+            color: map_get($colors, purple-500);
+        }
+
+        &:focus,
+        &:valid {
+            border-bottom: 2px solid map_get($colors, purple-500); 
+        }
+    }
+ 
 }
 
-.login-label{
-    font-size: 13px;
-    color: map_get($colors, purple-500);
-    line-height: 1.5;
-}
-
-.login-input{
-    display: block;
-    width: 100%;
-    background: transparent;
-    font-size: 16px;
-    color: map_get($colors, grey-500);
-    line-height: 1.2;
-    padding-top: 3px;
-    outline: none;
-    border: none;
-    overflow: visible;
+.separator{
+    padding: 17px;
 }
