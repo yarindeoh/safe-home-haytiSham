@@ -20,7 +20,7 @@ export const WideFooter = () => {
                 </div>
             </div>
             <span>
-                © {t('IHaveBeenThere2020')} | {t('privacyPolicy')}
+                {t('IHaveBeenThere2020')} | {t('privacyPolicy')}
             </span>
         </div>
     );
