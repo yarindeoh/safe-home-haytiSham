@@ -136,10 +136,10 @@ export const useModerationStory = (story, tagsMap) => {
                 'whatHelpedYou',
                 'whatTriggeredChange',
                 'contact'
-            ]);
+            ]);            
             dispatch({
                 type: SET_MODERATE_STORY_DATA,
-                payload: { ...moderationState, ...processedStory }
+                payload: { ...NEW_MODERATE_STORY_INIT_DATA, ...processedStory }
             });
             dispatch({
                 type: SET_TAGS,
