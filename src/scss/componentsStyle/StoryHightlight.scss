@@ -38,13 +38,14 @@
 
   .date {
     grid-area: date;
-    font-size: 13px;
+    font-size: 14px;
     color: rgba(114, 75, 228, 0.6);
   }
 
   .text {
     grid-area: text;
     color:  map_get($colors, black);
+    font-weight: 600;
   }
 
   .tags {

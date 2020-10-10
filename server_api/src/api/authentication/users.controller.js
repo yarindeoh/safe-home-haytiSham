@@ -19,5 +19,17 @@ class UsersController {
             return res.status(200).json({token: jwt});
         });
     }
+
+    validateUserLogIn(req, res, next) {
+        const token = req.get("authorization");
+        if(!token){
+            return res.status(401).json({ status: "error", code: "unauthorized", info: "token is missing" });
+        }
+        const valid = this.usersService.validateJWTToken(token);
+        if(!valid){
+            return res.status(401).json({ status: "error", code: "unauthorized", info: "token not valid" });
+        }
+        return next();       
+    }
 }
 module.exports = UsersController;

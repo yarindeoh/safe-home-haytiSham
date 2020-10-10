@@ -12,14 +12,17 @@ router.get('/status', (req, res) => {
     res.send({ express: 'OK' });
   });
 
+// anonymous user API
 router.get('/getAllTags', tagController.getAllTags.bind(tagController));
 router.get('/getTagsMap', tagController.getTagsMap.bind(tagController));
-
 router.get('/getStoriesByTags', storieController.getStoriesByTags.bind(storieController));
-router.get('/getStortiesForModeration', storieController.getStortiesForModeration.bind(storieController));
 router.post('/addStory', storieController.addStory.bind(storieController));
-router.post('/addModerateStory', storieController.addModerateStory.bind(storieController));
 
+const loginGuard =  usersController.validateUserLogIn.bind(usersController);
+
+// moderation admin API
 router.post('/login', usersController.login.bind(usersController));
+router.get('/getStortiesForModeration', loginGuard, storieController.getStortiesForModeration.bind(storieController));
+router.post('/addModerateStory', loginGuard, storieController.addModerateStory.bind(storieController));
 
 module.exports = router;

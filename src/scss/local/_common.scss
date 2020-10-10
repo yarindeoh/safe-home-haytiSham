@@ -16,8 +16,9 @@
     font-size: 27px;
     line-height: 35px;
 
-    span {
+    span a {
         color: map_get($colors, white);
+        text-decoration: none;
     }
 
     & > svg {
