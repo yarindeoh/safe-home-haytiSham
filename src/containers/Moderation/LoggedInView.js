@@ -1,14 +1,8 @@
 import React from 'react';
-import { withRoute } from 'services/routing/routerHOC';
-import { useTranslation } from 'react-i18next';
 import { ModerateStoriesList } from 'containers/Moderation/components/ModerateStoriesList';
 import { TagsFilter } from 'containers/Stories/components/TagsFilter';
 
-export const LoggedInView = withRoute(props => {
-    const changeLocationByPath = (path, params) => {
-        props.history.push(path, params);
-    };
-
+export const LoggedInView = ({ changeLocationByPath }) => {
     return (
         <div>
             <div className={'logged-in-view-container'}>
@@ -19,11 +13,12 @@ export const LoggedInView = withRoute(props => {
                     <TagsFilter
                         changeLocationByPath={changeLocationByPath}
                         rootPath={'/moderateStory'}
+                        storiesListClassName={'stories-admin'}
                     />
                 </div>
             </div>
         </div>
     );
-});
+};
 
 export default LoggedInView;

@@ -7,10 +7,14 @@ import LoginForm from 'containers/Moderation/components/LoginForm';
 export const LoginView = withRoute(props => {
     const { moderationState } = useModerationContext();
 
+    const changeLocationByPath = (path, params) => {
+        props.history.push(path, params);
+    };
+
     return (
         <div>
             {moderationState?.loggedIn ? (
-                <LoggedInView {...props} />
+                <LoggedInView changeLocationByPath={changeLocationByPath} />
             ) : (
                 <LoginForm />
             )}

@@ -1,9 +1,5 @@
 import React from 'react';
-
-import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { useModerationStories } from 'containers/Moderation/moderationHooks';
-import { Loader } from 'components/Loader';
 import { useTranslation } from 'react-i18next';
 
 import Edit from 'src/media/icons/Edit.svg';
@@ -11,8 +7,6 @@ import Edit from 'src/media/icons/Edit.svg';
 export const ModerateStoriesList = ({ changeLocationByPath, title }) => {
     const { stories, hasMore, getByPage } = useModerationStories();
     const { t } = useTranslation();
-
-    console.log('ModerateStoriesList -> stories', stories);
 
     return (
         <div className={'stories-to-moderated-container'}>
@@ -47,8 +41,8 @@ export const ModerateStoriesList = ({ changeLocationByPath, title }) => {
                                     <td>{stories[key]?.mail}</td>
                                     <td className={'edit-icon-container'}>
                                         {stories[key]?.contact
-                                            ? t('כן')
-                                            : t('לא')}
+                                            ? t('login.table.yes')
+                                            : t('login.table.no')}
                                         <Edit className={'edit-icon'} />
                                     </td>
                                 </tr>
