@@ -83,41 +83,40 @@ export const useLoginSubmit = loginData => {
 export const useModerationStories = () => {
     const { moderationState } = useModerationContext();
     const [data, setData] = useState({
-        stories: [],
-        hasMore: true,
-        page: 1,
-        init: false
+        storiesPerPage: undefined,
+        currentPage: 1,
+        totalPages: 0,
+        totalStories: 0
     });
-    const pageSize = 5;
+    const pageSize = 10;
 
-    async function getByPage() {
+    async function handlePageChange(event, page) {
         let result = await Api.getModerationStories(
             pageSize,
-            data.page,
+            page,
             'createdAt',
             'ASC'
         );
         let newData = { ...data };
-
-        if (data.page < result.pages) {
-            newData.page += 1;
-        } else if (data.page === result.pages) {
-            newData.hasMore = false;
-        }
-        newData.stories = [...newData.stories, ...result?.result];
+        newData.totalPages = result.pages;
+        newData.currentPage = page;
+        newData.totalStories = result.total;
+        newData.storiesPerPage = [...result?.result];
         setData(newData);
     }
 
     useEffect(() => {
         if (moderationState.loggedIn) {
-            getByPage();
+            handlePageChange(undefined, 1);
         }
     }, [moderationState.loggedIn]);
 
     return {
-        stories: data.stories,
-        hasMore: data.hasMore,
-        getByPage
+        stories: data.storiesPerPage,
+        currentPage: data.currentPage,
+        totalPages: data.totalPages,
+        totalStories: data.totalStories,
+        handlePageChange
     };
 };
 
