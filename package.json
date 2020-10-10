@@ -13,6 +13,8 @@
   },
   "heroku-run-build-script": true,
   "dependencies": {
+    "@material-ui/core": "latest",
+    "@material-ui/lab": "latest",
     "classnames": "^2.2.6",
     "cloudinary-react": "^1.6.6",
     "concurrently": "^5.2.0",
