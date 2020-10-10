@@ -10,7 +10,8 @@ export const TagsFilter = ({
     defaultSelectedTags,
     rootPath,
     storiesListClassName,
-    handleStoryClick
+    handleStoryClick,
+    displayEditImg
 }) => {
     const { t } = useTranslation();
     const {
@@ -66,6 +67,7 @@ export const TagsFilter = ({
                     rootPath={rootPath}
                     storiesListClassName={storiesListClassName}
                     handleStoryClick={handleStoryClick}
+                    displayEditImg={displayEditImg}
                 />
             </Loader>
         </div>

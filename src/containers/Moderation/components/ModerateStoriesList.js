@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useModerationStories } from 'containers/Moderation/moderationHooks';
 import { Loader } from 'components/Loader';
-import Edit from 'src/media/icons/Edit.svg';
+import EditImg from 'src/media/icons/Edit.svg';
 import Pagination from '@material-ui/lab/Pagination';
 
 export const ModerateStoriesList = ({ changeLocationByPath, title }) => {
@@ -49,7 +49,7 @@ export const ModerateStoriesList = ({ changeLocationByPath, title }) => {
                                             {stories[key]?.contact
                                                 ? t('login.table.yes')
                                                 : t('login.table.no')}
-                                            <Edit className={'edit-icon'} />
+                                            <EditImg className={'edit-icon'} />
                                         </td>
                                     </tr>
                                 );

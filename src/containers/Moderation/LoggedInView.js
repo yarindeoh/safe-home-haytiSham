@@ -13,6 +13,7 @@ export const LoggedInView = ({ changeLocationByPath, handleStoryClick }) => {
                     <TagsFilter
                         storiesListClassName={'stories-admin'}
                         handleStoryClick={handleStoryClick}
+                        displayEditImg
                     />
                 </div>
             </div>

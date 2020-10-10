@@ -10,7 +10,8 @@ export const StoriesList = ({
     title,
     rootPath,
     storiesListClassName = '',
-    handleStoryClick
+    handleStoryClick,
+    displayEditImg
 }) => {
     const { stories, hasMore, getNextPage } = useFilteredStories(tags);
 
@@ -30,6 +31,7 @@ export const StoriesList = ({
                                 <StoryHighlight
                                     story={stories[key]}
                                     key={key}
+                                    displayEditImg={displayEditImg}
                                     changeLocationByPath={() =>
                                         changeLocationByPath(
                                             `${

@@ -136,16 +136,6 @@
     >tbody{
         cursor: pointer;
     }
-
-    .edit-icon-container{
-        position: relative;
-    }
-
-    .edit-icon{
-        position: absolute;
-        top: 17;
-        left: 0;
-    }
 }
 
 .pagination-ul{
@@ -155,4 +145,14 @@
 
 .pagination-root{
     padding: 40px;
+}
+
+.edit-icon-container{
+    position: relative;
+}
+
+.edit-icon{
+    position: absolute;
+    top: 17;
+    left: 0;
 }
