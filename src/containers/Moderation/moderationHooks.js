@@ -120,6 +120,20 @@ export const useModerationStories = () => {
     };
 };
 
+export const useEditModerationStory = () => {
+    const [story, setStory] = useState();
+
+    async function getModerationStory(id) {
+        let result = await Api.getModerationStory(id);
+        setStory(result?.result);
+    }
+
+    return {
+        story,
+        getModerationStory
+    };
+};
+
 export const useModerationStory = (story, tagsMap) => {
     const { moderationState, dispatch } = useModerationContext();
     useEffect(() => {
@@ -136,7 +150,7 @@ export const useModerationStory = (story, tagsMap) => {
                 'whatHelpedYou',
                 'whatTriggeredChange',
                 'contact'
-            ]);            
+            ]);
             dispatch({
                 type: SET_MODERATE_STORY_DATA,
                 payload: { ...NEW_MODERATE_STORY_INIT_DATA, ...processedStory }
@@ -177,7 +191,7 @@ export const useModerateStorySubmit = () => {
 
         async function postData() {
             try {
-                await Api.postModerateStory(moderationDataToPost);
+                await Api.postAddModerateStory(moderationDataToPost);
                 dispatch({
                     type: SET_MODERATE_STORY_DATA,
                     payload: {

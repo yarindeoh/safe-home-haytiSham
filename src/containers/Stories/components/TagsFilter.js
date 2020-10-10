@@ -9,7 +9,8 @@ export const TagsFilter = ({
     changeLocationByPath,
     defaultSelectedTags,
     rootPath,
-    storiesListClassName
+    storiesListClassName,
+    handleStoryClick
 }) => {
     const { t } = useTranslation();
     const {
@@ -64,6 +65,7 @@ export const TagsFilter = ({
                     changeLocationByPath={changeLocationByPath}
                     rootPath={rootPath}
                     storiesListClassName={storiesListClassName}
+                    handleStoryClick={handleStoryClick}
                 />
             </Loader>
         </div>

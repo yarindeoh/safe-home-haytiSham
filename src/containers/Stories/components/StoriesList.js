@@ -9,9 +9,9 @@ export const StoriesList = ({
     changeLocationByPath,
     title,
     rootPath,
-    storiesListClassName = ''
+    storiesListClassName = '',
+    handleStoryClick
 }) => {
-
     const { stories, hasMore, getNextPage } = useFilteredStories(tags);
 
     return (
@@ -39,6 +39,9 @@ export const StoriesList = ({
                                             }/${stories[key]._id}`,
                                             stories[key]
                                         )
+                                    }
+                                    handleStoryClick={() =>
+                                        handleStoryClick(stories[key]._id)
                                     }
                                 />
                             );

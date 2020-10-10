@@ -1,7 +1,12 @@
 import React from 'react';
 import Tag from 'components/Tag';
 
-export const StoryHighlight = ({ story, changeLocationByPath, liStyle }) => {
+export const StoryHighlight = ({
+    story,
+    changeLocationByPath,
+    liStyle,
+    handleStoryClick
+}) => {
     const { id, name, createdAt, tags, quote } = story;
     let initials = name && name.split('')[0];
     const allTags = () => (
@@ -14,7 +19,11 @@ export const StoryHighlight = ({ story, changeLocationByPath, liStyle }) => {
         <li
             className="story"
             style={liStyle}
-            onClick={() => changeLocationByPath(id, story)}
+            onClick={
+                handleStoryClick !== undefined
+                    ? handleStoryClick
+                    : changeLocationByPath
+            }
         >
             <div className="initials">{initials}</div>
             <span className="date">{createdAt}</span>
