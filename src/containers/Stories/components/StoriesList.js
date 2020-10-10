@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { useFilteredStories } from 'containers/Stories/storiesHooks';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
 import { Loader } from 'components/Loader';
@@ -12,7 +11,6 @@ export const StoriesList = ({
     rootPath,
     storiesListClassName = ''
 }) => {
-    let location = useLocation();
 
     const { stories, hasMore, getNextPage } = useFilteredStories(tags);
 
