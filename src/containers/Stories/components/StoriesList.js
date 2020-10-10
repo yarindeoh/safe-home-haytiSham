@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { useFilteredStories } from 'containers/Stories/storiesHooks';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
@@ -11,6 +12,8 @@ export const StoriesList = ({
     title,
     rootPath
 }) => {
+    let location = useLocation();
+
     const { stories, hasMore, getNextPage } = useFilteredStories(tags);
 
     return (
@@ -22,7 +25,13 @@ export const StoriesList = ({
                 hasMore={hasMore}
                 loader={<Loader />}
             >
-                <ul className="stories">
+                <ul
+                    className={`stories ${
+                        location.pathname.includes('admin')
+                            ? 'stories-admin'
+                            : ''
+                    }`}
+                >
                     {stories &&
                         Object.keys(stories).map(key => {
                             return (

@@ -103,8 +103,14 @@ const he = {
             userName: 'שם משתמש',
             password: 'סיסמא',
             loginButtonText: 'אישור',
-            listToModerate: 'רשימת הסיפורים שדורשים עריכה',
-            listAllStories: 'רשימת כל הסיפורים'
+            listToModerate: 'העדויות שדורשות עריכה (סה"כ {{num}})',
+            listAllStories: 'תצוגת העדויות שמפורסמות באתר לפי נושאים',
+            table: {
+                date: 'זמן שליחת העדות',
+                name: 'שם נותן העדות',
+                mail: 'אמצעי ליצירת קשר',
+                contact: 'האם ביקשו ליצור קשר?'
+            }
         },
         moderation: {
             header: 'עריכת העדות',

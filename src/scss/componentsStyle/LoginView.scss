@@ -1,7 +1,8 @@
-.login-view-container {
+.logged-in-view-container {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 67% 33%;
     grid-auto-flow: row;
+    justify-content: space-between;    
     min-height: 102vh; //This is important for infinite-scroll to work
 }
 
@@ -87,4 +88,62 @@
 
 .separator{
     padding: 17px;
+}
+
+.stories-list-admin{
+    padding: map_get($spaces, small);
+    border-top: 1px solid map_get($colors, grey-200);
+    grid-template-columns: 1fr;
+}
+
+.stories-admin{
+    grid-template-columns: 1fr;
+}
+
+
+.stories-to-moderated-container{
+    background-color: map_get($colors, white);
+    padding: 40px 40px;
+
+    > h1{
+        color: map_get($colors, grey-800); 
+        padding-bottom: 40px;
+        font-size: 22px;
+    }
+}
+
+.stories-to-moderated-table{ 
+    text-align: right;
+    border-collapse: collapse;
+    width: 100%;
+    
+    > thead, tr, th {
+        font-size: 13px;
+        line-height: 17px;
+        color: map_get($colors, purple-700);
+        padding-left: 40px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid white;
+    }
+
+    > tbody, tr, td {
+        padding: 17px 0 17px 40px;
+        font-size: 15px;
+        color: map_get($colors, grey-900);
+        border-bottom: 1px solid map_get($colors, grey-1000);
+    }
+
+    >tbody{
+        cursor: pointer;
+    }
+
+    .edit-icon-container{
+        position: relative;
+    }
+
+    .edit-icon{
+        position: absolute;
+        top: 17;
+        left: 0;
+    }
 }

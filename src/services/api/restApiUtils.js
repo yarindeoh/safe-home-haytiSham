@@ -18,7 +18,7 @@ export async function handleRequest(url, type, options = {}, data = {}) {
         config.body = JSON.stringify(data);
     }
     if (sessionStorage.moderatorToken !== undefined) {
-        config.headers.Authorization = `Bearer ${sessionStorage.moderatorToken}`;
+        config.headers.Authorization = `${sessionStorage.moderatorToken}`;
     }
     try {
         // TODO:: add loader state
