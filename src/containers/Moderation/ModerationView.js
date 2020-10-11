@@ -27,8 +27,10 @@ export const ModerationView = withRoute(props => {
     const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit();
     const { back } = useBack(props, setSubmitted, '/admin');
 
-    const story = props.location.state;
-    useModerationStory(story, tagsMap);
+    //TODO: check 
+    const {originalStory, moderatedStory} = props.location.state;
+    const valid_originalStory = originalStory !== null ? originalStory: moderatedStory;
+    useModerationStory(valid_originalStory, moderatedStory, tagsMap);
 
     return (
         <>
@@ -41,7 +43,7 @@ export const ModerationView = withRoute(props => {
                         {t('moderation.submittedSuccessText')}
                     </div>
                     <div className="submitted-success-text">
-                        {t('moderation.phoneMail') + story.mail}
+                        {t('moderation.phoneMail') + valid_originalStory?.mail}
                     </div>
                     <button className={'submit-button'} onClick={back}>
                         {t('moderation.backToAdminPage')}
@@ -61,7 +63,7 @@ export const ModerationView = withRoute(props => {
                         <div>
                             <TestimonyForm
                                 handleFiledChange={handleFiledChange}
-                                formData={{ ...story }}
+                                formData={{ ...valid_originalStory }}
                                 disabled={true}
                             />
                         </div>

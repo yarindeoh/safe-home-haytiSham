@@ -24,9 +24,8 @@ const Api = {
             )
         );
     },
-    //TODO: need to change after Implement API
-    getModerationStory: id => {
-        return get(baseUrl(`getStoryForEdit?id=${id}`));
+    getStoryForEdit: id => {
+        return get(baseUrl(`getStoryForEdit?originalStory=${id}`));
     }
 };
 

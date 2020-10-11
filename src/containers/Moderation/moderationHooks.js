@@ -13,6 +13,7 @@ import {
     filterObjByKey,
     getTagsAsArray
 } from 'services/general/generalHelpers';
+import { useHistory } from 'react-router';
 
 export function useModerationContext() {
     const context = useContext(ModerationContext);
@@ -120,25 +121,33 @@ export const useModerationStories = () => {
     };
 };
 
+
 export const useEditModerationStory = () => {
-    const [story, setStory] = useState();
+    let history = useHistory();
+    const { moderationState, dispatch } = useModerationContext();
 
     async function getModerationStory(id) {
-        let result = await Api.getModerationStory(id);
-        setStory(result?.result);
+        let result = await Api.getStoryForEdit(id);
+        if(result !== undefined){
+            let id = result.originalStory !== null ? result.originalStory._id : result.moderatedStory?._id;
+            //TODO change moderation context to be the moderatedStory, 
+            // and send the main story to the EDIT PAGE and if original story === null  send the moderatedStory as the original 
+            history.push(`/moderateStory/${id}`, result);
+        }
     }
 
     return {
-        story,
         getModerationStory
     };
-};
+}
 
-export const useModerationStory = (story, tagsMap) => {
+/////TODO need to change context and check original!==null
+
+export const useModerationStory = (originalStory, moderatedStory, tagsMap) => {
     const { moderationState, dispatch } = useModerationContext();
     useEffect(() => {
-        if (story._id !== moderationState._id) {
-            const processedStory = extractFieldsFromObj(story, [
+        if (moderatedStory._id !== moderationState._id) {
+            const processedStory = extractFieldsFromObj(moderatedStory, [
                 '_id',
                 'additionalnfo',
                 'background',
@@ -150,7 +159,7 @@ export const useModerationStory = (story, tagsMap) => {
                 'whatHelpedYou',
                 'whatTriggeredChange',
                 'contact'
-            ]);
+            ]);            
             dispatch({
                 type: SET_MODERATE_STORY_DATA,
                 payload: { ...NEW_MODERATE_STORY_INIT_DATA, ...processedStory }
@@ -163,9 +172,9 @@ export const useModerationStory = (story, tagsMap) => {
     }, []);
 
     useEffect(() => {
-        if (story.tags?.length > 0) {
+        if (moderatedStory.tags?.length > 0) {
             let chosenTags = getTagsAsArray(
-                filterObjByKey(tagsMap, story.tags)
+                filterObjByKey(tagsMap, moderatedStory.tags)
             );
             dispatch({
                 type: SET_TAGS,
