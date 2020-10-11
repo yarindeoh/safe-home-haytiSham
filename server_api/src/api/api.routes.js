@@ -23,6 +23,7 @@ const loginGuard =  usersController.validateUserLogIn.bind(usersController);
 // moderation admin API
 router.post('/login', usersController.login.bind(usersController));
 router.get('/getStortiesForModeration', loginGuard, storieController.getStortiesForModeration.bind(storieController));
+router.get('/getStoryForEdit', loginGuard, storieController.getStoryForEdit.bind(storieController));
 router.post('/addModerateStory', loginGuard, storieController.addModerateStory.bind(storieController));
 
 module.exports = router;
