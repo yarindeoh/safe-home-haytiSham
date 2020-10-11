@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 
 const Story = require("./story.model");
 const ModeratedStrory = require("./moderatedStory.model");
@@ -55,7 +56,20 @@ class StorieService {
         ])
             .then(([count, result]) => ({
                 result, total: count, page: page, pages: Math.ceil(count / pageSize) }));
-    }    
+    } 
+
+    getStoryById(originalStoryID){
+        return Story.findById(originalStoryID).lean();
+    }
+
+    getModeratedStoryById(storyID){
+        return ModeratedStrory.findById(storyID).lean();
+    }
+    
+    getModeratedStoryByOriginalId(originalStoryID){
+        return ModeratedStrory.findOne({originalStory: ObjectId(originalStoryID)}).lean();
+    }
+    
 
     createStory(storyInstance){
         storyInstance.moderated = false;

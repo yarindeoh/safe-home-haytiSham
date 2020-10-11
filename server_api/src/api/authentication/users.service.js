@@ -22,7 +22,10 @@ class UsersService {
             if(user && user.password_hash){
                 return bcrypt.compare(userPaswword, user.password_hash).then(function(result) {
                     console.log('user password validation '+ result);
-                    return result;
+                    if(result){
+                        return user;
+                    }
+                    return false;
                 });
             }
             console.log('user not found');
@@ -40,6 +43,9 @@ class UsersService {
         try {
             const jwtSsecret = process.env.JWT_SECRET || '';
             var decoded = jwt.verify(token, jwtSsecret);
+            if(!decoded || decoded == null || !decoded.id || decoded.id == null){
+                return false;
+            }
             return User.findById(decoded.id).then((user) => {
                 if (user._id) {
                     return true;
