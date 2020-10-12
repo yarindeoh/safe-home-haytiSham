@@ -19,7 +19,7 @@ export const LoginView = withRoute(props => {
         try {
             getModerationStory(storyId);
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
     };
 

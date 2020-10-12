@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { withRoute } from 'services/routing/routerHOC';
-import { TestimonyForm } from 'components/TestimonyForm';
+import { TestimonyForm } from 'containers/Moderation/components/TestimonyForm';
+import { OriginalStoryView } from 'containers/Moderation/components/OriginalStoryView';
 import { useTranslation, Trans } from 'react-i18next';
 import {
     useModerationContext,
@@ -27,10 +28,11 @@ export const ModerationView = withRoute(props => {
     const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit();
     const { back } = useBack(props, setSubmitted, '/admin');
 
-    //TODO: check 
-    const {originalStory, moderatedStory} = props.location.state;
-    const valid_originalStory = originalStory !== null ? originalStory: moderatedStory;
-    useModerationStory(valid_originalStory, moderatedStory, tagsMap);
+    //TODO: check
+    const { originalStory, moderatedStory } = props.location.state;
+    const valid_originalStory =
+        originalStory !== null ? originalStory : moderatedStory;
+    useModerationStory(moderatedStory, tagsMap);
 
     return (
         <>
@@ -61,10 +63,8 @@ export const ModerationView = withRoute(props => {
                     <div className="container">
                         {/* Col1 - right col */}
                         <div>
-                            <TestimonyForm
-                                handleFiledChange={handleFiledChange}
-                                formData={{ ...valid_originalStory }}
-                                disabled={true}
+                            <OriginalStoryView
+                                data={{ ...valid_originalStory }}
                             />
                         </div>
                         {/* Col2 - center col */}

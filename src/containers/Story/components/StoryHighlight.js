@@ -19,7 +19,7 @@ export const StoryHighlight = ({
 
     return (
         <li
-            className={`story ${displayEditImg ? "edit-icon-container": ""}`}
+            className={`story ${displayEditImg ? 'edit-icon-container' : ''}`}
             style={liStyle}
             onClick={
                 handleStoryClick !== undefined
@@ -27,7 +27,9 @@ export const StoryHighlight = ({
                     : changeLocationByPath
             }
         >
-            {displayEditImg && <EditImg className={'edit-icon-story-highlight'} />}
+            {displayEditImg && (
+                <EditImg className={'edit-icon-story-highlight'} />
+            )}
             <div className="initials">{initials}</div>
             <span className="date">{createdAt}</span>
             <p className="text">{quote}</p>

@@ -43,7 +43,9 @@ export const StoriesList = ({
                                         )
                                     }
                                     handleStoryClick={() =>
-                                        handleStoryClick(stories[key].originalStory)
+                                        handleStoryClick(
+                                            stories[key].originalStory
+                                        )
                                     }
                                 />
                             );

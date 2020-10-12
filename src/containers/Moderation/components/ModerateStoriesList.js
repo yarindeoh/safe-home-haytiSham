@@ -37,7 +37,10 @@ export const ModerateStoriesList = ({ changeLocationByPath, title }) => {
                                         onClick={() =>
                                             changeLocationByPath(
                                                 `moderateStory/${stories[key]._id}`,
-                                                {originalStory: stories[key], moderatedStory: stories[key]}
+                                                {
+                                                    originalStory: stories[key],
+                                                    moderatedStory: stories[key]
+                                                }
                                             )
                                         }
                                         key={key}
