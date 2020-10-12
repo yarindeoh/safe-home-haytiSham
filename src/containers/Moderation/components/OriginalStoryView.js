@@ -19,8 +19,6 @@ export const OriginalStoryView = withRoute(({ data }) => {
         'additionalnfo'
     ]);
 
-    console.log('OriginalStoryView -> processedStory', processedStory);
-
     return (
         <>
             <div>

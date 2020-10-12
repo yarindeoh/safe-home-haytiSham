@@ -42,10 +42,13 @@ export const StoriesList = ({
                                             stories[key]
                                         )
                                     }
-                                    handleStoryClick={() =>
-                                        handleStoryClick(
-                                            stories[key].originalStory
-                                        )
+                                    handleStoryClick={
+                                        handleStoryClick !== undefined
+                                            ? () =>
+                                                  handleStoryClick(
+                                                      stories[key].originalStory
+                                                  )
+                                            : undefined
                                     }
                                 />
                             );
