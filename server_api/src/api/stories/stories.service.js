@@ -90,6 +90,7 @@ class StorieService {
                 throw 'error no original story found';
             }
             storyInstance.sequence = story.sequence;
+            storyInstance.originalStory = o_id;
             return ModeratedStrory.create(storyInstance);
         });
     }
