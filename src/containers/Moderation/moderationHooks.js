@@ -64,7 +64,7 @@ export const useLoginSubmit = loginData => {
         async function postLogin() {
             try {
                 const serverData = await Api.postLogin(loginData);
-                sessionStorage.moderatorToken = serverData.token;
+                localStorage.setItem('moderatorToken', serverData.token);
                 dispatch({
                     type: SET_LOGGED_IN,
                     payload: true

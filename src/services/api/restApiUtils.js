@@ -17,8 +17,8 @@ export async function handleRequest(url, type, options = {}, data = {}) {
     if (type === 'POST') {
         config.body = JSON.stringify(data);
     }
-    if (sessionStorage.moderatorToken !== undefined) {
-        config.headers.Authorization = `${sessionStorage.moderatorToken}`;
+    if (localStorage.getItem('moderatorToken') !== undefined) {
+        config.headers.Authorization = `${localStorage.getItem('moderatorToken')}`;
     }
     try {
         // TODO:: add loader state
