@@ -191,7 +191,9 @@ export const useModerateStorySubmit = () => {
     const [submitted, setSubmitted] = useState(false);
     let moderationDataToPost = { ...moderationState };
     delete moderationDataToPost.loggedIn;
-    moderationDataToPost.originalStory = moderationState._id;
+    if(moderationDataToPost.originalStory === ''){
+        moderationDataToPost.originalStory = moderationState._id;
+    }
     delete moderationDataToPost._id;
     moderationDataToPost.tags = getArrayOfTagsIds(moderationDataToPost.tags);
 
