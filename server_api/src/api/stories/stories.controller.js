@@ -56,7 +56,7 @@ class StorieController {
             instance.tags = req.body.tags;
             instance.tags = instance.tags.map(x => Number(x)); 
         }
-        return this.storieService.createModeratedStory(instance, originalStoryID).then(() =>{
+        return this.storieService.createOrEditModeratedStory(instance, originalStoryID).then(() =>{
             res.sendStatus(200);
         }).catch((error) =>{
             console.error(error);

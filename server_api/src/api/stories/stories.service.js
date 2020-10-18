@@ -83,15 +83,24 @@ class StorieService {
         });        
     }
 
-    createModeratedStory(storyInstance, originalStoryID){        
-        const o_id = new mongoose.mongo.ObjectId(originalStoryID);
-        return Story.findOneAndUpdate({'_id': o_id}, {moderated:true} ).lean().then((story) =>{
+    createOrEditModeratedStory(storyInstance, originalStoryID){        
+        let p1 = this.getModeratedStoryByOriginalId(originalStoryID);
+        let p2 = Story.findByIdAndUpdate(originalStoryID, {moderated:true} ).lean();
+        return Promise.all([p1,p2]).then((result) =>{
+            let mStory = result[0];
+            let story = result[1];
             if(story === null){
                 throw 'error no original story found';
             }
             storyInstance.sequence = story.sequence;
+            const o_id = new mongoose.mongo.ObjectId(originalStoryID);
             storyInstance.originalStory = o_id;
-            return ModeratedStrory.create(storyInstance);
+            if(!mStory || mStory == null){ // moderated story not exist - create                
+                return ModeratedStrory.create(storyInstance);
+            }
+            else{ // moderated story exist - update
+                return ModeratedStrory.findByIdAndUpdate(mStory._id, storyInstance);
+            }
         });
     }
 
