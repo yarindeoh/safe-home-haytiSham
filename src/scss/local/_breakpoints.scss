@@ -12,5 +12,18 @@ $breakpoints: (
 
 // desktop
 @mixin breakpoint-2 {
-  @media (min-width: 481px) { @content; }
+  @media (min-width: 481px) and (max-width: 899px) { @content; }
+}
+// desktop
+@mixin breakpoint-3 {
+  @media (min-width: 900px) { @content; }
+}
+
+@mixin desktop {
+  @include breakpoint-2{
+    @content;
+  }
+  @include breakpoint-3{
+    @content;
+  }
 }
