@@ -11,6 +11,7 @@ import { RouterContext } from 'services/routing/routerContext';
 import { LoginView } from 'containers/Moderation/LoginView';
 import { ModerationView } from 'containers/Moderation/ModerationView';
 import { ModerationProvider } from 'containers/Moderation/moderationContext';
+import ScrollToTop from 'components/ScrollToTop';
 import Pages from 'containers/StaticPages/Pages';
 
 export const history = createBrowserHistory();
@@ -20,6 +21,7 @@ export const App = () => {
         <RouterContext.Provider history={history}>
             <AddStoryProvider>
                 <BrowserRouter>
+                    <ScrollToTop/>
                     <Switch>
                         <Route path="/" exact={true} component={StoriesView} />
                         <Route path="/story" component={StoryView} />

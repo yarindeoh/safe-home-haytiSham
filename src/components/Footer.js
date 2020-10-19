@@ -22,16 +22,16 @@ export const Footer = ({ title, footerMenuItemsAndUrls }) => {
                     <ul>{displayFooterMenu()}</ul>
                 </div>
                 <div className="phone-section">
-                    <span className={'phone-number'}>6724*</span>
+                    <a href="tel:*6724" className={'phone-number'}>6724*</a>
                     <span className={'phone-text'}>
                         {t('loLalimotPhoneText')}
                     </span>
                 </div>
 
                 <div className="copyright">
-                    <div>
-                        <Link to="/">{t('IHaveBeenThere2020')}</Link>
-                    </div>
+                    <span>
+                        {t('IHaveBeenThere2020')}
+                    </span>
                     <span> | </span>
                     <div>
                         {/* <Link to="/pages/privacy-policy"> */}{' '}

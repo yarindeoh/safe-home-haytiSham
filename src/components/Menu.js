@@ -4,11 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 const PAGES = [
     { title: 'testimonySubmission', path: '/addStory' },
-    {
-        title: 'warningSigns.header',
-        path: '/pages/warning-signs',
-        isBold: true
-    },
+    { title: 'warningSigns.header', path: '/pages/warning-signs' },
     { title: 'whoWeAre', path: '/pages/about' }
 ];
 
@@ -30,8 +26,8 @@ export function Menu(props) {
                     </div>
                 </div>
                 <ul className="Items">
-                    {PAGES.map(({ title, isBold, path }, index) => {
-                        let className = isBold ? 'Bold' : '';
+                    {PAGES.map(({ title, path }, index) => {
+                        let className = '';
                         if (index === 4) {
                             className += ` EndSection`;
                         }

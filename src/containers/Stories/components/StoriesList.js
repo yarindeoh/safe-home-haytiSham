@@ -20,7 +20,7 @@ export const StoriesList = ({
                 dataLength={stories?.length}
                 next={getNextPage}
                 hasMore={hasMore}
-                loader={stories && stories.length > 0 ? <Loader /> : undefined}
+                loader={<Loader />}
             >
                 <ul className="stories">
                     {stories &&

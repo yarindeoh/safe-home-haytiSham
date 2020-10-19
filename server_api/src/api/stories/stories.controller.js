@@ -56,7 +56,7 @@ class StorieController {
             instance.tags = req.body.tags;
             instance.tags = instance.tags.map(x => Number(x)); 
         }
-        return this.storieService.createModeratedStory(instance, originalStoryID).then(() =>{
+        return this.storieService.createOrEditModeratedStory(instance, originalStoryID).then(() =>{
             res.sendStatus(200);
         }).catch((error) =>{
             console.error(error);
@@ -72,6 +72,32 @@ class StorieController {
         return this.storieService.listStriesToModerate(page, pageSize, sortField, sortDirection).then((data) =>{
             res.json(data);
         });     
+    }
+
+    getStoryForEdit(req, res) {
+        const originalStoryID = req.query.originalStory;
+        const moderatedStoryID = req.query.moderatedStory;
+        if (!originalStoryID && !moderatedStoryID) {
+            return res.status(400).json({ error: "missing story id please add parameter originalStory or moderatedStory" });
+        }
+        if (originalStoryID) {
+            const p1 = this.storieService.getStoryById(originalStoryID);
+            const p2 = this.storieService.getModeratedStoryByOriginalId(originalStoryID);
+            return Promise.all([p1, p2]).then((stories) => {
+                const data = { originalStory: stories[0], moderatedStory: stories[1] };
+                res.json(data);
+            });
+        }
+        else if (moderatedStoryID) {
+            return this.storieService.getModeratedStoryById(moderatedStoryID).then((moderatedStory) => {
+                if (moderatedStory && moderatedStory._id) {
+                    return this.storieService.getStoryById(moderatedStory.originalStory).then((originalStory) => {
+                        const data = { originalStory, moderatedStory };
+                        res.json(data);
+                    });
+                }
+            })
+        }
     }
 }
 module.exports = StorieController;

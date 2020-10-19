@@ -15,9 +15,25 @@ class UsersController {
             if(!user){
                 return res.status(403).json({error: "wrong credentials"});
             }
-            const jwt = this.usersService.generateJWTToken(user._id, user.name);
+            const id = String(user._id);
+            const name = user.name;
+            const jwt = this.usersService.generateJWTToken(id, name);
             return res.status(200).json({token: jwt});
         });
+    }
+
+    validateUserLogIn(req, res, next) {
+        const token = req.get("authorization");
+        if(!token){
+            return res.status(401).json({ status: "error", code: "unauthorized", info: "token is missing" });
+        }
+        return this.usersService.validateJWTToken(token).then((valid) =>{
+            if(!valid){
+                return res.status(401).json({ status: "error", code: "unauthorized", info: "token not valid" });
+            }
+            return next(); 
+        });       
+              
     }
 }
 module.exports = UsersController;
