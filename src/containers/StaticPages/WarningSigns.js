@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Skeleton from 'src/components/Skeleton';
-import { Content } from '../../components/Content';
+import Skeleton from 'components/Skeleton';
+import { Content } from 'components/Content';
 import {
     intro,
     how,
