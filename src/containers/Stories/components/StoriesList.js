@@ -23,6 +23,7 @@ export const StoriesList = ({
                 next={getNextPage}
                 hasMore={hasMore}
                 loader={<Loader />}
+                scrollThreshold={0.001}
             >
                 <ul className={`stories ${storiesListClassName}`}>
                     {stories &&
