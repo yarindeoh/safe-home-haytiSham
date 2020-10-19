@@ -19,7 +19,7 @@ export const TestimonyForm = withRoute(
 
         return (
             <>
-                <div id={'testimony-form'}>
+                <div className={'testimony-form'}>
                     <form onSubmit={!disabled ? handleSubmit : undefined}>
                         {formData?.createdAt && (
                             <div>

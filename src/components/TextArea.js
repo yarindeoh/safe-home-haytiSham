@@ -16,9 +16,9 @@ export const TextArea = ({
                 disabled ? 'disabled-area' : ''
             }`}
         >
-            <div className={'question'}>{label}</div>
-            <div>{sublabel}</div>
-            <div required={required}>
+            <label className={'question'}>{label}</label>
+            {sublabel && <div>{sublabel}</div>}
+            <div className='textarea-wrapper' required={required}>
                 <textarea
                     disabled={disabled}
                     name={name}
