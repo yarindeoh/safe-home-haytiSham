@@ -8,6 +8,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-self: center;
 }
 
 .NavItem {
@@ -27,7 +28,7 @@
     align-items: center;
     display: flex;
 
-    @include breakpoint-2 {
+    @include desktop {
         transform: translate3d(0px, 0px, 0px)!important;
         justify-content: center;
     }

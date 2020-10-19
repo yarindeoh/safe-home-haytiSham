@@ -6,6 +6,7 @@ import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'src/components/Skeleton';
 import HelpButton from 'src/components/HelpButton.js';
+import Content from "../../components/Content";
 
 export const StoryView = withRoute(props => {
     const { t } = useTranslation();
@@ -27,7 +28,7 @@ export const StoryView = withRoute(props => {
     return (
         <Skeleton>
             <div id={'story-page-container'}>
-                <div id={'story-page-content'}>
+                <Content className={'story-page-content'} alignRight={true}>
                     <div className={'quote'}>
                         <h1>"{story.quote}"</h1>
                         <h2>
@@ -46,12 +47,11 @@ export const StoryView = withRoute(props => {
                     {processedStory &&
                         processedStory.map((item, key) => (
                             <div key={key}>
-                                <h6>{t(`storyView.${item.titleKey}`)}</h6>
-                                <span className="story-text">{item.text}</span>
-                                <br />
+                                <h2>{t(`storyView.${item.titleKey}`)}</h2>
+                                <p className="story-text">{item.text}</p>
                             </div>
                         ))}
-                </div>
+                </Content>
             </div>
             <StoriesList
                 key={props.location.state._id}

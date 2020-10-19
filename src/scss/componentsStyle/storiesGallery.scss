@@ -18,7 +18,7 @@
     border-top: 1px solid map_get($colors, grey-200);
   }
 
-  @include breakpoint-2 {
+  @include desktop {
     width: 100%;
     padding: map_get($spaces, small) 0;
   }

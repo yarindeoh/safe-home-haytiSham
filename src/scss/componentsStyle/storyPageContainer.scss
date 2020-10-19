@@ -1,27 +1,11 @@
 @import '../local/_colors.scss';
-#story-page-content {
+.story-page-content {
+  margin-bottom: 16px;
   div {
-    > * {
-      font-weight: normal;
-      font-size: 15px;
-    }
-
     &:not(:last-of-type) {
       margin-bottom: 16px;
     }
-
-    .story-text {
-      color: map_get($colors, black);
-      padding: 16px 0;
-    }
-
-    > h6 {
-      font-weight: bold;
-      color: map_get($colors, black);
-    }
   }
-
-  margin-bottom: 16px;
 }
 
 #story-page-container {
@@ -45,14 +29,10 @@
       margin-top: 10px;
       margin-bottom: 4px;
     }
-  }
 
-  @include breakpoint-1 {
-    padding: 0 24px 16px;
-  }
-  @include breakpoint-2 {
-    padding: 0 0 16px;
-    width: 100%;
+    div > span {
+      font-size: 16px;
+    }
   }
 }
 
