@@ -1,5 +1,6 @@
 export const NEW_MODERATE_STORY_INIT_DATA = {
     _id: '',
+    originalStory: '',
     additionalnfo: '',
     background: '',
     mail: '',

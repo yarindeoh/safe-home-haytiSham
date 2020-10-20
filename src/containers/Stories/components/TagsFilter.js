@@ -8,7 +8,10 @@ import { Loader } from 'components/Loader';
 export const TagsFilter = ({
     changeLocationByPath,
     defaultSelectedTags,
-    rootPath
+    rootPath,
+    storiesListClassName,
+    handleStoryClick,
+    displayEditImg
 }) => {
     const { t } = useTranslation();
     const {
@@ -62,6 +65,9 @@ export const TagsFilter = ({
                     tags={filterTagsIds}
                     changeLocationByPath={changeLocationByPath}
                     rootPath={rootPath}
+                    storiesListClassName={storiesListClassName}
+                    handleStoryClick={handleStoryClick}
+                    displayEditImg={displayEditImg}
                 />
             </Loader>
         </div>

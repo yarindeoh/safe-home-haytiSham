@@ -7,13 +7,11 @@ const LoginInput = ({
     label,
     value,
     required,
-    onChange,
+    onChange
 }) => {
     return (
-        <div className={"login-input-wrap"}>
-            <span className={"login-label"}>{label} </span>
+        <div className={'login-input-wrap'}>
             <input
-                className={"login-input"}
                 type={type}
                 name={name}
                 placeholder={placeholder}
@@ -21,6 +19,7 @@ const LoginInput = ({
                 required={required}
                 onChange={onChange}
             ></input>
+            <span>{label} </span>
         </div>
     );
 };

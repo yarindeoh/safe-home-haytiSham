@@ -350,4 +350,8 @@ footer {
     border-radius: 80px;
     max-width: 400px;
     margin-top: map_get($spaces, small);
+
+    &:focus{
+        outline: none;
+    }
   }

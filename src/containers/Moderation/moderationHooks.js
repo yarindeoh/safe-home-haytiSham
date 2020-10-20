@@ -13,6 +13,7 @@ import {
     filterObjByKey,
     getTagsAsArray
 } from 'services/general/generalHelpers';
+import { useHistory } from 'react-router';
 
 export function useModerationContext() {
     const context = useContext(ModerationContext);
@@ -63,13 +64,13 @@ export const useLoginSubmit = loginData => {
         async function postLogin() {
             try {
                 const serverData = await Api.postLogin(loginData);
-                sessionStorage.moderatorToken = serverData.token;
+                localStorage.setItem('moderatorToken', serverData.token);
                 dispatch({
                     type: SET_LOGGED_IN,
                     payload: true
                 });
             } catch (e) {
-                console.error(e);
+                window.alert(e);
             }
         }
         postLogin();
@@ -83,50 +84,71 @@ export const useLoginSubmit = loginData => {
 export const useModerationStories = () => {
     const { moderationState } = useModerationContext();
     const [data, setData] = useState({
-        stories: [],
-        hasMore: true,
-        page: 1,
-        init: false
+        storiesPerPage: undefined,
+        currentPage: 1,
+        totalPages: 0,
+        totalStories: 0
     });
-    const pageSize = 5;
+    const pageSize = 10;
 
-    async function getByPage() {
+    async function handlePageChange(event, page) {
         let result = await Api.getModerationStories(
             pageSize,
-            data.page,
+            page,
             'createdAt',
             'ASC'
         );
         let newData = { ...data };
-
-        if (data.page < result.pages) {
-            newData.page += 1;
-        } else if (data.page === result.pages) {
-            newData.hasMore = false;
-        }
-        newData.stories = [...newData.stories, ...result?.result];
+        newData.totalPages = result.pages;
+        newData.currentPage = page;
+        newData.totalStories = result.total;
+        newData.storiesPerPage = [...result?.result];
         setData(newData);
     }
 
     useEffect(() => {
         if (moderationState.loggedIn) {
-            getByPage();
+            handlePageChange(undefined, 1);
         }
     }, [moderationState.loggedIn]);
 
     return {
-        stories: data.stories,
-        hasMore: data.hasMore,
-        getByPage
+        stories: data.storiesPerPage,
+        currentPage: data.currentPage,
+        totalPages: data.totalPages,
+        totalStories: data.totalStories,
+        handlePageChange
     };
 };
 
-export const useModerationStory = (story, tagsMap) => {
+export const useEditModerationStory = () => {
+    let history = useHistory();
+
+    async function getModerationStory(id) {
+        let result = await Api.getStoryForEdit(id);
+        if (result !== undefined) {
+            let id =
+                result.originalStory !== null
+                    ? result.originalStory._id
+                    : result.moderatedStory?._id;
+            history.push(`/moderateStory/${id}`, result);
+        }
+    }
+
+    return {
+        getModerationStory
+    };
+};
+
+/////TODO need to change context and check original!==null
+
+export const useModerationStory = (moderatedStory, tagsMap) => {
     const { moderationState, dispatch } = useModerationContext();
     useEffect(() => {
-        if (story._id !== moderationState._id) {
-            const processedStory = extractFieldsFromObj(story, [
+        if (moderatedStory._id !== moderationState._id) {
+            const processedStory = extractFieldsFromObj(moderatedStory, [
                 '_id',
+                'originalStory',
                 'additionalnfo',
                 'background',
                 'mail',
@@ -140,7 +162,7 @@ export const useModerationStory = (story, tagsMap) => {
             ]);
             dispatch({
                 type: SET_MODERATE_STORY_DATA,
-                payload: { ...moderationState, ...processedStory }
+                payload: { ...NEW_MODERATE_STORY_INIT_DATA, ...processedStory }
             });
             dispatch({
                 type: SET_TAGS,
@@ -150,9 +172,9 @@ export const useModerationStory = (story, tagsMap) => {
     }, []);
 
     useEffect(() => {
-        if (story.tags?.length > 0) {
+        if (moderatedStory.tags?.length > 0) {
             let chosenTags = getTagsAsArray(
-                filterObjByKey(tagsMap, story.tags)
+                filterObjByKey(tagsMap, moderatedStory.tags)
             );
             dispatch({
                 type: SET_TAGS,
@@ -169,7 +191,9 @@ export const useModerateStorySubmit = () => {
     const [submitted, setSubmitted] = useState(false);
     let moderationDataToPost = { ...moderationState };
     delete moderationDataToPost.loggedIn;
-    moderationDataToPost.originalStory = moderationState._id;
+    if(moderationDataToPost.originalStory === ''){
+        moderationDataToPost.originalStory = moderationState._id;
+    }
     delete moderationDataToPost._id;
     moderationDataToPost.tags = getArrayOfTagsIds(moderationDataToPost.tags);
 
@@ -178,7 +202,7 @@ export const useModerateStorySubmit = () => {
 
         async function postData() {
             try {
-                await Api.postModerateStory(moderationDataToPost);
+                await Api.postAddModerateStory(moderationDataToPost);
                 dispatch({
                     type: SET_MODERATE_STORY_DATA,
                     payload: {

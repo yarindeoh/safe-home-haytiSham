@@ -1,7 +1,8 @@
-.login-view-container {
+.logged-in-view-container {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 67% 33%;
     grid-auto-flow: row;
+    justify-content: space-between;    
     min-height: 102vh; //This is important for infinite-scroll to work
 }
 
@@ -22,7 +23,7 @@
         font-size: 20px;
         text-align: center;
         color: map_get($colors, grey-500);
-        margin-bottom: 30px;
+        padding-bottom: 38px;
     }
 }
 
@@ -40,27 +41,118 @@
 
 .login-input-wrap{
     position: relative;
-    width: 100%;
-    border-bottom: 2px solid map_get($colors, purple-500);
-    padding-bottom: 8px;
-    margin-bottom: 30px;
+    padding-bottom: 38px;
+
+    > span{
+        position: absolute;
+        top:0;
+        right: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        color: map_get($colors, grey-700);
+        transition: .5s;
+        pointer-events: none;
+    }
+
+    > input{
+        display: block;
+        width: 100%;
+        background: transparent;
+        font-size: 16px;
+        color: map_get($colors, grey-500);
+        line-height: 1.2;
+        outline: none;
+        border: none;
+        overflow: visible;
+        padding-top: 3px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid map_get($colors, grey-600);
+
+        &:focus~span,
+        &:valid~span {
+            width: 100%;
+            top:-20px;
+            right: 0;
+            padding-bottom: 28px;
+            font-size: 13px;
+            color: map_get($colors, purple-500);
+        }
+
+        &:focus,
+        &:valid {
+            border-bottom: 2px solid map_get($colors, purple-500); 
+        }
+    }
+ 
 }
 
-.login-label{
-    font-size: 13px;
-    color: map_get($colors, purple-500);
-    line-height: 1.5;
+.separator{
+    padding: 17px;
 }
 
-.login-input{
-    display: block;
+.stories-list-admin{
+    padding: map_get($spaces, small);
+    border-top: 1px solid map_get($colors, grey-200);
+    grid-template-columns: 1fr;
+}
+
+.stories-admin{
+    grid-template-columns: 1fr;
+}
+
+
+.stories-to-moderated-container{
+    background-color: map_get($colors, white);
+    padding: 40px 40px;
+
+    > h1{
+        color: map_get($colors, grey-800); 
+        padding-bottom: 40px;
+        font-size: 22px;
+    }
+}
+
+.stories-to-moderated-table{ 
+    text-align: right;
+    border-collapse: collapse;
     width: 100%;
-    background: transparent;
-    font-size: 16px;
-    color: map_get($colors, grey-500);
-    line-height: 1.2;
-    padding-top: 3px;
-    outline: none;
-    border: none;
-    overflow: visible;
+    
+    > thead, tr, th {
+        font-size: 13px;
+        line-height: 17px;
+        color: map_get($colors, purple-700);
+        padding-left: 40px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid white;
+    }
+
+    > tbody, tr, td {
+        padding: 17px 0 17px 40px;
+        font-size: 15px;
+        color: map_get($colors, grey-900);
+        border-bottom: 1px solid map_get($colors, grey-1000);
+    }
+
+    >tbody{
+        cursor: pointer;
+    }
+}
+
+.pagination-ul{
+    direction: ltr;
+    justify-content: center;
+}
+
+.pagination-root{
+    padding: 40px;
+}
+
+.edit-icon-container{
+    position: relative;
+}
+
+.edit-icon{
+    position: absolute;
+    top: 17;
+    left: 0;
 }

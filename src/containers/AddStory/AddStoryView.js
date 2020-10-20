@@ -62,8 +62,8 @@ export const AddStoryView = withRoute(props => {
                             />
                             <Input
                                 name="mail"
-                                label={t('addStoryView.emailLabel')}
-                                placeholder={t('addStoryView.emailPlaceholder')}
+                                label={t('addStoryView.mailLabel')}
+                                placeholder={t('addStoryView.mailPlaceholder')}
                                 value={addStoryState?.mail}
                                 onChange={e => handleFiledChange(e, 'mail')}
                             />
@@ -81,23 +81,23 @@ export const AddStoryView = withRoute(props => {
                             <TextArea
                                 name="background"
                                 placeholder=""
-                                label={t('background')}
+                                label={t('addStoryView.backgroundLabel')}
                                 value={addStoryState?.background}
                                 onChange={e => handleFiledChange(e, 'background')}
                                 required
                             />
                             <TextArea
                                 name="storyContent"
-                                label={t('storyContent')}
-                                placeholder={t('storyContentPlaceholder')}
+                                label={t('addStoryView.storyContentLabel')}
+                                placeholder={t('addStoryView.storyContentPlaceholder')}
                                 value={addStoryState?.storyContent}
                                 onChange={e => handleFiledChange(e, 'storyContent')}
                                 required
                             />
                             <TextArea
                                 name="howDidYouManged"
-                                label={t('howDidYouManged')}
-                                placeholder={t('howDidYouMangedPlaceholder')}
+                                label={t('addStoryView.howDidYouMangedLabel')}
+                                placeholder={t('addStoryView.howDidYouMangedPlaceholder')}
                                 value={addStoryState?.howDidYouManged}
                                 onChange={e =>
                                     handleFiledChange(e, 'howDidYouManged')
@@ -105,8 +105,8 @@ export const AddStoryView = withRoute(props => {
                             />
                             <TextArea
                                 name="whatHelpedYou"
-                                label={t('whatHelpedYou')}
-                                placeholder={t('whatHelpedYouPlaceHolder')}
+                                label={t('addStoryView.whatHelpedYouLabel')}
+                                placeholder={t('addStoryView.whatHelpedYouPlaceHolder')}
                                 value={addStoryState?.whatHelpedYou}
                                 onChange={e =>
                                     handleFiledChange(e, 'whatHelpedYou')
@@ -114,25 +114,17 @@ export const AddStoryView = withRoute(props => {
                             />
                             <TextArea
                                 name="whatTriggeredChange"
-                                label={t('whatTriggeredChange')}
-                                placeholder={t('whatTriggeredChangePlaceHolder')}
+                                label={t('addStoryView.whatTriggeredChangeLabel')}
+                                placeholder={t('addStoryView.whatTriggeredChangePlaceHolder')}
                                 value={addStoryState?.whatTriggeredChange}
                                 onChange={e =>
                                     handleFiledChange(e, 'whatTriggeredChange')
                                 }
                             />
-                            {/*
-                        <TextArea
-                            name="quote"
-                            label={t('quote')}
-                            placeholder={t('quotePlaceHolder')}
-                            value={addStoryState?.quote}
-                            onChange={e => handleFiledChange(e, 'quote')}
-                        /> */}
                             <TextArea
                                 name="additionalnfo"
-                                placeholder={t('additionalnfoPlaceHolder')}
-                                label={t('additionalnfo')}
+                                placeholder={t('addStoryView.additionalnfoPlaceHolder')}
+                                label={t('addStoryView.additionalnfoLabel')}
                                 value={addStoryState?.additionalnfo}
                                 onChange={e =>
                                     handleFiledChange(e, 'additionalnfo')

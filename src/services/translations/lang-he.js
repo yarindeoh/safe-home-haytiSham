@@ -10,23 +10,9 @@ const he = {
             jealousy: 'קנאה'
         },
         storyName: 'שם הסיפור',
-        background:
-            'רקע* (מה היה טיב מערכת היחסים, מתי זה קרה, לאורך כמה זמן, גיל וכו׳)',
         whatTriggeredChange: 'איך הסיטואציה השתנתה',
-        howDidYouManged: 'איך התמודדתי עם המצב',
-        howDidYouMangedPlaceholder: 'ההתמודדות שלי...',
-        additionalnfo: 'בכמה משפטים, מה הכי היית רוצה לומר למי במצב דומה',
-        additionalnfoPlaceHolder: 'אני רוצה לומר ש...',
         image: 'תמונה',
         mail: 'אימייל',
-        whatHelpedYou: 'מה עזר לך להתמודד',
-        whatHelpedYouPlaceHolder: 'מאוד עזר לי ש...',
-        whatTriggeredChange: 'מה גרם לשינוי',
-        whatTriggeredChangePlaceHolder: 'השינוי התחיל ש...',
-        quote: 'ציטוט נבחר',
-        quotePlaceHolder: 'ציטוט מתוך הטקסט...',
-        storyContent: 'הסיפור שלי*',
-        storyContentPlaceholder: 'הסיפור שלי הוא...',
         additionalStories: 'עדויות נוספות',
         submitForm: 'שליחה',
         backFromForm: 'חזרה לדף הבית',
@@ -67,17 +53,32 @@ const he = {
             whatHelpedYou: 'מה עזר לך להתמודד?'
         },
         addStoryView: {
-            createdAt: 'נכתב ב: ',
+            createdAtLabel: 'נכתב ב: ',
             myConfession: 'העדות שלי',
             anonymity: `שימו לב! נעבור על כל עדות שתתקבל,ולא נוכל לפרסם פרטים מזהים של הפוגעים.
                     כמו כן, במידה ותשאירו פרטי קשר נשלח הודעה לאחר פרסום העדות.
            `,
             nameLabel: 'שם לפרסום העדות (שם מלא/אנונימי)*?',
             namePlaceholder: 'הוספת שם',
-            emailLabel: 'מייל/טלפון ליצירת קשר (לא חובה, לא יפורסם)',
-            emailPlaceholder: 'הוספת פרטי התקשרות',
+            mailLabel: 'מייל/טלפון ליצירת קשר (לא חובה, לא יפורסם)',
+            mailPlaceholder: 'הוספת פרטי התקשרות',
             contactLabel: 'שניצור איתך קשר לקבלת תמיכה?',
             contactNotes: 'אפשר גם ליצור קשר 24/7 דרך כפתור התמיכה',
+            backgroundLabel:
+                'רקע* (מה היה טיב מערכת היחסים, מתי זה קרה, לאורך כמה זמן, גיל וכו׳)',
+            storyContentLabel: 'הסיפור שלי*',
+            storyContentPlaceholder: 'הסיפור שלי הוא...',
+            howDidYouMangedLabel: 'איך התמודדתי עם המצב',
+            howDidYouMangedPlaceholder: 'ההתמודדות שלי...',
+            whatHelpedYouLabel: 'מה עזר לך להתמודד',
+            whatHelpedYouPlaceHolder: 'מאוד עזר לי ש...',
+            whatTriggeredChangeLabel: 'איך הסיטואציה השתנתה?',
+            whatTriggeredChangePlaceHolder: 'השינוי התחיל ש...',
+            additionalnfoLabel:
+                'בכמה משפטים, מה הכי היית רוצה לומר למי במצב דומה',
+            additionalnfoPlaceHolder: 'אני רוצה לומר ש...',
+            quoteLabel: 'ציטוט נבחר',
+            quotePlaceHolder: 'ציטוט מתוך הטקסט...',
             manualSubmition: 'אפשר לדלג ולמלא בכתב או:',
             uploadVideo: 'להעלות סרטון',
             uploadRecording: 'להעלות הקלטה',
@@ -103,8 +104,16 @@ const he = {
             userName: 'שם משתמש',
             password: 'סיסמא',
             loginButtonText: 'אישור',
-            listToModerate: 'רשימת הסיפורים שדורשים עריכה',
-            listAllStories: 'רשימת כל הסיפורים'
+            listToModerate: 'העדויות שדורשות עריכה (סה"כ {{num}})',
+            listAllStories: 'תצוגת העדויות שמפורסמות באתר לפי נושאים',
+            table: {
+                date: 'זמן שליחת העדות',
+                name: 'שם נותן העדות',
+                mail: 'אמצעי ליצירת קשר',
+                contact: 'האם ביקשו ליצור קשר?',
+                yes: 'כן',
+                no: 'לא'
+            }
         },
         moderation: {
             header: 'עריכת העדות',

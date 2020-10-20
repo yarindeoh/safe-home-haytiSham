@@ -4,7 +4,7 @@ import { Input } from 'components/Input';
 import { Radio } from 'components/Radio';
 import { TextArea } from 'components/TextArea';
 import { useTranslation } from 'react-i18next';
-import { useCheckedContact } from '../containers/AddStory/addStoryHooks';
+import { useCheckedContact } from 'containers/AddStory/addStoryHooks';
 
 export const TestimonyForm = withRoute(
     ({
@@ -19,11 +19,11 @@ export const TestimonyForm = withRoute(
 
         return (
             <>
-                <div className={'testimony-form'}>
-                    <form onSubmit={!disabled ? handleSubmit : undefined}>
+                <div className={'testimony-form'} style={{padding:'0 50px'}}>
+                    <form onSubmit={!disabled ? handleSubmit : undefined} id={'addStoryForm'}>
                         {formData?.createdAt && (
                             <div>
-                                <div>{`${t('addStoryView.createdAt')}  ${
+                                <div>{`${t('addStoryView.createdAtLabel')}  ${
                                     formData.createdAt
                                 }`}</div>
                             </div>
@@ -39,8 +39,8 @@ export const TestimonyForm = withRoute(
                         />
                         <Input
                             name="mail"
-                            label={t('addStoryView.emailLabel')}
-                            placeholder={t('addStoryView.emailPlaceholder')}
+                            label={t('addStoryView.mailLabel')}
+                            placeholder={t('addStoryView.mailPlaceholder')}
                             value={formData?.mail}
                             onChange={e => handleFiledChange(e, 'mail')}
                             disabled={disabled}
@@ -63,7 +63,7 @@ export const TestimonyForm = withRoute(
                         <TextArea
                             name="background"
                             placeholder=""
-                            label={t('background')}
+                            label={t('addStoryView.backgroundLabel')}
                             value={formData?.background}
                             onChange={e => handleFiledChange(e, 'background')}
                             disabled={disabled}
@@ -72,8 +72,10 @@ export const TestimonyForm = withRoute(
 
                         <TextArea
                             name="storyContent"
-                            label={t('storyContent')}
-                            placeholder={t('storyContentPlaceholder')}
+                            label={t('addStoryView.storyContentLabel')}
+                            placeholder={t(
+                                'addStoryView.storyContentPlaceholder'
+                            )}
                             value={formData?.storyContent}
                             onChange={e => handleFiledChange(e, 'storyContent')}
                             disabled={disabled}
@@ -81,8 +83,10 @@ export const TestimonyForm = withRoute(
                         />
                         <TextArea
                             name="howDidYouManged"
-                            label={t('howDidYouManged')}
-                            placeholder={t('howDidYouMangedPlaceholder')}
+                            label={t('addStoryView.howDidYouMangedLabel')}
+                            placeholder={t(
+                                'addStoryView.howDidYouMangedPlaceholder'
+                            )}
                             value={formData?.howDidYouManged}
                             onChange={e =>
                                 handleFiledChange(e, 'howDidYouManged')
@@ -92,8 +96,10 @@ export const TestimonyForm = withRoute(
 
                         <TextArea
                             name="whatHelpedYou"
-                            label={t('whatHelpedYou')}
-                            placeholder={t('whatHelpedYouPlaceHolder')}
+                            label={t('addStoryView.whatHelpedYouLabel')}
+                            placeholder={t(
+                                'addStoryView.whatHelpedYouPlaceHolder'
+                            )}
                             value={formData?.whatHelpedYou}
                             onChange={e =>
                                 handleFiledChange(e, 'whatHelpedYou')
@@ -103,8 +109,10 @@ export const TestimonyForm = withRoute(
 
                         <TextArea
                             name="whatTriggeredChange"
-                            label={t('whatTriggeredChange')}
-                            placeholder={t('whatTriggeredChangePlaceHolder')}
+                            label={t('addStoryView.whatTriggeredChangeLabel')}
+                            placeholder={t(
+                                'addStoryView.whatTriggeredChangePlaceHolder'
+                            )}
                             value={formData?.whatTriggeredChange}
                             onChange={e =>
                                 handleFiledChange(e, 'whatTriggeredChange')
@@ -114,8 +122,10 @@ export const TestimonyForm = withRoute(
 
                         <TextArea
                             name="additionalnfo"
-                            placeholder={t('additionalnfoPlaceHolder')}
-                            label={t('additionalnfo')}
+                            label={t('addStoryView.additionalnfoLabel')}
+                            placeholder={t(
+                                'addStoryView.additionalnfoPlaceHolder'
+                            )}
                             value={formData?.additionalnfo}
                             onChange={e =>
                                 handleFiledChange(e, 'additionalnfo')
@@ -126,8 +136,8 @@ export const TestimonyForm = withRoute(
                         {moderatedForm && (
                             <TextArea
                                 name="quote"
-                                label={t('quote')}
-                                placeholder={t('quotePlaceHolder')}
+                                label={t('addStoryView.quoteLabel')}
+                                placeholder={t('addStoryView.quotePlaceHolder')}
                                 value={formData?.quote}
                                 onChange={e => handleFiledChange(e, 'quote')}
                                 disabled={disabled}

@@ -21,7 +21,7 @@ export const App = () => {
         <RouterContext.Provider history={history}>
             <AddStoryProvider>
                 <BrowserRouter>
-                    <ScrollToTop/>
+                    <ScrollToTop />
                     <Switch>
                         <Route path="/" exact={true} component={StoriesView} />
                         <Route path="/story" component={StoryView} />
