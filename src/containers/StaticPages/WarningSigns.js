@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Skeleton from 'src/components/Skeleton';
+import Skeleton from 'components/Skeleton';
+import { Content } from 'components/Content';
 import {
     intro,
     how,
@@ -60,7 +61,7 @@ export const WarningSigns = () => {
 
     return (
         <Skeleton>
-            <div className="warning-signs">
+            <Content className="warning-signs">
                 <h1>{t('warningSigns.header')}</h1>
                 {introSection}
                 {divider}
@@ -71,7 +72,7 @@ export const WarningSigns = () => {
                 {renderSection('how', howSection)}
                 {renderSection('violenceType', violenceTypeSection)}
                 {phonesSection}
-            </div>
+            </Content>
         </Skeleton>
     );
 };

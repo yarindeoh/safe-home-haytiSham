@@ -1,110 +1,95 @@
 @import '../local/_colors.scss';
 
-#testimony-form {
-  background-color: map_get($colors, grey-300);
-  box-sizing: border-box;
-  padding: 6px 24px 30px;
-  display: flex;
-  flex-direction: column;
-  ::placeholder {
-    color:map_get($colors, purple-400);
-}
-  
-  header {
-    position: static;
-    margin: 10px 0;
-    background-color: map_get($colors, grey-300);
+.testimony-form {
+  margin-bottom: map_get($spaces, medium);
+
+  &.submitted{
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: map_get($spaces, small);
+  }
+
+  h2 {
+    font-weight: normal;
+    margin-bottom: map_get($spaces, small);
+  }
+
+  #addStoryForm {
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    
-    > h1 {
-      color: map_get($colors, black);
-      font-weight: normal;
-      font-size: 22px;
-      font-family: 'Assistant';
-      margin-right: 20px;
+    flex-direction: column;
+    align-items: center;
+
+    & > div {
+      width: 100%;
     }
 
-    .back-arrow-icon {
-      $size: 22px;
-      height: $size;
-    }
-  }
+    & > .question {
+      margin-bottom: map_get($spaces, x-large);
 
-  input {
-    background-color: map_get($colors, grey-300);
-  }
+      & > label {
+        color: map_get($colors, black);
+        font-weight: bold;
+        padding: 0;
 
-  .multiply-answer-area{
-      background-color: map_get($colors, white);
-
-  .question, .question label, label{
-    
-      margin-bottom: 4px;
-    }
-      textarea{
-        width: 100%;
+        div {
+          margin-top: map_get($spaces, small);
+          input {
+            width: 100%;
+            max-width: 400px;
+            line-height: 28px;
+            background: transparent;
+            border-bottom: 1px solid map_get($colors, purple-500);
+            &:focus {
+              outline: none;
+            }
+          }
+        }
       }
-       margin-bottom: 16px;
-  }
 
-  .submitted-success-heading{
-    color: map_get($colors, black);
-    font-weight: normal;
-    font-size: 22px;
-    font-family: 'Assistant';
-    margin-top: 25px;
-  }
-  
-  .submitted-success-text{
-    font-weight: normal;
-    font-size: 18px;
-    max-width: 100%;
-    margin: 25px 0 25px;
-  }
+      & > div {
+        margin-top: 16px;
+      }
 
-  > h3 {
-    font-weight: normal;
-    font-size: 15px;
-    max-width: 90%;
-    color: map_get($colors, black);
-    margin: 17px 0 10px;
-  }
+      .radio-input-wrapper {
+        padding: 0;
+        color: map_get($colors, black);
+        margin-left: map_get($spaces, x-small);
 
-  > form {
-   * {
-     resize: none;
-   }
-
-    label div {
-      width: 271px;
-      margin-top: 12px;
-      resize: none;
-      border-bottom: 1px solid map_get($colors, purple-400);
+        input {
+          margin-left: map_get($spaces, x-small);
+        }
+      }
     }
 
-    p {
-       margin-bottom: 16px;
+    .multiply-answer-area {
+      &:not(:last-of-type){
+        margin-bottom: map_get($spaces, small);
+      }
+
+      .question {
+        padding: 0;
+        font-weight: bold;
+        display: block;
+        margin-bottom: map_get($spaces, x-small);
+      }
+
+      .textarea-wrapper {
+        border-radius: 8px;
+        background: #f4f0f0;
+        padding: 8px;
+      }
+
+      textarea {
+        width: 100%;
+        background: transparent;
+        resize: vertical;
+
+        &:focus {
+          outline: none;
+        }
+      }
     }
-    .question, .question label, label{
-      font-size: 15px;
-      font-weight: bold;
-      color: map_get($colors, black);
-      margin-bottom: 25px;
-      padding: 0;
-      margin-left: 22px;
-
-    }
-
-      input[type="radio"]{
-      margin-left:10px
-  }
-
-  }
-  .optionContainer li:hover,
-  .optionContainer .highlight {
-    background: map_get($colors, purple-500);
-    color: map_get($colors, white);
   }
 }

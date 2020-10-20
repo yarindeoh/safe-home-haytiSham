@@ -104,12 +104,13 @@
 
 .Content {
   padding-top: 62px;
-    @include breakpoint-2 {
-        width: 85%;
+    @include desktop {
+        width: 65%;
+        max-width: 1170px;
         margin: auto;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        color: map_get($colors, black);
     }
 }
 
@@ -122,7 +123,7 @@
     text-align: center;
     font-size: 18px;
 
-    @include breakpoint-2{
+    @include desktop{
         display: none;
     }
 }
@@ -145,7 +146,7 @@
         padding: 18px 24px 32px;
     }
 
-    @include breakpoint-2{
+    @include desktop{
         padding: 18px 0 32px;
     }
 }
@@ -263,7 +264,6 @@ footer {
     }
 }
 
-
 .stories {
     display: grid;
     grid-gap: 10px;
@@ -272,7 +272,7 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    @include breakpoint-2 {
+    @include desktop {
         grid-template-columns: 1fr 1fr;
     }
 }
@@ -280,6 +280,64 @@ footer {
 .disabled-area{
     opacity: 0.7;
     pointer-events: none;
+}
+
+.content-wrapper {
+    align-self: center;
+
+    .align-right {
+        align-self: start;
+    }
+
+    @include breakpoint-1 {
+        padding: 0 24px;
+        h1 {
+            font-size: 20px;
+        }
+
+        h2,
+        p,
+        label {
+            font-size: 16px;
+        }
+
+        textarea,
+        input {
+            font-size: 16px;
+            ::placeholder {
+                font-size: 16px;
+            }
+        }
+    }
+
+    @include desktop {
+        h1 {
+            font-size: 24px;
+        }
+
+        h2,
+        p,
+        label {
+            font-size: 20px;
+        }
+
+        textarea,
+        input {
+            font-size: 20px;
+            ::placeholder {
+                font-size: 20px;
+            }
+        }
+    }
+
+    @include breakpoint-3 {
+        width: 80%;
+        max-width: 800px;
+
+        &.full-width{
+            width: 100%;
+        }
+    }
 }
 
 .submit-button {
@@ -290,6 +348,8 @@ footer {
     font-size: 22px;
     color: map_get($colors, white);
     border-radius: 80px;
+    max-width: 400px;
+    margin-top: map_get($spaces, small);
 
     &:focus{
         outline: none;

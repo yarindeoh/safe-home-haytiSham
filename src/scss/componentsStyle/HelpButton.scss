@@ -25,7 +25,7 @@
     padding-bottom: 7px;
   }
 
-  @include breakpoint-2{
+  @include desktop{
     display: none;
   }
 }

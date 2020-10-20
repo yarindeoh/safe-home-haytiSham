@@ -19,8 +19,8 @@ export const TestimonyForm = withRoute(
 
         return (
             <>
-                <div id={'testimony-form'}>
-                    <form onSubmit={!disabled ? handleSubmit : undefined}>
+                <div className={'testimony-form'} style={{padding:'0 50px'}}>
+                    <form onSubmit={!disabled ? handleSubmit : undefined} id={'addStoryForm'}>
                         {formData?.createdAt && (
                             <div>
                                 <div>{`${t('addStoryView.createdAtLabel')}  ${
