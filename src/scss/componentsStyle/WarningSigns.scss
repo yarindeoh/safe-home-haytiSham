@@ -19,6 +19,7 @@
   .phones {
     strong {
       display: block;
+      color: map_get($colors, black);
     }
   }
 }

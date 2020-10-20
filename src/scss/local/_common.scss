@@ -296,8 +296,17 @@ footer {
         }
 
         h2,
-        p {
+        p,
+        label {
             font-size: 16px;
+        }
+
+        textarea,
+        input {
+            font-size: 16px;
+            ::placeholder {
+                font-size: 16px;
+            }
         }
     }
 
@@ -307,8 +316,17 @@ footer {
         }
 
         h2,
-        p {
+        p,
+        label {
             font-size: 20px;
+        }
+
+        textarea,
+        input {
+            font-size: 20px;
+            ::placeholder {
+                font-size: 20px;
+            }
         }
     }
 
@@ -330,4 +348,6 @@ footer {
     font-size: 22px;
     color: map_get($colors, white);
     border-radius: 80px;
+    max-width: 400px;
+    margin-top: map_get($spaces, small);
   }

@@ -33,7 +33,7 @@ export const ModerationView = withRoute(props => {
     return (
         <>
             {submitted ? (
-                <div id={'testimony-form'}>
+                <div className={'testimony-form'}>
                     <div className="submitted-success-heading">
                         {t('moderation.submittedSuccessHeading')}
                     </div>
@@ -48,7 +48,7 @@ export const ModerationView = withRoute(props => {
                     </button>
                 </div>
             ) : (
-                <div id={'testimony-form'}>
+                <div className={'testimony-form'}>
                     <header>
                         <BackArrowIcon
                             className={'back-arrow-icon'}
