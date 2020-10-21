@@ -14,16 +14,16 @@ import { useBack } from 'services/general/generalHooks';
 import { useTags } from 'containers/Stories/storiesHooks';
 
 import BackArrowIcon from 'src/media/icons/backArrow.svg';
-import '../../scss/componentsStyle/moderationView.scss';
-import { getTagsAsArray } from '../../services/general/generalHelpers';
+import { getTagsAsArray } from 'services/general/generalHelpers';
 import { Multiselect } from 'multiselect-react-dropdown';
+import '../../scss/componentsStyle/moderationView.scss';
 
 export const ModerationView = withRoute(props => {
     const { t } = useTranslation();
     const { moderationState } = useModerationContext();
     const { tagsMap } = useTags();
     const tags = getTagsAsArray(tagsMap);
-    const { handleFiledChange } = useModerationFiledChange();
+    const { handleFieldChange } = useModerationFiledChange();
     const { onSelect, onRemove } = useSelectedTags();
     const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit();
     const { back } = useBack(props, setSubmitted, '/admin');
@@ -71,7 +71,7 @@ export const ModerationView = withRoute(props => {
                         <div>
                             <TestimonyForm
                                 handleSubmit={handleSubmit}
-                                handleFiledChange={handleFiledChange}
+                                handleFieldChange={handleFieldChange}
                                 formData={{ ...moderationState }}
                                 moderatedForm
                             />

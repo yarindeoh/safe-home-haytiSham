@@ -9,7 +9,7 @@ import {
 
 export const LoginForm = withRoute(props => {
     const { t } = useTranslation();
-    const { loginData, handleFiledChange } = useLoginFiledChange();
+    const { loginData, handleFieldChange } = useLoginFiledChange();
     const { handleLogin } = useLoginSubmit(loginData);
 
     return (
@@ -22,7 +22,7 @@ export const LoginForm = withRoute(props => {
                         type="text"
                         label={t('login.userName')}
                         value={loginData.userName}
-                        onChange={e => handleFiledChange(e, 'userName')}
+                        onChange={e => handleFieldChange(e, 'userName')}
                         required
                     />
                     <LoginInput
@@ -30,7 +30,7 @@ export const LoginForm = withRoute(props => {
                         type="password"
                         label={t('login.password')}
                         value={loginData.password}
-                        onChange={e => handleFiledChange(e, 'password')}
+                        onChange={e => handleFieldChange(e, 'password')}
                         required
                     />
                     <div className={'separator'}></div>

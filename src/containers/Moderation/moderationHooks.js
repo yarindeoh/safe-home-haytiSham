@@ -27,7 +27,7 @@ export function useModerationContext() {
 
 export const useLoginFiledChange = () => {
     const [loginData, setLoginData] = useState({ userName: '', password: '' });
-    const handleFiledChange = (e, filed) => {
+    const handleFieldChange = (e, filed) => {
         let newLoginData = { ...loginData };
         newLoginData[filed] = e.target.value;
         setLoginData(newLoginData);
@@ -35,13 +35,13 @@ export const useLoginFiledChange = () => {
 
     return {
         loginData,
-        handleFiledChange
+        handleFieldChange
     };
 };
 
 export const useModerationFiledChange = () => {
     const { moderationState, dispatch } = useModerationContext();
-    const handleFiledChange = (e, filed) => {
+    const handleFieldChange = (e, filed) => {
         let newModerationState = { ...moderationState };
         newModerationState[filed] = e.target.value;
         dispatch({
@@ -51,7 +51,7 @@ export const useModerationFiledChange = () => {
     };
 
     return {
-        handleFiledChange
+        handleFieldChange
     };
 };
 

@@ -19,7 +19,7 @@ export const AddStoryView = withRoute(props => {
     const { addStoryState } = useAddStoryContext();
     const { t } = useTranslation();
     const { checkedContact, handleCheckedContact } = useCheckedContact();
-    const { handleFiledChange } = useFiledChange();
+    const { handleFieldChange } = useFiledChange();
     const { submitted, setSubmitted, handleSubmit } = useSubmit();
     const { back } = useBack(props, setSubmitted);
 
@@ -57,7 +57,7 @@ export const AddStoryView = withRoute(props => {
                                 label={t('addStoryView.nameLabel')}
                                 placeholder={t('addStoryView.namePlaceholder')}
                                 value={addStoryState?.name}
-                                onChange={e => handleFiledChange(e, 'name')}
+                                onChange={e => handleFieldChange(e, 'name')}
                                 required
                             />
                             <Input
@@ -65,7 +65,7 @@ export const AddStoryView = withRoute(props => {
                                 label={t('addStoryView.mailLabel')}
                                 placeholder={t('addStoryView.mailPlaceholder')}
                                 value={addStoryState?.mail}
-                                onChange={e => handleFiledChange(e, 'mail')}
+                                onChange={e => handleFieldChange(e, 'mail')}
                             />
                             <Radio
                                 name="contact"
@@ -83,7 +83,7 @@ export const AddStoryView = withRoute(props => {
                                 placeholder=""
                                 label={t('addStoryView.backgroundLabel')}
                                 value={addStoryState?.background}
-                                onChange={e => handleFiledChange(e, 'background')}
+                                onChange={e => handleFieldChange(e, 'background')}
                                 required
                             />
                             <TextArea
@@ -91,7 +91,7 @@ export const AddStoryView = withRoute(props => {
                                 label={t('addStoryView.storyContentLabel')}
                                 placeholder={t('addStoryView.storyContentPlaceholder')}
                                 value={addStoryState?.storyContent}
-                                onChange={e => handleFiledChange(e, 'storyContent')}
+                                onChange={e => handleFieldChange(e, 'storyContent')}
                                 required
                             />
                             <TextArea
@@ -100,7 +100,7 @@ export const AddStoryView = withRoute(props => {
                                 placeholder={t('addStoryView.howDidYouMangedPlaceholder')}
                                 value={addStoryState?.howDidYouManged}
                                 onChange={e =>
-                                    handleFiledChange(e, 'howDidYouManged')
+                                    handleFieldChange(e, 'howDidYouManged')
                                 }
                             />
                             <TextArea
@@ -118,7 +118,7 @@ export const AddStoryView = withRoute(props => {
                                 placeholder={t('addStoryView.whatTriggeredChangePlaceHolder')}
                                 value={addStoryState?.whatTriggeredChange}
                                 onChange={e =>
-                                    handleFiledChange(e, 'whatTriggeredChange')
+                                    handleFieldChange(e, 'whatTriggeredChange')
                                 }
                             />
                             <TextArea
@@ -127,7 +127,7 @@ export const AddStoryView = withRoute(props => {
                                 label={t('addStoryView.additionalnfoLabel')}
                                 value={addStoryState?.additionalnfo}
                                 onChange={e =>
-                                    handleFiledChange(e, 'additionalnfo')
+                                    handleFieldChange(e, 'additionalnfo')
                                 }
                             />
                             <input
