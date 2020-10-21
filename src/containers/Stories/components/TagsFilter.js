@@ -20,7 +20,7 @@ export const TagsFilter = ({
         isDisplayMoreTags,
         changeDisplayMoreTags,
         unselectAllTags
-    } = useTags(defaultSelectedTags);
+    } = useTags();
     const filterTagsIds = useMemo(() =>
         tagsData
             ? Object.keys(tagsData).filter(tagId => tagsData[tagId].selected, [

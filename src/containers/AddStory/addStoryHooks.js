@@ -34,14 +34,14 @@ export const useCheckedContact = () => {
 
 export const useFiledChange = () => {
     const { addStoryState, dispatch } = useAddStoryContext();
-    const handleFiledChange = (e, filed) => {
+    const handleFieldChange = (e, filed) => {
         let newAddStoryData = { ...addStoryState };
         newAddStoryData[filed] = e.target.value;
         dispatch({ type: SET_STORY_DATA, payload: newAddStoryData });
     };
 
     return {
-        handleFiledChange
+        handleFieldChange
     };
 };
 

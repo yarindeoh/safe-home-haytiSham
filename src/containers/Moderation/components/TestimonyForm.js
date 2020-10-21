@@ -9,7 +9,7 @@ import { useCheckedContact } from 'containers/AddStory/addStoryHooks';
 export const TestimonyForm = withRoute(
     ({
         handleSubmit,
-        handleFiledChange,
+        handleFieldChange,
         formData,
         disabled,
         moderatedForm
@@ -33,7 +33,7 @@ export const TestimonyForm = withRoute(
                             label={t('addStoryView.nameLabel')}
                             placeholder={t('addStoryView.namePlaceholder')}
                             value={formData?.name}
-                            onChange={e => handleFiledChange(e, 'name')}
+                            onChange={e => handleFieldChange(e, 'name')}
                             disabled={disabled}
                             required
                         />
@@ -42,7 +42,7 @@ export const TestimonyForm = withRoute(
                             label={t('addStoryView.mailLabel')}
                             placeholder={t('addStoryView.mailPlaceholder')}
                             value={formData?.mail}
-                            onChange={e => handleFiledChange(e, 'mail')}
+                            onChange={e => handleFieldChange(e, 'mail')}
                             disabled={disabled}
                         />
                         {!moderatedForm && (
@@ -65,7 +65,7 @@ export const TestimonyForm = withRoute(
                             placeholder=""
                             label={t('addStoryView.backgroundLabel')}
                             value={formData?.background}
-                            onChange={e => handleFiledChange(e, 'background')}
+                            onChange={e => handleFieldChange(e, 'background')}
                             disabled={disabled}
                             required
                         />
@@ -77,7 +77,7 @@ export const TestimonyForm = withRoute(
                                 'addStoryView.storyContentPlaceholder'
                             )}
                             value={formData?.storyContent}
-                            onChange={e => handleFiledChange(e, 'storyContent')}
+                            onChange={e => handleFieldChange(e, 'storyContent')}
                             disabled={disabled}
                             required
                         />
@@ -89,7 +89,7 @@ export const TestimonyForm = withRoute(
                             )}
                             value={formData?.howDidYouManged}
                             onChange={e =>
-                                handleFiledChange(e, 'howDidYouManged')
+                                handleFieldChange(e, 'howDidYouManged')
                             }
                             disabled={disabled}
                         />
@@ -102,7 +102,7 @@ export const TestimonyForm = withRoute(
                             )}
                             value={formData?.whatHelpedYou}
                             onChange={e =>
-                                handleFiledChange(e, 'whatHelpedYou')
+                                handleFieldChange(e, 'whatHelpedYou')
                             }
                             disabled={disabled}
                         />
@@ -115,7 +115,7 @@ export const TestimonyForm = withRoute(
                             )}
                             value={formData?.whatTriggeredChange}
                             onChange={e =>
-                                handleFiledChange(e, 'whatTriggeredChange')
+                                handleFieldChange(e, 'whatTriggeredChange')
                             }
                             disabled={disabled}
                         />
@@ -128,7 +128,7 @@ export const TestimonyForm = withRoute(
                             )}
                             value={formData?.additionalnfo}
                             onChange={e =>
-                                handleFiledChange(e, 'additionalnfo')
+                                handleFieldChange(e, 'additionalnfo')
                             }
                             disabled={disabled}
                         />
@@ -139,7 +139,7 @@ export const TestimonyForm = withRoute(
                                 label={t('addStoryView.quoteLabel')}
                                 placeholder={t('addStoryView.quotePlaceHolder')}
                                 value={formData?.quote}
-                                onChange={e => handleFiledChange(e, 'quote')}
+                                onChange={e => handleFieldChange(e, 'quote')}
                                 disabled={disabled}
                             />
                         )}

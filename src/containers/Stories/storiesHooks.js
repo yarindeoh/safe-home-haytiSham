@@ -6,27 +6,33 @@ import { getSlicedTagsObj } from 'services/general/generalHelpers';
 
 export const useTags = defaultSelectedTags => {
     const { localState: tags } = useFetchApiData(Api.getTagsMap, []);
+    const [isDisplayMoreTags, setIsDisplayMoreTags] = useState(false);
     const { tagsData, changeTagSelected, unselectAllTags } = useSelectedTags(
         tags,
         defaultSelectedTags
     );
-    const {
-        isDisplayMoreTags,
-        changeDisplayMoreTags,
-        getDisplayedTags
-    } = useShowMoreTags(tags);
-
+    const getDisplayedTags = useCallback(
+        tags =>
+            isDisplayMoreTags ? tags : tags && getSlicedTagsObj(tags, 0, 5),
+        [isDisplayMoreTags]
+    );
     return {
         tagsMap: tags,
-        tagsData: getDisplayedTags(tagsData),
         changeTagSelected,
         isDisplayMoreTags,
-        changeDisplayMoreTags,
-        unselectAllTags
+        unselectAllTags,
+        changeDisplayMoreTags: useCallback(() => {
+            setIsDisplayMoreTags(showMoreTags => !showMoreTags);
+        }, []),
+        tagsData: getDisplayedTags(tagsData)
     };
 };
 
 export const useSelectedTags = (tags, defaultSelectedTags = []) => {
+    const [tagsData, setTagsData] = useState({});
+    useEffect(() => {
+        setTagsData(generateTagsData(tags));
+    }, [tags]);
     const generateTagsData = useCallback(
         tags =>
             tags
@@ -41,31 +47,22 @@ export const useSelectedTags = (tags, defaultSelectedTags = []) => {
                       return accumulator;
                   }, {})
                 : null,
-        []
+        [tags]
     );
-
-    const [tagsData, setTagsData] = useState();
-
-    useEffect(() => {
-        setTagsData(generateTagsData(tags));
-    }, [tags]);
 
     return {
         tagsData,
         unselectAllTags: useCallback(
             () =>
                 setTagsData(prevTagsData => {
-                    return Object.keys(prevTagsData).reduce(
-                        (accumelator, tag) => {
-                            accumelator[tag] = {
-                                ...prevTagsData[tag],
-                                selected: false
-                            };
+                    return Object.keys(prevTagsData).reduce((acc, tag) => {
+                        acc[tag] = {
+                            ...prevTagsData[tag],
+                            selected: false
+                        };
 
-                            return accumelator;
-                        },
-                        {}
-                    );
+                        return acc;
+                    }, {});
                 }),
             []
         ),
@@ -81,21 +78,6 @@ export const useSelectedTags = (tags, defaultSelectedTags = []) => {
                     };
                 }),
             []
-        )
-    };
-};
-
-export const useShowMoreTags = () => {
-    const [isDisplayMoreTags, setIsDisplayMoreTags] = useState(false);
-    return {
-        isDisplayMoreTags,
-        changeDisplayMoreTags: useCallback(() => {
-            setIsDisplayMoreTags(showMoreTags => !showMoreTags);
-        }, []),
-        getDisplayedTags: useCallback(
-            tags =>
-                isDisplayMoreTags ? tags : tags && getSlicedTagsObj(tags, 0, 5),
-            [isDisplayMoreTags]
         )
     };
 };
