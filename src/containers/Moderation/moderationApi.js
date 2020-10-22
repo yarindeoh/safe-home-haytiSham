@@ -13,10 +13,6 @@ const Api = {
     postAddModerateStory: data => {
         return post(baseUrl('addModerateStory'), data, { no_result: true });
     },
-    //TODO: need to change after Implement API
-    postEditModerateStory: data => {
-        return post(baseUrl('editModerateStory'), data, { no_result: true });
-    },
     getModerationStories: (pageSize, page, sortField, sortDirection) => {
         return get(
             baseUrl(
