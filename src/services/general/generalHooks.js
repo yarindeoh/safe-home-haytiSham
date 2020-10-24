@@ -1,15 +1,5 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getBreakpoint } from './breakpoints';
-
-export function useSwitch() {
-    const [isEnable, setIsEnable] = useState(true);
-    const changeSwitch = useCallback(
-        () => setIsEnable(prevEnableTags => !prevEnableTags),
-        []
-    );
-
-    return { isEnable, changeSwitch };
-}
 
 export const useBack = (props, setSubmitted, path = '/') => {
     const back = e => {
@@ -49,3 +39,23 @@ export function useResize() {
 
     return breakpoint;
 }
+
+// function usePagination(pages, pageNumber) {
+//     const [currentPage, setCurrentPage] = useState(1);
+//     const [hasMore, setHasMore] = useState(true);
+//     useEffect(() => {
+//         if (pageNumber < pages) {
+//             setCurrentPage(currentPage + 1);
+//             setHasMore(true);
+//         } else if (pageNumber === pages) {
+//             setCurrentPage(pageNumber);
+//             setHasMore(false);
+//         }
+//     }, [pageNumber, pages]);
+//
+//     return {
+//         pageNumber,
+//         pages,
+//         hasMore
+//     };
+// }

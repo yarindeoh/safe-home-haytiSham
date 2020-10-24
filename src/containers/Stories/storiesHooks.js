@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { useFetchApiData } from 'services/general/generalHooks';
 
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
+import { PAGE_SIZE } from './storiesConstants';
 
 export const useTags = defaultSelectedTags => {
     const { localState: tags } = useFetchApiData(Api.getTagsMap, []);
@@ -28,44 +29,36 @@ export const useTags = defaultSelectedTags => {
     };
 };
 
-export const useSelectedTags = (tags, defaultSelectedTags = []) => {
+export const useSelectedTags = tags => {
     const [tagsData, setTagsData] = useState({});
-    useEffect(() => {
-        setTagsData(generateTagsData(tags));
-    }, [tags]);
     const generateTagsData = useCallback(
         tags =>
             tags
                 ? Object.keys(tags).reduce((accumulator, tagId) => {
-                      const tagIdNumber = parseInt(tagId);
                       accumulator[tagId] = {
                           value: tags[tagId],
-                          selected: tagIdNumber
-                              ? defaultSelectedTags.indexOf(tagIdNumber) > -1
-                              : false
+                          selected: false
                       };
                       return accumulator;
                   }, {})
                 : null,
         [tags]
     );
-
+    useEffect(() => {
+        setTagsData(generateTagsData(tags));
+    }, [tags]);
     return {
         tagsData,
-        unselectAllTags: useCallback(
-            () =>
-                setTagsData(prevTagsData => {
-                    return Object.keys(prevTagsData).reduce((acc, tag) => {
-                        acc[tag] = {
-                            ...prevTagsData[tag],
-                            selected: false
-                        };
-
-                        return acc;
-                    }, {});
-                }),
-            []
-        ),
+        unselectAllTags: useCallback(() => {
+            setTagsData(prevTagsData => {
+                let tags = { ...prevTagsData };
+                return Object.keys(tags).map(id => {
+                    return Object.assign({}, tags[id], {
+                        selected: false
+                    });
+                });
+            });
+        }, [tagsData]),
         changeTagSelected: useCallback(
             tag =>
                 setTagsData(prevTagsData => {
@@ -77,7 +70,7 @@ export const useSelectedTags = (tags, defaultSelectedTags = []) => {
                         }
                     };
                 }),
-            []
+            [tagsData]
         )
     };
 };
