@@ -27,7 +27,7 @@ class UsersController {
         if(!token){
             return res.status(401).json({ status: "error", code: "unauthorized", info: "token is missing" });
         }
-        return this.usersService.validateJWTToken(token).then((valid) =>{
+        return Promise.resolve(this.usersService.validateJWTToken(token)).then((valid) =>{
             if(!valid){
                 return res.status(401).json({ status: "error", code: "unauthorized", info: "token not valid" });
             }
