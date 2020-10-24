@@ -23,7 +23,7 @@ export const useCheckedContact = () => {
     const handleCheckedContact = e => {
         dispatch({
             type: SET_CONTACT,
-            payload: e.target.value === 'yes' ? true : false
+            payload: e.target.value === 'yes'
         });
     };
     return {
