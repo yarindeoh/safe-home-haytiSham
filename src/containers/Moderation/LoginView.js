@@ -9,11 +9,7 @@ import LoginForm from 'containers/Moderation/components/LoginForm';
 
 export const LoginView = withRoute(props => {
     const { moderationState } = useModerationContext();
-    const { story, getModerationStory } = useEditModerationStory();
-
-    const changeLocationByPath = (path, params) => {
-        props.history.push(path, params);
-    };
+    const { getModerationStory } = useEditModerationStory();
 
     const handleStoryClick = storyId => {
         try {
@@ -26,10 +22,7 @@ export const LoginView = withRoute(props => {
     return (
         <div>
             {moderationState?.loggedIn ? (
-                <LoggedInView
-                    changeLocationByPath={changeLocationByPath}
-                    handleStoryClick={handleStoryClick}
-                />
+                <LoggedInView handleStoryClick={handleStoryClick} />
             ) : (
                 <LoginForm />
             )}

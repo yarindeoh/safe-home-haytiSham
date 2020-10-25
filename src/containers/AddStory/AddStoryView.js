@@ -83,21 +83,29 @@ export const AddStoryView = withRoute(props => {
                                 placeholder=""
                                 label={t('addStoryView.backgroundLabel')}
                                 value={addStoryState?.background}
-                                onChange={e => handleFieldChange(e, 'background')}
+                                onChange={e =>
+                                    handleFieldChange(e, 'background')
+                                }
                                 required
                             />
                             <TextArea
                                 name="storyContent"
                                 label={t('addStoryView.storyContentLabel')}
-                                placeholder={t('addStoryView.storyContentPlaceholder')}
+                                placeholder={t(
+                                    'addStoryView.storyContentPlaceholder'
+                                )}
                                 value={addStoryState?.storyContent}
-                                onChange={e => handleFieldChange(e, 'storyContent')}
+                                onChange={e =>
+                                    handleFieldChange(e, 'storyContent')
+                                }
                                 required
                             />
                             <TextArea
                                 name="howDidYouManged"
                                 label={t('addStoryView.howDidYouMangedLabel')}
-                                placeholder={t('addStoryView.howDidYouMangedPlaceholder')}
+                                placeholder={t(
+                                    'addStoryView.howDidYouMangedPlaceholder'
+                                )}
                                 value={addStoryState?.howDidYouManged}
                                 onChange={e =>
                                     handleFieldChange(e, 'howDidYouManged')
@@ -106,16 +114,22 @@ export const AddStoryView = withRoute(props => {
                             <TextArea
                                 name="whatHelpedYou"
                                 label={t('addStoryView.whatHelpedYouLabel')}
-                                placeholder={t('addStoryView.whatHelpedYouPlaceHolder')}
+                                placeholder={t(
+                                    'addStoryView.whatHelpedYouPlaceHolder'
+                                )}
                                 value={addStoryState?.whatHelpedYou}
                                 onChange={e =>
-                                    handleFiledChange(e, 'whatHelpedYou')
+                                    handleFieldChange(e, 'whatHelpedYou')
                                 }
                             />
                             <TextArea
                                 name="whatTriggeredChange"
-                                label={t('addStoryView.whatTriggeredChangeLabel')}
-                                placeholder={t('addStoryView.whatTriggeredChangePlaceHolder')}
+                                label={t(
+                                    'addStoryView.whatTriggeredChangeLabel'
+                                )}
+                                placeholder={t(
+                                    'addStoryView.whatTriggeredChangePlaceHolder'
+                                )}
                                 value={addStoryState?.whatTriggeredChange}
                                 onChange={e =>
                                     handleFieldChange(e, 'whatTriggeredChange')
@@ -123,7 +137,9 @@ export const AddStoryView = withRoute(props => {
                             />
                             <TextArea
                                 name="additionalnfo"
-                                placeholder={t('addStoryView.additionalnfoPlaceHolder')}
+                                placeholder={t(
+                                    'addStoryView.additionalnfoPlaceHolder'
+                                )}
                                 label={t('addStoryView.additionalnfoLabel')}
                                 value={addStoryState?.additionalnfo}
                                 onChange={e =>

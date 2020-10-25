@@ -6,7 +6,7 @@ import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'src/components/Skeleton';
 import HelpButton from 'src/components/HelpButton.js';
-import Content from "../../components/Content";
+import Content from '../../components/Content';
 
 export const StoryView = withRoute(props => {
     const { t } = useTranslation();

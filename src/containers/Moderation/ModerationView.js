@@ -30,9 +30,11 @@ export const ModerationView = withRoute(props => {
 
     //TODO: check
     const { originalStory, moderatedStory } = props.location.state;
-    const valid_originalStory =
+    const validModeratedStory =
+        moderatedStory !== null ? moderatedStory : originalStory;
+    const validOriginalStory =
         originalStory !== null ? originalStory : moderatedStory;
-    useModerationStory(moderatedStory, tagsMap);
+    useModerationStory(validModeratedStory, tagsMap);
 
     return (
         <>
@@ -45,7 +47,7 @@ export const ModerationView = withRoute(props => {
                         {t('moderation.submittedSuccessText')}
                     </div>
                     <div className="submitted-success-text">
-                        {t('moderation.phoneMail') + valid_originalStory?.mail}
+                        {t('moderation.phoneMail') + validOriginalStory?.mail}
                     </div>
                     <button className={'submit-button'} onClick={back}>
                         {t('moderation.backToAdminPage')}
@@ -64,7 +66,7 @@ export const ModerationView = withRoute(props => {
                         {/* Col1 - right col */}
                         <div>
                             <OriginalStoryView
-                                data={{ ...valid_originalStory }}
+                                data={{ ...validOriginalStory }}
                             />
                         </div>
                         {/* Col2 - center col */}

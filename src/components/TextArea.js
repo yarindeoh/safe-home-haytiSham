@@ -18,7 +18,7 @@ export const TextArea = ({
         >
             <label className={'question'}>{label}</label>
             {sublabel && <div>{sublabel}</div>}
-            <div className='textarea-wrapper' required={required}>
+            <div className="textarea-wrapper" required={required}>
                 <textarea
                     disabled={disabled}
                     name={name}
