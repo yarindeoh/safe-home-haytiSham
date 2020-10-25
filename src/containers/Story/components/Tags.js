@@ -4,7 +4,7 @@ import Tag from 'src/components/Tag';
 export const Tags = ({ tags }) => {
     return (
         <div>
-            {tags.map((tag, key) => (
+            {tags?.map((tag, key) => (
                 <Tag text={tag} key={key} />
             ))}
         </div>

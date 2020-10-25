@@ -1,12 +1,12 @@
 import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
-import { Tags } from './components/Tags';
 import { extractFieldsFromObjOrdered } from 'services/general/generalHelpers';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { useTranslation } from 'react-i18next';
-import Skeleton from 'src/components/Skeleton';
-import HelpButton from 'src/components/HelpButton.js';
-import Content from '../../components/Content';
+import Skeleton from 'components/Skeleton';
+import HelpButton from 'components/HelpButton.js';
+import Content from 'components/Content';
+import { Tags } from './components/Tags';
 
 export const StoryView = withRoute(props => {
     const { t } = useTranslation();
@@ -23,26 +23,26 @@ export const StoryView = withRoute(props => {
         'additionalnfo'
     ]);
     const defaultTagsSimilarStories =
-        story.tagsIds && story.tagsIds.slice(0, 3);
+        story?.tagsIds && story?.tagsIds.slice(0, 3);
 
     return (
         <Skeleton>
             <div id={'story-page-container'}>
                 <Content className={'story-page-content'} alignRight={true}>
                     <div className={'quote'}>
-                        <h1>"{story.quote}"</h1>
+                        <h1>"{story?.quote}"</h1>
                         <h2>
                             {`
                      ${t('storyView.storyOf')}
                      ${
-                         story.name
-                             ? story.name.split('')[0]
+                         story?.name
+                             ? story?.name.split('')[0]
                              : t('storyView.anonymousTeller')
                      }
-                     ${story.createdAt}
+                     ${story?.createdAt}
                    `}
                         </h2>
-                        <Tags tags={story.tags} />
+                        <Tags tags={story?.tags} />
                     </div>
                     {processedStory &&
                         processedStory.map((item, key) => (
@@ -54,7 +54,7 @@ export const StoryView = withRoute(props => {
                 </Content>
             </div>
             <StoriesList
-                key={props.location.state._id}
+                key={props?.location?.state?._id}
                 tags={defaultTagsSimilarStories}
                 title={t('tagsFilter.additionalTestimonies')}
                 changeLocationByPath={changeLocationByPath}
