@@ -11,6 +11,7 @@ const storySchema = new Schema({
     storyContent: String,
     name: String,
     sequence: Number,
+    publish: Boolean,
     tags: [Number],    
     originalStory: { type: 'ObjectId', ref: 'Story'},    
 }, { timestamps: { createdAt: 'createdAt' } });

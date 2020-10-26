@@ -15,7 +15,7 @@
                 "dev"
              ],
             "program": "${workspaceFolder}\\src\\app.js"
-        }
+        },
         {
             "type": "node",
             "request": "launch",
