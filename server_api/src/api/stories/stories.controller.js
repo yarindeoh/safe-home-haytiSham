@@ -46,7 +46,8 @@ class StorieController {
             quote: req.body.quote,
             whatHelpedYou: req.body.whatHelpedYou,
             background: req.body.background,
-            storyContent: req.body.storyContent
+            storyContent: req.body.storyContent,
+            publish: req.body.publish || true
         }
         const originalStoryID = req.body.originalStory;
         if(!originalStoryID){
@@ -98,6 +99,20 @@ class StorieController {
                 }
             })
         }
+    }
+
+    publishModerateStory(req, res){
+        const moderatedStoryID = req.body.moderatedStory;
+        const publish = req.body.publish;
+        if(!moderatedStoryID){
+            return res.status(400).json({ error: "missing moderatedStory" });
+        }
+        return this.storieService.editModerateStory(moderatedStoryID,{publish:publish}).then(()=>{
+            res.json({publish:publish});
+        }).catch((error) =>{
+            console.error(error);
+            return res.status(503).json({error});
+        });
     }
 }
 module.exports = StorieController;

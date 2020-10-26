@@ -13,9 +13,10 @@ class StorieService {
     }
 
     listByTags(tags, page = 1, pageSize = 100, sortField = "createdAt", sortDirection = "DESC") {
-        sortDirection = sortDirection === 'ASC' ? '' : '-';
+        sortDirection = sortDirection === "ASC" ? "" : "-";
         sortField = sortDirection + sortField;
-        const query = tags ? { tags: { '$in': tags } } : {};
+        const query = tags ? { tags: { "$in": tags } } : {};
+        query["publish"] = true;
         return Promise.all([
             ModeratedStrory.countDocuments(query),
             ModeratedStrory.find(query)
@@ -44,7 +45,7 @@ class StorieService {
     }
     
     listStriesToModerate(page = 1, pageSize = 100, sortField = "createdAt", sortDirection = "DESC"){
-        sortDirection = sortDirection === 'ASC' ? '' : '-';
+        sortDirection = sortDirection === "ASC" ? "" : "-";
         sortField = sortDirection + sortField;
         const query = {moderated:false};
         return Promise.all([
@@ -53,8 +54,7 @@ class StorieService {
                 .sort(sortField)
                 .skip((page - 1) * pageSize).limit(pageSize)
                 .populate('user')
-        ])
-            .then(([count, result]) => ({
+        ]).then(([count, result]) => ({
                 result, total: count, page: page, pages: Math.ceil(count / pageSize) }));
     } 
 
@@ -73,7 +73,7 @@ class StorieService {
 
     createStory(storyInstance){
         storyInstance.moderated = false;
-        return this.getValueForNextSequence('original_stories').then((number) => {
+        return this.getValueForNextSequence("original_stories").then((number) => {
             storyInstance.sequence = number;
             return Story.create(storyInstance).then((story) => {
                 if(story){
@@ -90,7 +90,7 @@ class StorieService {
             let mStory = result[0];
             let story = result[1];
             if(story === null){
-                throw 'error no original story found';
+                throw "error no original story found";
             }
             storyInstance.sequence = story.sequence;
             const o_id = new mongoose.mongo.ObjectId(originalStoryID);
@@ -103,6 +103,10 @@ class StorieService {
             }
         });
     }
+
+    editModerateStory(storyID, update){
+        return ModeratedStrory.findByIdAndUpdate(storyID, {$set: update});
+    } 
 
     getValueForNextSequence(sequenceOfName)  {
         return new Promise((resolve, reject) => {
