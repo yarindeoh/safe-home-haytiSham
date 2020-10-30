@@ -37,6 +37,12 @@ class StorieService {
                         }
                     }
                 }
+                if(story.createdAt){
+                    story.createdAt = new Date(story.createdAt).toDateString();
+                }
+                if(story.updatedAt){
+                    story.updatedAt = new Date(story.updatedAt).toDateString();
+                }
             }
             return {
                 result, total: count, page: page, pages: Math.ceil(count / pageSize)
