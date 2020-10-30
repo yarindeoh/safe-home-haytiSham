@@ -75,15 +75,15 @@ https://www.figma.com/file/UcF9E1rT6rwKIQkkLD5EqN/hayiti_sham?node-id=446%3A286
 ## Server API
 ----
 ### Anonymous user API
-*  getAllTags - get  - /api/getAllTags
+#### getAllTags - get  - /api/getAllTags
 no parameters
 return a static list of tags (string)
 
-*  getTagsMap - get - /api/getTagsMap
+#### getTagsMap - get - /api/getTagsMap
 no parameters
 return a static map of tags (number - string)
 
-*  getStoriesByTags - get - /api/getStoriesByTags
+#### getStoriesByTags - get - /api/getStoriesByTags
 return a list of moderated stories for an anonymous user
 
 parametesr:
@@ -93,7 +93,7 @@ parametesr:
 - sortField (optional) - string , default sequence
 - sortDirection (optional) - string , default DESC
 
-*  addStory - post - /api/addStory
+#### addStory - post - /api/addStory
 add an original story (added by an anonymous user)
 this story will not be automatic published (only moderated stories are visible)
 
@@ -111,7 +111,7 @@ parametesr:
 ----
 ### moderation admin API
 
-* Login - post - /api/login
+#### Login - post - /api/login
 parametesr:
 - userName
 - password
@@ -119,7 +119,7 @@ parametesr:
 For successful login the API return status 200 and JWT token
 This token should be sent as part of all the admin moderator requests
 
-* getStortiesForModeration - get - /api/getStortiesForModeration
+#### getStortiesForModeration - get - /api/getStortiesForModeration
 require the authentication token
 return list of original stories that were not moderated yet
 
@@ -129,7 +129,7 @@ parametesr:
 - sortField (optional) - string , default sequence
 - sortDirection (optional) - string , default DESC
 
-* getStoryForEdit - get - /api/getStoryForEdit
+#### getStoryForEdit - get - /api/getStoryForEdit
 require the authentication token
 
 parametesr:
@@ -141,7 +141,7 @@ return:
 The API returns the original story and matched the moderated story
 { originalStory, moderatedStory }
 
-* addModerateStory - post - /api/addModerateStory
+#### addModerateStory - post - /api/addModerateStory
 require the authentication token
 add or edit a moderated story
 
@@ -157,7 +157,7 @@ parametesr:
 - originalStory (string)
 - tags (numbers array)
 
-* publishModerateStory - post - /api/publishModerateStory
+#### publishModerateStory - post - /api/publishModerateStory
 require the authentication token
 publish or unpublish moderated story
 
