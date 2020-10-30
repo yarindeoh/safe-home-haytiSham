@@ -24,8 +24,7 @@ class StorieController {
         const instance = {
             whatTriggeredChange: req.body.whatTriggeredChange || '',
             howDidYouManged: req.body.howDidYouManged || '',
-            additionalnfo: req.body.additionalnfo || '',            
-            quote: req.body.quote || '',
+            additionalnfo: req.body.additionalnfo || '', 
             whatHelpedYou: req.body.whatHelpedYou || '',
             background: req.body.background || '',
             storyContent: req.body.storyContent,
