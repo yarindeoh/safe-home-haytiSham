@@ -1,8 +1,136 @@
-.container {
+@import '../local/_colors.scss';
+@import '../local/_spaces.scss';
+
+
+.moderation-container{
+    min-height: 100vh;
+}
+
+.moderation-main-content {
     display: grid;
     grid-template-columns: 40% 40% 20%;
     grid-auto-flow: row;
+    overflow: auto;
+    padding-bottom: 72px;
 }
 
+.original-story-col-container{
+    padding: 14px 32px 0 40px;
+}
 
+.back-to-admin{
+    cursor: pointer;
+    text-decoration-line: underline;
+    font-size: 16px;
+    line-height: 21px;
+    padding-bottom: 24px;
+}
 
+.original-header-container{
+    display: inline-flex;
+    align-items: flex-end;
+    padding-bottom: 24px;
+}
+
+.original-header{
+    padding-left: 10px;
+    color:  map_get($colors, purple-700);
+    font-size: 20px;
+}
+
+.original-date{
+    color:  map_get($colors, purple-700);
+    font-size: 16px;
+}
+
+.original-label{
+    font-size: 16px;
+    line-height: 21px;
+    margin: 8px 0px;
+    color:  map_get($colors, black);
+}
+
+.original-text{
+    font-size: 14px;
+    line-height: 18px;
+    margin: 8px 0px;
+    color:  map_get($colors, grey-900);
+}
+
+.edit-container{
+    padding: 58px 0 24px 60px;
+}
+
+.edit-header{
+    color:  map_get($colors, purple-700);
+    font-size: 20px;
+    padding-bottom: 24px;
+}
+
+.moderation-rules-container{
+    width: 100%;
+    border-radius: 0px 0px 4px 0px;
+    background: map_get($colors, grey-1100);
+    color: map_get($colors, white);
+
+    h1{
+        font-size: 16px;
+        padding-top: 24px;
+        text-align: center;
+    }
+}
+
+.moderation-rules-text{
+    font-size: 14px;
+    padding: 24px;
+}
+
+.select-tags-container{
+    padding: 24px 0 24px 24px;
+
+    h1{
+        font-size: 20px;
+    }
+
+    span{
+        font-size: 16px;
+        color: map_get($colors, grey-900);
+    }
+
+    .select-area{
+        padding-top: 24px;;
+    }
+}
+
+.quote-area{
+    padding: 24px 0 24px 24px;
+}
+
+.moderation-footer{
+    position: fixed; 
+    bottom:0px; 
+    height: 56px;
+    left:0px; 
+    right:0px; 
+    overflow:hidden;
+    background-color: map_get($colors, grey-1100);
+}
+
+.moderation-submit-button{
+    position: absolute;
+    left: 11px;
+    top: 11px;
+    max-width: 138px;
+    width: 100%;
+    height: 34px;
+    background-image: linear-gradient(94.5deg, #3691E5 -6.72%, #566BE4 20.51%, #7845E3 96.66%);
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 130%;
+    color: map_get($colors, white);
+    border-radius: 80px;
+
+    &:focus{
+        outline: none;
+    }
+}

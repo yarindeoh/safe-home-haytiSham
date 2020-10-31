@@ -255,22 +255,15 @@ export const useModerateStorySubmit = () => {
 };
 
 export const useSelectedTags = () => {
-    const { moderationState, dispatch } = useModerationContext();
-    function onSelect(selectedList, selectedItem) {
+    const { dispatch } = useModerationContext();
+    function handleSelectedTags(selectedList) {
         dispatch({
             type: SET_TAGS,
-            payload: [...moderationState.tags, selectedItem]
-        });
-    }
-    function onRemove(selectedList, selectedItem) {
-        dispatch({
-            type: SET_TAGS,
-            payload: moderationState.tags.filter(e => e !== selectedItem)
+            payload: selectedList
         });
     }
 
     return {
-        onSelect,
-        onRemove
+        handleSelectedTags
     };
 };

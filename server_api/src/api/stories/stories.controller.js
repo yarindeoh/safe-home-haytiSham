@@ -39,6 +39,7 @@ class StorieController {
 
     addModerateStory(req,res){
         const instance = {
+            name: req.body.name,
             whatTriggeredChange: req.body.whatTriggeredChange,
             howDidYouManged: req.body.howDidYouManged,
             additionalnfo: req.body.additionalnfo,            
