@@ -355,3 +355,10 @@ footer {
         outline: none;
     }
   }
+
+.divider {
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: map_get($spaces, small);
+}
