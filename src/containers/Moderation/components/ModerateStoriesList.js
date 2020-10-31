@@ -5,7 +5,7 @@ import { Loader } from 'components/Loader';
 import EditImg from 'src/media/icons/Edit.svg';
 import Pagination from '@material-ui/lab/Pagination';
 
-export const ModerateStoriesList = ({ changeLocationByPath, title }) => {
+export const ModerateStoriesList = ({ handleStoryClick }) => {
     const {
         stories,
         currentPage,
@@ -35,13 +35,7 @@ export const ModerateStoriesList = ({ changeLocationByPath, title }) => {
                                 return (
                                     <tr
                                         onClick={() =>
-                                            changeLocationByPath(
-                                                `moderateStory/${stories[key]._id}`,
-                                                {
-                                                    originalStory: stories[key],
-                                                    moderatedStory: stories[key]
-                                                }
-                                            )
+                                            handleStoryClick(stories[key]._id)
                                         }
                                         key={key}
                                     >

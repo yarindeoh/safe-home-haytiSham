@@ -25,6 +25,24 @@ export function useModerationContext() {
     return context;
 }
 
+export const useRemoveTokenOnError = () => {
+    const { dispatch } = useModerationContext();
+
+    function removeTokenOnError(e) {
+        if (e.message === '401') {
+            window.alert('User Token is not valid');
+            localStorage.removeItem('moderatorToken');
+            dispatch({
+                type: SET_LOGGED_IN,
+                payload: localStorage.getItem('moderatorToken') !== null
+            });
+        }
+    }
+    return {
+        removeTokenOnError
+    };
+};
+
 export const useLoginFiledChange = () => {
     const [loginData, setLoginData] = useState({ userName: '', password: '' });
     const handleFieldChange = (e, filed) => {
@@ -83,6 +101,7 @@ export const useLoginSubmit = loginData => {
 
 export const useModerationStories = () => {
     const { moderationState } = useModerationContext();
+    const { removeTokenOnError } = useRemoveTokenOnError();
     const [data, setData] = useState({
         storiesPerPage: undefined,
         currentPage: 1,
@@ -92,18 +111,22 @@ export const useModerationStories = () => {
     const pageSize = 10;
 
     async function handlePageChange(event, page) {
-        let result = await Api.getModerationStories(
-            pageSize,
-            page,
-            'createdAt',
-            'ASC'
-        );
-        let newData = { ...data };
-        newData.totalPages = result.pages;
-        newData.currentPage = page;
-        newData.totalStories = result.total;
-        newData.storiesPerPage = [...result?.result];
-        setData(newData);
+        try {
+            let result = await Api.getModerationStories(
+                pageSize,
+                page,
+                'createdAt',
+                'ASC'
+            );
+            let newData = { ...data };
+            newData.totalPages = result.pages;
+            newData.currentPage = page;
+            newData.totalStories = result.total;
+            newData.storiesPerPage = [...result?.result];
+            setData(newData);
+        } catch (e) {
+            removeTokenOnError(e);
+        }
     }
 
     useEffect(() => {
@@ -123,15 +146,20 @@ export const useModerationStories = () => {
 
 export const useEditModerationStory = () => {
     let history = useHistory();
+    const { removeTokenOnError } = useRemoveTokenOnError();
 
     async function getModerationStory(id) {
-        let result = await Api.getStoryForEdit(id);
-        if (result !== undefined) {
-            let id =
-                result.originalStory !== null
-                    ? result.originalStory._id
-                    : result.moderatedStory?._id;
-            history.push(`/moderateStory/${id}`, result);
+        try {
+            let result = await Api.getStoryForEdit(id);
+            if (result !== undefined) {
+                let id =
+                    result.originalStory !== null
+                        ? result.originalStory._id
+                        : result.moderatedStory?._id;
+                history.push(`/moderateStory/${id}`, result);
+            }
+        } catch (e) {
+            removeTokenOnError(e);
         }
     }
 
@@ -188,10 +216,11 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
 
 export const useModerateStorySubmit = () => {
     const { moderationState, dispatch } = useModerationContext();
+    const { removeTokenOnError } = useRemoveTokenOnError();
     const [submitted, setSubmitted] = useState(false);
     let moderationDataToPost = { ...moderationState };
     delete moderationDataToPost.loggedIn;
-    if(moderationDataToPost.originalStory === ''){
+    if (moderationDataToPost.originalStory === '') {
         moderationDataToPost.originalStory = moderationState._id;
     }
     delete moderationDataToPost._id;
@@ -212,7 +241,7 @@ export const useModerateStorySubmit = () => {
                 });
                 setSubmitted(true);
             } catch (e) {
-                console.error(e);
+                removeTokenOnError(e);
             }
         }
         postData();

@@ -16,7 +16,7 @@ export const Radio = ({
             <div>
                 {options &&
                     options.map((option, index) => (
-                        <label key={index} className='radio-input-wrapper'>
+                        <label key={index} className="radio-input-wrapper">
                             <input
                                 name={name}
                                 className={'radio'}
