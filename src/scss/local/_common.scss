@@ -16,6 +16,11 @@
     font-size: 27px;
     line-height: 35px;
 
+    span {
+        width: 100%;
+        text-align: center;
+    }
+
     span a {
         color: map_get($colors, white);
         text-decoration: none;
@@ -24,6 +29,9 @@
     & > svg {
         margin: 18px;
         cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 
     .DarkFilter {
