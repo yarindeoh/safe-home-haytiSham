@@ -15,16 +15,16 @@ export const PUBLIC_STORIES = [
         tags: ['אלימות פיזית', 'קנאה ואובססיביות'],
         tagsId: [4, 9],
         timestamp: '25/02/2020',
-        storyteller: 'דנה אינטרנשיונל',
+        storyteller: 'אינגה גל מדורסקי',
         img: 'img2.png'
     },
     {
         id: '2F527567764562364',
-        quote: 'אבא היה נותן לאמא אגרופים בפנים',
+        quote: 'הוא איים שיחזיר אותי לאמא שלי בשקיות שחורות',
         tags: ['אלימות פיזית', 'משטרה'],
         tagsId: [4, 18],
         timestamp: '10/03/2020',
-        storyteller: 'שירן וקארין סנדל',
+        storyteller: 'שרית קרול',
         img: 'img3.png'
     },
     {
@@ -38,11 +38,11 @@ export const PUBLIC_STORIES = [
     },
     {
         id: '2F234311144373734',
-        quote: 'פחדתי שהוא ירצח אותי',
+        quote: 'אבא היה נותן לאמא אגרופים בפנים',
         tags: ['אלימות פיזית', 'אלימות מילולית', 'משטרה'],
         tagsId: [4, 5, 18],
         timestamp: '08/03/2020',
-        storyteller: 'שרית קרול',
+        storyteller: 'בר סטאר',
         img: 'img5.png'
     }
 ];
