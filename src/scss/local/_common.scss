@@ -118,7 +118,7 @@
         margin: auto;
         display: flex;
         flex-direction: column;
-        color: map_get($colors, black);
+        color: map_get($colors, grey-800);
     }
 }
 
@@ -356,7 +356,7 @@ footer {
     font-size: 22px;
     color: map_get($colors, white);
     border-radius: 80px;
-    max-width: 400px;
+    max-width: 300px;
     margin-top: map_get($spaces, small);
 
     &:focus{
