@@ -117,6 +117,7 @@
 }
 
 .moderation-submit-button{
+    cursor: pointer;
     position: absolute;
     left: 11px;
     top: 11px;
@@ -128,6 +129,27 @@
     font-size: 20px;
     line-height: 130%;
     color: map_get($colors, white);
+    border-radius: 80px;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+
+.moderation-unPublish-button{
+    position: absolute;
+    left: 160px;
+    top: 11px;
+    max-width: 138px;
+    width: 100%;
+    height: 34px;
+    background-color:  map_get($colors, grey-1100);
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 130%;
+    color: map_get($colors, white);
+    border: 1px solid map_get($colors, white);
     border-radius: 80px;
 
     &:focus{

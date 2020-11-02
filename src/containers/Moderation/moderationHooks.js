@@ -267,3 +267,27 @@ export const useSelectedTags = () => {
         handleSelectedTags
     };
 };
+
+export const usePublishModerateStory = () => {
+    const { moderationState } = useModerationContext();
+    const { removeTokenOnError } = useRemoveTokenOnError();
+    const [publishPostSuccess, setPublishPostSuccess] = useState(false);
+
+    async function handlePublish(publish) {
+        try {
+            const dataToSubmit = {
+                publish: publish,
+                moderatedStory: moderationState._id
+            };
+            await Api.postPublishModerateStory(dataToSubmit);
+            setPublishPostSuccess(true);
+        } catch (e) {
+            removeTokenOnError(e);
+        }
+    }
+
+    return {
+        handlePublish,
+        publishPostSuccess
+    };
+};

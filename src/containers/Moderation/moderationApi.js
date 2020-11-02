@@ -13,6 +13,9 @@ const Api = {
     postAddModerateStory: data => {
         return post(baseUrl('addModerateStory'), data, { no_result: true });
     },
+    postPublishModerateStory: data => {
+        return post(baseUrl('publishModerateStory'), data, { no_result: true });
+    },
     getModerationStories: (pageSize, page, sortField, sortDirection) => {
         return get(
             baseUrl(

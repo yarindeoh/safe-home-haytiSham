@@ -9,7 +9,8 @@ import {
     useModerationContext,
     useModerationFiledChange,
     useModerateStorySubmit,
-    useModerationStory
+    useModerationStory,
+    usePublishModerateStory
 } from 'containers/Moderation/moderationHooks';
 import { useBack } from 'services/general/generalHooks';
 import { useTags } from 'containers/Stories/storiesHooks';
@@ -23,8 +24,9 @@ export const ModerationView = withRoute(props => {
     const { handleFieldChange } = useModerationFiledChange();
     const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit();
     const { back } = useBack(props, setSubmitted, '/admin');
+    const { handlePublish, publishPostSuccess } = usePublishModerateStory();
+    //TODO: add modal for submit / unpublish
 
-    //TODO: check
     const { originalStory, moderatedStory } = props.location.state;
     const validModeratedStory =
         moderatedStory !== null ? moderatedStory : originalStory;
@@ -77,7 +79,7 @@ export const ModerationView = withRoute(props => {
                                 />
                             </div>
                         </div>
-                        <ModerationFooter />
+                        <ModerationFooter handlePublish={handlePublish} />
                     </div>
                 </div>
             )}
