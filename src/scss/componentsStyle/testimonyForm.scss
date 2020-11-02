@@ -29,7 +29,6 @@
       margin-bottom: map_get($spaces, x-large);
 
       & > label {
-        color: map_get($colors, black);
         font-weight: bold;
         padding: 0;
 
@@ -65,7 +64,7 @@
 
     .multiply-answer-area {
       &:not(:last-of-type){
-        margin-bottom: map_get($spaces, small);
+        margin-bottom: 28px;
       }
 
       .question {
@@ -77,7 +76,7 @@
 
       .textarea-wrapper {
         border-radius: 8px;
-        background: #f4f0f0;
+        background: map_get($colors, white);
         padding: 8px;
       }
 

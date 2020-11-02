@@ -16,6 +16,11 @@
     font-size: 27px;
     line-height: 35px;
 
+    span {
+        width: 100%;
+        text-align: center;
+    }
+
     span a {
         color: map_get($colors, white);
         text-decoration: none;
@@ -24,6 +29,9 @@
     & > svg {
         margin: 18px;
         cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 
     .DarkFilter {
@@ -110,7 +118,7 @@
         margin: auto;
         display: flex;
         flex-direction: column;
-        color: map_get($colors, black);
+        color: map_get($colors, grey-800);
     }
 }
 
@@ -348,10 +356,17 @@ footer {
     font-size: 22px;
     color: map_get($colors, white);
     border-radius: 80px;
-    max-width: 400px;
+    max-width: 300px;
     margin-top: map_get($spaces, small);
 
     &:focus{
         outline: none;
     }
   }
+
+.divider {
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: map_get($spaces, small);
+}
