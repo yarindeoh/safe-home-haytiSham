@@ -8,8 +8,8 @@ export const OriginalStoryView = withRoute(({ data, back }) => {
 
     const processedStory = extractFieldsFromObjOrdered(data, [
         'name',
-        'mail',
-        'contact',
+        // 'mail',
+        // 'contact',
         'background',
         'storyContent',
         'howDidYouManged',
@@ -42,7 +42,7 @@ export const OriginalStoryView = withRoute(({ data, back }) => {
                             : t('login.table.no');
                     }
                     return (
-                        <div key={i}>
+                        <div className="original-field-area" key={i}>
                             <div className="original-label">
                                 {t(`addStoryView.${item.titleKey}Label`)}
                             </div>

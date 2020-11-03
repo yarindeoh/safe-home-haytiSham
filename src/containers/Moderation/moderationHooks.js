@@ -1,12 +1,13 @@
 import { useState, useContext, useEffect } from 'react';
-import Api from './moderationApi';
-import { ModerationContext } from './moderationContext';
+import Api from 'containers/Moderation/moderationApi';
+import { ModerationContext } from 'containers/Moderation/moderationContext';
 import {
     NEW_MODERATE_STORY_INIT_DATA,
     SET_LOGGED_IN,
     SET_MODERATE_STORY_DATA,
-    SET_TAGS
-} from './moderationConstants';
+    SET_TAGS,
+    PAGE_SIZE
+} from 'containers/Moderation/moderationConstants';
 import {
     extractFieldsFromObj,
     getArrayOfTagsIds,
@@ -108,7 +109,7 @@ export const useModerationStories = () => {
         totalPages: 0,
         totalStories: 0
     });
-    const pageSize = 10;
+    const pageSize = PAGE_SIZE;
 
     async function handlePageChange(event, page) {
         try {

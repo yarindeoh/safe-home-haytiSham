@@ -43,6 +43,10 @@
     font-size: 16px;
 }
 
+.original-field-area{
+    margin-bottom: 60px;
+}
+
 .original-label{
     font-size: 16px;
     line-height: 21px;
@@ -55,6 +59,7 @@
     line-height: 18px;
     margin: 8px 0px;
     color:  map_get($colors, grey-900);
+    white-space:pre-wrap;
 }
 
 .edit-container{
@@ -114,6 +119,10 @@
     right:0px; 
     overflow:hidden;
     background-color: map_get($colors, grey-1100);
+}
+
+.moderation-submit-button-only{
+    max-width: 274px !important;
 }
 
 .moderation-submit-button{

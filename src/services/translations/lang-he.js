@@ -127,7 +127,8 @@ const he = {
             submittedSuccessHeading: 'העדות נערכה בהצלחה!',
             submittedSuccessText:
                 'תודה שערכת את העדות,  לא לשכוח לשלוח מייל/הודעה לאחר האישור!',
-            submitText: 'עדכן באתר',
+            submitText: 'העלאת העדות',
+            updateText: 'עדכן באתר',
             unPublishText: 'הסר מהאתר',
             phoneMail: 'מייל/טלפון: ',
             unPublishSuccessHeading: 'העדות הוסרה מהאתר בהצלחה!',

@@ -12,6 +12,7 @@ export const LoggedInView = ({ handleStoryClick }) => {
                         storiesListClassName={'stories-admin'}
                         handleStoryClick={handleStoryClick}
                         displayEditImg
+                        isAdmin={true}
                     />
                 </div>
             </div>

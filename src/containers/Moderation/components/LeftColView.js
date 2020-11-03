@@ -40,6 +40,16 @@ export const LeftColView = withRoute(({ handleFieldChange, formData }) => {
                         // className="basic-multi-select"
                         // classNamePrefix="select"
                     />
+
+                    <input
+                        form={'EditOriginalStoryView'}
+                        tabIndex={-1}
+                        autoComplete="off"
+                        style={{ opacity: 0, height: '1px' }}
+                        value={moderationState?.tags}
+                        onChange={() => {}}
+                        required
+                    />
                 </div>
             </div>
             <div className={'quote-area testimony-form'}>

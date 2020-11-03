@@ -11,9 +11,10 @@ export const StoriesList = ({
     rootPath,
     storiesListClassName = '',
     handleStoryClick,
-    displayEditImg
+    displayEditImg,
+    isAdmin
 }) => {
-    const { stories, hasMore, getNextPage } = useFilteredStories(tags);
+    const { stories, hasMore, getNextPage } = useFilteredStories(tags, isAdmin);
 
     return (
         <div className={'more-testimonies'}>

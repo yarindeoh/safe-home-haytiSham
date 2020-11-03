@@ -8,6 +8,10 @@
   }
 }
 
+.story-text{
+  white-space:pre-wrap;
+}
+
 #story-page-container {
   border-bottom: 1px solid map_get($colors, grey-200);
   

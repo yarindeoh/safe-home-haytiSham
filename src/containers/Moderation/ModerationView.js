@@ -15,11 +15,12 @@ import {
 import {
     SUBMIT_DIALOG_TEXT,
     UNPUBLISH_DIALOG_TEXT
-} from './moderationConstants';
+} from 'containers/Moderation/moderationConstants';
 import {
     useBack,
     useDialog,
-    useResetDialogParams
+    useResetDialogParams,
+    useResizeTextArea
 } from 'services/general/generalHooks';
 import { useTags } from 'containers/Stories/storiesHooks';
 import CustomDialog from 'components/CustomDialog';
@@ -53,6 +54,8 @@ export const ModerationView = withRoute(props => {
     const validOriginalStory =
         originalStory !== null ? originalStory : moderatedStory;
     useModerationStory(validModeratedStory, tagsMap);
+
+    useResizeTextArea();
 
     return (
         <>

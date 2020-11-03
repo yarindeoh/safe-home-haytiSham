@@ -7,10 +7,16 @@ export const ModerationFooter = ({ handlePublish, showRemoveButton }) => {
     return (
         <div className="moderation-footer">
             <input
-                className="moderation-submit-button"
+                className={`moderation-submit-button ${
+                    !showRemoveButton ? 'moderation-submit-button-only' : ''
+                }`}
                 form="EditOriginalStoryView"
                 type="submit"
-                value={t('moderation.submitText')}
+                value={
+                    showRemoveButton
+                        ? t('moderation.updateText')
+                        : t('moderation.submitText')
+                }
             />
             {showRemoveButton && (
                 <button

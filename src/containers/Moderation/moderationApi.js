@@ -25,6 +25,15 @@ const Api = {
     },
     getStoryForEdit: id => {
         return get(baseUrl(`getStoryForEdit?originalStory=${id}`));
+    },
+    getAllModeratedStories: ({ tags, pageSize, page }) => {
+        return get(
+            baseUrl(
+                `getAllModeratedStories?page=${page}&pageSize=${pageSize}${
+                    tags && tags.length > 0 ? `&tags=[${tags}]` : ''
+                }`
+            )
+        );
     }
 };
 

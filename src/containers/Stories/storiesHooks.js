@@ -1,4 +1,5 @@
 import Api from 'containers/Stories/storiesApi';
+import ModerationApi from 'containers/Moderation/moderationApi';
 import { useEffect, useState, useCallback } from 'react';
 import { useFetchApiData } from 'services/general/generalHooks';
 
@@ -75,7 +76,7 @@ export const useSelectedTags = tags => {
     };
 };
 
-export const useFilteredStories = tags => {
+export const useFilteredStories = (tags, isAdmin) => {
     const [data, setData] = useState({
         stories: [],
         hasMore: true,
@@ -83,10 +84,13 @@ export const useFilteredStories = tags => {
         init: false
     });
 
-    const pageSize = 5;
+    const pageSize = PAGE_SIZE;
 
     async function addNextPageData(tags, storiesSoFar, pageNumber) {
-        let result = await Api.getStoriesByTags({
+        const get_function = isAdmin
+            ? ModerationApi.getAllModeratedStories
+            : Api.getStoriesByTags;
+        let result = await get_function({
             tags,
             pageSize,
             page: pageNumber
