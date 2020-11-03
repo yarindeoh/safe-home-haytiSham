@@ -40,6 +40,27 @@ export function useResize() {
     return breakpoint;
 }
 
+export function useDialog() {
+    const [open, setOpen] = useState(false);
+    const [dialogParams, setDialogParams] = useState({});
+
+    const showDialog = () => {
+        setOpen(true);
+    };
+
+    const closeDialog = () => {
+        setOpen(false);
+    };
+
+    return {
+        open,
+        showDialog,
+        closeDialog,
+        dialogParams,
+        setDialogParams
+    };
+}
+
 // function usePagination(pages, pageNumber) {
 //     const [currentPage, setCurrentPage] = useState(1);
 //     const [hasMore, setHasMore] = useState(true);

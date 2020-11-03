@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const ModerationFooter = ({ handlePublish }) => {
+export const ModerationFooter = ({ handlePublish, showRemoveButton }) => {
     const { t } = useTranslation();
 
     return (
@@ -12,12 +12,14 @@ export const ModerationFooter = ({ handlePublish }) => {
                 type="submit"
                 value={t('moderation.submitText')}
             />
-            <button
-                className="moderation-unPublish-button"
-                onClick={() => handlePublish(false)}
-            >
-                {t('moderation.unPublishText')}
-            </button>
+            {showRemoveButton && (
+                <button
+                    className="moderation-unPublish-button"
+                    onClick={() => handlePublish(false)}
+                >
+                    {t('moderation.unPublishText')}
+                </button>
+            )}
         </div>
     );
 };

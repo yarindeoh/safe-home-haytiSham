@@ -130,6 +130,9 @@ const he = {
             submitText: 'עדכן באתר',
             unPublishText: 'הסר מהאתר',
             phoneMail: 'מייל/טלפון: ',
+            unPublishSuccessHeading: 'העדות הוסרה מהאתר בהצלחה!',
+            unPublishSuccessText:
+                'העדות לא תפורסם יותר באתר, יהיה ניתן לחזור לכאן וללחוץ "עדכן באתר" והעדות תפורסם שוב באתר.',
             backToAdminPage: 'חזרה לרשימת העדויות הדורשות עריכה',
             choseTags: 'בחרו קטגוריות שמתאימות לטקסט',
             choseTagsWarn: 'מומלץ לא יותר מ-5'

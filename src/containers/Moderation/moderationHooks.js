@@ -5,7 +5,9 @@ import {
     NEW_MODERATE_STORY_INIT_DATA,
     SET_LOGGED_IN,
     SET_MODERATE_STORY_DATA,
-    SET_TAGS
+    SET_TAGS,
+    SUBMIT_DIALOG_TEXT,
+    UNPUBLISH_DIALOG_TEXT
 } from './moderationConstants';
 import {
     extractFieldsFromObj,
@@ -252,6 +254,46 @@ export const useModerateStorySubmit = () => {
         setSubmitted,
         handleSubmit
     };
+};
+
+export const useSubmittedDialog = (
+    submitted,
+    showDialog,
+    setDialogParams,
+    back
+) => {
+    useEffect(() => {
+        if (submitted) {
+            let newDialogParams = {
+                ...SUBMIT_DIALOG_TEXT,
+                handleOk: back
+            };
+            setDialogParams(newDialogParams);
+            showDialog();
+        }
+    }, [submitted]);
+
+    return {};
+};
+
+export const useUnPublishedDialog = (
+    publishPostSuccess,
+    showDialog,
+    setDialogParams,
+    back
+) => {
+    useEffect(() => {
+        if (publishPostSuccess) {
+            let newDialogParams = {
+                ...UNPUBLISH_DIALOG_TEXT,
+                handleOk: back
+            };
+            setDialogParams(newDialogParams);
+            showDialog();
+        }
+    }, [publishPostSuccess]);
+
+    return {};
 };
 
 export const useSelectedTags = () => {
