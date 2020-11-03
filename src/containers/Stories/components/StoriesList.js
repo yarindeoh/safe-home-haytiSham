@@ -12,10 +12,10 @@ export const StoriesList = ({
     storiesListClassName = '',
     handleStoryClick,
     displayEditImg,
-    isAdmin
+    isAdmin,
+    originalStory
 }) => {
     const { stories, hasMore, getNextPage } = useFilteredStories(tags, isAdmin);
-
     return (
         <div className={'more-testimonies'}>
             <h1>{title}</h1>
@@ -28,33 +28,38 @@ export const StoriesList = ({
             >
                 <ul className={`stories ${storiesListClassName}`}>
                     {stories &&
-                        Object.keys(stories).map(key => {
-                            return (
-                                <StoryHighlight
-                                    story={stories[key]}
-                                    key={key}
-                                    displayEditImg={displayEditImg}
-                                    changeLocationByPath={() =>
-                                        changeLocationByPath(
-                                            `${
-                                                rootPath !== undefined
-                                                    ? rootPath
-                                                    : '/story'
-                                            }/${stories[key]._id}`,
-                                            stories[key]
-                                        )
-                                    }
-                                    handleStoryClick={
-                                        handleStoryClick !== undefined
-                                            ? () =>
-                                                  handleStoryClick(
-                                                      stories[key].originalStory
-                                                  )
-                                            : undefined
-                                    }
-                                />
-                            );
-                        })}
+                        Object.keys(stories)
+                            .filter(
+                                key =>
+                                    stories[key]?.originalStory !== originalStory
+                            )
+                            .map(key => {
+                                return (
+                                    <StoryHighlight
+                                        story={stories[key]}
+                                        key={key}
+                                        displayEditImg={displayEditImg}
+                                        changeLocationByPath={() =>
+                                            changeLocationByPath(
+                                                `${
+                                                    rootPath !== undefined
+                                                        ? rootPath
+                                                        : '/story'
+                                                }/${stories[key]._id}`,
+                                                stories[key]
+                                            )
+                                        }
+                                        handleStoryClick={
+                                            handleStoryClick !== undefined
+                                                ? () =>
+                                                      handleStoryClick(
+                                                          stories[key]?.originalStory
+                                                      )
+                                                : undefined
+                                        }
+                                    />
+                                );
+                            })}
                 </ul>
             </InfiniteScroll>
         </div>
