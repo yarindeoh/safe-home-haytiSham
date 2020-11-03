@@ -10,10 +10,17 @@ import {
     useModerateStorySubmit,
     useModerationStory,
     usePublishModerateStory,
-    useSubmittedDialog,
-    useUnPublishedDialog
+    useDialogOkClick
 } from 'containers/Moderation/moderationHooks';
-import { useBack, useDialog } from 'services/general/generalHooks';
+import {
+    SUBMIT_DIALOG_TEXT,
+    UNPUBLISH_DIALOG_TEXT
+} from './moderationConstants';
+import {
+    useBack,
+    useDialog,
+    useResetDialogParams
+} from 'services/general/generalHooks';
 import { useTags } from 'containers/Stories/storiesHooks';
 import CustomDialog from 'components/CustomDialog';
 
@@ -26,10 +33,19 @@ export const ModerationView = withRoute(props => {
     const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit();
     const { back } = useBack(props, setSubmitted, '/admin');
     const { handlePublish, publishPostSuccess } = usePublishModerateStory();
+    const { handleDialogOkClick } = useDialogOkClick(back);
 
     const { open, showDialog, dialogParams, setDialogParams } = useDialog();
-    useSubmittedDialog(submitted, showDialog, setDialogParams, back);
-    useUnPublishedDialog(publishPostSuccess, showDialog, setDialogParams, back);
+    //open Dialog when submitted
+    useResetDialogParams(submitted, showDialog, setDialogParams, {
+        handleOk: handleDialogOkClick,
+        ...SUBMIT_DIALOG_TEXT
+    });
+    //open Dialog when unpublish story success
+    useResetDialogParams(publishPostSuccess, showDialog, setDialogParams, {
+        handleOk: handleDialogOkClick,
+        ...UNPUBLISH_DIALOG_TEXT
+    });
 
     const { originalStory, moderatedStory } = props.location.state;
     const validModeratedStory =

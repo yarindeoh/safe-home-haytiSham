@@ -61,6 +61,22 @@ export function useDialog() {
     };
 }
 
+export const useResetDialogParams = (
+    trigger,
+    showDialog,
+    setDialogParams,
+    dialogParams
+) => {
+    useEffect(() => {
+        if (trigger) {
+            setDialogParams(dialogParams);
+            showDialog();
+        }
+    }, [trigger]);
+
+    return {};
+};
+
 // function usePagination(pages, pageNumber) {
 //     const [currentPage, setCurrentPage] = useState(1);
 //     const [hasMore, setHasMore] = useState(true);

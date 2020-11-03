@@ -5,9 +5,7 @@ import {
     NEW_MODERATE_STORY_INIT_DATA,
     SET_LOGGED_IN,
     SET_MODERATE_STORY_DATA,
-    SET_TAGS,
-    SUBMIT_DIALOG_TEXT,
-    UNPUBLISH_DIALOG_TEXT
+    SET_TAGS
 } from './moderationConstants';
 import {
     extractFieldsFromObj,
@@ -217,7 +215,7 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
 };
 
 export const useModerateStorySubmit = () => {
-    const { moderationState, dispatch } = useModerationContext();
+    const { moderationState } = useModerationContext();
     const { removeTokenOnError } = useRemoveTokenOnError();
     const [submitted, setSubmitted] = useState(false);
     let moderationDataToPost = { ...moderationState };
@@ -234,13 +232,6 @@ export const useModerateStorySubmit = () => {
         async function postData() {
             try {
                 await Api.postAddModerateStory(moderationDataToPost);
-                dispatch({
-                    type: SET_MODERATE_STORY_DATA,
-                    payload: {
-                        ...moderationState,
-                        ...NEW_MODERATE_STORY_INIT_DATA
-                    }
-                });
                 setSubmitted(true);
             } catch (e) {
                 removeTokenOnError(e);
@@ -256,44 +247,24 @@ export const useModerateStorySubmit = () => {
     };
 };
 
-export const useSubmittedDialog = (
-    submitted,
-    showDialog,
-    setDialogParams,
-    back
-) => {
-    useEffect(() => {
-        if (submitted) {
-            let newDialogParams = {
-                ...SUBMIT_DIALOG_TEXT,
-                handleOk: back
-            };
-            setDialogParams(newDialogParams);
-            showDialog();
-        }
-    }, [submitted]);
+export const useDialogOkClick = back => {
+    const { moderationState, dispatch } = useModerationContext();
 
-    return {};
-};
+    const handleDialogOkClick = e => {
+        e.preventDefault();
+        dispatch({
+            type: SET_MODERATE_STORY_DATA,
+            payload: {
+                ...moderationState,
+                ...NEW_MODERATE_STORY_INIT_DATA
+            }
+        });
+        back(e);
+    };
 
-export const useUnPublishedDialog = (
-    publishPostSuccess,
-    showDialog,
-    setDialogParams,
-    back
-) => {
-    useEffect(() => {
-        if (publishPostSuccess) {
-            let newDialogParams = {
-                ...UNPUBLISH_DIALOG_TEXT,
-                handleOk: back
-            };
-            setDialogParams(newDialogParams);
-            showDialog();
-        }
-    }, [publishPostSuccess]);
-
-    return {};
+    return {
+        handleDialogOkClick
+    };
 };
 
 export const useSelectedTags = () => {
