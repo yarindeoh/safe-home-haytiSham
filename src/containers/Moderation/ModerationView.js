@@ -1,34 +1,53 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
-import { TestimonyForm } from 'containers/Moderation/components/TestimonyForm';
+import { EditOriginalStoryView } from 'containers/Moderation/components/EditOriginalStoryView';
 import { OriginalStoryView } from 'containers/Moderation/components/OriginalStoryView';
-import { useTranslation, Trans } from 'react-i18next';
+import { LeftColView } from 'containers/Moderation/components/LeftColView';
+import { ModerationFooter } from 'containers/Moderation/components/ModerationFooter';
 import {
     useModerationContext,
     useModerationFiledChange,
     useModerateStorySubmit,
     useModerationStory,
-    useSelectedTags
-} from './moderationHooks';
-import { useBack } from 'services/general/generalHooks';
+    usePublishModerateStory,
+    useDialogOkClick
+} from 'containers/Moderation/moderationHooks';
+import {
+    SUBMIT_DIALOG_TEXT,
+    UNPUBLISH_DIALOG_TEXT
+} from 'containers/Moderation/moderationConstants';
+import {
+    useBack,
+    useDialog,
+    useResetDialogParams,
+    useResizeTextArea
+} from 'services/general/generalHooks';
 import { useTags } from 'containers/Stories/storiesHooks';
+import CustomDialog from 'components/CustomDialog';
 
-import BackArrowIcon from 'src/media/icons/backArrow.svg';
-import { getTagsAsArray } from 'services/general/generalHelpers';
-import { Multiselect } from 'multiselect-react-dropdown';
 import '../../scss/componentsStyle/moderationView.scss';
 
 export const ModerationView = withRoute(props => {
-    const { t } = useTranslation();
     const { moderationState } = useModerationContext();
     const { tagsMap } = useTags();
-    const tags = getTagsAsArray(tagsMap);
     const { handleFieldChange } = useModerationFiledChange();
-    const { onSelect, onRemove } = useSelectedTags();
     const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit();
     const { back } = useBack(props, setSubmitted, '/admin');
+    const { handlePublish, publishPostSuccess } = usePublishModerateStory();
+    const { handleDialogOkClick } = useDialogOkClick(back);
 
-    //TODO: check
+    const { open, showDialog, dialogParams, setDialogParams } = useDialog();
+    //open Dialog when submitted
+    useResetDialogParams(submitted, showDialog, setDialogParams, {
+        handleOk: handleDialogOkClick,
+        ...SUBMIT_DIALOG_TEXT
+    });
+    //open Dialog when unpublish story success
+    useResetDialogParams(publishPostSuccess, showDialog, setDialogParams, {
+        handleOk: handleDialogOkClick,
+        ...UNPUBLISH_DIALOG_TEXT
+    });
+
     const { originalStory, moderatedStory } = props.location.state;
     const validModeratedStory =
         moderatedStory !== null ? moderatedStory : originalStory;
@@ -36,42 +55,24 @@ export const ModerationView = withRoute(props => {
         originalStory !== null ? originalStory : moderatedStory;
     useModerationStory(validModeratedStory, tagsMap);
 
+    useResizeTextArea();
+
     return (
         <>
-            {submitted ? (
-                <div className={'testimony-form'}>
-                    <div className="submitted-success-heading">
-                        {t('moderation.submittedSuccessHeading')}
-                    </div>
-                    <div className="submitted-success-text">
-                        {t('moderation.submittedSuccessText')}
-                    </div>
-                    <div className="submitted-success-text">
-                        {t('moderation.phoneMail') + validOriginalStory?.mail}
-                    </div>
-                    <button className={'submit-button'} onClick={back}>
-                        {t('moderation.backToAdminPage')}
-                    </button>
-                </div>
-            ) : (
-                <div className={'testimony-form'}>
-                    <header>
-                        <BackArrowIcon
-                            className={'back-arrow-icon'}
-                            onClick={back}
-                        />
-                        <h1>{t('moderation.header')}</h1>
-                    </header>
-                    <div className="container">
+            <div>
+                <CustomDialog open={open} {...dialogParams} />
+                <div className="moderation-container">
+                    <div className="moderation-main-content">
                         {/* Col1 - right col */}
                         <div>
                             <OriginalStoryView
                                 data={{ ...validOriginalStory }}
+                                back={back}
                             />
                         </div>
                         {/* Col2 - center col */}
                         <div>
-                            <TestimonyForm
+                            <EditOriginalStoryView
                                 handleSubmit={handleSubmit}
                                 handleFieldChange={handleFieldChange}
                                 formData={{ ...moderationState }}
@@ -80,38 +81,21 @@ export const ModerationView = withRoute(props => {
                         </div>
                         {/* Col3 - left col */}
                         <div>
-                            {t('moderation.moderationRulesHeader')}
-                            <br></br>
-                            <br></br>
-                            <Trans i18nKey="moderation.moderationRules" />
-                            <br></br>
-                            <br></br>
-                            <Multiselect
-                                options={tags} // Options to display in the dropdown
-                                selectedValues={moderationState?.tags} // Preselected value to persist in dropdown
-                                onSelect={onSelect} // Function will trigger on select event
-                                onRemove={onRemove} // Function will trigger on remove event
-                                displayValue="name"
-                                closeIcon="cancel"
-                                placeholder={t('moderation.choseTags')}
-                                avoidHighlightFirstOption
-                                style={{
-                                    chips: {
-                                        background: '#ffffff',
-                                        color: '#724BE4'
-                                    },
-                                    searchBox: {
-                                        border: 'none',
-                                        borderBottom: '1px solid blue',
-                                        borderRadius: '0px',
-                                        borderColor: '#724BE4'
-                                    }
-                                }}
+                            <LeftColView
+                                handleFieldChange={handleFieldChange}
+                                formData={{ ...moderationState }}
                             />
                         </div>
                     </div>
+                    <ModerationFooter
+                        handlePublish={handlePublish}
+                        showRemoveButton={
+                            validOriginalStory.moderated === true &&
+                            validModeratedStory?.publish
+                        }
+                    />
                 </div>
-            )}
+            </div>
         </>
     );
 });

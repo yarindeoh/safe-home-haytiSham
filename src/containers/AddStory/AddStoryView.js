@@ -51,6 +51,7 @@ export const AddStoryView = withRoute(props => {
                             onSubmit={handleSubmit}
                             id={'addStoryForm'}
                             autoComplete="off"
+                            className={'addStoryForm'}
                         >
                             <Input
                                 name="name"

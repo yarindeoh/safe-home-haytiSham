@@ -1,12 +1,13 @@
 import { useState, useContext, useEffect } from 'react';
-import Api from './moderationApi';
-import { ModerationContext } from './moderationContext';
+import Api from 'containers/Moderation/moderationApi';
+import { ModerationContext } from 'containers/Moderation/moderationContext';
 import {
     NEW_MODERATE_STORY_INIT_DATA,
     SET_LOGGED_IN,
     SET_MODERATE_STORY_DATA,
-    SET_TAGS
-} from './moderationConstants';
+    SET_TAGS,
+    PAGE_SIZE
+} from 'containers/Moderation/moderationConstants';
 import {
     extractFieldsFromObj,
     getArrayOfTagsIds,
@@ -108,7 +109,7 @@ export const useModerationStories = () => {
         totalPages: 0,
         totalStories: 0
     });
-    const pageSize = 10;
+    const pageSize = PAGE_SIZE;
 
     async function handlePageChange(event, page) {
         try {
@@ -215,7 +216,7 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
 };
 
 export const useModerateStorySubmit = () => {
-    const { moderationState, dispatch } = useModerationContext();
+    const { moderationState } = useModerationContext();
     const { removeTokenOnError } = useRemoveTokenOnError();
     const [submitted, setSubmitted] = useState(false);
     let moderationDataToPost = { ...moderationState };
@@ -232,13 +233,6 @@ export const useModerateStorySubmit = () => {
         async function postData() {
             try {
                 await Api.postAddModerateStory(moderationDataToPost);
-                dispatch({
-                    type: SET_MODERATE_STORY_DATA,
-                    payload: {
-                        ...moderationState,
-                        ...NEW_MODERATE_STORY_INIT_DATA
-                    }
-                });
                 setSubmitted(true);
             } catch (e) {
                 removeTokenOnError(e);
@@ -254,23 +248,60 @@ export const useModerateStorySubmit = () => {
     };
 };
 
-export const useSelectedTags = () => {
+export const useDialogOkClick = back => {
     const { moderationState, dispatch } = useModerationContext();
-    function onSelect(selectedList, selectedItem) {
+
+    const handleDialogOkClick = e => {
+        e.preventDefault();
         dispatch({
-            type: SET_TAGS,
-            payload: [...moderationState.tags, selectedItem]
+            type: SET_MODERATE_STORY_DATA,
+            payload: {
+                ...moderationState,
+                ...NEW_MODERATE_STORY_INIT_DATA
+            }
         });
-    }
-    function onRemove(selectedList, selectedItem) {
+        back(e);
+    };
+
+    return {
+        handleDialogOkClick
+    };
+};
+
+export const useSelectedTags = () => {
+    const { dispatch } = useModerationContext();
+    function handleSelectedTags(selectedList) {
         dispatch({
             type: SET_TAGS,
-            payload: moderationState.tags.filter(e => e !== selectedItem)
+            payload: selectedList
         });
     }
 
     return {
-        onSelect,
-        onRemove
+        handleSelectedTags
+    };
+};
+
+export const usePublishModerateStory = () => {
+    const { moderationState } = useModerationContext();
+    const { removeTokenOnError } = useRemoveTokenOnError();
+    const [publishPostSuccess, setPublishPostSuccess] = useState(false);
+
+    async function handlePublish(publish) {
+        try {
+            const dataToSubmit = {
+                publish: publish,
+                moderatedStory: moderationState._id
+            };
+            await Api.postPublishModerateStory(dataToSubmit);
+            setPublishPostSuccess(true);
+        } catch (e) {
+            removeTokenOnError(e);
+        }
+    }
+
+    return {
+        handlePublish,
+        publishPostSuccess
     };
 };
