@@ -31,7 +31,8 @@ export const StoriesList = ({
                         Object.keys(stories)
                             .filter(
                                 key =>
-                                    stories[key]?.originalStory !== originalStory
+                                    stories[key]?.originalStory !==
+                                    originalStory
                             )
                             .map(key => {
                                 return (
@@ -53,7 +54,8 @@ export const StoriesList = ({
                                             handleStoryClick !== undefined
                                                 ? () =>
                                                       handleStoryClick(
-                                                          stories[key]?.originalStory
+                                                          stories[key]
+                                                              ?.originalStory
                                                       )
                                                 : undefined
                                         }

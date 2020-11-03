@@ -105,6 +105,7 @@ const he = {
             userName: 'שם משתמש',
             password: 'סיסמא',
             loginButtonText: 'אישור',
+            emptyList: ' אין סיפורים לעריכה :)',
             listToModerate: 'העדויות שדורשות עריכה (סה"כ {{num}})',
             listAllStories: 'תצוגת העדויות שמפורסמות באתר לפי נושאים',
             table: {
