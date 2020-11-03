@@ -26,5 +26,6 @@ router.get('/getStortiesForModeration', loginGuard, storieController.getStorties
 router.get('/getStoryForEdit', loginGuard, storieController.getStoryForEdit.bind(storieController));
 router.post('/addModerateStory', loginGuard, storieController.addModerateStory.bind(storieController));
 router.post('/publishModerateStory', loginGuard, storieController.publishModerateStory.bind(storieController));
+router.get('/getAllModeratedStories', loginGuard, storieController.getAllModeratedStories.bind(storieController));
 
 module.exports = router;
