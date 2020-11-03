@@ -6,6 +6,14 @@ class StorieController {
     }
 
     getStoriesByTags(req,res) {        
+        return this.listModeratedStrories(req, res, true);
+    }
+
+    getAllModeratedStories(req,res) {
+        return this.listModeratedStrories(req, res, false);
+    }
+
+    listModeratedStrories(req, res, publishedOnly){
         let tags = req.query.tags || '';
         if(tags){
             tags = JSON.parse(tags);
@@ -15,9 +23,9 @@ class StorieController {
         let pageSize = parseInt(req.query.pageSize) || 100;
         let sortField = req.query.sortField || "sequence";
         let sortDirection = req.query.sortDirection || "DESC";
-        return this.storieService.listByTags(tags, page, pageSize, sortField, sortDirection).then((data) =>{
+        return this.storieService.listByTags(tags, page, pageSize, sortField, sortDirection, publishedOnly).then((data) =>{
             res.json(data);
-        });  
+        }); 
     }
 
     addStory(req, res) {
