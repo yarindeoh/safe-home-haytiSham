@@ -102,34 +102,44 @@ export const useLoginSubmit = loginData => {
 };
 export const useModerationStories = () => {
     const {
-        getNextPage,
+        getByPage,
         data,
         replaceRelatedOptions,
         total,
+        totalPages,
         page
     } = usePagination(Api.getModerationStories, PAGE_SIZE);
     const { moderationState } = useModerationContext();
-
-    useEffect(() => {
-        (async function getWithOptions() {
-            replaceRelatedOptions({
-                sortField: 'createdAt',
-                sortDirection: 'ASC'
-            });
-        })();
-    }, []);
+    const { removeTokenOnError } = useRemoveTokenOnError();
 
     useEffect(() => {
         if (moderationState.loggedIn) {
-            getNextPage({}, [], 1);
+            (async function getWithOptions() {
+                replaceRelatedOptions(
+                    {
+                        sortField: 'createdAt',
+                        sortDirection: 'ASC'
+                    },
+                    true
+                );
+            })();
         }
     }, [moderationState.loggedIn]);
+
+    async function handlePageChange(e, page) {
+        try {
+            await getByPage(page);
+        } catch (e) {
+            removeTokenOnError(e);
+        }
+    }
+
     return {
-        stories: data.slice(0, PAGE_SIZE),
+        stories: data,
         currentPage: page,
-        totalPages: total,
-        totalStories: data,
-        handlePageChange: getNextPage
+        totalPages: totalPages,
+        totalStories: total,
+        handlePageChange: handlePageChange
     };
 };
 

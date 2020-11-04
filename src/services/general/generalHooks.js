@@ -148,27 +148,47 @@ export const usePagination = (fn, pageSize) => {
     const [data, setData] = useState([]);
     const [localOptions, setLocalOptions] = useState({});
     const [total, setTotal] = useState(0);
+    const [totalPages, setTotalPages] = useState(0);
 
     const getNext = useCallback(
-        async (options = {}, currData = [], pageNumber) => {
-            const res = await fn({
-                page: pageNumber,
-                pageSize: pageSize,
-                ...(options || localOptions)
-            });
-            setCurrentPage(pageNumber + 1);
-            setData([...currData, ...res.result]);
-            setHasMore(data.length < res.total);
-            setTotal(res.total);
-            options && setLocalOptions(options);
+        async (
+            options = {},
+            currData = [],
+            pageNumber,
+            shouldGetByPage = false
+        ) => {
+            try {
+                const res = await fn({
+                    page: pageNumber,
+                    pageSize: pageSize,
+                    ...(options || localOptions)
+                });
+                setCurrentPage(shouldGetByPage ? pageNumber : pageNumber + 1);
+                setData(
+                    shouldGetByPage
+                        ? [...res.result]
+                        : [...currData, ...res.result]
+                );
+                setHasMore(data.length < res.total);
+                setTotal(res.total);
+                setTotalPages(res.pages);
+                options && setLocalOptions(options);
+            } catch (e) {
+                return Promise.reject(e);
+            }
         },
         [data, currentPage, hasMore]
     );
-    const replaceRelatedOptions = async options => {
-        await getNext(options, [], 1);
+
+    const replaceRelatedOptions = async (options, shouldGetByPage = false) => {
+        await getNext(options, [], 1, getByPage);
     };
     async function getNextPage() {
         await getNext(localOptions, data, currentPage);
+    }
+
+    async function getByPage(page) {
+        await getNext(localOptions, data, page, true);
     }
     return {
         hasMore: hasMore,
@@ -176,7 +196,9 @@ export const usePagination = (fn, pageSize) => {
         currLength: data?.length,
         data: data,
         total,
+        totalPages,
         getNextPage,
-        replaceRelatedOptions
+        replaceRelatedOptions,
+        getByPage
     };
 };

@@ -12,9 +12,10 @@ export const StoriesList = ({
     storiesListClassName = '',
     handleStoryClick,
     displayEditImg,
-    originalStory
+    originalStory,
+    isAdmin
 }) => {
-    const { stories, hasMore, getNextPage } = useStories(tags);
+    const { stories, hasMore, getNextPage } = useStories(tags, isAdmin);
     return (
         <div className={'more-testimonies'}>
             <h1>{title}</h1>
