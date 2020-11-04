@@ -14,7 +14,10 @@ import {
     filterObjByKey,
     getTagsAsArray
 } from 'services/general/generalHelpers';
-import { useRemoveTokenOnError } from 'services/general/generalHooks';
+import {
+    useRemoveTokenOnError,
+    useLoginSubmit
+} from 'services/general/generalHooks';
 import { useHistory } from 'react-router';
 
 export function useModerationContext() {
@@ -51,17 +54,34 @@ export const useModerationRemoveTokenOnError = () => {
     };
 };
 
-export const useLoginFiledChange = () => {
-    const [loginData, setLoginData] = useState({ userName: '', password: '' });
-    const handleFieldChange = (e, filed) => {
-        let newLoginData = { ...loginData };
-        newLoginData[filed] = e.target.value;
-        setLoginData(newLoginData);
+export const useModerationLoginSubmit = loginData => {
+    const { dispatch } = useModerationContext();
+    const { postLogin } = useLoginSubmit(
+        loginData,
+        Api.postLogin,
+        'moderatorToken'
+    );
+
+    const handleModerationLogin = e => {
+        e.preventDefault();
+
+        async function callPostLogin() {
+            try {
+                await postLogin();
+                dispatch({
+                    type: SET_LOGGED_IN,
+                    payload: true
+                });
+            } catch (e) {
+                if (e.message === '403') return;
+                window.alert(e);
+            }
+        }
+        callPostLogin();
     };
 
     return {
-        loginData,
-        handleFieldChange
+        handleModerationLogin
     };
 };
 
@@ -78,32 +98,6 @@ export const useModerationFiledChange = () => {
 
     return {
         handleFieldChange
-    };
-};
-
-export const useLoginSubmit = loginData => {
-    const { dispatch } = useModerationContext();
-
-    const handleLogin = e => {
-        e.preventDefault();
-
-        async function postLogin() {
-            try {
-                const serverData = await Api.postLogin(loginData);
-                localStorage.setItem('moderatorToken', serverData.token);
-                dispatch({
-                    type: SET_LOGGED_IN,
-                    payload: true
-                });
-            } catch (e) {
-                window.alert(e);
-            }
-        }
-        postLogin();
-    };
-
-    return {
-        handleLogin
     };
 };
 
