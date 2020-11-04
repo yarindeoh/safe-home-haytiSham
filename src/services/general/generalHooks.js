@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getBreakpoint } from './breakpoints';
-import { PAGE_SIZE } from '../../containers/Stories/storiesConstants';
 
 export const useBack = (props, setSubmitted, path = '/') => {
     const back = e => {
@@ -143,7 +142,7 @@ export const useResizeTextArea = () => {
     return {};
 };
 
-export const usePagination = fn => {
+export const usePagination = (fn, pageSize) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
     const [data, setData] = useState([]);
@@ -151,14 +150,14 @@ export const usePagination = fn => {
     const [total, setTotal] = useState(0);
 
     const getNext = useCallback(
-        async (options, storiesSoFar, pageNumber) => {
+        async (options = {}, currData = [], pageNumber) => {
             const res = await fn({
                 page: pageNumber,
-                pageSize: PAGE_SIZE,
+                pageSize: pageSize,
                 ...(options || localOptions)
             });
             setCurrentPage(pageNumber + 1);
-            setData([...storiesSoFar, ...res.result]);
+            setData([...currData, ...res.result]);
             setHasMore(data.length < res.total);
             setTotal(res.total);
             options && setLocalOptions(options);

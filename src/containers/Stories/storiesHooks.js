@@ -1,8 +1,10 @@
 import Api from 'containers/Stories/storiesApi';
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useFetchApiData, usePagination } from 'services/general/generalHooks';
 
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
+import { PAGE_SIZE } from './storiesConstants';
+import ModerationApi from 'containers/Moderation/moderationApi';
 
 export const useTags = defaultSelectedTags => {
     const { localState: tags } = useFetchApiData(Api.getTagsMap, []);
@@ -74,9 +76,13 @@ export const useSelectedTags = tags => {
     };
 };
 
-export const useStories = tags => {
-    const { getNext, hasMore, data, replaceRelatedOptions } = usePagination(
-        Api.getStoriesByTags
+export const useStories = (tags, isAdmin) => {
+    const getApi = isAdmin
+        ? ModerationApi.getAllModeratedStories
+        : Api.getStoriesByTags;
+    const { getNextPage, hasMore, data, replaceRelatedOptions } = usePagination(
+        getApi,
+        PAGE_SIZE
     );
 
     useEffect(() => {
@@ -88,6 +94,6 @@ export const useStories = tags => {
     return {
         stories: data,
         hasMore: hasMore,
-        getNextPage: getNext
+        getNextPage
     };
 };
