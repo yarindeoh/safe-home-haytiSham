@@ -25,6 +25,23 @@ export const useFetchApiData = (apiCall, state) => {
     };
 };
 
+//Generic Remove Token on 401 from localStorage
+export const useRemoveTokenOnError = itemInLocalStorage => {
+    async function removeTokenOnError(e) {
+        if (e.message === '401') {
+            try {
+                localStorage.removeItem(itemInLocalStorage);
+                return Promise.resolve();
+            } catch (error) {
+                return Promise.reject(error);
+            }
+        }
+    }
+    return {
+        removeTokenOnError
+    };
+};
+
 export function useResize() {
     const [breakpoint, setBreakpoint] = useState(getBreakpoint());
     useEffect(() => {

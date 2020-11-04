@@ -1,5 +1,6 @@
 import Api from 'containers/Stories/storiesApi';
 import ModerationApi from 'containers/Moderation/moderationApi';
+import { useModerationRemoveTokenOnError } from 'containers/Moderation/moderationHooks';
 import { useEffect, useState, useCallback } from 'react';
 import { useFetchApiData } from 'services/general/generalHooks';
 
@@ -77,6 +78,8 @@ export const useSelectedTags = tags => {
 };
 
 export const useFilteredStories = (tags, isAdmin) => {
+    const { removeModerationTokenOnError } = useModerationRemoveTokenOnError();
+
     const [data, setData] = useState({
         stories: [],
         hasMore: true,
@@ -90,23 +93,27 @@ export const useFilteredStories = (tags, isAdmin) => {
         const get_function = isAdmin
             ? ModerationApi.getAllModeratedStories
             : Api.getStoriesByTags;
-        let result = await get_function({
-            tags,
-            pageSize,
-            page: pageNumber
-        });
-        let newData = { ...data };
+        try {
+            let result = await get_function({
+                tags,
+                pageSize,
+                page: pageNumber
+            });
+            let newData = { ...data };
 
-        if (pageNumber < result.pages) {
-            newData.page = pageNumber + 1;
-            newData.hasMore = true;
-        } else if (data.page === result.pages) {
-            newData.page = pageNumber;
-            newData.hasMore = false;
+            if (pageNumber < result.pages) {
+                newData.page = pageNumber + 1;
+                newData.hasMore = true;
+            } else if (data.page === result.pages) {
+                newData.page = pageNumber;
+                newData.hasMore = false;
+            }
+            newData.stories = [...storiesSoFar, ...result?.result];
+            newData.init = true;
+            setData(newData);
+        } catch (error) {
+            removeModerationTokenOnError(error);
         }
-        newData.stories = [...storiesSoFar, ...result?.result];
-        newData.init = true;
-        setData(newData);
     }
     async function replaceRelatedTags(tags) {
         await addNextPageData(tags, [], 1);

@@ -14,6 +14,7 @@ import {
     filterObjByKey,
     getTagsAsArray
 } from 'services/general/generalHelpers';
+import { useRemoveTokenOnError } from 'services/general/generalHooks';
 import { useHistory } from 'react-router';
 
 export function useModerationContext() {
@@ -26,21 +27,27 @@ export function useModerationContext() {
     return context;
 }
 
-export const useRemoveTokenOnError = () => {
+export const useModerationRemoveTokenOnError = () => {
+    const history = useHistory();
+    const itemInLocalStorage = 'moderatorToken';
+    const { removeTokenOnError } = useRemoveTokenOnError(itemInLocalStorage);
     const { dispatch } = useModerationContext();
 
-    function removeTokenOnError(e) {
-        if (e.message === '401') {
+    async function removeModerationTokenOnError(e) {
+        try {
+            await removeTokenOnError(e);
             window.alert('User Token is not valid');
-            localStorage.removeItem('moderatorToken');
             dispatch({
                 type: SET_LOGGED_IN,
-                payload: localStorage.getItem('moderatorToken') !== null
+                payload: localStorage.getItem(itemInLocalStorage) !== null
             });
+            history.push('/admin');
+        } catch (error) {
+            console.error(error);
         }
     }
     return {
-        removeTokenOnError
+        removeModerationTokenOnError
     };
 };
 
@@ -102,7 +109,7 @@ export const useLoginSubmit = loginData => {
 
 export const useModerationStories = () => {
     const { moderationState } = useModerationContext();
-    const { removeTokenOnError } = useRemoveTokenOnError();
+    const { removeModerationTokenOnError } = useModerationRemoveTokenOnError();
     const [data, setData] = useState({
         storiesPerPage: undefined,
         currentPage: 1,
@@ -126,7 +133,7 @@ export const useModerationStories = () => {
             newData.storiesPerPage = [...result?.result];
             setData(newData);
         } catch (e) {
-            removeTokenOnError(e);
+            removeModerationTokenOnError(e);
         }
     }
 
@@ -146,8 +153,8 @@ export const useModerationStories = () => {
 };
 
 export const useEditModerationStory = () => {
-    let history = useHistory();
-    const { removeTokenOnError } = useRemoveTokenOnError();
+    const history = useHistory();
+    const { removeModerationTokenOnError } = useModerationRemoveTokenOnError();
 
     async function getModerationStory(id) {
         try {
@@ -160,7 +167,7 @@ export const useEditModerationStory = () => {
                 history.push(`/moderateStory/${id}`, result);
             }
         } catch (e) {
-            removeTokenOnError(e);
+            removeModerationTokenOnError(e);
         }
     }
 
@@ -217,7 +224,7 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
 
 export const useModerateStorySubmit = () => {
     const { moderationState } = useModerationContext();
-    const { removeTokenOnError } = useRemoveTokenOnError();
+    const { removeModerationTokenOnError } = useModerationRemoveTokenOnError();
     const [submitted, setSubmitted] = useState(false);
     let moderationDataToPost = { ...moderationState };
     delete moderationDataToPost.loggedIn;
@@ -235,7 +242,7 @@ export const useModerateStorySubmit = () => {
                 await Api.postAddModerateStory(moderationDataToPost);
                 setSubmitted(true);
             } catch (e) {
-                removeTokenOnError(e);
+                removeModerationTokenOnError(e);
             }
         }
         postData();
@@ -284,7 +291,7 @@ export const useSelectedTags = () => {
 
 export const usePublishModerateStory = () => {
     const { moderationState } = useModerationContext();
-    const { removeTokenOnError } = useRemoveTokenOnError();
+    const { removeModerationTokenOnError } = useModerationRemoveTokenOnError();
     const [publishPostSuccess, setPublishPostSuccess] = useState(false);
 
     async function handlePublish(publish) {
@@ -296,7 +303,7 @@ export const usePublishModerateStory = () => {
             await Api.postPublishModerateStory(dataToSubmit);
             setPublishPostSuccess(true);
         } catch (e) {
-            removeTokenOnError(e);
+            removeModerationTokenOnError(e);
         }
     }
 
