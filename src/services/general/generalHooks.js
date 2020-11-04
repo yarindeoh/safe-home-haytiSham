@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getBreakpoint } from './breakpoints';
+import { PAGE_SIZE } from '../../containers/Stories/storiesConstants';
 
 export const useBack = (props, setSubmitted, path = '/') => {
     const back = e => {
@@ -142,22 +143,41 @@ export const useResizeTextArea = () => {
     return {};
 };
 
-// function usePagination(pages, pageNumber) {
-//     const [currentPage, setCurrentPage] = useState(1);
-//     const [hasMore, setHasMore] = useState(true);
-//     useEffect(() => {
-//         if (pageNumber < pages) {
-//             setCurrentPage(currentPage + 1);
-//             setHasMore(true);
-//         } else if (pageNumber === pages) {
-//             setCurrentPage(pageNumber);
-//             setHasMore(false);
-//         }
-//     }, [pageNumber, pages]);
-//
-//     return {
-//         pageNumber,
-//         pages,
-//         hasMore
-//     };
-// }
+export const usePagination = fn => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [hasMore, setHasMore] = useState(true);
+    const [data, setData] = useState([]);
+    const [localOptions, setLocalOptions] = useState({});
+    const [total, setTotal] = useState(0);
+
+    const getNext = useCallback(
+        async (options, storiesSoFar, pageNumber) => {
+            const res = await fn({
+                page: pageNumber,
+                pageSize: PAGE_SIZE,
+                ...(options || localOptions)
+            });
+            setCurrentPage(pageNumber + 1);
+            setData([...storiesSoFar, ...res.result]);
+            setHasMore(data.length < res.total);
+            setTotal(res.total);
+            options && setLocalOptions(options);
+        },
+        [data, currentPage, hasMore]
+    );
+    const replaceRelatedOptions = async options => {
+        await getNext(options, [], 1);
+    };
+    async function getNextPage() {
+        await getNext(localOptions, data, currentPage);
+    }
+    return {
+        hasMore: hasMore,
+        page: currentPage,
+        currLength: data?.length,
+        data: data,
+        total,
+        getNextPage,
+        replaceRelatedOptions
+    };
+};

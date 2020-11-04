@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFilteredStories } from 'containers/Stories/storiesHooks';
+import { useStories } from 'containers/Stories/storiesHooks';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
 import { Loader } from 'components/Loader';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -12,10 +12,9 @@ export const StoriesList = ({
     storiesListClassName = '',
     handleStoryClick,
     displayEditImg,
-    isAdmin,
     originalStory
 }) => {
-    const { stories, hasMore, getNextPage } = useFilteredStories(tags, isAdmin);
+    const { stories, hasMore, getNextPage } = useStories(tags);
     return (
         <div className={'more-testimonies'}>
             <h1>{title}</h1>

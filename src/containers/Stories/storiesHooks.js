@@ -1,10 +1,8 @@
 import Api from 'containers/Stories/storiesApi';
-import ModerationApi from 'containers/Moderation/moderationApi';
-import { useEffect, useState, useCallback } from 'react';
-import { useFetchApiData } from 'services/general/generalHooks';
+import { useEffect, useState, useCallback, useRef } from 'react';
+import { useFetchApiData, usePagination } from 'services/general/generalHooks';
 
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
-import { PAGE_SIZE } from './storiesConstants';
 
 export const useTags = defaultSelectedTags => {
     const { localState: tags } = useFetchApiData(Api.getTagsMap, []);
@@ -76,53 +74,20 @@ export const useSelectedTags = tags => {
     };
 };
 
-export const useFilteredStories = (tags, isAdmin) => {
-    const [data, setData] = useState({
-        stories: [],
-        hasMore: true,
-        page: 1,
-        init: false
-    });
-
-    const pageSize = PAGE_SIZE;
-
-    async function addNextPageData(tags, storiesSoFar, pageNumber) {
-        const get_function = isAdmin
-            ? ModerationApi.getAllModeratedStories
-            : Api.getStoriesByTags;
-        let result = await get_function({
-            tags,
-            pageSize,
-            page: pageNumber
-        });
-        let newData = { ...data };
-
-        if (pageNumber < result.pages) {
-            newData.page = pageNumber + 1;
-            newData.hasMore = true;
-        } else if (data.page === result.pages) {
-            newData.page = pageNumber;
-            newData.hasMore = false;
-        }
-        newData.stories = [...storiesSoFar, ...result?.result];
-        newData.init = true;
-        setData(newData);
-    }
-    async function replaceRelatedTags(tags) {
-        await addNextPageData(tags, [], 1);
-    }
-    async function getNextPage() {
-        await addNextPageData(tags, data.stories, data.page);
-    }
+export const useStories = tags => {
+    const { getNext, hasMore, data, replaceRelatedOptions } = usePagination(
+        Api.getStoriesByTags
+    );
 
     useEffect(() => {
-        replaceRelatedTags(tags);
+        (async function fetchData() {
+            replaceRelatedOptions({ tags: tags });
+        })();
     }, [tags]);
 
     return {
-        stories: data.stories,
-        hasMore: data.hasMore,
-        getNextPage,
-        init: data.init
+        stories: data,
+        hasMore: hasMore,
+        getNextPage: getNext
     };
 };
