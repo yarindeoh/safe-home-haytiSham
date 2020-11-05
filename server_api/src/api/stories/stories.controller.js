@@ -1,5 +1,5 @@
 const StorieService = require('./stories.service');
-const Mailer = require('../../services/mailer');
+// const Mailer = require('../../services/mailer');
 const path = require('path');
 let envPath = path.join(__dirname, '../../../.env');
 require('dotenv').config({ path: envPath });
@@ -7,10 +7,21 @@ require('dotenv').config({ path: envPath });
 class StorieController {
     constructor() {
         this.storieService = new StorieService();
-        this.mailer = new Mailer({
-            user: process.env.MAIL_ADDRESS,
-            pass: process.env.MAIL_PASSWORD
-        });
+        /*
+            TODO:
+            For automatic email notifications once a new story is submitted, you should provide a receiver address, and its password.   
+            Here, you provide email&password to Mailer from the env file. To use it, add a password and an email to the .env file, then uncomment 
+            all relative code to mailer blow. 
+            ( - creation of Mailer instance
+              - send() method in addStory below
+              - mailData in addStory below ) 
+              - Mailer module 
+
+            this.mailer = new Mailer({
+                user: process.env.MAIL_ADDRESS,
+                pass: process.env.MAIL_PASSWORD
+            });       
+        */
     }
 
     getStoriesByTags(req, res) {
@@ -44,18 +55,18 @@ class StorieController {
             contact: req.body.contact || false
         };
 
-        const mailData = {
-            from: 'haytisham@gmail.com', // sender address
-            to: 'haytisham@gmail.com', // list of receivers
-            subject: 'התקבלה עדות חדשה באתר', // Subject line
-            text:
-                ' היי! קיבלנו עדות חדשה שממתינה למודרציה לפני העלאה לאתר. אנא היכנסו אל וערכו את העדות וערכו אותה כדי שתעלה אל האתר.', // plain text body
-            html:
-                '<p dir="rtl"> היי! <br/> קיבלנו עדות חדשה שממתינה למודרציה לפני העלאה לאתר. אנא היכנסו וערכו את העדות כדי שתעלה אל האתר. </p>'
-        };
+        // const mailData = {
+        //     from: 'haytisham@gmail.com', // sender address
+        //     to: 'haytisham@gmail.com', // list of receivers
+        //     subject: 'התקבלה עדות חדשה באתר', // Subject line
+        //     text:
+        //         ' היי! קיבלנו עדות חדשה שממתינה למודרציה לפני העלאה לאתר. אנא היכנסו אל וערכו את העדות וערכו אותה כדי שתעלה אל האתר.', // plain text body
+        //     html:
+        //         '<p dir="rtl"> היי! <br/> קיבלנו עדות חדשה שממתינה למודרציה לפני העלאה לאתר. אנא היכנסו וערכו את העדות כדי שתעלה אל האתר. </p>'
+        // };
 
         return this.storieService.createStory(instance).then(() => {
-            this.mailer.send(mailData);
+            // this.mailer.send(mailData); // send automatic e-mail when story added
             res.sendStatus(200);
         });
     }
