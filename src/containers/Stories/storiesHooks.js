@@ -1,11 +1,10 @@
 import Api from 'containers/Stories/storiesApi';
-import ModerationApi from 'containers/Moderation/moderationApi';
-import { useModerationRemoveTokenOnError } from 'containers/Moderation/moderationHooks';
 import { useEffect, useState, useCallback } from 'react';
-import { useFetchApiData } from 'services/general/generalHooks';
+import { useFetchApiData, usePagination } from 'services/general/generalHooks';
 
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
 import { PAGE_SIZE } from './storiesConstants';
+import ModerationApi from 'containers/Moderation/moderationApi';
 
 export const useTags = defaultSelectedTags => {
     const { localState: tags } = useFetchApiData(Api.getTagsMap, []);
@@ -77,59 +76,24 @@ export const useSelectedTags = tags => {
     };
 };
 
-export const useFilteredStories = (tags, isAdmin) => {
-    const { removeModerationTokenOnError } = useModerationRemoveTokenOnError();
-
-    const [data, setData] = useState({
-        stories: [],
-        hasMore: true,
-        page: 1,
-        init: false
-    });
-
-    const pageSize = PAGE_SIZE;
-
-    async function addNextPageData(tags, storiesSoFar, pageNumber) {
-        const get_function = isAdmin
-            ? ModerationApi.getAllModeratedStories
-            : Api.getStoriesByTags;
-        try {
-            let result = await get_function({
-                tags,
-                pageSize,
-                page: pageNumber
-            });
-            let newData = { ...data };
-
-            if (pageNumber < result.pages) {
-                newData.page = pageNumber + 1;
-                newData.hasMore = true;
-            } else if (data.page === result.pages) {
-                newData.page = pageNumber;
-                newData.hasMore = false;
-            }
-            newData.stories = [...storiesSoFar, ...result?.result];
-            newData.init = true;
-            setData(newData);
-        } catch (error) {
-            removeModerationTokenOnError(error);
-        }
-    }
-    async function replaceRelatedTags(tags) {
-        await addNextPageData(tags, [], 1);
-    }
-    async function getNextPage() {
-        await addNextPageData(tags, data.stories, data.page);
-    }
+export const useStories = (tags, isAdmin) => {
+    const getApi = isAdmin
+        ? ModerationApi.getAllModeratedStories
+        : Api.getStoriesByTags;
+    const { getNextPage, hasMore, data, replaceRelatedOptions } = usePagination(
+        getApi,
+        PAGE_SIZE
+    );
 
     useEffect(() => {
-        replaceRelatedTags(tags);
+        (async function fetchData() {
+            replaceRelatedOptions({ tags: tags });
+        })();
     }, [tags]);
 
     return {
-        stories: data.stories,
-        hasMore: data.hasMore,
-        getNextPage,
-        init: data.init
+        stories: data,
+        hasMore: hasMore,
+        getNextPage
     };
 };
