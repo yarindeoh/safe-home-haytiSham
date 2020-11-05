@@ -15,6 +15,7 @@ import {
     getTagsAsArray
 } from 'services/general/generalHelpers';
 import { useHistory } from 'react-router';
+import { usePagination } from 'services/general/generalHooks';
 
 export function useModerationContext() {
     const context = useContext(ModerationContext);
@@ -99,49 +100,46 @@ export const useLoginSubmit = loginData => {
         handleLogin
     };
 };
-
 export const useModerationStories = () => {
+    const {
+        getByPage,
+        data,
+        replaceRelatedOptions,
+        total,
+        totalPages,
+        page
+    } = usePagination(Api.getModerationStories, PAGE_SIZE);
     const { moderationState } = useModerationContext();
     const { removeTokenOnError } = useRemoveTokenOnError();
-    const [data, setData] = useState({
-        storiesPerPage: undefined,
-        currentPage: 1,
-        totalPages: 0,
-        totalStories: 0
-    });
-    const pageSize = PAGE_SIZE;
 
-    async function handlePageChange(event, page) {
+    useEffect(() => {
+        if (moderationState.loggedIn) {
+            (async function getWithOptions() {
+                replaceRelatedOptions(
+                    {
+                        sortField: 'createdAt',
+                        sortDirection: 'ASC'
+                    },
+                    true
+                );
+            })();
+        }
+    }, [moderationState.loggedIn]);
+
+    async function handlePageChange(e, page) {
         try {
-            let result = await Api.getModerationStories(
-                pageSize,
-                page,
-                'createdAt',
-                'ASC'
-            );
-            let newData = { ...data };
-            newData.totalPages = result.pages;
-            newData.currentPage = page;
-            newData.totalStories = result.total;
-            newData.storiesPerPage = [...result?.result];
-            setData(newData);
+            await getByPage(page);
         } catch (e) {
             removeTokenOnError(e);
         }
     }
 
-    useEffect(() => {
-        if (moderationState.loggedIn) {
-            handlePageChange(undefined, 1);
-        }
-    }, [moderationState.loggedIn]);
-
     return {
-        stories: data.storiesPerPage,
-        currentPage: data.currentPage,
-        totalPages: data.totalPages,
-        totalStories: data.totalStories,
-        handlePageChange
+        stories: data,
+        currentPage: page,
+        totalPages: totalPages,
+        totalStories: total,
+        handlePageChange: handlePageChange
     };
 };
 

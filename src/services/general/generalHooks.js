@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getBreakpoint } from './breakpoints';
 
 export const useBack = (props, setSubmitted, path = '/') => {
@@ -142,22 +142,63 @@ export const useResizeTextArea = () => {
     return {};
 };
 
-// function usePagination(pages, pageNumber) {
-//     const [currentPage, setCurrentPage] = useState(1);
-//     const [hasMore, setHasMore] = useState(true);
-//     useEffect(() => {
-//         if (pageNumber < pages) {
-//             setCurrentPage(currentPage + 1);
-//             setHasMore(true);
-//         } else if (pageNumber === pages) {
-//             setCurrentPage(pageNumber);
-//             setHasMore(false);
-//         }
-//     }, [pageNumber, pages]);
-//
-//     return {
-//         pageNumber,
-//         pages,
-//         hasMore
-//     };
-// }
+export const usePagination = (fn, pageSize) => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [hasMore, setHasMore] = useState(true);
+    const [data, setData] = useState([]);
+    const [localOptions, setLocalOptions] = useState({});
+    const [total, setTotal] = useState(0);
+    const [totalPages, setTotalPages] = useState(0);
+
+    const getNext = useCallback(
+        async (
+            options = {},
+            currData = [],
+            pageNumber,
+            shouldGetByPage = false
+        ) => {
+            try {
+                const res = await fn({
+                    page: pageNumber,
+                    pageSize: pageSize,
+                    ...(options || localOptions)
+                });
+                setCurrentPage(shouldGetByPage ? pageNumber : pageNumber + 1);
+                setData(
+                    shouldGetByPage
+                        ? [...res.result]
+                        : [...currData, ...res.result]
+                );
+                setHasMore(data.length < res.total);
+                setTotal(res.total);
+                setTotalPages(res.pages);
+                options && setLocalOptions(options);
+            } catch (e) {
+                return Promise.reject(e);
+            }
+        },
+        [data, currentPage, hasMore]
+    );
+
+    const replaceRelatedOptions = async (options, shouldGetByPage = false) => {
+        await getNext(options, [], 1, getByPage);
+    };
+    async function getNextPage() {
+        await getNext(localOptions, data, currentPage);
+    }
+
+    async function getByPage(page) {
+        await getNext(localOptions, data, page, true);
+    }
+    return {
+        hasMore: hasMore,
+        page: currentPage,
+        currLength: data?.length,
+        data: data,
+        total,
+        totalPages,
+        getNextPage,
+        replaceRelatedOptions,
+        getByPage
+    };
+};

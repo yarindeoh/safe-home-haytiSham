@@ -16,7 +16,7 @@ const Api = {
     postPublishModerateStory: data => {
         return post(baseUrl('publishModerateStory'), data, { no_result: true });
     },
-    getModerationStories: (pageSize, page, sortField, sortDirection) => {
+    getModerationStories: ({ pageSize, page, sortField, sortDirection }) => {
         return get(
             baseUrl(
                 `getStortiesForModeration?page=${page}&pageSize=${pageSize}&sortField=${sortField}&sortDirection=${sortDirection}`
