@@ -29,7 +29,7 @@ class StorieController {
     }
 
     getAllModeratedStories(req,res) {
-        return t his.listModeratedStrories(req, res, false);
+        return this.listModeratedStrories(req, res, false);
     }
 
     listModeratedStrories(req, res, publishedOnly){
