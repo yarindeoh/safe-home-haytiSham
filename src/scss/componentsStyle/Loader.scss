@@ -1,0 +1,45 @@
+@import '../local/_colors.scss';
+
+.loader-container {
+  height: 120px;
+  margin-bottom: 6px;
+  width: inherit;
+
+  .spinner-box {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+  }
+
+  .circle-border {
+    width: 50px;
+    height: 50px;
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgb(63, 249, 220);
+    background: linear-gradient(0deg, rgba(63, 249, 220, 0.1) 33%,  map_get($colors, blue-500) 100%);
+    animation: spin .95s linear 0s infinite;
+  }
+
+  .circle-core {
+    width: 100%;
+    height: 100%;
+    background-color: map_get($colors, grey-100);
+    border-radius: 50%;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to{
+    transform: rotate(359deg);
+  }
+}

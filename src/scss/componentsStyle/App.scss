@@ -22,6 +22,7 @@
 @import 'CarouselItem';
 @import 'WarningSigns';
 @import 'About';
+@import './LoginView';
 
 #root {
     background-color: map_get($colors, grey-100);

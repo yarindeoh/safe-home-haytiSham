@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import HamburgerIcon from 'src/media/icons/hamburger.svg';
 import ArrowBackIcon from 'src/media/icons/ArrowBack.svg';
@@ -26,8 +26,9 @@ export const Header = ({ isMainHeader = false }) => {
     return (
         <div className="AppHeader">
             <Menu show={showMenu} onToggle={toggleMenu} onGoTo={goTo} />
-            <SearchIcon />
-            <span>{t('common.iHaveBeenThereHashtag')}</span>
+            <span>
+                <Link to="/">{t('common.iHaveBeenThereHashtag')}</Link>
+            </span>
             {isMainHeader ? (
                 <HamburgerIcon onClick={toggleMenu} />
             ) : (

@@ -1,29 +1,6 @@
 .about {
-    margin: map_get($spaces, medium);
-    font-family: Assistant;
-    font-style: normal;
-  
-    h1 {
-      font-size: 22px;
-      font-weight: 600;
+    h1, h2, p {
       margin-bottom: map_get($spaces, small);
-      color: map_get($colors, black);
-    }
-  
-    h2 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: map_get($spaces, small);
-      color: map_get($colors, black);
-    }
-  
-    p {
-      color: map_get($colors, black);
-      margin-bottom: map_get($spaces, small);
-
-      b {
-        color: map_get($colors, black);
-      }
     }
 
     h3 {
@@ -51,6 +28,12 @@
         grid-template-rows: 50% 50%;
         column-gap: 10px;
         row-gap: 30px;
+
+       @include breakpoint-3 {
+         display: flex;
+         justify-content: space-between;
+         column-gap: normal;
+       }
      }
   
   }

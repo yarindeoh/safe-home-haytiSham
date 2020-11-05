@@ -1,6 +1,5 @@
 import React from 'react';
 import { Video, Transformation } from 'cloudinary-react';
-
 import { withRoute } from 'services/routing/routerHOC';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { Tags } from 'containers/Story/components/Tags';
@@ -8,6 +7,7 @@ import { getPublicStoryById } from 'services/general/publicStoriesConfig';
 import { useTranslation } from 'react-i18next';
 import HelpButton from 'src/components/HelpButton.js';
 import Skeleton from 'src/components/Skeleton';
+import Content from 'src/components/Content';
 
 export const StoryVideo = withRoute(props => {
     const { t } = useTranslation();
@@ -19,7 +19,7 @@ export const StoryVideo = withRoute(props => {
     return (
         <Skeleton>
             <div id={'story-page-container'}>
-                <div id={'story-page-content'}>
+                <Content className="story-page-content" fullWidth={true}>
                     <div className="quote">
                         <h1>{story.quote}</h1>
                         <h2>
@@ -41,10 +41,10 @@ export const StoryVideo = withRoute(props => {
                             </Video>
                         </div>
                     </div>
-                </div>
+                </Content>
             </div>
             <StoriesList
-                tags={story.tags_id}
+                tags={story.tagsId}
                 title={t('tagsFilter.additionalTestimonies')}
                 changeLocationByPath={changeLocationByPath}
             />

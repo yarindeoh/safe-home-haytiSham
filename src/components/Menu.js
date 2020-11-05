@@ -3,14 +3,9 @@ import XIcon from 'src/media/icons/X.svg';
 import { useTranslation } from 'react-i18next';
 
 const PAGES = [
-    { title: 'whoWeAre', path: '/about' },
-    { title: 'getHelp' },
-    { title: 'warningSigns.header', path: '/warning-signs', isBold: true },
-    { title: 'statistic' },
     { title: 'testimonySubmission', path: '/addStory' },
-    { title: 'michalSelaForum' },
-    { title: 'accessability' },
-    { title: 'technicSupport' }
+    { title: 'warningSigns.header', path: '/pages/warning-signs' },
+    { title: 'whoWeAre', path: '/pages/about' }
 ];
 
 export function Menu(props) {
@@ -31,8 +26,8 @@ export function Menu(props) {
                     </div>
                 </div>
                 <ul className="Items">
-                    {PAGES.map(({ title, isBold, path }, index) => {
-                        let className = isBold ? 'Bold' : '';
+                    {PAGES.map(({ title, path }, index) => {
+                        let className = '';
                         if (index === 4) {
                             className += ` EndSection`;
                         }

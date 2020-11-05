@@ -8,7 +8,8 @@ export const TextArea = ({
     value,
     required,
     onChange,
-    disabled
+    disabled,
+    formId
 }) => {
     return (
         <div
@@ -16,10 +17,11 @@ export const TextArea = ({
                 disabled ? 'disabled-area' : ''
             }`}
         >
-            <div className={'question'}>{label}</div>
-            <div>{sublabel}</div>
-            <div required={required}>
+            <label className={'question'}>{label}</label>
+            {sublabel && <div>{sublabel}</div>}
+            <div className="textarea-wrapper" required={required}>
                 <textarea
+                    form={formId}
                     disabled={disabled}
                     name={name}
                     placeholder={placeholder}

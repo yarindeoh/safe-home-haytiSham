@@ -17,12 +17,21 @@
     line-height: 35px;
 
     span {
+        width: 100%;
+        text-align: center;
+    }
+
+    span a {
         color: map_get($colors, white);
+        text-decoration: none;
     }
 
     & > svg {
         margin: 18px;
         cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 
     .DarkFilter {
@@ -103,12 +112,13 @@
 
 .Content {
   padding-top: 62px;
-    @include breakpoint-2 {
-        width: 85%;
+    @include desktop {
+        width: 65%;
+        max-width: 1170px;
         margin: auto;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        color: map_get($colors, grey-800);
     }
 }
 
@@ -121,13 +131,17 @@
     text-align: center;
     font-size: 18px;
 
-    @include breakpoint-2{
+    @include desktop{
         display: none;
     }
 }
 
 .more-testimonies {
     box-sizing: border-box;
+
+    .loader-container {
+        margin: 20px 0 0 0;
+    }
 
     >h1 {
         font-weight: normal;
@@ -140,7 +154,7 @@
         padding: 18px 24px 32px;
     }
 
-    @include breakpoint-2{
+    @include desktop{
         padding: 18px 0 32px;
     }
 }
@@ -161,7 +175,6 @@ label {
 footer {
     display: flex;
     text-align: center;
-    flex-direction: column;
 
     li {
         list-style-type: none;
@@ -170,11 +183,11 @@ footer {
         font-size: 15px;
     }
 
-    li a {
+    div a, u {
         color: map_get($colors, white);
     }
 
-    li a:link {
+    a:link {
         text-decoration: none;
     }
 
@@ -182,53 +195,80 @@ footer {
         background-color: map_get($colors, black);
     }
 
-    .footer-menu h1 {
-        font-weight: normal;
-        color: map_get($colors, purple-400);
-        margin: 15px;
-        font-size: 35px;
+    .footer-inner {
+        width: 100%;
+        flex: 3;
+
+        ul {
+            margin: 10px;
+        }
+
+        ul:first-of-type {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .copyright {
+
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
+
+            span {
+                margin: auto 5px;
+                color: map_get($colors, white);
+            }
+
+            height: 45px;
+            align-items: center;
+
+            li {
+                margin: 10px;
+            }
+        }
     }
 
-    ul:first-of-type {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .footer-menu ul li {
-        flex: 50%;
-        margin: 8px auto;
-    }
-
-    .emergency-dial-wrapper.purple {
-        background: map_get($colors, purple-400);
-    }
-
-    .emergency-dial-wrapper li,
     .footer-menu {
         display: flex;
         flex-direction: column;
+
+        ul {
+            max-width: 320px;
+            margin: 5px auto;
+
+            li {
+            flex: 100%;
+            margin: 8px auto;
+            }
+        }
+ 
     }
 
-    .emergency-dial-wrapper li span p {
-        color: white;
-        max-width: 130px;
+    .footer-title {
+        color: map_get($colors, purple-500);
+        font-size: 40px;
+        align-self: center;
     }
 
-    .emergency-dial-wrapper ul,
-    .legal-bar ul {
+    .phone-section{
         display: flex;
+        align-items: center;
         justify-content: center;
+        height: 56px;
+        background: map_get($colors, purple-600);
     }
 
-    ul,
-    .emergency-dial-wrapper li,
-    .legal-bar li {
-        margin: 10px;
+    .phone-number{
+        font-size: 24px;
+        color: map_get($colors, grey-100);
+        padding-left: 2%;
     }
 
-    .legal-bar ul span {
-        margin: auto 5px;
+    .phone-text{
+        font-size: 12px;
+        width: 70px;
+        color: map_get($colors, grey-100);
     }
 }
 
@@ -240,7 +280,7 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    @include breakpoint-2 {
+    @include desktop {
         grid-template-columns: 1fr 1fr;
     }
 }
@@ -248,4 +288,85 @@ footer {
 .disabled-area{
     opacity: 0.7;
     pointer-events: none;
+}
+
+.content-wrapper {
+    align-self: center;
+
+    .align-right {
+        align-self: start;
+    }
+
+    @include breakpoint-1 {
+        padding: 0 24px;
+        h1 {
+            font-size: 20px;
+        }
+
+        h2,
+        p,
+        label {
+            font-size: 16px;
+        }
+
+        textarea,
+        input {
+            font-size: 16px;
+            ::placeholder {
+                font-size: 16px;
+            }
+        }
+    }
+
+    @include desktop {
+        h1 {
+            font-size: 24px;
+        }
+
+        h2,
+        p,
+        label {
+            font-size: 20px;
+        }
+
+        textarea,
+        input {
+            font-size: 20px;
+            ::placeholder {
+                font-size: 20px;
+            }
+        }
+    }
+
+    @include breakpoint-3 {
+        width: 80%;
+        max-width: 800px;
+
+        &.full-width{
+            width: 100%;
+        }
+    }
+}
+
+.submit-button {
+    width: 100%;
+    height: 48px;
+    background-image: linear-gradient(94.5deg, #3691E5 -6.72%, #566BE4 20.51%, #7845E3 96.66%);
+    font-weight: normal;
+    font-size: 22px;
+    color: map_get($colors, white);
+    border-radius: 80px;
+    max-width: 300px;
+    margin-top: map_get($spaces, small);
+
+    &:focus{
+        outline: none;
+    }
+  }
+
+.divider {
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: map_get($spaces, small);
 }

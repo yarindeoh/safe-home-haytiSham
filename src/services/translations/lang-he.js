@@ -10,23 +10,9 @@ const he = {
             jealousy: 'קנאה'
         },
         storyName: 'שם הסיפור',
-        background:
-            'רקע* (מה היה טיב מערכת היחסים, מתי זה קרה, לאורך כמה זמן, גיל וכו׳)',
         whatTriggeredChange: 'איך הסיטואציה השתנתה',
-        howDidYouManged: 'איך התמודדתי עם המצב',
-        howDidYouMangedPlaceholder: 'ההתמודדות שלי...',
-        additionalnfo: 'בכמה משפטים, מה הכי היית רוצה לומר למי במצב דומה',
-        additionalnfoPlaceHolder: 'אני רוצה לומר ש...',
         image: 'תמונה',
         mail: 'אימייל',
-        whatHelpedYou: 'מה עזר לך להתמודד',
-        whatHelpedYouPlaceHolder: 'מאוד עזר לי ש...',
-        whatTriggeredChange: 'מה גרם לשינוי',
-        whatTriggeredChangePlaceHolder: 'השינוי התחיל ש...',
-        quote: 'ציטוט נבחר',
-        quotePlaceHolder: 'ציטוט מתוך הטקסט...',
-        storyContent: 'הסיפור שלי*',
-        storyContentPlaceholder: 'הסיפור שלי הוא...',
         additionalStories: 'עדויות נוספות',
         submitForm: 'שליחה',
         backFromForm: 'חזרה לדף הבית',
@@ -45,9 +31,11 @@ const he = {
         emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber: '1202/3',
         emergencyHotlineOfMinistryOfLaborAndSocialAffairs:
             'קו החירום החברתי של \n משרד העבודה והרווחה',
-        IHaveBeenThere2020: 'הייתי שם 2020',
+        loLalimotPhoneText: 'קו החירום של לא לאלימות',
+        IHaveBeenThere2020: "© 'הייתי שם' 2020",
         privacyPolicy: 'מדיניות הפרטיות',
         testimoniesFromRelationships: 'עדויות ממערכות יחסים אלימות',
+        IHaveBeenThereHashtag: '#הייתי_שם',
         storiesView: {
             header: 'בית לעדויות ממערכות יחסים אלימות',
             addStory: 'לשליחת העדות שלך'
@@ -65,17 +53,33 @@ const he = {
             whatHelpedYou: 'מה עזר לך להתמודד?'
         },
         addStoryView: {
-            createdAt: 'נכתב ב: ',
+            createdAtLabel: 'נכתב ב: ',
             myConfession: 'העדות שלי',
             anonymity: `שימו לב! נעבור על כל עדות שתתקבל,ולא נוכל לפרסם פרטים מזהים של הפוגעים.
-                    כמו כן, במידה ותשאירו פרטי קשרֿ נשלח הודעה לאחר פרסום העדות.
+                    כמו כן, במידה ותשאירו פרטי קשר נשלח הודעה לאחר פרסום העדות.
            `,
             nameLabel: 'שם לפרסום העדות (שם מלא/אנונימי)*?',
             namePlaceholder: 'הוספת שם',
-            emailLabel: 'מייל/טלפון ליצירת קשר (לא חובה, לא יפורסם)',
-            emailPlaceholder: 'הוספת פרטי התקשרות',
+            mailLabel: 'מייל/טלפון ליצירת קשר (לא חובה, לא יפורסם)',
+            mailPlaceholder: 'הוספת פרטי התקשרות',
             contactLabel: 'שניצור איתך קשר לקבלת תמיכה?',
-            contactNotes: 'אפשר גם ליצור קשר 24/7 דרך כפתור התמיכה',
+            contactNotes:
+                'לקבלת תמיכה/סיוע 24/7 ניתן ליצור קשר דרך כפתור התמיכה',
+            backgroundLabel:
+                'רקע* (מה היה טיב מערכת היחסים, מתי זה קרה, לאורך כמה זמן, גיל וכו׳)',
+            storyContentLabel: 'השיתוף שלי*',
+            storyContentPlaceholder: 'אני רוצה לשתף...',
+            howDidYouMangedLabel: 'איך התמודדתי עם המצב',
+            howDidYouMangedPlaceholder: 'ההתמודדות שלי...',
+            whatHelpedYouLabel: 'מה עזר או עוזר לך בהתמודדות?',
+            whatHelpedYouPlaceHolder: 'מאוד עזר לי ש...',
+            whatTriggeredChangeLabel: 'האם משהו השתנה? מה יצר את השינוי?',
+            whatTriggeredChangePlaceHolder: 'השינוי התחיל כש...',
+            additionalnfoLabel:
+                'בכמה משפטים, מה הכי היית רוצה לומר למי במצב דומה',
+            additionalnfoPlaceHolder: 'אני רוצה לומר ש...',
+            quoteLabel: 'ציטוט נבחר',
+            quotePlaceHolder: 'ציטוט מתוך הטקסט...',
             manualSubmition: 'אפשר לדלג ולמלא בכתב או:',
             uploadVideo: 'להעלות סרטון',
             uploadRecording: 'להעלות הקלטה',
@@ -97,25 +101,43 @@ const he = {
             שפורסמה ב{{timestamp}}`
         },
         login: {
-            header: 'התחברי כדי לערוך',
+            header: 'התחברו כדי לערוך עדויות',
             userName: 'שם משתמש',
             password: 'סיסמא',
-            loginButtonText: 'התחבר',
-            listToModerate: 'רשימת הסיפורים שדורשים עריכה',
-            listAllStories: 'רשימת כל הסיפורים'
+            loginButtonText: 'אישור',
+            emptyList: ' אין סיפורים לעריכה :)',
+            listToModerate: 'העדויות שדורשות עריכה (סה"כ {{num}})',
+            listAllStories: 'תצוגת העדויות שמפורסמות באתר לפי נושאים',
+            table: {
+                date: 'זמן שליחת העדות',
+                name: 'שם נותן העדות',
+                mail: 'אמצעי ליצירת קשר',
+                contact: 'האם ביקשו ליצור קשר?',
+                yes: 'כן',
+                no: 'לא'
+            }
         },
         moderation: {
-            header: 'עריכת העדות',
-            moderationRulesHeader: 'הנחיות למודרציה',
+            editHeader: 'העדות בזמן עריכה',
+            originalHeader: 'העדות המקורית',
+            originalDate: 'התקבלה ב-{{date}}',
+            back: 'חזרה לרשימת העדויות',
+            moderationRulesHeader: 'הנחיות לעריכה',
             moderationRules:
                 '1. יש להסיר שמות או סימנים מזהים ברורים של הפוגעים שעלולים לסכן מפני דיבה <br/><br/>2. יש למחוק שמות של קטינים <br/><br/>3. יש לבחור תגיות לפי הדפוסים שחוזרים על עצמם<br/><br/>4. יש לבחור ציטוט נבחר<br/><br/>5. יש לשלוח הודעה לטלפון/אימייל שהושארו לאחר פרסום העדות<br/><br/>',
             submittedSuccessHeading: 'העדות נערכה בהצלחה!',
             submittedSuccessText:
                 'תודה שערכת את העדות,  לא לשכוח לשלוח מייל/הודעה לאחר האישור!',
-            submitText: 'אישור העלאת העדות',
+            submitText: 'העלאת העדות',
+            updateText: 'עדכן באתר',
+            unPublishText: 'הסר מהאתר',
             phoneMail: 'מייל/טלפון: ',
+            unPublishSuccessHeading: 'העדות הוסרה מהאתר בהצלחה!',
+            unPublishSuccessText:
+                'העדות לא תפורסם יותר באתר, יהיה ניתן לחזור לכאן וללחוץ "עדכן באתר" והעדות תפורסם שוב באתר.',
             backToAdminPage: 'חזרה לרשימת העדויות הדורשות עריכה',
-            choseTags: 'בחר תגיות'
+            choseTags: 'בחרו קטגוריות שמתאימות לטקסט',
+            choseTagsWarn: 'מומלץ לא יותר מ-5'
         },
         warningSigns: {
             header: 'סימני אזהרה',
@@ -125,12 +147,19 @@ const he = {
         },
         about: {
             header: 'מי אנחנו',
+            noToViolanceIntro:
+                "עמותת “לא לאלימות” הוקמה בהרצליה על ידי כלת פרס ישראל הגב' רות רזניק בשנת 1977 במטרה להציל נשים וילדיהן הסובלים מאלימות במשפחה ולאפשר להם לצאת לחיים חדשים באמצעות הענקת מקלט, טיפול מקצועי והכשרה מקצועית ולשמש להם פה לשינוי חקיקה והגברת המודעות בחברה לנושא האלימות במשפחה. פעילותה המרכזית של העמותה היא ניהול והפעלת 3  מקלטים לנשים הסובלות מאלימות ולילדיהן.",
+            noToViolanceActions:
+                'כמו כן, מפעילה העמותה באמצעות מתנדבות קווי חירום הפועלים  24/7, ואת היחידה המשפטית המטפלת בהליכים המשפטיים של נשים במקלט ומתן ייעוץ משפטי ראשוני  לנשים הסובלות מאלימות ואינן זכאיות לסיוע משפטי.\n' +
+                'העמותה מקיימת הרצאות, ימי עיון וסדנאות במקלט ומחוצה לו, לגופים שונים,  כגון: צה”ל, תלמידי תיכון, אנשי משטרה, צוותים רפואיים, ארגוני נשים, סטודנטים ועוד.\n',
+            noToViolanceChange:
+                'במהלך השנים הצליחה העמותה להציל חיי נשים רבות ולהביא למהפך במודעות החברה הישראלית לתופעת האלימות במשפחה.',
             intro:
                 'האתר הוקם ע״י מתנדבות במסגרת <b>ההאקתון לזכרה של מיכל סלה במאי 2020, </b> ובשיתוף עם: פוליטיקלי קוראת, אתר און לייף, פורום מיכל סלה ועמותת לא לאלימות.',
             volunteersNamesTitle: 'שמות המתנדבות בצוות:',
             volunteersNames:
-                'מורן וובר<br/>לישי נועם<br/>ירין דקל<br/>מיכל פורג<br/>שחר גצוביץ׳<br/>נועה נובק<br/>אור מנור<br/>אורלי לבקוביץ שוורץ<br/>הדס פרחי<br/>רומי ווינטר<br/>רותם שפרינגר<br/>יעל רמוס דר<br/>דניאל גרונט<br/>לאה אליאגוייב',
-            inCollaboration: 'פרוייקט בשיתוף'
+                'מורן וובר<br/>לישי נועם<br/>ירין דקל<br/>מיכל פורג<br/>שחר גצוביץ׳<br/>נועה נובק<br/>אור מנור<br/>אורלי לבקוביץ פרנק<br/>הדס פרחי<br/>רומי וינטר<br/>רותם שפרינגר<br/>יעל רמוס דר<br/>דניאל גרונת<br/>לאה גרונת',
+            inCollaboration: 'הפרוייקט יצא לדרך בשיתוף'
         }
     }
 };

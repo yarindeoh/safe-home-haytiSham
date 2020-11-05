@@ -13,6 +13,8 @@
   },
   "heroku-run-build-script": true,
   "dependencies": {
+    "@material-ui/core": "latest",
+    "@material-ui/lab": "latest",
     "classnames": "^2.2.6",
     "cloudinary-react": "^1.6.6",
     "concurrently": "^5.2.0",
@@ -21,7 +23,6 @@
     "i18next": "^19.6.2",
     "i18next-browser-languagedetector": "^5.0.0",
     "isomorphic-fetch": "^2.2.1",
-    "multiselect-react-dropdown": "^1.5.7",
     "node-sass": "^4.14.1",
     "pip": "0.0.1",
     "react": "^16.9.0",
@@ -30,6 +31,7 @@
     "react-infinite-scroll-component": "^5.0.5",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "react-select": "^3.1.0",
     "react-slick": "^0.27.2-beta-1",
     "sass": "^1.26.5",
     "slick-carousel": "^1.8.1"

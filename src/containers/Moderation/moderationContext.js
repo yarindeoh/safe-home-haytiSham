@@ -9,7 +9,7 @@ import {
 
 const initialState = {
     ...NEW_MODERATE_STORY_INIT_DATA,
-    loggedIn: sessionStorage.moderatorToken !== undefined
+    loggedIn: localStorage.getItem('moderatorToken') !== null
 };
 
 function reducer(state, action) {

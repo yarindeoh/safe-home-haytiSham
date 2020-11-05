@@ -1,7 +1,14 @@
 import React from 'react';
 import Tag from 'components/Tag';
+import EditImg from 'src/media/icons/Edit.svg';
 
-export const StoryHighlight = ({ story, changeLocationByPath, liStyle }) => {
+export const StoryHighlight = ({
+    story,
+    changeLocationByPath,
+    liStyle,
+    handleStoryClick,
+    displayEditImg
+}) => {
     const { id, name, createdAt, tags, quote } = story;
     let initials = name && name.split('')[0];
     const allTags = () => (
@@ -12,10 +19,17 @@ export const StoryHighlight = ({ story, changeLocationByPath, liStyle }) => {
 
     return (
         <li
-            className="story"
+            className={`story ${displayEditImg ? 'edit-icon-container' : ''}`}
             style={liStyle}
-            onClick={() => changeLocationByPath(id, story)}
+            onClick={
+                handleStoryClick !== undefined
+                    ? handleStoryClick
+                    : changeLocationByPath
+            }
         >
+            {displayEditImg && (
+                <EditImg className={'edit-icon-story-highlight'} />
+            )}
             <div className="initials">{initials}</div>
             <span className="date">{createdAt}</span>
             <p className="text">{quote}</p>

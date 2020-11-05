@@ -1,13 +1,18 @@
 import React, { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTags } from 'containers/Stories/storiesHooks';
 import TagFilter from 'components/TagFilter';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
-import { useTranslation } from 'react-i18next';
+import { Loader } from 'components/Loader';
 
 export const TagsFilter = ({
     changeLocationByPath,
     defaultSelectedTags,
-    rootPath
+    rootPath,
+    storiesListClassName,
+    handleStoryClick,
+    displayEditImg,
+    isAdmin
 }) => {
     const { t } = useTranslation();
     const {
@@ -16,49 +21,57 @@ export const TagsFilter = ({
         isDisplayMoreTags,
         changeDisplayMoreTags,
         unselectAllTags
-    } = useTags(defaultSelectedTags);
+    } = useTags();
     const filterTagsIds = useMemo(() =>
-        Object.keys(tagsData).filter(tagId => tagsData[tagId].selected, [
-            tagsData
-        ])
+        tagsData
+            ? Object.keys(tagsData).filter(tagId => tagsData[tagId].selected, [
+                  tagsData
+              ])
+            : null
     );
 
     return (
         <div className={'stories-gallery-container'}>
             <h1>{t('tagsFilter.additionalTestimonies')}</h1>
-            <div className="tags-filter-container">
-                {
-                    <TagFilter
-                        tag={t('tagsFilter.allTestimonies')}
-                        selected={filterTagsIds.length === 0}
-                        onClick={() =>
-                            filterTagsIds.length > 0 && unselectAllTags()
-                        }
-                    />
-                }
-                {tagsData &&
-                    Object.keys(tagsData).map(tagId => (
+            <Loader data={[tagsData, filterTagsIds]}>
+                <div className="tags-filter-container">
+                    {
                         <TagFilter
-                            value={tagsData[tagId].value}
-                            tag={tagsData[tagId].value}
-                            key={tagId}
-                            selected={tagsData[tagId].selected}
-                            onClick={event => changeTagSelected(tagId)}
+                            tag={t('tagsFilter.allTestimonies')}
+                            selected={
+                                filterTagsIds && filterTagsIds.length === 0
+                            }
+                            onClick={() =>
+                                filterTagsIds.length > 0 && unselectAllTags()
+                            }
                         />
-                    ))}
-            </div>
-            <span className="more-tags" onClick={changeDisplayMoreTags}>
-                {isDisplayMoreTags
-                    ? t('tagsFilter.lessCategories')
-                    : t('tagsFilter.moreCategories')}
-            </span>
-            {filterTagsIds ? (
+                    }
+                    {tagsData &&
+                        Object.keys(tagsData).map(tagId => (
+                            <TagFilter
+                                value={tagsData[tagId].value}
+                                tag={tagsData[tagId].value}
+                                key={tagId}
+                                selected={tagsData[tagId].selected}
+                                onClick={event => changeTagSelected(tagId)}
+                            />
+                        ))}
+                </div>
+                <span className="more-tags" onClick={changeDisplayMoreTags}>
+                    {isDisplayMoreTags
+                        ? t('tagsFilter.lessCategories')
+                        : t('tagsFilter.moreCategories')}
+                </span>
                 <StoriesList
                     tags={filterTagsIds}
                     changeLocationByPath={changeLocationByPath}
                     rootPath={rootPath}
+                    storiesListClassName={storiesListClassName}
+                    handleStoryClick={handleStoryClick}
+                    displayEditImg={displayEditImg}
+                    isAdmin={isAdmin}
                 />
-            ) : null}
+            </Loader>
         </div>
     );
 };

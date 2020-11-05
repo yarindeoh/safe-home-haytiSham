@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-
 import { AddStoryProvider } from 'containers/AddStory/addStoryContext';
 import { StoriesView } from 'containers/Stories/StoriesView';
 import './scss/componentsStyle/App.scss';
@@ -12,16 +11,18 @@ import { RouterContext } from 'services/routing/routerContext';
 import { LoginView } from 'containers/Moderation/LoginView';
 import { ModerationView } from 'containers/Moderation/ModerationView';
 import { ModerationProvider } from 'containers/Moderation/moderationContext';
-import WarningSigns from 'containers/WarningSigns';
-import About from 'containers/About';
+import ScrollToTop from 'components/ScrollToTop';
+import Pages from 'containers/StaticPages/Pages';
 
 export const history = createBrowserHistory();
 
 export const App = () => {
     return (
+        // TODO:: fix to value
         <RouterContext.Provider history={history}>
             <AddStoryProvider>
                 <BrowserRouter>
+                    <ScrollToTop />
                     <Switch>
                         <Route path="/" exact={true} component={StoriesView} />
                         <Route path="/story" component={StoryView} />
@@ -31,8 +32,7 @@ export const App = () => {
                             component={AddStoryView}
                         />
                         <Route path="/publicStory/:id" component={StoryVideo} />
-                        <Route path="/warning-signs" component={WarningSigns} />
-                        <Route path="/about" component={About} />
+                        <Route path="/pages" component={Pages} />
                         <ModerationProvider>
                             <Route path="/admin" component={LoginView} />
                             <Route

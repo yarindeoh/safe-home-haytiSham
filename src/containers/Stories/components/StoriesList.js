@@ -1,46 +1,67 @@
 import React from 'react';
-
 import { useFilteredStories } from 'containers/Stories/storiesHooks';
 import { StoryHighlight } from 'containers/Story/components/StoryHighlight';
+import { Loader } from 'components/Loader';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export const StoriesList = ({
     tags,
     changeLocationByPath,
     title,
-    rootPath
+    rootPath,
+    storiesListClassName = '',
+    handleStoryClick,
+    displayEditImg,
+    isAdmin,
+    originalStory
 }) => {
-    const { stories, hasMore, getByPage } = useFilteredStories(tags);
-
+    const { stories, hasMore, getNextPage } = useFilteredStories(tags, isAdmin);
     return (
         <div className={'more-testimonies'}>
             <h1>{title}</h1>
             <InfiniteScroll
-                dataLength={stories.length}
-                next={getByPage}
+                dataLength={stories?.length}
+                next={getNextPage}
                 hasMore={hasMore}
-                loader={stories.length > 0 ? <h4>Loading...</h4> : undefined}
+                loader={<Loader />}
+                scrollThreshold={0.001}
             >
-                <ul className="stories">
+                <ul className={`stories ${storiesListClassName}`}>
                     {stories &&
-                        Object.keys(stories).map(key => {
-                            return (
-                                <StoryHighlight
-                                    story={stories[key]}
-                                    key={key}
-                                    changeLocationByPath={() =>
-                                        changeLocationByPath(
-                                            `${
-                                                rootPath !== undefined
-                                                    ? rootPath
-                                                    : '/story'
-                                            }/${stories[key]._id}`,
-                                            stories[key]
-                                        )
-                                    }
-                                />
-                            );
-                        })}
+                        Object.keys(stories)
+                            .filter(
+                                key =>
+                                    stories[key]?.originalStory !==
+                                    originalStory
+                            )
+                            .map(key => {
+                                return (
+                                    <StoryHighlight
+                                        story={stories[key]}
+                                        key={key}
+                                        displayEditImg={displayEditImg}
+                                        changeLocationByPath={() =>
+                                            changeLocationByPath(
+                                                `${
+                                                    rootPath !== undefined
+                                                        ? rootPath
+                                                        : '/story'
+                                                }/${stories[key]._id}`,
+                                                stories[key]
+                                            )
+                                        }
+                                        handleStoryClick={
+                                            handleStoryClick !== undefined
+                                                ? () =>
+                                                      handleStoryClick(
+                                                          stories[key]
+                                                              ?.originalStory
+                                                      )
+                                                : undefined
+                                        }
+                                    />
+                                );
+                            })}
                 </ul>
             </InfiniteScroll>
         </div>
