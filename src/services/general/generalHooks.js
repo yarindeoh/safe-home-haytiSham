@@ -46,20 +46,21 @@ export const useLoginSubmit = (loginData, postFunction, itemInLocalStorage) => {
     };
 };
 
-//Generic Remove Token on 401 from localStorage
-export const useRemoveTokenOnError = itemInLocalStorage => {
-    async function removeTokenOnError(e) {
-        if (e.message === '401') {
-            try {
-                localStorage.removeItem(itemInLocalStorage);
-                return Promise.resolve();
-            } catch (error) {
-                return Promise.reject(error);
-            }
+//Generic ErrorHandler
+export const useErrorsHandler = () => {
+    async function handleErrors(e, ErrorHandlerFunctionObj) {
+        let handleErrorToInvoke = ErrorHandlerFunctionObj[e.message] !== undefined ? ErrorHandlerFunctionObj[e.message] : ErrorHandlerFunctionObj.default;
+        if(handleErrorToInvoke===undefined) return;
+        try {
+            handleErrorToInvoke(e);
+            return Promise.resolve();
+        } catch (error) {
+            return Promise.reject(error);
         }
+
     }
     return {
-        removeTokenOnError
+        handleErrors
     };
 };
 

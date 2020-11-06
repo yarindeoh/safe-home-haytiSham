@@ -15,7 +15,7 @@ import {
     getTagsAsArray
 } from 'services/general/generalHelpers';
 import {
-    useRemoveTokenOnError,
+    useErrorsHandler,
     useLoginSubmit
 } from 'services/general/generalHooks';
 import { useHistory } from 'react-router';
@@ -31,29 +31,59 @@ export function useModerationContext() {
     return context;
 }
 
-export const useModerationRemoveTokenOnError = () => {
+export const useModerationErrorsHandler = () => {
     const history = useHistory();
     const itemInLocalStorage = 'moderatorToken';
-    const { removeTokenOnError } = useRemoveTokenOnError(itemInLocalStorage);
+    const { handleErrors } = useErrorsHandler(itemInLocalStorage);
     const { dispatch } = useModerationContext();
 
-    async function removeModerationTokenOnError(e) {
+    function on401(e, itemInLocalStorage){
+        localStorage.removeItem(itemInLocalStorage);
+        window.alert('User Token is not valid');
+        dispatch({
+            type: SET_LOGGED_IN,
+            payload: localStorage.getItem(itemInLocalStorage) !== null
+        });
+        history.push('/admin');
+    }
+
+    function onDefault(e){
+        window.alert(e)
+    }
+
+    const ErrorsHandlerFunctionObj = {
+        '401': (e)=> on401(e, itemInLocalStorage),
+        'default': (e)=>onDefault(e)
+    }
+
+    async function moderationErrorsHandler(e) {
         try {
-            await removeTokenOnError(e);
-            window.alert('User Token is not valid');
-            dispatch({
-                type: SET_LOGGED_IN,
-                payload: localStorage.getItem(itemInLocalStorage) !== null
-            });
-            history.push('/admin');
+            await handleErrors(e, ErrorsHandlerFunctionObj);
         } catch (error) {
-            console.error(error);
+            // console.error(error);
         }
     }
     return {
-        removeModerationTokenOnError
+        moderationErrorsHandler
     };
 };
+
+export const useModerationApiWrapper = (apiFunc)=>{
+    const { moderationErrorsHandler } = useModerationErrorsHandler();
+
+    async function apiWrapper(params){
+        try {
+            return await apiFunc(params);
+        } catch (e) {
+            moderationErrorsHandler(e);
+        }
+    }
+
+    return{
+        apiWrapper
+    }
+    
+}
 
 export const useModerationLoginSubmit = loginData => {
     const { dispatch } = useModerationContext();
@@ -103,6 +133,7 @@ export const useModerationFiledChange = () => {
 };
 
 export const useModerationStories = () => {
+    const {apiWrapper: getModerationStories } = useModerationApiWrapper(Api.getModerationStories);
     const {
         getByPage,
         data,
@@ -110,9 +141,8 @@ export const useModerationStories = () => {
         total,
         totalPages,
         page
-    } = usePagination(Api.getModerationStories, PAGE_SIZE);
+    } = usePagination(getModerationStories, PAGE_SIZE);
     const { moderationState } = useModerationContext();
-    const { removeModerationTokenOnError } = useModerationRemoveTokenOnError();
 
     useEffect(() => {
         if (moderationState.loggedIn) {
@@ -128,12 +158,8 @@ export const useModerationStories = () => {
         }
     }, [moderationState.loggedIn]);
 
-    async function handlePageChange(e, page) {
-        try {
-            await getByPage(page);
-        } catch (e) {
-            removeModerationTokenOnError(e);
-        }
+    function handlePageChange(e, page) {
+        getByPage(page);   
     }
 
     return {
@@ -147,21 +173,18 @@ export const useModerationStories = () => {
 
 export const useEditModerationStory = () => {
     const history = useHistory();
-    const { removeModerationTokenOnError } = useModerationRemoveTokenOnError();
+    const {apiWrapper: getStoryForEdit } = useModerationApiWrapper(Api.getStoryForEdit);
 
     async function getModerationStory(id) {
-        try {
-            let result = await Api.getStoryForEdit(id);
-            if (result !== undefined) {
-                let id =
-                    result.originalStory !== null
-                        ? result.originalStory._id
-                        : result.moderatedStory?._id;
-                history.push(`/moderateStory/${id}`, result);
-            }
-        } catch (e) {
-            removeModerationTokenOnError(e);
+        let result = await getStoryForEdit(id);
+        if (result !== undefined) {
+            let id =
+                result.originalStory !== null
+                    ? result.originalStory._id
+                    : result.moderatedStory?._id;
+            history.push(`/moderateStory/${id}`, result);
         }
+
     }
 
     return {
@@ -217,7 +240,8 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
 
 export const useModerateStorySubmit = () => {
     const { moderationState } = useModerationContext();
-    const { removeModerationTokenOnError } = useModerationRemoveTokenOnError();
+    const {apiWrapper: postAddModerateStory } = useModerationApiWrapper(Api.postAddModerateStory);
+
     const [submitted, setSubmitted] = useState(false);
     let moderationDataToPost = { ...moderationState };
     delete moderationDataToPost.loggedIn;
@@ -230,13 +254,9 @@ export const useModerateStorySubmit = () => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        async function postData() {
-            try {
-                await Api.postAddModerateStory(moderationDataToPost);
-                setSubmitted(true);
-            } catch (e) {
-                removeModerationTokenOnError(e);
-            }
+        async function postData() {            
+            await postAddModerateStory(moderationDataToPost);
+            setSubmitted(true);
         }
         postData();
     };
@@ -284,24 +304,42 @@ export const useSelectedTags = () => {
 
 export const usePublishModerateStory = () => {
     const { moderationState } = useModerationContext();
-    const { removeModerationTokenOnError } = useModerationRemoveTokenOnError();
+    const {apiWrapper: postPublishModerateStory } = useModerationApiWrapper(Api.postPublishModerateStory);
+
     const [publishPostSuccess, setPublishPostSuccess] = useState(false);
 
     async function handlePublish(publish) {
-        try {
-            const dataToSubmit = {
-                publish: publish,
-                moderatedStory: moderationState._id
-            };
-            await Api.postPublishModerateStory(dataToSubmit);
-            setPublishPostSuccess(true);
-        } catch (e) {
-            removeModerationTokenOnError(e);
-        }
+        const dataToSubmit = {
+            publish: publish,
+            moderatedStory: moderationState._id
+        };
+        await postPublishModerateStory(dataToSubmit);
+        setPublishPostSuccess(true);
     }
 
     return {
         handlePublish,
         publishPostSuccess
+    };
+};
+
+
+export const useModeratedStories = (tags) => {
+    const {apiWrapper: getAllModeratedStories } = useModerationApiWrapper(Api.getAllModeratedStories);
+    const { getNextPage, hasMore, data, replaceRelatedOptions } = usePagination(
+        getAllModeratedStories,
+        PAGE_SIZE
+    );
+
+    useEffect(() => {
+        (async function fetchData() {
+            replaceRelatedOptions({ tags: tags });
+        })();
+    }, [tags]);
+
+    return {
+        stories: data,
+        hasMore: hasMore,
+        getNextPage
     };
 };
