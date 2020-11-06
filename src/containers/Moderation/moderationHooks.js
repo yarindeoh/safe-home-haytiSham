@@ -140,7 +140,8 @@ export const useModerationStories = () => {
         replaceRelatedOptions,
         total,
         totalPages,
-        page
+        page,
+        didFetch
     } = usePagination(getModerationStories, PAGE_SIZE);
     const { moderationState } = useModerationContext();
 
@@ -167,7 +168,8 @@ export const useModerationStories = () => {
         currentPage: page,
         totalPages: totalPages,
         totalStories: total,
-        handlePageChange: handlePageChange
+        handlePageChange: handlePageChange,
+        didFetch
     };
 };
 

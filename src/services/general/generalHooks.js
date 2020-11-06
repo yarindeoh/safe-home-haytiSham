@@ -200,6 +200,7 @@ export const usePagination = (fn, pageSize) => {
     const [localOptions, setLocalOptions] = useState({});
     const [total, setTotal] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
+    const [didFetch, setDidFetch] = useState(false);
 
     const getNext = useCallback(
         async (
@@ -208,33 +209,30 @@ export const usePagination = (fn, pageSize) => {
             pageNumber,
             shouldGetByPage = false
         ) => {
-            try {
-                const res = await fn({
-                    page: pageNumber,
-                    pageSize: pageSize,
-                    ...(options || localOptions)
-                });
-                setCurrentPage(shouldGetByPage ? pageNumber : pageNumber + 1);
-                setData(
-                    shouldGetByPage
-                        ? [...res.result]
-                        : [...currData, ...res.result]
-                );
-                setHasMore(data.length < res.total);
-                setTotal(res.total);
-                setTotalPages(res.pages);
-                options && setLocalOptions(options);
-            } catch (e) {
-                return Promise.reject(e);
-            }
+            const res = await fn({
+                page: pageNumber,
+                pageSize: pageSize,
+                ...(options || localOptions)
+            });
+            setCurrentPage(shouldGetByPage ? pageNumber : pageNumber + 1);
+            setData(
+                shouldGetByPage
+                    ? [...res.result]
+                    : [...currData, ...res.result]
+            );
+            setHasMore(data.length < res.total);
+            setTotal(res.total);
+            setTotalPages(res.pages);
+            options && setLocalOptions(options);
+            setDidFetch(true);
         },
         [data, currentPage, hasMore]
     );
 
     const replaceRelatedOptions = async (options, shouldGetByPage = false) => {
-        await getNext(options, [], 1, getByPage);
+        await getNext(options, [], 1, shouldGetByPage);
     };
-    async function getNextPage() {
+    async function getNextPage() {        
         await getNext(localOptions, data, currentPage);
     }
 
@@ -248,6 +246,7 @@ export const usePagination = (fn, pageSize) => {
         data: data,
         total,
         totalPages,
+        didFetch,
         getNextPage,
         replaceRelatedOptions,
         getByPage
