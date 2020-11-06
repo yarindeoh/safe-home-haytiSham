@@ -67,6 +67,16 @@
         margin-bottom: 28px;
       }
 
+      .icon-and-label-container {
+        display: inline-flex;
+        align-items: flex-end;
+      }
+
+      .icon {
+        padding-left: 10px;
+        margin-bottom: 8px;
+      }
+
       .question {
         padding: 0;
         font-weight: bold;

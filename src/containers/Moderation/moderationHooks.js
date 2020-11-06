@@ -212,7 +212,8 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
                 'storyContent',
                 'whatHelpedYou',
                 'whatTriggeredChange',
-                'contact'
+                'contact',
+                'publish'
             ]);
             dispatch({
                 type: SET_MODERATE_STORY_DATA,
@@ -240,7 +241,7 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
     return {};
 };
 
-export const useModerateStorySubmit = () => {
+export const useModerateStorySubmit = (originalStoryModerated) => {
     const { moderationState } = useModerationContext();
     const {apiWrapper: postAddModerateStory } = useModerationApiWrapper(Api.postAddModerateStory);
 
@@ -252,6 +253,7 @@ export const useModerateStorySubmit = () => {
     }
     delete moderationDataToPost._id;
     moderationDataToPost.tags = getArrayOfTagsIds(moderationDataToPost.tags);
+    moderationDataToPost.publish = originalStoryModerated ? moderationDataToPost.publish : true;
 
     const handleSubmit = e => {
         e.preventDefault();
