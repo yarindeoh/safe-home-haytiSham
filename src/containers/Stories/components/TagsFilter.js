@@ -12,7 +12,7 @@ export const TagsFilter = ({
     storiesListClassName,
     handleStoryClick,
     displayEditImg,
-    isAdmin
+    useStoriesHook
 }) => {
     const { t } = useTranslation();
     const {
@@ -69,7 +69,7 @@ export const TagsFilter = ({
                     storiesListClassName={storiesListClassName}
                     handleStoryClick={handleStoryClick}
                     displayEditImg={displayEditImg}
-                    isAdmin={isAdmin}
+                    useStoriesHook={useStoriesHook}
                 />
             </Loader>
         </div>

@@ -32,7 +32,7 @@ export const ModerationView = withRoute(props => {
     const { tagsMap } = useTags();
     const { handleFieldChange } = useModerationFiledChange();
     const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit();
-    const { back } = useBack(props, setSubmitted, '/admin');
+    const { back } = useBack(props, setSubmitted, '/admin/loggedIn');
     const { handlePublish, publishPostSuccess } = usePublishModerateStory();
     const { handleDialogOkClick } = useDialogOkClick(back);
 

@@ -13,6 +13,57 @@ export const useBack = (props, setSubmitted, path = '/') => {
     };
 };
 
+export const useLoginFiledChange = () => {
+    const [loginData, setLoginData] = useState({ userName: '', password: '' });
+    const handleFieldChange = (e, filed) => {
+        let newLoginData = { ...loginData };
+        newLoginData[filed] = e.target.value;
+        setLoginData(newLoginData);
+    };
+
+    return {
+        loginData,
+        handleFieldChange
+    };
+};
+
+export const useLoginSubmit = (loginData, postFunction, itemInLocalStorage) => {
+    async function postLogin() {
+        try {
+            const serverData = await postFunction(loginData);
+            localStorage.setItem(itemInLocalStorage, serverData.token);
+            return Promise.resolve();
+        } catch (error) {
+            if (error.message === '403') {
+                window.alert('UserName or Password is not Valid');
+            }
+            return Promise.reject(error);
+        }
+    }
+
+    return {
+        postLogin
+    };
+};
+
+//Generic ErrorHandler
+export const useErrorsHandler = () => {
+    async function handleErrors(e, ErrorHandlerFunctionObj) {
+        let handleErrorToInvoke = ErrorHandlerFunctionObj[e.message] !== undefined ? ErrorHandlerFunctionObj[e.message] : ErrorHandlerFunctionObj.default;
+        if(handleErrorToInvoke===undefined) return;
+        try {
+            handleErrorToInvoke(e);
+            return Promise.resolve();
+        } catch (error) {
+            return Promise.reject(error);
+        }
+
+    }
+    return {
+        handleErrors
+    };
+};
+
 export const useFetchApiData = (apiCall, state) => {
     const [localState, setLocalState] = useState(state);
     useEffect(() => {

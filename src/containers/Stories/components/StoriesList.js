@@ -13,9 +13,9 @@ export const StoriesList = ({
     handleStoryClick,
     displayEditImg,
     originalStory,
-    isAdmin
+    useStoriesHook=useStories
 }) => {
-    const { stories, hasMore, getNextPage } = useStories(tags, isAdmin);
+    const { stories, hasMore, getNextPage } = useStoriesHook(tags);
     return (
         <div className={'more-testimonies'}>
             <h1>{title}</h1>
