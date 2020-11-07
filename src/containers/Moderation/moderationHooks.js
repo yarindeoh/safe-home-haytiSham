@@ -14,10 +14,7 @@ import {
     filterObjByKey,
     getTagsAsArray
 } from 'services/general/generalHelpers';
-import {
-    useErrorsHandler,
-    useLoginSubmit
-} from 'services/general/generalHooks';
+import { useLoginSubmit } from 'services/general/generalHooks';
 import { useHistory } from 'react-router';
 import { usePagination } from 'services/general/generalHooks';
 
@@ -32,19 +29,11 @@ export function useModerationContext() {
 }
 
 export const useModerationErrorsHandler = () => {
-    const history = useHistory();
-    const itemInLocalStorage = 'moderatorToken';
-    const { handleErrors } = useErrorsHandler(itemInLocalStorage);
-    const { dispatch } = useModerationContext();
+    const { loggedOutHandler } = useModerationLoggedOut();
 
-    function on401(e, itemInLocalStorage) {
-        localStorage.removeItem(itemInLocalStorage);
+    async function on401(e) {
         window.alert('User Token is not valid');
-        dispatch({
-            type: SET_LOGGED_IN,
-            payload: localStorage.getItem(itemInLocalStorage) !== null
-        });
-        history.push('/admin');
+        return await loggedOutHandler();
     }
 
     function onDefault(e) {
@@ -52,16 +41,16 @@ export const useModerationErrorsHandler = () => {
     }
 
     const ErrorsHandlerFunctionObj = {
-        '401': e => on401(e, itemInLocalStorage),
+        '401': e => on401(e),
         default: e => onDefault(e)
     };
 
     async function moderationErrorsHandler(e) {
-        try {
-            await handleErrors(e, ErrorsHandlerFunctionObj);
-        } catch (error) {
-            // console.error(error);
-        }
+        let handleErrorToInvoke =
+            ErrorsHandlerFunctionObj[e.message] !== undefined
+                ? ErrorsHandlerFunctionObj[e.message]
+                : ErrorsHandlerFunctionObj.default;
+        return await handleErrorToInvoke(e);
     }
     return {
         moderationErrorsHandler
@@ -70,9 +59,11 @@ export const useModerationErrorsHandler = () => {
 
 export const useModerationApiWrapper = apiFunc => {
     const { moderationErrorsHandler } = useModerationErrorsHandler();
+    const { moderationState } = useModerationContext();
 
     async function apiWrapper(params) {
         try {
+            if (!moderationState.loggedIn) return;
             return await apiFunc(params);
         } catch (e) {
             moderationErrorsHandler(e);
@@ -81,6 +72,30 @@ export const useModerationApiWrapper = apiFunc => {
 
     return {
         apiWrapper
+    };
+};
+
+export const useModerationLoggedOut = () => {
+    const history = useHistory();
+    const { moderationState, dispatch } = useModerationContext();
+
+    const loggedOutHandler = async () => {
+        localStorage.removeItem('moderatorToken');
+        dispatch({
+            type: SET_LOGGED_IN,
+            payload: localStorage.getItem('moderatorToken') !== null
+        });
+        history.push('/admin');
+    };
+
+    useEffect(() => {
+        if (!moderationState?.loggedIn) {
+            history.push('/admin');
+        }
+    }, [moderationState?.loggedIn]);
+
+    return {
+        loggedOutHandler
     };
 };
 
@@ -336,6 +351,8 @@ export const usePublishModerateStory = () => {
 };
 
 export const useModeratedStories = tags => {
+    const { moderationState } = useModerationContext();
+
     const { apiWrapper: getAllModeratedStories } = useModerationApiWrapper(
         Api.getAllModeratedStories
     );
@@ -346,6 +363,7 @@ export const useModeratedStories = tags => {
 
     useEffect(() => {
         (async function fetchData() {
+            if (!moderationState.loggedIn) return;
             replaceRelatedOptions({ tags: tags });
         })();
     }, [tags]);

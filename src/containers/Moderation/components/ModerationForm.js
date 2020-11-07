@@ -32,16 +32,37 @@ export const ModerationForm = withRoute(
                         {!disabled && formData?.mail && (
                             <TextArea
                                 containerClass="contact-container"
-                                textWrapperClass={`${formData?.contact? 'contact-wrapper-text edit-border-radius' : 'disabled-text-area'}`}
-                                textClass={`${formData?.contact? 'contact-text' : 'disabled-text-area'}`}
+                                textWrapperClass={`${
+                                    formData?.contact
+                                        ? 'contact-wrapper-text edit-border-radius'
+                                        : 'disabled-text-area'
+                                }`}
+                                textClass={`${
+                                    formData?.contact
+                                        ? 'contact-text'
+                                        : 'disabled-text-area'
+                                }`}
                                 name="contactAt"
-                                label={formData?.contact ? t('moderation.contactAtLabel', {
-                                    mail: formData?.mail
-                                }): formData?.mail}
-                                icon={formData?.contact ? <WarningIcon />: undefined}
+                                label={
+                                    formData?.contact
+                                        ? t('moderation.contactAtLabel', {
+                                              mail: formData?.mail
+                                          })
+                                        : formData?.mail
+                                }
+                                icon={
+                                    formData?.contact ? (
+                                        <WarningIcon />
+                                    ) : (
+                                        undefined
+                                    )
+                                }
                                 // value={formData?.contactAt} //change to validated field
-                                defaultValue={formData?.contact ? 'ביום ראשון בשעה 17:00' : ""} //change to validated field
-                                // onChange={e => handleFieldChange(e, 'contactAt')}
+                                defaultValue={
+                                    formData?.contact
+                                        ? 'ביום ראשון בשעה 17:00'
+                                        : ''
+                                } //change to validated field
                                 disabled={disabled}
                                 required
                             />

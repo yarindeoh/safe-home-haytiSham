@@ -3,11 +3,13 @@ import { ModerateStoriesList } from 'containers/Moderation/components/ModerateSt
 import { TagsFilter } from 'containers/Stories/components/TagsFilter';
 import {
     useModeratedStories,
-    useEditModerationStory
+    useEditModerationStory,
+    useModerationLoggedOut
 } from 'containers/Moderation/moderationHooks';
 
 export const LoggedInView = () => {
     const { getModerationStory } = useEditModerationStory();
+    useModerationLoggedOut();
 
     const handleStoryClick = storyId => {
         try {

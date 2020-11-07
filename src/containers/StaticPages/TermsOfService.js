@@ -7,7 +7,7 @@ const sections = [
     'responsability',
     'theContent',
     'siteResponsibility',
-    'informationContentOnly',
+    'informationContentOnly'
 ];
 
 export const TermsOfService = () => {
@@ -17,7 +17,7 @@ export const TermsOfService = () => {
         <Skeleton>
             <Content className="terms-of-service">
                 <h1>{t('termsOfService.header')}</h1>
-                {sections.map((section) => (
+                {sections.map(section => (
                     <p key={section}>{t(`termsOfService.${section}`)}</p>
                 ))}
             </Content>
