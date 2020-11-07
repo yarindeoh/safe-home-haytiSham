@@ -63,55 +63,55 @@
         }
 
         .Title {
-                padding: 8px 28px 16px;
-                background-color: map_get($colors, purple-200);
-                color: inherit;
+            padding: 8px 28px 16px;
+            background-color: map_get($colors, purple-200);
+            color: inherit;
 
-                .CloseIcon {
-                    cursor: pointer;
-                }
-
-                .MainTitle {
-                    color: inherit;
-                    font-size: 32px;
-                    line-height: 42px;
-                }
-
-                .SubTitle {
-                    color: inherit;
-                    font-size: 18px;
-                }
+            .CloseIcon {
+                cursor: pointer;
             }
+
+            .MainTitle {
+                color: inherit;
+                font-size: 32px;
+                line-height: 42px;
+            }
+
+            .SubTitle {
+                color: inherit;
+                font-size: 18px;
+            }
+        }
 
         .Items {
+            color: inherit;
+            padding: 28px;
+            flex: 1;
+            width: fit-content;
+
+            div {
                 color: inherit;
-                padding: 28px;
-                flex: 1;
-                width: fit-content;
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 20px;
 
-                div {
-                    color: inherit;
-                    font-size: 18px;
-                    line-height: 24px;
-                    margin-bottom: 20px;
-
-                    &.Bold {
-                        color: map_get($colors, purple-500);
-                    }
-                    &.EndSection {
-                        padding-bottom: 20px;
-                        border-bottom: 1px solid  map_get($colors, black);
-                    }
-                    &.Clickable {
-                        cursor: pointer;
-                    }
+                &.Bold {
+                    color: map_get($colors, purple-500);
+                }
+                &.EndSection {
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid map_get($colors, black);
+                }
+                &.Clickable {
+                    cursor: pointer;
                 }
             }
+        }
     }
 }
 
 .Content {
-  padding-top: 62px;
+    padding-top: 62px;
     @include desktop {
         width: 65%;
         max-width: 1170px;
@@ -131,7 +131,7 @@
     text-align: center;
     font-size: 18px;
 
-    @include desktop{
+    @include desktop {
         display: none;
     }
 }
@@ -143,18 +143,18 @@
         margin: 20px 0 0 0;
     }
 
-    >h1 {
+    > h1 {
         font-weight: normal;
         font-size: 22px;
         color: #212121;
         margin-bottom: map_get($spaces, x-small);
     }
 
-    @include breakpoint-1{
+    @include breakpoint-1 {
         padding: 18px 24px 32px;
     }
 
-    @include desktop{
+    @include desktop {
         padding: 18px 0 32px;
     }
 }
@@ -183,7 +183,8 @@ footer {
         font-size: 15px;
     }
 
-    div a, u {
+    div a,
+    u {
         color: map_get($colors, white);
     }
 
@@ -210,7 +211,6 @@ footer {
         }
 
         .copyright {
-
             display: flex;
             justify-content: center;
             padding-bottom: 10px;
@@ -238,11 +238,10 @@ footer {
             margin: 5px auto;
 
             li {
-            flex: 100%;
-            margin: 8px auto;
+                flex: 100%;
+                margin: 8px auto;
             }
         }
- 
     }
 
     .footer-title {
@@ -251,7 +250,7 @@ footer {
         align-self: center;
     }
 
-    .phone-section{
+    .phone-section {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -259,13 +258,13 @@ footer {
         background: map_get($colors, purple-600);
     }
 
-    .phone-number{
+    .phone-number {
         font-size: 24px;
         color: map_get($colors, grey-100);
         padding-left: 2%;
     }
 
-    .phone-text{
+    .phone-text {
         font-size: 12px;
         width: 70px;
         color: map_get($colors, grey-100);
@@ -285,7 +284,7 @@ footer {
     }
 }
 
-.disabled-area{
+.disabled-area {
     opacity: 0.7;
     pointer-events: none;
 }
@@ -342,7 +341,7 @@ footer {
         width: 80%;
         max-width: 800px;
 
-        &.full-width{
+        &.full-width {
             width: 100%;
         }
     }
@@ -351,7 +350,12 @@ footer {
 .submit-button {
     width: 100%;
     height: 48px;
-    background-image: linear-gradient(94.5deg, #3691E5 -6.72%, #566BE4 20.51%, #7845E3 96.66%);
+    background-image: linear-gradient(
+        94.5deg,
+        #3691e5 -6.72%,
+        #566be4 20.51%,
+        #7845e3 96.66%
+    );
     font-weight: normal;
     font-size: 22px;
     color: map_get($colors, white);
@@ -359,14 +363,21 @@ footer {
     max-width: 300px;
     margin-top: map_get($spaces, small);
 
-    &:focus{
+    &:focus {
         outline: none;
     }
-  }
+}
 
 .divider {
-  width: 100%;
-  text-align: center;
-  font-size: 22px;
-  margin-bottom: map_get($spaces, small);
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: map_get($spaces, small);
+}
+
+.actions {
+    @include breakpoint-1 {
+        display: flex;
+        justify-content: center;
+    }
 }
