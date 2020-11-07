@@ -195,6 +195,7 @@ export const useResizeTextArea = () => {
     return {};
 };
 
+// TODO:: consider use reducer to manage state
 export const usePagination = (fn, pageSize) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
