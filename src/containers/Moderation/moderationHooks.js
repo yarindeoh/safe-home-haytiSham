@@ -37,7 +37,7 @@ export const useModerationErrorsHandler = () => {
     const { handleErrors } = useErrorsHandler(itemInLocalStorage);
     const { dispatch } = useModerationContext();
 
-    function on401(e, itemInLocalStorage){
+    function on401(e, itemInLocalStorage) {
         localStorage.removeItem(itemInLocalStorage);
         window.alert('User Token is not valid');
         dispatch({
@@ -47,14 +47,14 @@ export const useModerationErrorsHandler = () => {
         history.push('/admin');
     }
 
-    function onDefault(e){
-        window.alert(e)
+    function onDefault(e) {
+        window.alert(e);
     }
 
     const ErrorsHandlerFunctionObj = {
-        '401': (e)=> on401(e, itemInLocalStorage),
-        'default': (e)=>onDefault(e)
-    }
+        '401': e => on401(e, itemInLocalStorage),
+        default: e => onDefault(e)
+    };
 
     async function moderationErrorsHandler(e) {
         try {
@@ -68,10 +68,10 @@ export const useModerationErrorsHandler = () => {
     };
 };
 
-export const useModerationApiWrapper = (apiFunc)=>{
+export const useModerationApiWrapper = apiFunc => {
     const { moderationErrorsHandler } = useModerationErrorsHandler();
 
-    async function apiWrapper(params){
+    async function apiWrapper(params) {
         try {
             return await apiFunc(params);
         } catch (e) {
@@ -79,11 +79,10 @@ export const useModerationApiWrapper = (apiFunc)=>{
         }
     }
 
-    return{
+    return {
         apiWrapper
-    }
-    
-}
+    };
+};
 
 export const useModerationLoginSubmit = loginData => {
     const { dispatch } = useModerationContext();
@@ -133,7 +132,9 @@ export const useModerationFiledChange = () => {
 };
 
 export const useModerationStories = () => {
-    const {apiWrapper: getModerationStories } = useModerationApiWrapper(Api.getModerationStories);
+    const { apiWrapper: getModerationStories } = useModerationApiWrapper(
+        Api.getModerationStories
+    );
     const {
         getByPage,
         data,
@@ -160,7 +161,7 @@ export const useModerationStories = () => {
     }, [moderationState.loggedIn]);
 
     function handlePageChange(e, page) {
-        getByPage(page);   
+        getByPage(page);
     }
 
     return {
@@ -175,7 +176,9 @@ export const useModerationStories = () => {
 
 export const useEditModerationStory = () => {
     const history = useHistory();
-    const {apiWrapper: getStoryForEdit } = useModerationApiWrapper(Api.getStoryForEdit);
+    const { apiWrapper: getStoryForEdit } = useModerationApiWrapper(
+        Api.getStoryForEdit
+    );
 
     async function getModerationStory(id) {
         let result = await getStoryForEdit(id);
@@ -186,7 +189,6 @@ export const useEditModerationStory = () => {
                     : result.moderatedStory?._id;
             history.push(`/moderateStory/${id}`, result);
         }
-
     }
 
     return {
@@ -241,9 +243,11 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
     return {};
 };
 
-export const useModerateStorySubmit = (originalStoryModerated) => {
+export const useModerateStorySubmit = originalStoryModerated => {
     const { moderationState } = useModerationContext();
-    const {apiWrapper: postAddModerateStory } = useModerationApiWrapper(Api.postAddModerateStory);
+    const { apiWrapper: postAddModerateStory } = useModerationApiWrapper(
+        Api.postAddModerateStory
+    );
 
     const [submitted, setSubmitted] = useState(false);
     let moderationDataToPost = { ...moderationState };
@@ -253,12 +257,14 @@ export const useModerateStorySubmit = (originalStoryModerated) => {
     }
     delete moderationDataToPost._id;
     moderationDataToPost.tags = getArrayOfTagsIds(moderationDataToPost.tags);
-    moderationDataToPost.publish = originalStoryModerated ? moderationDataToPost.publish : true;
+    moderationDataToPost.publish = originalStoryModerated
+        ? moderationDataToPost.publish
+        : true;
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        async function postData() {            
+        async function postData() {
             await postAddModerateStory(moderationDataToPost);
             setSubmitted(true);
         }
@@ -308,7 +314,9 @@ export const useSelectedTags = () => {
 
 export const usePublishModerateStory = () => {
     const { moderationState } = useModerationContext();
-    const {apiWrapper: postPublishModerateStory } = useModerationApiWrapper(Api.postPublishModerateStory);
+    const { apiWrapper: postPublishModerateStory } = useModerationApiWrapper(
+        Api.postPublishModerateStory
+    );
 
     const [publishPostSuccess, setPublishPostSuccess] = useState(false);
 
@@ -327,9 +335,10 @@ export const usePublishModerateStory = () => {
     };
 };
 
-
-export const useModeratedStories = (tags) => {
-    const {apiWrapper: getAllModeratedStories } = useModerationApiWrapper(Api.getAllModeratedStories);
+export const useModeratedStories = tags => {
+    const { apiWrapper: getAllModeratedStories } = useModerationApiWrapper(
+        Api.getAllModeratedStories
+    );
     const { getNextPage, hasMore, data, replaceRelatedOptions } = usePagination(
         getAllModeratedStories,
         PAGE_SIZE

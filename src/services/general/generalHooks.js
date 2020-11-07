@@ -49,15 +49,17 @@ export const useLoginSubmit = (loginData, postFunction, itemInLocalStorage) => {
 //Generic ErrorHandler
 export const useErrorsHandler = () => {
     async function handleErrors(e, ErrorHandlerFunctionObj) {
-        let handleErrorToInvoke = ErrorHandlerFunctionObj[e.message] !== undefined ? ErrorHandlerFunctionObj[e.message] : ErrorHandlerFunctionObj.default;
-        if(handleErrorToInvoke===undefined) return;
+        let handleErrorToInvoke =
+            ErrorHandlerFunctionObj[e.message] !== undefined
+                ? ErrorHandlerFunctionObj[e.message]
+                : ErrorHandlerFunctionObj.default;
+        if (handleErrorToInvoke === undefined) return;
         try {
             handleErrorToInvoke(e);
             return Promise.resolve();
         } catch (error) {
             return Promise.reject(error);
         }
-
     }
     return {
         handleErrors
@@ -216,9 +218,7 @@ export const usePagination = (fn, pageSize) => {
             });
             setCurrentPage(shouldGetByPage ? pageNumber : pageNumber + 1);
             setData(
-                shouldGetByPage
-                    ? [...res.result]
-                    : [...currData, ...res.result]
+                shouldGetByPage ? [...res.result] : [...currData, ...res.result]
             );
             setHasMore(data.length < res.total);
             setTotal(res.total);
@@ -232,7 +232,7 @@ export const usePagination = (fn, pageSize) => {
     const replaceRelatedOptions = async (options, shouldGetByPage = false) => {
         await getNext(options, [], 1, shouldGetByPage);
     };
-    async function getNextPage() {        
+    async function getNextPage() {
         await getNext(localOptions, data, currentPage);
     }
 

@@ -18,7 +18,7 @@ export const ModerateStoriesList = ({ handleStoryClick }) => {
 
     return (
         <div className={'stories-to-moderated-container'}>
-            <Loader data={didFetch?didFetch: undefined}>
+            <Loader data={didFetch ? didFetch : undefined}>
                 {totalStories === 0 ? (
                     <div className="stories-to-moderated-empty-list">
                         {t('login.emptyList')}

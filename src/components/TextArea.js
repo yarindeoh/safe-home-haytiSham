@@ -28,7 +28,10 @@ export const TextArea = ({
                 <label className={`question ${labelClass}`}>{label}</label>
             </div>
             {sublabel && <div>{sublabel}</div>}
-            <div className={`textarea-wrapper ${textWrapperClass}`} required={required}>
+            <div
+                className={`textarea-wrapper ${textWrapperClass}`}
+                required={required}
+            >
                 <textarea
                     className={textClass}
                     form={formId}

@@ -39,9 +39,20 @@ export const ModerationView = withRoute(props => {
         moderatedStory !== null ? moderatedStory : originalStory;
     const validOriginalStory =
         originalStory !== null ? originalStory : moderatedStory;
-    useModerationStory(validModeratedStory, tagsMap);
+    useModerationStory(
+        {
+            ...validModeratedStory,
+            ...{
+                mail: validOriginalStory.mail,
+                contact: validOriginalStory.contact
+            }
+        },
+        tagsMap
+    ); //add the filed contactAt
 
-    const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit(validOriginalStory?.moderated);
+    const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit(
+        validOriginalStory?.moderated
+    );
     const { back } = useBack(props, setSubmitted, '/admin/loggedIn');
     const { handlePublish, publishPostSuccess } = usePublishModerateStory();
     const { handleDialogOkClick } = useDialogOkClick(back);
@@ -49,13 +60,16 @@ export const ModerationView = withRoute(props => {
     const { open, showDialog, dialogParams, setDialogParams } = useDialog();
     //open Dialog when submitted
     let submitDialogText = SUBMIT_DIALOG_TEXT;
-    if(validOriginalStory?.moderated && !validModeratedStory?.publish) submitDialogText=SAVE_DIALOG_TEXT;
+    if (validOriginalStory?.moderated && !validModeratedStory?.publish)
+        submitDialogText = SAVE_DIALOG_TEXT;
     useResetDialogParams(submitted, showDialog, setDialogParams, {
         handleOk: handleDialogOkClick,
         ...submitDialogText
     });
     //open Dialog when unpublish story success
-    const publishDialogText = validModeratedStory?.publish ? UNPUBLISH_DIALOG_TEXT: PUBLISH_DIALOG_TEXT;
+    const publishDialogText = validModeratedStory?.publish
+        ? UNPUBLISH_DIALOG_TEXT
+        : PUBLISH_DIALOG_TEXT;
     useResetDialogParams(publishPostSuccess, showDialog, setDialogParams, {
         handleOk: handleDialogOkClick,
         ...publishDialogText
@@ -71,7 +85,10 @@ export const ModerationView = withRoute(props => {
                     <ModerationHeader
                         handlePublish={handlePublish}
                         testimonyIsModerated={validOriginalStory?.moderated}
-                        testimonyIsPublish={validOriginalStory?.moderated === true && validModeratedStory?.publish}
+                        testimonyIsPublish={
+                            validOriginalStory?.moderated === true &&
+                            validModeratedStory?.publish
+                        }
                     />
                     <div className="moderation-main-content">
                         {/* Col1 - right col */}

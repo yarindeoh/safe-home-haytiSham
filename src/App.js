@@ -36,7 +36,11 @@ export const App = () => {
                         <Route path="/pages" component={Pages} />
                         <ModerationProvider>
                             <Route exact path="/admin" component={LoginView} />
-                            <Route exact path="/admin/loggedIn" component={LoggedInView} />
+                            <Route
+                                exact
+                                path="/admin/loggedIn"
+                                component={LoggedInView}
+                            />
                             <Route
                                 path="/moderateStory"
                                 component={ModerationView}

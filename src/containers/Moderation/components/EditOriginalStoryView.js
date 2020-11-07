@@ -3,7 +3,7 @@ import { withRoute } from 'services/routing/routerHOC';
 import { Input } from 'components/Input';
 import { TextArea } from 'components/TextArea';
 import { useTranslation } from 'react-i18next';
-import WarningIcon from 'src/media/icons/warning.svg'
+import WarningIcon from 'src/media/icons/warning.svg';
 
 export const EditOriginalStoryView = withRoute(
     ({ handleSubmit, handleFieldChange, formData, disabled }) => {
@@ -18,7 +18,6 @@ export const EditOriginalStoryView = withRoute(
                         id={'EditOriginalStoryView'}
                         className={'addStoryForm'}
                     >
-
                         <div className="name-and-contact-container">
                             <TextArea
                                 name="name"
@@ -32,22 +31,24 @@ export const EditOriginalStoryView = withRoute(
                                 disabled={disabled}
                                 required
                             />
-                            {formData?.contact && formData?.mail && 
-                            <TextArea
-                                containerClass="contact-container"
-                                textWrapperClass="contact-wrapper-text"
-                                textClass="contact-text"
-                                name="contactAt"
-                                label={t('moderation.contactAtLabel', {mail: formData?.mail})}
-                                placeholder=""
-                                icon={<WarningIcon/>}
-                                // value={formData?.contactAt} //change to validated field
-                                defaultValue={"ביום ראשון בשעה 17:00"} //change to validated field
-                                // onChange={e => handleFieldChange(e, 'contactAt')}
-                                disabled={disabled}
-                                required
-                            />
-                            }
+                            {formData?.contact && formData?.mail && (
+                                <TextArea
+                                    containerClass="contact-container"
+                                    textWrapperClass="contact-wrapper-text"
+                                    textClass="contact-text"
+                                    name="contactAt"
+                                    label={t('moderation.contactAtLabel', {
+                                        mail: formData?.mail
+                                    })}
+                                    placeholder=""
+                                    icon={<WarningIcon />}
+                                    // value={formData?.contactAt} //change to validated field
+                                    defaultValue={'ביום ראשון בשעה 17:00'} //change to validated field
+                                    // onChange={e => handleFieldChange(e, 'contactAt')}
+                                    disabled={disabled}
+                                    required
+                                />
+                            )}
                         </div>
                         <TextArea
                             name="background"

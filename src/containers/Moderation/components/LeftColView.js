@@ -21,27 +21,29 @@ export const LeftColView = withRoute(({ handleFieldChange, formData }) => {
     const customSelectStyles = {
         option: (styles, { isFocused }) => {
             return {
-              ...styles,
-                backgroundColor:  isFocused ? '#EBE7FF': null, 
-              ':active': {
-                ...styles[':active'],
-                backgroundColor: '#EBE7FF',
-              },
+                ...styles,
+                backgroundColor: isFocused ? '#EBE7FF' : null,
+                ':active': {
+                    ...styles[':active'],
+                    backgroundColor: '#EBE7FF'
+                }
             };
-          },
-          control: (styles, { isFocused, isSelected  }) => {
+        },
+        control: (styles, { isFocused, isSelected }) => {
             return {
-              ...styles,
-              boxShadow: "none",
-              borderColor: isFocused ? '#724BE4': styles.borderColor,
-              borderWidth: isFocused ? '2px' : styles.borderWidth,
-              '&:hover': {
-                ...styles['&:hover'],
-                borderColor: isFocused ? '#724BE4': styles['&:hover'].borderColor, 
-              }
+                ...styles,
+                boxShadow: 'none',
+                borderColor: isFocused ? '#724BE4' : styles.borderColor,
+                borderWidth: isFocused ? '2px' : styles.borderWidth,
+                '&:hover': {
+                    ...styles['&:hover'],
+                    borderColor: isFocused
+                        ? '#724BE4'
+                        : styles['&:hover'].borderColor
+                }
             };
-          },
-      }
+        }
+    };
 
     return (
         <>

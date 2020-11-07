@@ -74,7 +74,7 @@ export const useSelectedTags = tags => {
     };
 };
 
-export const useStories = (tags) => {
+export const useStories = tags => {
     const { getNextPage, hasMore, data, replaceRelatedOptions } = usePagination(
         Api.getStoriesByTags,
         PAGE_SIZE

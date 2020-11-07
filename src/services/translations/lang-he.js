@@ -140,11 +140,9 @@ const he = {
             unPublishSuccessText:
                 'העדות לא תפורסם יותר באתר, יהיה ניתן לחזור לכאן וללחוץ "הצג באתר" והעדות תפורסם שוב באתר.',
             PublishSuccessHeading: 'העדות הועלתה לאתר בהצלחה!',
-            PublishSuccessText:
-                'העדות תוצג באתר',
+            PublishSuccessText: 'העדות תוצג באתר',
             saveSuccessHeading: 'העדות נשמרה בהצלחה!',
-            saveSuccessText:
-                'העדות לא תעלה לאתר עד שלא תלחצו "הצג באתר"',
+            saveSuccessText: 'העדות לא תעלה לאתר עד שלא תלחצו "הצג באתר"',
             backToAdminPage: 'חזרה לרשימת העדויות הדורשות עריכה',
             choseTags: 'בחרו קטגוריות שמתאימות לטקסט',
             choseTagsWarn: 'מומלץ לא יותר מ-5'
