@@ -111,6 +111,7 @@
 }
 
 .Content {
+    flex: 1;
     padding-top: 62px;
     @include desktop {
         width: 65%;
@@ -284,7 +285,7 @@ footer {
     }
 }
 
-.disabled-area{
+.disabled-area {
     pointer-events: none;
 }
 
