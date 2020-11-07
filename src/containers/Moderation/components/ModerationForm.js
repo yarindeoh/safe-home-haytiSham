@@ -30,19 +30,19 @@ export const ModerationForm = withRoute(
                             disabled={disabled}
                             required
                         />
-                        {!disabled && formData?.contact && formData?.mail && (
+                        {!disabled && formData?.mail && (
                             <TextArea
                                 containerClass="contact-container"
-                                textWrapperClass="contact-wrapper-text edit-border-radius"
-                                textClass="contact-text"
+                                textWrapperClass={`${formData?.contact? 'contact-wrapper-text edit-border-radius' : 'disabled-text-area'}`}
+                                textClass={`${formData?.contact? 'contact-text' : 'disabled-text-area'}`}
                                 name="contactAt"
-                                label={t('moderation.contactAtLabel', {
+                                label={formData?.contact ? t('moderation.contactAtLabel', {
                                     mail: formData?.mail
-                                })}
+                                }): formData?.mail}
                                 placeholder=""
-                                icon={<WarningIcon />}
+                                icon={formData?.contact ? <WarningIcon />: undefined}
                                 // value={formData?.contactAt} //change to validated field
-                                defaultValue={'ביום ראשון בשעה 17:00'} //change to validated field
+                                defaultValue={formData?.contact ? 'ביום ראשון בשעה 17:00' : ""} //change to validated field
                                 // onChange={e => handleFieldChange(e, 'contactAt')}
                                 disabled={disabled}
                                 required
