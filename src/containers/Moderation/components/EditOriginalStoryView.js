@@ -22,7 +22,7 @@ export const EditOriginalStoryView = withRoute(
                             <TextArea
                                 name="name"
                                 containerClass="name-container"
-                                textWrapperClass="name-wrapper-text"
+                                textWrapperClass="name-wrapper-text edit-border-radius"
                                 textClass="name-text"
                                 label={t('moderation.nameLabel')}
                                 placeholder=""
@@ -34,7 +34,7 @@ export const EditOriginalStoryView = withRoute(
                             {formData?.contact && formData?.mail && (
                                 <TextArea
                                     containerClass="contact-container"
-                                    textWrapperClass="contact-wrapper-text"
+                                    textWrapperClass="contact-wrapper-text edit-border-radius"
                                     textClass="contact-text"
                                     name="contactAt"
                                     label={t('moderation.contactAtLabel', {
@@ -52,6 +52,7 @@ export const EditOriginalStoryView = withRoute(
                         </div>
                         <TextArea
                             name="background"
+                            textWrapperClass="edit-border-radius"
                             placeholder=""
                             label={t('addStoryView.backgroundLabel')}
                             value={formData?.background}
@@ -62,6 +63,7 @@ export const EditOriginalStoryView = withRoute(
 
                         <TextArea
                             name="storyContent"
+                            textWrapperClass="edit-border-radius"
                             label={t('addStoryView.storyContentLabel')}
                             placeholder={t(
                                 'addStoryView.storyContentPlaceholder'
@@ -73,6 +75,7 @@ export const EditOriginalStoryView = withRoute(
                         />
                         <TextArea
                             name="howDidYouManged"
+                            textWrapperClass="edit-border-radius"
                             label={t('addStoryView.howDidYouMangedLabel')}
                             placeholder={t(
                                 'addStoryView.howDidYouMangedPlaceholder'
@@ -86,6 +89,7 @@ export const EditOriginalStoryView = withRoute(
 
                         <TextArea
                             name="whatHelpedYou"
+                            textWrapperClass="edit-border-radius"
                             label={t('addStoryView.whatHelpedYouLabel')}
                             placeholder={t(
                                 'addStoryView.whatHelpedYouPlaceHolder'
@@ -99,6 +103,7 @@ export const EditOriginalStoryView = withRoute(
 
                         <TextArea
                             name="whatTriggeredChange"
+                            textWrapperClass="edit-border-radius"
                             label={t('addStoryView.whatTriggeredChangeLabel')}
                             placeholder={t(
                                 'addStoryView.whatTriggeredChangePlaceHolder'
@@ -112,6 +117,7 @@ export const EditOriginalStoryView = withRoute(
 
                         <TextArea
                             name="additionalnfo"
+                            textWrapperClass="edit-border-radius"
                             label={t('addStoryView.additionalnfoLabel')}
                             placeholder={t(
                                 'addStoryView.additionalnfoPlaceHolder'

@@ -46,7 +46,7 @@ export const OriginalStoryView = withRoute(({ data, back }) => {
                             <div className="original-label">
                                 {t(`addStoryView.${item.titleKey}Label`)}
                             </div>
-                            <span className="original-text">{text}</span>
+                            <p className="original-text">{text}</p>
                         </div>
                     );
                 })}
