@@ -1,35 +1,35 @@
 .app-footer-wide {
-  background-color: map_get($colors, black);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: map_get($spaces, small) 0;
-
-  .navigation {
-    padding: 60px 0;
-    display: flex;
-  }
-
-  a,
-  span {
-    color: map_get($colors, white);
-    text-decoration: none;
-  }
-
-  .left-area {
+    background-color: map_get($colors, grey-800);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: map_get($spaces, small) 0;
 
-    a:not(:last-child) {
-      margin-bottom: map_get($spaces, small);
+    .navigation {
+        padding: 60px 0;
+        display: flex;
     }
-  }
 
-  .title {
-    margin-left: 70px;
-    color: map_get($colors, purple-500);
-    font-size: 40px;
-    align-self: center;
-  }
+    a,
+    span {
+        color: map_get($colors, white);
+        text-decoration: none;
+    }
+
+    .left-area {
+        display: flex;
+        flex-direction: column;
+
+        a:not(:last-child) {
+            margin-bottom: map_get($spaces, small);
+        }
+    }
+
+    .title {
+        margin-left: 70px;
+        color: map_get($colors, purple-500);
+        font-size: 40px;
+        align-self: center;
+    }
 }
