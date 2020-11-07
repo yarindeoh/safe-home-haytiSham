@@ -15,7 +15,12 @@
 }
 
 .original-story-col-container{
-    padding: 14px 32px 0 40px;
+    padding: 14px 24px 0 40px;
+    max-width: 500px;
+}
+
+.original-align-text{
+    padding-right: 8px !important;
 }
 
 .back-to-admin{
@@ -82,8 +87,7 @@
 }
 
 .name-wrapper-text{
-    min-height: 30px;
-    // height: 18px;
+    height: 18px;
 }
 
 .name-text{
@@ -98,7 +102,7 @@
 
 
 .contact-wrapper-text{
-    // height: 18px;
+    height: 18px;
     background-color: map_get($colors, grey-1500) !important;
 }
 

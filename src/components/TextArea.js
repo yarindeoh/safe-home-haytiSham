@@ -29,11 +29,15 @@ export const TextArea = ({
             </div>
             {sublabel && <div>{sublabel}</div>}
             <div
-                className={`textarea-wrapper ${textWrapperClass}`}
+                className={`textarea-wrapper ${textWrapperClass} ${
+                    disabled ? 'disabled-text-area' : ''
+                }`}
                 required={required}
             >
                 <textarea
-                    className={textClass}
+                    className={`${textClass} ${
+                        disabled ? 'disabled-text-area' : ''
+                    }`}
                     form={formId}
                     disabled={disabled}
                     name={name}

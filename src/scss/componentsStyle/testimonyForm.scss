@@ -90,6 +90,11 @@
         padding: 8px;
       }
 
+      .disabled-text-area{
+        resize: none;
+        background-color:  map_get($colors, grey-1400);
+      }
+
       textarea {
         font-size: 14px;
         width: 100%;
