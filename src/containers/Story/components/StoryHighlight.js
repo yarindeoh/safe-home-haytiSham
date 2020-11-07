@@ -1,13 +1,14 @@
 import React from 'react';
 import Tag from 'components/Tag';
 import EditImg from 'src/media/icons/Edit.svg';
+import AvatarIcon from 'src/media/icons/Avatar.svg';
 
 export const StoryHighlight = ({
     story,
     changeLocationByPath,
     liStyle,
     handleStoryClick,
-    displayEditImg
+    displayEditImg,
 }) => {
     const { id, name, createdAt, tags, quote } = story;
     let initials = name && name.split('')[0];
@@ -30,7 +31,9 @@ export const StoryHighlight = ({
             {displayEditImg && (
                 <EditImg className={'edit-icon-story-highlight'} />
             )}
-            <div className="initials">{initials}</div>
+            <div className="initials">
+                <AvatarIcon />
+            </div>
             <span className="date">{createdAt}</span>
             <p className="text">{quote}</p>
             {allTags()}
