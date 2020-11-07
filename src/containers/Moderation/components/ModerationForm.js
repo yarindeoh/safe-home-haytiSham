@@ -49,78 +49,98 @@ export const ModerationForm = withRoute(
                             />
                         )}
                     </div>
-                    <TextArea
-                        name="background"
-                        textWrapperClass="edit-border-radius"
-                        labelClass={disabled ? 'original-align-text' : ''}
-                        placeholder=""
-                        label={t('addStoryView.backgroundLabel')}
-                        value={formData?.background}
-                        onChange={e => handleFieldChange(e, 'background')}
-                        disabled={disabled}
-                        required
-                    />
-
-                    <TextArea
-                        name="storyContent"
-                        textWrapperClass="edit-border-radius"
-                        labelClass={disabled ? 'original-align-text' : ''}
-                        label={t('addStoryView.storyContentLabel')}
-                        placeholder={t('addStoryView.storyContentPlaceholder')}
-                        value={formData?.storyContent}
-                        onChange={e => handleFieldChange(e, 'storyContent')}
-                        disabled={disabled}
-                        required
-                    />
-                    <TextArea
-                        name="howDidYouManged"
-                        textWrapperClass="edit-border-radius"
-                        labelClass={disabled ? 'original-align-text' : ''}
-                        label={t('addStoryView.howDidYouMangedLabel')}
-                        placeholder={t(
-                            'addStoryView.howDidYouMangedPlaceholder'
-                        )}
-                        value={formData?.howDidYouManged}
-                        onChange={e => handleFieldChange(e, 'howDidYouManged')}
-                        disabled={disabled}
-                    />
-
-                    <TextArea
-                        name="whatHelpedYou"
-                        textWrapperClass="edit-border-radius"
-                        labelClass={disabled ? 'original-align-text' : ''}
-                        label={t('addStoryView.whatHelpedYouLabel')}
-                        placeholder={t('addStoryView.whatHelpedYouPlaceHolder')}
-                        value={formData?.whatHelpedYou}
-                        onChange={e => handleFieldChange(e, 'whatHelpedYou')}
-                        disabled={disabled}
-                    />
-
-                    <TextArea
-                        name="whatTriggeredChange"
-                        textWrapperClass="edit-border-radius"
-                        labelClass={disabled ? 'original-align-text' : ''}
-                        label={t('addStoryView.whatTriggeredChangeLabel')}
-                        placeholder={t(
-                            'addStoryView.whatTriggeredChangePlaceHolder'
-                        )}
-                        value={formData?.whatTriggeredChange}
-                        onChange={e =>
-                            handleFieldChange(e, 'whatTriggeredChange')
-                        }
-                        disabled={disabled}
-                    />
-
-                    <TextArea
-                        name="additionalnfo"
-                        textWrapperClass="edit-border-radius"
-                        labelClass={disabled ? 'original-align-text' : ''}
-                        label={t('addStoryView.additionalnfoLabel')}
-                        placeholder={t('addStoryView.additionalnfoPlaceHolder')}
-                        value={formData?.additionalnfo}
-                        onChange={e => handleFieldChange(e, 'additionalnfo')}
-                        disabled={disabled}
-                    />
+                    {formData?.background && (
+                        <TextArea
+                            name="background"
+                            textWrapperClass="edit-border-radius"
+                            labelClass={disabled ? 'original-align-text' : ''}
+                            placeholder=""
+                            label={t('addStoryView.backgroundLabel')}
+                            value={formData?.background}
+                            onChange={e => handleFieldChange(e, 'background')}
+                            disabled={disabled}
+                            required
+                        />
+                    )}
+                    {formData?.storyContent && (
+                        <TextArea
+                            name="storyContent"
+                            textWrapperClass="edit-border-radius"
+                            labelClass={disabled ? 'original-align-text' : ''}
+                            label={t('addStoryView.storyContentLabel')}
+                            placeholder={t(
+                                'addStoryView.storyContentPlaceholder'
+                            )}
+                            value={formData?.storyContent}
+                            onChange={e => handleFieldChange(e, 'storyContent')}
+                            disabled={disabled}
+                            required
+                        />
+                    )}
+                    {formData?.howDidYouManged && (
+                        <TextArea
+                            name="howDidYouManged"
+                            textWrapperClass="edit-border-radius"
+                            labelClass={disabled ? 'original-align-text' : ''}
+                            label={t('addStoryView.howDidYouMangedLabel')}
+                            placeholder={t(
+                                'addStoryView.howDidYouMangedPlaceholder'
+                            )}
+                            value={formData?.howDidYouManged}
+                            onChange={e =>
+                                handleFieldChange(e, 'howDidYouManged')
+                            }
+                            disabled={disabled}
+                        />
+                    )}
+                    {formData?.whatHelpedYou && (
+                        <TextArea
+                            name="whatHelpedYou"
+                            textWrapperClass="edit-border-radius"
+                            labelClass={disabled ? 'original-align-text' : ''}
+                            label={t('addStoryView.whatHelpedYouLabel')}
+                            placeholder={t(
+                                'addStoryView.whatHelpedYouPlaceHolder'
+                            )}
+                            value={formData?.whatHelpedYou}
+                            onChange={e =>
+                                handleFieldChange(e, 'whatHelpedYou')
+                            }
+                            disabled={disabled}
+                        />
+                    )}
+                    {formData?.whatTriggeredChange && (
+                        <TextArea
+                            name="whatTriggeredChange"
+                            textWrapperClass="edit-border-radius"
+                            labelClass={disabled ? 'original-align-text' : ''}
+                            label={t('addStoryView.whatTriggeredChangeLabel')}
+                            placeholder={t(
+                                'addStoryView.whatTriggeredChangePlaceHolder'
+                            )}
+                            value={formData?.whatTriggeredChange}
+                            onChange={e =>
+                                handleFieldChange(e, 'whatTriggeredChange')
+                            }
+                            disabled={disabled}
+                        />
+                    )}
+                    {formData?.additionalnfo && (
+                        <TextArea
+                            name="additionalnfo"
+                            textWrapperClass="edit-border-radius"
+                            labelClass={disabled ? 'original-align-text' : ''}
+                            label={t('addStoryView.additionalnfoLabel')}
+                            placeholder={t(
+                                'addStoryView.additionalnfoPlaceHolder'
+                            )}
+                            value={formData?.additionalnfo}
+                            onChange={e =>
+                                handleFieldChange(e, 'additionalnfo')
+                            }
+                            disabled={disabled}
+                        />
+                    )}
                 </form>
             </div>
         );
