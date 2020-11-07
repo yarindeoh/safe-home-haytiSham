@@ -88,7 +88,7 @@ const he = {
         },
         tagsFilter: {
             allTestimonies: 'כל העדויות',
-            additionalTestimonies: 'עדויות נוספות',
+            additionalTestimonies: 'עדויות דומות',
             moreCategories: 'עוד קטגוריות +',
             lessCategories: 'פחות קטגוריות -',
         },

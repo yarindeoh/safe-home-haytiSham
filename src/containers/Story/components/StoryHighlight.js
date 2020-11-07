@@ -13,7 +13,10 @@ export const StoryHighlight = ({
     let initials = name && name.split('')[0];
     const allTags = () => (
         <div className="tags">
-            {tags && tags.map((tag, i) => <Tag key={`tag_${i}`} text={tag} />)}
+            {tags &&
+                tags
+                    .slice(0, 3)
+                    .map((tag, i) => <Tag key={`tag_${i}`} text={tag} />)}
         </div>
     );
 
