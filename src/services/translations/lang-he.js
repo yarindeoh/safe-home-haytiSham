@@ -122,7 +122,7 @@ const he = {
             originalHeader: 'העדות המקורית',
             originalDate: 'התקבלה ב-{{date}}',
             nameLabel: 'שם לפרסום העדות',
-            contactAtLabel: 'ביקשו ליצור קשר ב: {{mail}}',
+            contactAtLabel: 'ליצור קשר ב: {{mail}}',
             back: 'חזרה לרשימת העדויות',
             moderationRulesHeader: 'הנחיות לעריכה',
             moderationRules:
