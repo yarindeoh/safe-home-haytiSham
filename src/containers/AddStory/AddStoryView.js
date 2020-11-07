@@ -9,13 +9,13 @@ import {
     useAddStoryContext,
     useCheckedContact,
     useFiledChange,
-    useSubmit
+    useSubmit,
 } from './addStoryHooks';
 import { useBack } from 'services/general/generalHooks';
 import Skeleton from 'src/components/Skeleton';
 import Content from 'src/components/Content';
 
-export const AddStoryView = withRoute(props => {
+export const AddStoryView = withRoute((props) => {
     const { addStoryState } = useAddStoryContext();
     const { t } = useTranslation();
     const { checkedContact, handleCheckedContact } = useCheckedContact();
@@ -58,7 +58,7 @@ export const AddStoryView = withRoute(props => {
                                 label={t('addStoryView.nameLabel')}
                                 placeholder={t('addStoryView.namePlaceholder')}
                                 value={addStoryState?.name}
-                                onChange={e => handleFieldChange(e, 'name')}
+                                onChange={(e) => handleFieldChange(e, 'name')}
                                 required
                             />
                             <Input
@@ -66,7 +66,7 @@ export const AddStoryView = withRoute(props => {
                                 label={t('addStoryView.mailLabel')}
                                 placeholder={t('addStoryView.mailPlaceholder')}
                                 value={addStoryState?.mail}
-                                onChange={e => handleFieldChange(e, 'mail')}
+                                onChange={(e) => handleFieldChange(e, 'mail')}
                             />
                             <Radio
                                 name="contact"
@@ -75,16 +75,16 @@ export const AddStoryView = withRoute(props => {
                                 checked={checkedContact}
                                 options={[
                                     { value: 'yes', label: t('common.yes') },
-                                    { value: 'no', label: t('common.no') }
+                                    { value: 'no', label: t('common.no') },
                                 ]}
-                                onClick={e => handleCheckedContact(e)}
+                                onClick={(e) => handleCheckedContact(e)}
                             />
                             <TextArea
                                 name="background"
                                 placeholder=""
                                 label={t('addStoryView.backgroundLabel')}
                                 value={addStoryState?.background}
-                                onChange={e =>
+                                onChange={(e) =>
                                     handleFieldChange(e, 'background')
                                 }
                                 required
@@ -96,7 +96,7 @@ export const AddStoryView = withRoute(props => {
                                     'addStoryView.storyContentPlaceholder'
                                 )}
                                 value={addStoryState?.storyContent}
-                                onChange={e =>
+                                onChange={(e) =>
                                     handleFieldChange(e, 'storyContent')
                                 }
                                 required
@@ -108,7 +108,7 @@ export const AddStoryView = withRoute(props => {
                                     'addStoryView.howDidYouMangedPlaceholder'
                                 )}
                                 value={addStoryState?.howDidYouManged}
-                                onChange={e =>
+                                onChange={(e) =>
                                     handleFieldChange(e, 'howDidYouManged')
                                 }
                             />
@@ -119,7 +119,7 @@ export const AddStoryView = withRoute(props => {
                                     'addStoryView.whatHelpedYouPlaceHolder'
                                 )}
                                 value={addStoryState?.whatHelpedYou}
-                                onChange={e =>
+                                onChange={(e) =>
                                     handleFieldChange(e, 'whatHelpedYou')
                                 }
                             />
@@ -128,11 +128,8 @@ export const AddStoryView = withRoute(props => {
                                 label={t(
                                     'addStoryView.whatTriggeredChangeLabel'
                                 )}
-                                placeholder={t(
-                                    'addStoryView.whatTriggeredChangePlaceHolder'
-                                )}
                                 value={addStoryState?.whatTriggeredChange}
-                                onChange={e =>
+                                onChange={(e) =>
                                     handleFieldChange(e, 'whatTriggeredChange')
                                 }
                             />
@@ -143,7 +140,7 @@ export const AddStoryView = withRoute(props => {
                                 )}
                                 label={t('addStoryView.additionalnfoLabel')}
                                 value={addStoryState?.additionalnfo}
-                                onChange={e =>
+                                onChange={(e) =>
                                     handleFieldChange(e, 'additionalnfo')
                                 }
                             />

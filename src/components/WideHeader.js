@@ -17,7 +17,9 @@ export const WideHeader = () => {
                 <span>{t('storiesView.header')}</span>
             </div>
             <div className="left-section">
-                <Link to="/addStory">{t('testimonySubmission')}</Link>
+                <Link to="/addStory" className="BTN-send-testimony in-menu">
+                    {t('testimonySubmission')}
+                </Link>
                 {pipe}
                 <Link to="/pages/warning-signs">
                     {t('warningSigns.header')}
@@ -25,7 +27,9 @@ export const WideHeader = () => {
                 {pipe}
                 <Link to="/pages/about">{t('whoWeAre')}</Link>
                 {pipe}
-                <span className="phone">6724*</span>
+                <span className="phone">
+                    <span className="text">קו חירום 24/7:</span> 6724*
+                </span>
             </div>
         </div>
     );
