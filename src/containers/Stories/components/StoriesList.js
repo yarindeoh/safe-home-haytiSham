@@ -13,7 +13,7 @@ export const StoriesList = ({
     handleStoryClick,
     displayEditImg,
     originalStory,
-    useStoriesHook=useStories
+    useStoriesHook = useStories
 }) => {
     const { stories, hasMore, getNextPage } = useStoriesHook(tags);
     return (

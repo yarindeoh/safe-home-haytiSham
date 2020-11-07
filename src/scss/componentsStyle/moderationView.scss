@@ -4,6 +4,7 @@
 
 .moderation-container{
     min-height: 100vh;
+    background-color:  map_get($colors, grey-1400);
 }
 
 .moderation-main-content {
@@ -11,11 +12,15 @@
     grid-template-columns: 40% 40% 20%;
     grid-auto-flow: row;
     overflow: auto;
-    padding-bottom: 72px;
 }
 
 .original-story-col-container{
-    padding: 14px 32px 0 40px;
+    padding: 14px 24px 0 40px;
+    max-width: 500px;
+}
+
+.original-align-text{
+    padding-right: 8px !important;
 }
 
 .back-to-admin{
@@ -34,40 +39,86 @@
 
 .original-header{
     padding-left: 10px;
-    color:  map_get($colors, purple-700);
+    color:  map_get($colors, purple-900);
     font-size: 20px;
 }
 
 .original-date{
-    color:  map_get($colors, purple-700);
+    color:  map_get($colors, purple-900);
     font-size: 16px;
 }
 
 .original-field-area{
-    margin-bottom: 60px;
+    margin-bottom: 28px;
 }
 
 .original-label{
     font-size: 16px;
     line-height: 21px;
-    margin: 8px 0px;
+    margin: 0 0 8px 0;
     color:  map_get($colors, black);
 }
 
 .original-text{
+    padding: 8px;
     font-size: 14px;
     line-height: 18px;
-    margin: 8px 0px;
+    margin: 8px 0 0px 0px;
     color:  map_get($colors, grey-900);
     white-space:pre-wrap;
+    max-width: 500px;
+}
+
+.name-and-contact-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.name-container{
+    width: 100%;
+    max-width: 190px;
+    margin-bottom: 0 !important;
+}
+
+.edit-border-radius{
+    border-radius: 2px !important;
+}
+
+.name-wrapper-text{
+    height: 18px;
+}
+
+.name-text{
+    resize: none !important;
+}
+
+.contact-container{
+    width: 100%;
+    max-width: 290px;
+    margin-bottom: 0 !important;
+}
+
+
+.contact-wrapper-text{
+    height: 18px;
+    background-color: map_get($colors, grey-1500) !important;
+}
+
+.contact-text{
+    pointer-events: none;
+    color: map_get($colors, grey-900) !important;
+    resize: none !important;
 }
 
 .edit-container{
-    padding: 58px 0 24px 60px;
+    padding: 58px 0 24px 40px;
+    max-width: 500px;
 }
 
 .edit-header{
-    color:  map_get($colors, purple-700);
+    color:  map_get($colors, purple-900);
     font-size: 20px;
     padding-bottom: 24px;
 }
@@ -111,34 +162,45 @@
     padding: 24px 0 24px 24px;
 }
 
-.moderation-footer{
-    position: fixed; 
-    bottom:0px; 
+.moderation-header{
+    position: sticky; 
+    top:0px; 
     height: 56px;
     left:0px; 
     right:0px; 
     overflow:hidden;
-    background-color: map_get($colors, grey-1100);
+    background-color: map_get($colors, grey-1200);
 }
 
 .moderation-submit-button-only{
-    max-width: 274px !important;
+    max-width: 184px !important;
+}
+
+.moderation-submit-button-save{
+    max-width: 180px !important;
+}
+
+.moderation-cancel-button-save{
+    max-width: 118px !important;
+    right: 220px !important;
 }
 
 .moderation-submit-button{
     cursor: pointer;
     position: absolute;
-    left: 11px;
+    right: 32px;
     top: 11px;
-    max-width: 138px;
+    max-width: 124px;
     width: 100%;
     height: 34px;
-    background-image: linear-gradient(94.5deg, #3691E5 -6.72%, #566BE4 20.51%, #7845E3 96.66%);
+    padding-right: 38px;
+    background-color:  map_get($colors, purple-800);
     font-weight: normal;
-    font-size: 20px;
+    font-size: 17px;
+    text-align: right;
     line-height: 130%;
     color: map_get($colors, white);
-    border-radius: 80px;
+    border-radius: 8px;
 
     &:focus{
         outline: none;
@@ -146,22 +208,49 @@
 }
 
 
-.moderation-unPublish-button{
+.moderation-cancel-button{
+    cursor: pointer;
     position: absolute;
-    left: 160px;
+    right: 164px;
     top: 11px;
-    max-width: 138px;
+    max-width: 142px;
     width: 100%;
     height: 34px;
-    background-color:  map_get($colors, grey-1100);
+    background-color:  map_get($colors, grey-1300);
     font-weight: normal;
-    font-size: 20px;
+    padding-right: 38px;
+    text-align: right;
+    font-size: 17px;
     line-height: 130%;
     color: map_get($colors, white);
-    border: 1px solid map_get($colors, white);
-    border-radius: 80px;
+    border-radius: 8px;
 
     &:focus{
         outline: none;
     }
+}
+
+.button-icon-container{
+    position: relative;
+}
+
+.button-icon{
+    z-index: 3;
+    position: absolute;
+    top: 23px;
+    right: 50px;
+}
+
+.button-eye-icon{
+    z-index: 3;
+    position: absolute;
+    top: 20px;
+    right: 237px;
+}
+
+.button-eye-slash-icon{
+    z-index: 3;
+    position: absolute;
+    top: 20px;
+    right: 181px;
 }

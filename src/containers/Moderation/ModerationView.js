@@ -3,7 +3,7 @@ import { withRoute } from 'services/routing/routerHOC';
 import { EditOriginalStoryView } from 'containers/Moderation/components/EditOriginalStoryView';
 import { OriginalStoryView } from 'containers/Moderation/components/OriginalStoryView';
 import { LeftColView } from 'containers/Moderation/components/LeftColView';
-import { ModerationFooter } from 'containers/Moderation/components/ModerationFooter';
+import { ModerationHeader } from 'containers/Moderation/components/ModerationHeader';
 import {
     useModerationContext,
     useModerationFiledChange,
@@ -14,7 +14,9 @@ import {
 } from 'containers/Moderation/moderationHooks';
 import {
     SUBMIT_DIALOG_TEXT,
-    UNPUBLISH_DIALOG_TEXT
+    UNPUBLISH_DIALOG_TEXT,
+    PUBLISH_DIALOG_TEXT,
+    SAVE_DIALOG_TEXT
 } from 'containers/Moderation/moderationConstants';
 import {
     useBack,
@@ -31,29 +33,47 @@ export const ModerationView = withRoute(props => {
     const { moderationState } = useModerationContext();
     const { tagsMap } = useTags();
     const { handleFieldChange } = useModerationFiledChange();
-    const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit();
-    const { back } = useBack(props, setSubmitted, '/admin/loggedIn');
-    const { handlePublish, publishPostSuccess } = usePublishModerateStory();
-    const { handleDialogOkClick } = useDialogOkClick(back);
-
-    const { open, showDialog, dialogParams, setDialogParams } = useDialog();
-    //open Dialog when submitted
-    useResetDialogParams(submitted, showDialog, setDialogParams, {
-        handleOk: handleDialogOkClick,
-        ...SUBMIT_DIALOG_TEXT
-    });
-    //open Dialog when unpublish story success
-    useResetDialogParams(publishPostSuccess, showDialog, setDialogParams, {
-        handleOk: handleDialogOkClick,
-        ...UNPUBLISH_DIALOG_TEXT
-    });
 
     const { originalStory, moderatedStory } = props.location.state;
     const validModeratedStory =
         moderatedStory !== null ? moderatedStory : originalStory;
     const validOriginalStory =
         originalStory !== null ? originalStory : moderatedStory;
-    useModerationStory(validModeratedStory, tagsMap);
+    useModerationStory(
+        {
+            ...validModeratedStory,
+            ...{
+                mail: validOriginalStory.mail,
+                contact: validOriginalStory.contact
+            }
+        },
+        tagsMap
+    ); //add the filed contactAt
+
+    const { submitted, setSubmitted, handleSubmit } = useModerateStorySubmit(
+        validOriginalStory?.moderated
+    );
+    const { back } = useBack(props, setSubmitted, '/admin/loggedIn');
+    const { handlePublish, publishPostSuccess } = usePublishModerateStory();
+    const { handleDialogOkClick } = useDialogOkClick(back);
+
+    const { open, showDialog, dialogParams, setDialogParams } = useDialog();
+    //open Dialog when submitted
+    let submitDialogText = SUBMIT_DIALOG_TEXT;
+    if (validOriginalStory?.moderated && !validModeratedStory?.publish)
+        submitDialogText = SAVE_DIALOG_TEXT;
+    useResetDialogParams(submitted, showDialog, setDialogParams, {
+        handleOk: handleDialogOkClick,
+        ...submitDialogText
+    });
+    //open Dialog when unpublish story success
+    const publishDialogText = validModeratedStory?.publish
+        ? UNPUBLISH_DIALOG_TEXT
+        : PUBLISH_DIALOG_TEXT;
+    useResetDialogParams(publishPostSuccess, showDialog, setDialogParams, {
+        handleOk: handleDialogOkClick,
+        ...publishDialogText
+    });
 
     useResizeTextArea();
 
@@ -62,6 +82,14 @@ export const ModerationView = withRoute(props => {
             <div>
                 <CustomDialog open={open} {...dialogParams} />
                 <div className="moderation-container">
+                    <ModerationHeader
+                        handlePublish={handlePublish}
+                        testimonyIsModerated={validOriginalStory?.moderated}
+                        testimonyIsPublish={
+                            validOriginalStory?.moderated === true &&
+                            validModeratedStory?.publish
+                        }
+                    />
                     <div className="moderation-main-content">
                         {/* Col1 - right col */}
                         <div>
@@ -80,20 +108,13 @@ export const ModerationView = withRoute(props => {
                             />
                         </div>
                         {/* Col3 - left col */}
-                        <div>
+                        <div className="left-col-container">
                             <LeftColView
                                 handleFieldChange={handleFieldChange}
                                 formData={{ ...moderationState }}
                             />
                         </div>
                     </div>
-                    <ModerationFooter
-                        handlePublish={handlePublish}
-                        showRemoveButton={
-                            validOriginalStory.moderated === true &&
-                            validModeratedStory?.publish
-                        }
-                    />
                 </div>
             </div>
         </>

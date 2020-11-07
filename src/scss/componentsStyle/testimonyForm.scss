@@ -67,6 +67,16 @@
         margin-bottom: 28px;
       }
 
+      .icon-and-label-container {
+        display: inline-flex;
+        align-items: flex-end;
+      }
+
+      .icon {
+        padding-left: 6px;
+        margin-bottom: 8px;
+      }
+
       .question {
         padding: 0;
         font-weight: bold;
@@ -78,6 +88,11 @@
         border-radius: 8px;
         background: map_get($colors, white);
         padding: 8px;
+      }
+
+      .disabled-text-area{
+        resize: none;
+        background-color:  map_get($colors, grey-1400);
       }
 
       textarea {

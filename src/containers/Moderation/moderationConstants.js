@@ -11,7 +11,8 @@ export const NEW_MODERATE_STORY_INIT_DATA = {
     whatHelpedYou: '',
     whatTriggeredChange: '',
     contact: false,
-    tags: []
+    tags: [],
+    publish: false
 };
 
 export const SET_LOGGED_IN = 'SET_LOGGED_IN';
@@ -25,8 +26,20 @@ export const SUBMIT_DIALOG_TEXT = {
     okText: 'moderation.backToAdminPage'
 };
 
+export const SAVE_DIALOG_TEXT = {
+    title: 'moderation.saveSuccessHeading',
+    contentText: 'moderation.saveSuccessText',
+    okText: 'moderation.backToAdminPage'
+};
+
 export const UNPUBLISH_DIALOG_TEXT = {
     title: 'moderation.unPublishSuccessHeading',
     contentText: 'moderation.unPublishSuccessText',
+    okText: 'moderation.backToAdminPage'
+};
+
+export const PUBLISH_DIALOG_TEXT = {
+    title: 'moderation.PublishSuccessHeading',
+    contentText: 'moderation.PublishSuccessText',
     okText: 'moderation.backToAdminPage'
 };

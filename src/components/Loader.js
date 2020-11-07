@@ -4,13 +4,10 @@ import '../scss/componentsStyle/Loader.scss';
 export const Loader = ({ data, children: componentToDisplay = null }) => {
     const isAllDataArrived =
         data instanceof Array
-            ? data.length > 0
-                ? data.reduce(
-                      (accumelator, current) =>
-                          accumelator && current != undefined,
-                      true
-                  )
-                : false
+            ? data.reduce(
+                  (accumelator, current) => accumelator && current != undefined,
+                  true
+              )
             : data != undefined;
 
     // If the component we want to display does not wait for more data to arrive

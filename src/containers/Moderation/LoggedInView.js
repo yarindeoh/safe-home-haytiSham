@@ -1,7 +1,10 @@
 import React from 'react';
 import { ModerateStoriesList } from 'containers/Moderation/components/ModerateStoriesList';
 import { TagsFilter } from 'containers/Stories/components/TagsFilter';
-import { useModeratedStories, useEditModerationStory } from 'containers/Moderation/moderationHooks';
+import {
+    useModeratedStories,
+    useEditModerationStory
+} from 'containers/Moderation/moderationHooks';
 
 export const LoggedInView = () => {
     const { getModerationStory } = useEditModerationStory();

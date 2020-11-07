@@ -9,6 +9,7 @@ import { useTags } from 'containers/Stories/storiesHooks';
 import { getTagsAsArray } from 'services/general/generalHelpers';
 import Select from 'react-select';
 import { TextArea } from 'components/TextArea';
+import { red } from '@material-ui/core/colors';
 
 export const LeftColView = withRoute(({ handleFieldChange, formData }) => {
     const { moderationState } = useModerationContext();
@@ -16,6 +17,33 @@ export const LeftColView = withRoute(({ handleFieldChange, formData }) => {
     const { tagsMap } = useTags();
     const tags = getTagsAsArray(tagsMap);
     const { handleSelectedTags } = useSelectedTags();
+
+    const customSelectStyles = {
+        option: (styles, { isFocused }) => {
+            return {
+                ...styles,
+                backgroundColor: isFocused ? '#EBE7FF' : null,
+                ':active': {
+                    ...styles[':active'],
+                    backgroundColor: '#EBE7FF'
+                }
+            };
+        },
+        control: (styles, { isFocused, isSelected }) => {
+            return {
+                ...styles,
+                boxShadow: 'none',
+                borderColor: isFocused ? '#724BE4' : styles.borderColor,
+                borderWidth: isFocused ? '2px' : styles.borderWidth,
+                '&:hover': {
+                    ...styles['&:hover'],
+                    borderColor: isFocused
+                        ? '#724BE4'
+                        : styles['&:hover'].borderColor
+                }
+            };
+        }
+    };
 
     return (
         <>
@@ -37,8 +65,7 @@ export const LeftColView = withRoute(({ handleFieldChange, formData }) => {
                         isMulti
                         name="tags"
                         closeMenuOnSelect={false}
-                        // className="basic-multi-select"
-                        // classNamePrefix="select"
+                        styles={customSelectStyles}
                     />
 
                     <input

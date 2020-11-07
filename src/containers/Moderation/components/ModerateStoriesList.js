@@ -11,13 +11,14 @@ export const ModerateStoriesList = ({ handleStoryClick }) => {
         currentPage,
         totalPages,
         totalStories,
-        handlePageChange
+        handlePageChange,
+        didFetch
     } = useModerationStories();
     const { t } = useTranslation();
 
     return (
         <div className={'stories-to-moderated-container'}>
-            <Loader data={stories}>
+            <Loader data={didFetch ? didFetch : undefined}>
                 {totalStories === 0 ? (
                     <div className="stories-to-moderated-empty-list">
                         {t('login.emptyList')}
