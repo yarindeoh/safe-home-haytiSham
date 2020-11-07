@@ -22,7 +22,7 @@ export const EditOriginalStoryView = withRoute(
                             label={t('addStoryView.nameLabel')}
                             placeholder={t('addStoryView.namePlaceholder')}
                             value={formData?.name}
-                            onChange={e => handleFieldChange(e, 'name')}
+                            onChange={(e) => handleFieldChange(e, 'name')}
                             disabled={disabled}
                             required
                         />
@@ -31,7 +31,7 @@ export const EditOriginalStoryView = withRoute(
                             placeholder=""
                             label={t('addStoryView.backgroundLabel')}
                             value={formData?.background}
-                            onChange={e => handleFieldChange(e, 'background')}
+                            onChange={(e) => handleFieldChange(e, 'background')}
                             disabled={disabled}
                             required
                         />
@@ -43,7 +43,9 @@ export const EditOriginalStoryView = withRoute(
                                 'addStoryView.storyContentPlaceholder'
                             )}
                             value={formData?.storyContent}
-                            onChange={e => handleFieldChange(e, 'storyContent')}
+                            onChange={(e) =>
+                                handleFieldChange(e, 'storyContent')
+                            }
                             disabled={disabled}
                             required
                         />
@@ -54,7 +56,7 @@ export const EditOriginalStoryView = withRoute(
                                 'addStoryView.howDidYouMangedPlaceholder'
                             )}
                             value={formData?.howDidYouManged}
-                            onChange={e =>
+                            onChange={(e) =>
                                 handleFieldChange(e, 'howDidYouManged')
                             }
                             disabled={disabled}
@@ -67,7 +69,7 @@ export const EditOriginalStoryView = withRoute(
                                 'addStoryView.whatHelpedYouPlaceHolder'
                             )}
                             value={formData?.whatHelpedYou}
-                            onChange={e =>
+                            onChange={(e) =>
                                 handleFieldChange(e, 'whatHelpedYou')
                             }
                             disabled={disabled}
@@ -76,11 +78,8 @@ export const EditOriginalStoryView = withRoute(
                         <TextArea
                             name="whatTriggeredChange"
                             label={t('addStoryView.whatTriggeredChangeLabel')}
-                            placeholder={t(
-                                'addStoryView.whatTriggeredChangePlaceHolder'
-                            )}
                             value={formData?.whatTriggeredChange}
-                            onChange={e =>
+                            onChange={(e) =>
                                 handleFieldChange(e, 'whatTriggeredChange')
                             }
                             disabled={disabled}
@@ -93,7 +92,7 @@ export const EditOriginalStoryView = withRoute(
                                 'addStoryView.additionalnfoPlaceHolder'
                             )}
                             value={formData?.additionalnfo}
-                            onChange={e =>
+                            onChange={(e) =>
                                 handleFieldChange(e, 'additionalnfo')
                             }
                             disabled={disabled}
