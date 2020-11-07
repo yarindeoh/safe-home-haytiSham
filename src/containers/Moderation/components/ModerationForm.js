@@ -24,7 +24,6 @@ export const ModerationForm = withRoute(
                             textWrapperClass="name-wrapper-text edit-border-radius"
                             textClass="name-text"
                             label={t('moderation.nameLabel')}
-                            placeholder=""
                             value={formData?.name}
                             onChange={e => handleFieldChange(e, 'name')}
                             disabled={disabled}
@@ -39,7 +38,6 @@ export const ModerationForm = withRoute(
                                 label={formData?.contact ? t('moderation.contactAtLabel', {
                                     mail: formData?.mail
                                 }): formData?.mail}
-                                placeholder=""
                                 icon={formData?.contact ? <WarningIcon />: undefined}
                                 // value={formData?.contactAt} //change to validated field
                                 defaultValue={formData?.contact ? 'ביום ראשון בשעה 17:00' : ""} //change to validated field
@@ -54,7 +52,6 @@ export const ModerationForm = withRoute(
                             name="background"
                             textWrapperClass="edit-border-radius"
                             labelClass={disabled ? 'original-align-text' : ''}
-                            placeholder=""
                             label={t('addStoryView.backgroundLabel')}
                             value={formData?.background}
                             onChange={e => handleFieldChange(e, 'background')}
@@ -68,9 +65,6 @@ export const ModerationForm = withRoute(
                             textWrapperClass="edit-border-radius"
                             labelClass={disabled ? 'original-align-text' : ''}
                             label={t('addStoryView.storyContentLabel')}
-                            placeholder={t(
-                                'addStoryView.storyContentPlaceholder'
-                            )}
                             value={formData?.storyContent}
                             onChange={e => handleFieldChange(e, 'storyContent')}
                             disabled={disabled}
@@ -83,9 +77,6 @@ export const ModerationForm = withRoute(
                             textWrapperClass="edit-border-radius"
                             labelClass={disabled ? 'original-align-text' : ''}
                             label={t('addStoryView.howDidYouMangedLabel')}
-                            placeholder={t(
-                                'addStoryView.howDidYouMangedPlaceholder'
-                            )}
                             value={formData?.howDidYouManged}
                             onChange={e =>
                                 handleFieldChange(e, 'howDidYouManged')
@@ -99,9 +90,6 @@ export const ModerationForm = withRoute(
                             textWrapperClass="edit-border-radius"
                             labelClass={disabled ? 'original-align-text' : ''}
                             label={t('addStoryView.whatHelpedYouLabel')}
-                            placeholder={t(
-                                'addStoryView.whatHelpedYouPlaceHolder'
-                            )}
                             value={formData?.whatHelpedYou}
                             onChange={e =>
                                 handleFieldChange(e, 'whatHelpedYou')
@@ -115,9 +103,6 @@ export const ModerationForm = withRoute(
                             textWrapperClass="edit-border-radius"
                             labelClass={disabled ? 'original-align-text' : ''}
                             label={t('addStoryView.whatTriggeredChangeLabel')}
-                            placeholder={t(
-                                'addStoryView.whatTriggeredChangePlaceHolder'
-                            )}
                             value={formData?.whatTriggeredChange}
                             onChange={e =>
                                 handleFieldChange(e, 'whatTriggeredChange')
@@ -131,9 +116,6 @@ export const ModerationForm = withRoute(
                             textWrapperClass="edit-border-radius"
                             labelClass={disabled ? 'original-align-text' : ''}
                             label={t('addStoryView.additionalnfoLabel')}
-                            placeholder={t(
-                                'addStoryView.additionalnfoPlaceHolder'
-                            )}
                             value={formData?.additionalnfo}
                             onChange={e =>
                                 handleFieldChange(e, 'additionalnfo')
