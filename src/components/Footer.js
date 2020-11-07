@@ -34,9 +34,9 @@ export const Footer = ({ title, footerMenuItemsAndUrls }) => {
                     <span>{t('IHaveBeenThere2020')}</span>
                     <span> | </span>
                     <div>
-                        {/* <Link to="/pages/privacy-policy"> */}{' '}
-                        <u>{t('privacyPolicy')} </u>
-                        {/* </Link> */}
+                        <Link to="/pages/terms-of-service">
+                            <u>{t('privacyPolicy')}</u>
+                        </Link>
                     </div>
                 </div>
             </div>
