@@ -3,11 +3,11 @@ const he = {
         common: {
             iHaveBeenThereHashtag: '#הייתי_שם',
             yes: 'כן',
-            no: 'לא'
+            no: 'לא',
         },
         tags: {
             humiliation: 'השפלה',
-            jealousy: 'קנאה'
+            jealousy: 'קנאה',
         },
         storyName: 'שם הסיפור',
         whatTriggeredChange: 'איך הסיטואציה השתנתה',
@@ -38,7 +38,7 @@ const he = {
         IHaveBeenThereHashtag: '#הייתי_שם',
         storiesView: {
             header: 'בית לעדויות ממערכות יחסים אלימות',
-            addStory: 'לשליחת העדות שלך'
+            addStory: 'לשליחת העדות שלך',
         },
         storyView: {
             storyOf: 'עדותה של',
@@ -50,7 +50,7 @@ const he = {
             howDidYouManged: 'איך התמודדתי עם זה?',
             whatTriggeredChange: 'איך הסיטואציה השתנתה?',
             additionalnfo: 'בכמה משפטים, מה הכי היית רוצה לומר למי שבמצב דומה?',
-            whatHelpedYou: 'מה עזר לך להתמודד?'
+            whatHelpedYou: 'מה עזר לך להתמודד?',
         },
         addStoryView: {
             createdAtLabel: 'נכתב ב: ',
@@ -62,21 +62,20 @@ const he = {
             namePlaceholder: 'הוספת שם',
             mailLabel: 'מייל/טלפון ליצירת קשר (לא חובה, לא יפורסם)',
             mailPlaceholder: 'הוספת פרטי התקשרות',
-            contactLabel: 'שניצור איתך קשר לקבלת תמיכה?',
+            contactLabel: 'תרצו שניצור קשר לקבלת ייעוץ תמיכה?',
             contactNotes:
                 'לקבלת תמיכה/סיוע 24/7 ניתן ליצור קשר דרך כפתור התמיכה',
             backgroundLabel:
-                'רקע* (מה היה טיב מערכת היחסים, מתי זה קרה, לאורך כמה זמן, גיל וכו׳)',
+                'רקע (גיל, מתי-עבר/הווה, אופי הקשר, במשך כמה זמן או עדיין נמשך)',
             storyContentLabel: 'השיתוף שלי*',
             storyContentPlaceholder: 'אני רוצה לשתף...',
-            howDidYouMangedLabel: 'איך התמודדתי עם המצב',
+            howDidYouMangedLabel: 'איך הגבת למקרה בעבר או ביום יום?',
             howDidYouMangedPlaceholder: 'ההתמודדות שלי...',
             whatHelpedYouLabel: 'מה עזר או עוזר לך בהתמודדות?',
             whatHelpedYouPlaceHolder: 'מאוד עזר לי ש...',
             whatTriggeredChangeLabel: 'האם משהו השתנה? מה יצר את השינוי?',
-            whatTriggeredChangePlaceHolder: 'השינוי התחיל כש...',
             additionalnfoLabel:
-                'בכמה משפטים, מה הכי היית רוצה לומר למי במצב דומה',
+                'בכמה משפטים, מה הכי היית רוצה לומר למי שנמצאת במצב דומה?',
             additionalnfoPlaceHolder: 'אני רוצה לומר ש...',
             quoteLabel: 'ציטוט נבחר',
             quotePlaceHolder: 'ציטוט מתוך הטקסט...',
@@ -85,20 +84,20 @@ const he = {
             uploadRecording: 'להעלות הקלטה',
             submittedSuccessHeading: 'הסיפור שלך נשלח בהצלחה!',
             submittedSuccessText:
-                'במידה והשארת פרטי קשר, נעדכן אותך לאחר שהוא יעלה לאתר'
+                'במידה והשארת פרטי קשר, נעדכן אותך לאחר שהוא יעלה לאתר',
         },
         tagsFilter: {
             allTestimonies: 'כל העדויות',
             additionalTestimonies: 'עדויות נוספות',
             moreCategories: 'עוד קטגוריות +',
-            lessCategories: 'פחות קטגוריות -'
+            lessCategories: 'פחות קטגוריות -',
         },
         storiesGalleryView: {
-            confessionOf: 'עדותה של {{name}} {{date}}'
+            confessionOf: 'עדותה של {{name}} {{date}}',
         },
         storyVideo: {
             campaign: `צפו בעדות של {{storyteller}} מתוך קמפיין של פרויקט אוף לייף והעמותה ל.א לאלימות
-            שפורסמה ב{{timestamp}}`
+            שפורסמה ב{{timestamp}}`,
         },
         login: {
             header: 'התחברו כדי לערוך עדויות',
@@ -114,8 +113,8 @@ const he = {
                 mail: 'אמצעי ליצירת קשר',
                 contact: 'האם ביקשו ליצור קשר?',
                 yes: 'כן',
-                no: 'לא'
-            }
+                no: 'לא',
+            },
         },
         moderation: {
             editHeader: 'העדות בזמן עריכה',
@@ -137,13 +136,13 @@ const he = {
                 'העדות לא תפורסם יותר באתר, יהיה ניתן לחזור לכאן וללחוץ "עדכן באתר" והעדות תפורסם שוב באתר.',
             backToAdminPage: 'חזרה לרשימת העדויות הדורשות עריכה',
             choseTags: 'בחרו קטגוריות שמתאימות לטקסט',
-            choseTagsWarn: 'מומלץ לא יותר מ-5'
+            choseTagsWarn: 'מומלץ לא יותר מ-5',
         },
         warningSigns: {
             header: 'סימני אזהרה',
             charactersOfReletionship: 'מאפיינים של מערכת יחסים אלימה',
             how: 'איך?',
-            violenceType: 'הגדרות של סוגי אלימות'
+            violenceType: 'הגדרות של סוגי אלימות',
         },
         about: {
             header: 'מי אנחנו',
@@ -159,9 +158,9 @@ const he = {
             volunteersNamesTitle: 'שמות המתנדבות בצוות:',
             volunteersNames:
                 'מורן וובר<br/>לישי נועם<br/>ירין דקל<br/>מיכל פורג<br/>שחר גצוביץ׳<br/>נועה נובק<br/>אור מנור<br/>אורלי לבקוביץ פרנק<br/>הדס פרחי<br/>רומי וינטר<br/>רותם שפרינגר<br/>יעל רמוס דר<br/>דניאל גרונת<br/>לאה גרונת',
-            inCollaboration: 'הפרוייקט יצא לדרך בשיתוף'
-        }
-    }
+            inCollaboration: 'הפרוייקט יצא לדרך בשיתוף',
+        },
+    },
 };
 
 export default he;
