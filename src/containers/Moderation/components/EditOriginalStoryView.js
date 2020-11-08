@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ModerationForm } from 'containers/Moderation/components/ModerationForm';
 
 export const EditOriginalStoryView = withRoute(
-    ({ handleSubmit, handleFieldChange, formData, disabled }) => {
+    ({ handleSubmit, handleFieldChange, primaryFormData, formData }) => {
         const { t } = useTranslation();
 
         return (
@@ -15,6 +15,7 @@ export const EditOriginalStoryView = withRoute(
                     handleFieldChange={handleFieldChange}
                     formData={formData}
                     id={'EditOriginalStoryView'}
+                    primaryFormData={primaryFormData}
                 />
             </div>
         );
