@@ -144,7 +144,8 @@ const he = {
             saveSuccessText: 'העדות לא תעלה לאתר עד שלא תלחצו "הצג באתר"',
             backToAdminPage: 'חזרה לרשימת העדויות הדורשות עריכה',
             choseTags: 'בחרו קטגוריות שמתאימות לטקסט',
-            choseTagsWarn: 'מומלץ לא יותר מ-5'
+            choseTagsWarn: 'מומלץ לא יותר מ-5',
+            logout: 'התנתק'
         },
         warningSigns: {
             header: 'סימני אזהרה',
