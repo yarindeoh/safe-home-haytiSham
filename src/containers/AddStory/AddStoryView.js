@@ -11,7 +11,7 @@ import {
     useFiledChange,
     useSubmit
 } from './addStoryHooks';
-import { useBack } from 'services/general/generalHooks';
+import { useBack, useResizeTextArea} from 'services/general/generalHooks';
 import Skeleton from 'src/components/Skeleton';
 import Content from 'src/components/Content';
 
@@ -22,6 +22,7 @@ export const AddStoryView = withRoute(props => {
     const { handleFieldChange } = useFiledChange();
     const { submitted, setSubmitted, handleSubmit } = useSubmit();
     const { back } = useBack(props, setSubmitted);
+    useResizeTextArea();
 
     let wrapperClassName = 'testimony-form';
     if (submitted) {
