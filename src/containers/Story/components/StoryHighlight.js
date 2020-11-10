@@ -8,7 +8,7 @@ export const StoryHighlight = ({
     changeLocationByPath,
     liStyle,
     handleStoryClick,
-    displayEditImg,
+    displayEditImg
 }) => {
     const { id, name, createdAt, tags, quote } = story;
     let initials = name && name.split('')[0];

@@ -8,6 +8,7 @@ export const TextArea = ({
     value,
     defaultValue,
     required,
+    maxLength,
     onChange,
     disabled,
     formId,
@@ -46,6 +47,7 @@ export const TextArea = ({
                     defaultValue={defaultValue}
                     required={required}
                     onChange={onChange}
+                    maxLength={maxLength}
                 />
             </div>
         </div>

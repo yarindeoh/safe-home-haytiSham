@@ -6,9 +6,15 @@ import { useTranslation } from 'react-i18next';
 import WarningIcon from 'src/media/icons/warning.svg';
 
 export const ModerationForm = withRoute(
-    ({ handleSubmit, handleFieldChange, formData, disabled, id }) => {
+    ({
+        handleSubmit,
+        handleFieldChange,
+        formData,
+        disabled,
+        id,
+        primaryFormData
+    }) => {
         const { t } = useTranslation();
-
         return (
             <div className={'testimony-form'}>
                 <form
@@ -17,37 +23,62 @@ export const ModerationForm = withRoute(
                     className={'addStoryForm'}
                 >
                     <div className="name-and-contact-container">
-                        <TextArea
-                            name="name"
-                            labelClass={disabled ? 'original-align-text' : ''}
-                            containerClass="name-container"
-                            textWrapperClass="name-wrapper-text edit-border-radius"
-                            textClass="name-text"
-                            label={t('moderation.nameLabel')}
-                            value={formData?.name}
-                            onChange={e => handleFieldChange(e, 'name')}
-                            disabled={disabled}
-                            required
-                        />
-                        {!disabled && formData?.mail && (
+                        {primaryFormData?.name && (
                             <TextArea
-                                containerClass="contact-container"
-                                textWrapperClass={`${formData?.contact? 'contact-wrapper-text edit-border-radius' : 'disabled-text-area'}`}
-                                textClass={`${formData?.contact? 'contact-text' : 'disabled-text-area'}`}
-                                name="contactAt"
-                                label={formData?.contact ? t('moderation.contactAtLabel', {
-                                    mail: formData?.mail
-                                }): formData?.mail}
-                                icon={formData?.contact ? <WarningIcon />: undefined}
-                                // value={formData?.contactAt} //change to validated field
-                                defaultValue={formData?.contact ? 'ביום ראשון בשעה 17:00' : ""} //change to validated field
-                                // onChange={e => handleFieldChange(e, 'contactAt')}
+                                name="name"
+                                labelClass={
+                                    disabled ? 'original-align-text' : ''
+                                }
+                                containerClass="name-container"
+                                textWrapperClass="name-wrapper-text edit-border-radius"
+                                textClass="name-text"
+                                label={t('moderation.nameLabel')}
+                                value={formData?.name}
+                                onChange={e => handleFieldChange(e, 'name')}
                                 disabled={disabled}
+                                maxLength={28}
                                 required
                             />
                         )}
+                        {!disabled && primaryFormData?.mail && (
+                            <TextArea
+                                containerClass="disabled-area contact-container"
+                                textWrapperClass={`disabled-area ${
+                                    primaryFormData?.contact
+                                        ? 'contact-wrapper-text edit-border-radius'
+                                        : 'disabled-text-area'
+                                }`}
+                                textClass={`disabled-area ${
+                                    primaryFormData?.contact
+                                        ? 'contact-text'
+                                        : 'disabled-text-area'
+                                }`}
+                                name="contactAt"
+                                label={
+                                    primaryFormData?.contact
+                                        ? t('moderation.contactAtLabel', {
+                                              mail: primaryFormData?.mail
+                                          })
+                                        : primaryFormData?.mail
+                                }
+                                icon={
+                                    primaryFormData?.contact ? (
+                                        <WarningIcon />
+                                    ) : (
+                                        undefined
+                                    )
+                                }
+                                // value={formData?.contactAt} //change to validated field
+                                defaultValue={
+                                    primaryFormData?.contact
+                                        ? 'ביום ראשון בשעה 17:00'
+                                        : ''
+                                } //change to validated field
+                                disabled={disabled}
+                            />
+                        )}
                     </div>
-                    {formData?.background && (
+                    {primaryFormData?.background && (
                         <TextArea
                             name="background"
                             textWrapperClass="edit-border-radius"
@@ -59,7 +90,7 @@ export const ModerationForm = withRoute(
                             required
                         />
                     )}
-                    {formData?.storyContent && (
+                    {primaryFormData?.storyContent && (
                         <TextArea
                             name="storyContent"
                             textWrapperClass="edit-border-radius"
@@ -71,7 +102,7 @@ export const ModerationForm = withRoute(
                             required
                         />
                     )}
-                    {formData?.howDidYouManged && (
+                    {primaryFormData?.howDidYouManged && (
                         <TextArea
                             name="howDidYouManged"
                             textWrapperClass="edit-border-radius"
@@ -84,7 +115,7 @@ export const ModerationForm = withRoute(
                             disabled={disabled}
                         />
                     )}
-                    {formData?.whatHelpedYou && (
+                    {primaryFormData?.whatHelpedYou && (
                         <TextArea
                             name="whatHelpedYou"
                             textWrapperClass="edit-border-radius"
@@ -97,7 +128,7 @@ export const ModerationForm = withRoute(
                             disabled={disabled}
                         />
                     )}
-                    {formData?.whatTriggeredChange && (
+                    {primaryFormData?.whatTriggeredChange && (
                         <TextArea
                             name="whatTriggeredChange"
                             textWrapperClass="edit-border-radius"
@@ -110,7 +141,7 @@ export const ModerationForm = withRoute(
                             disabled={disabled}
                         />
                     )}
-                    {formData?.additionalnfo && (
+                    {primaryFormData?.additionalnfo && (
                         <TextArea
                             name="additionalnfo"
                             textWrapperClass="edit-border-radius"

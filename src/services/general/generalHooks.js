@@ -46,26 +46,6 @@ export const useLoginSubmit = (loginData, postFunction, itemInLocalStorage) => {
     };
 };
 
-//Generic ErrorHandler
-export const useErrorsHandler = () => {
-    async function handleErrors(e, ErrorHandlerFunctionObj) {
-        let handleErrorToInvoke =
-            ErrorHandlerFunctionObj[e.message] !== undefined
-                ? ErrorHandlerFunctionObj[e.message]
-                : ErrorHandlerFunctionObj.default;
-        if (handleErrorToInvoke === undefined) return;
-        try {
-            handleErrorToInvoke(e);
-            return Promise.resolve();
-        } catch (error) {
-            return Promise.reject(error);
-        }
-    }
-    return {
-        handleErrors
-    };
-};
-
 export const useFetchApiData = (apiCall, state) => {
     const [localState, setLocalState] = useState(state);
     useEffect(() => {
@@ -217,6 +197,7 @@ export const usePagination = (fn, pageSize) => {
                 pageSize: pageSize,
                 ...(options || localOptions)
             });
+            if (!res) return;
             setCurrentPage(shouldGetByPage ? pageNumber : pageNumber + 1);
             setData(
                 shouldGetByPage ? [...res.result] : [...currData, ...res.result]

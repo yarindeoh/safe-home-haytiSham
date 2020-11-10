@@ -3,6 +3,7 @@ import React from 'react';
 export const Input = ({
     name,
     placeholder,
+    maxLength,
     label,
     subLabel,
     value,
@@ -16,6 +17,7 @@ export const Input = ({
                 {label}
                 <div>
                     <input
+                        maxLength={maxLength}
                         disabled={disabled}
                         type="text"
                         name={name}

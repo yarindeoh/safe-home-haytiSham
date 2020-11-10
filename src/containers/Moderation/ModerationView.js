@@ -103,8 +103,8 @@ export const ModerationView = withRoute(props => {
                             <EditOriginalStoryView
                                 handleSubmit={handleSubmit}
                                 handleFieldChange={handleFieldChange}
+                                primaryFormData={{ ...validOriginalStory }}
                                 formData={{ ...moderationState }}
-                                moderatedForm
                             />
                         </div>
                         {/* Col3 - left col */}
