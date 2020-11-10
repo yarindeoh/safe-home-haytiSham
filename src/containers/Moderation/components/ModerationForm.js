@@ -36,6 +36,7 @@ export const ModerationForm = withRoute(
                                 value={formData?.name}
                                 onChange={e => handleFieldChange(e, 'name')}
                                 disabled={disabled}
+                                maxLength={28}
                                 required
                             />
                         )}

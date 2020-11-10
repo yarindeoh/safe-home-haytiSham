@@ -54,6 +54,7 @@ export const AddStoryView = withRoute(props => {
                             className={'addStoryForm'}
                         >
                             <Input
+                                maxLength={28}
                                 name="name"
                                 label={t('addStoryView.nameLabel')}
                                 placeholder={t('addStoryView.namePlaceholder')}
