@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const storySchema = new Schema({
     whatTriggeredChange: String,
     howDidYouManged: String,
-    additionalnfo: String,    
-    quote: String,
+    additionalnfo: String,  
     whatHelpedYou: String, 
     background: String,
     storyContent: String,

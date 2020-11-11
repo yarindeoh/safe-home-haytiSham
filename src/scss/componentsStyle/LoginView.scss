@@ -112,6 +112,11 @@
     }
 }
 
+.stories-to-moderated-empty-list{
+    font-size: 28px;
+    color: map_get($colors, purple-400); 
+}
+
 .stories-to-moderated-table{ 
     text-align: right;
     border-collapse: collapse;

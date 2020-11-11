@@ -35,7 +35,7 @@ export const StoryVideo = withRoute(props => {
                 </Content>
             </div>
             <StoriesList
-                tags={story.tags_id}
+                tags={story.tagsId}
                 title={t('tagsFilter.additionalTestimonies')}
                 changeLocationByPath={changeLocationByPath}
             />

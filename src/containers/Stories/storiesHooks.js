@@ -1,74 +1,63 @@
 import Api from 'containers/Stories/storiesApi';
 import { useEffect, useState, useCallback } from 'react';
-import { useFetchApiData } from 'services/general/generalHooks';
-
+import { useFetchApiData, usePagination } from 'services/general/generalHooks';
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
+import { PAGE_SIZE } from './storiesConstants';
 
 export const useTags = defaultSelectedTags => {
     const { localState: tags } = useFetchApiData(Api.getTagsMap, []);
+    const [isDisplayMoreTags, setIsDisplayMoreTags] = useState(false);
     const { tagsData, changeTagSelected, unselectAllTags } = useSelectedTags(
         tags,
         defaultSelectedTags
     );
-    const {
-        isDisplayMoreTags,
-        changeDisplayMoreTags,
-        getDisplayedTags
-    } = useShowMoreTags(tags);
-
+    const getDisplayedTags = useCallback(
+        tags =>
+            isDisplayMoreTags ? tags : tags && getSlicedTagsObj(tags, 0, 5),
+        [isDisplayMoreTags]
+    );
     return {
         tagsMap: tags,
-        tagsData: getDisplayedTags(tagsData),
         changeTagSelected,
         isDisplayMoreTags,
-        changeDisplayMoreTags,
-        unselectAllTags
+        unselectAllTags,
+        changeDisplayMoreTags: useCallback(() => {
+            setIsDisplayMoreTags(showMoreTags => !showMoreTags);
+        }, []),
+        tagsData: getDisplayedTags(tagsData)
     };
 };
 
-export const useSelectedTags = (tags, defaultSelectedTags = []) => {
+export const useSelectedTags = tags => {
+    const [tagsData, setTagsData] = useState({});
     const generateTagsData = useCallback(
         tags =>
             tags
                 ? Object.keys(tags).reduce((accumulator, tagId) => {
-                      const tagIdNumber = parseInt(tagId);
                       accumulator[tagId] = {
                           value: tags[tagId],
-                          selected: tagIdNumber
-                              ? defaultSelectedTags.indexOf(tagIdNumber) > -1
-                              : false
+                          selected: false
                       };
                       return accumulator;
                   }, {})
                 : null,
-        []
+        [tags]
     );
-
-    const [tagsData, setTagsData] = useState();
-
     useEffect(() => {
         setTagsData(generateTagsData(tags));
     }, [tags]);
-
     return {
         tagsData,
-        unselectAllTags: useCallback(
-            () =>
-                setTagsData(prevTagsData => {
-                    return Object.keys(prevTagsData).reduce(
-                        (accumelator, tag) => {
-                            accumelator[tag] = {
-                                ...prevTagsData[tag],
-                                selected: false
-                            };
-
-                            return accumelator;
-                        },
-                        {}
-                    );
-                }),
-            []
-        ),
+        unselectAllTags: useCallback(() => {
+            setTagsData(prevTagsData => {
+                let tags = { ...prevTagsData };
+                return Object.keys(tags).map(id => {
+                    return Object.assign({}, tags[id], {
+                        selected: false
+                    });
+                });
+            });
+        }, [tagsData]),
         changeTagSelected: useCallback(
             tag =>
                 setTagsData(prevTagsData => {
@@ -80,70 +69,26 @@ export const useSelectedTags = (tags, defaultSelectedTags = []) => {
                         }
                     };
                 }),
-            []
+            [tagsData]
         )
     };
 };
 
-export const useShowMoreTags = () => {
-    const [isDisplayMoreTags, setIsDisplayMoreTags] = useState(false);
-    return {
-        isDisplayMoreTags,
-        changeDisplayMoreTags: useCallback(() => {
-            setIsDisplayMoreTags(showMoreTags => !showMoreTags);
-        }, []),
-        getDisplayedTags: useCallback(
-            tags =>
-                isDisplayMoreTags ? tags : tags && getSlicedTagsObj(tags, 0, 5),
-            [isDisplayMoreTags]
-        )
-    };
-};
-
-export const useFilteredStories = tags => {
-    const [data, setData] = useState({
-        stories: [],
-        hasMore: true,
-        page: 1,
-        init: false
-    });
-
-    const pageSize = 5;
-
-    async function addNextPageData(tags, storiesSoFar, pageNumber) {
-        let result = await Api.getStoriesByTags({
-            tags,
-            pageSize,
-            page: pageNumber
-        });
-        let newData = { ...data };
-
-        if (pageNumber < result.pages) {
-            newData.page = pageNumber + 1;
-            newData.hasMore = true;
-        } else if (data.page === result.pages) {
-            newData.page = pageNumber;
-            newData.hasMore = false;
-        }
-        newData.stories = [...storiesSoFar, ...result?.result];
-        newData.init = true;
-        setData(newData);
-    }
-    async function replaceRelatedTags(tags) {
-        await addNextPageData(tags, [], 1);
-    }
-    async function getNextPage() {
-        await addNextPageData(tags, data.stories, data.page);
-    }
+export const useStories = tags => {
+    const { getNextPage, hasMore, data, replaceRelatedOptions } = usePagination(
+        Api.getStoriesByTags,
+        PAGE_SIZE
+    );
 
     useEffect(() => {
-        replaceRelatedTags(tags);
+        (async function fetchData() {
+            replaceRelatedOptions({ tags: tags });
+        })();
     }, [tags]);
 
     return {
-        stories: data.stories,
-        hasMore: data.hasMore,
-        getNextPage,
-        init: data.init
+        stories: data,
+        hasMore: hasMore,
+        getNextPage
     };
 };

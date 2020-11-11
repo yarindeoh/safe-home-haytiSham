@@ -12,7 +12,7 @@ export function extractFieldsFromObjOrdered(obj, fields) {
     let res = [];
     fields.forEach(element => {
         //display just the question with answer
-        if (obj[element] !== undefined && obj[element] !== '') {
+        if (obj && obj[element] !== undefined && obj[element] !== '') {
             res.push({ text: obj[element], titleKey: element });
         }
     });
@@ -36,13 +36,13 @@ export const getSlicedTagsObj = (obj, start, end) => {
 export const getTagsAsArray = obj => {
     let arr = [];
     for (let item in obj) {
-        arr.push({ id: item, name: obj[item] });
+        arr.push({ value: item, label: obj[item] });
     }
     return arr;
 };
 
 export const getArrayOfTagsIds = arr => {
-    return arr.map(item => item.id);
+    return arr.map(item => item.value);
 };
 
 export const filterObjByKey = (raw, allowed) => {

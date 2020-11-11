@@ -9,6 +9,7 @@ import { AddStoryView } from 'containers/AddStory/AddStoryView';
 import { StoryVideo } from 'containers/Story/components/StoryVideo';
 import { RouterContext } from 'services/routing/routerContext';
 import { LoginView } from 'containers/Moderation/LoginView';
+import { LoggedInView } from 'containers/Moderation/LoggedInView';
 import { ModerationView } from 'containers/Moderation/ModerationView';
 import { ModerationProvider } from 'containers/Moderation/moderationContext';
 import ScrollToTop from 'components/ScrollToTop';
@@ -18,6 +19,7 @@ export const history = createBrowserHistory();
 
 export const App = () => {
     return (
+        // TODO:: fix to value
         <RouterContext.Provider history={history}>
             <AddStoryProvider>
                 <BrowserRouter>
@@ -33,7 +35,12 @@ export const App = () => {
                         <Route path="/publicStory/:id" component={StoryVideo} />
                         <Route path="/pages" component={Pages} />
                         <ModerationProvider>
-                            <Route path="/admin" component={LoginView} />
+                            <Route exact path="/admin" component={LoginView} />
+                            <Route
+                                exact
+                                path="/admin/loggedIn"
+                                component={LoggedInView}
+                            />
                             <Route
                                 path="/moderateStory"
                                 component={ModerationView}

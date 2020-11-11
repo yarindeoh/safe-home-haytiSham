@@ -1,42 +1,34 @@
 import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import { useTranslation } from 'react-i18next';
-import { extractFieldsFromObjOrdered } from 'services/general/generalHelpers';
+import { ModerationForm } from 'containers/Moderation/components/ModerationForm';
 
-export const OriginalStoryView = withRoute(({ data }) => {
+export const OriginalStoryView = withRoute(({ data, back }) => {
     const { t } = useTranslation();
-
-    const processedStory = extractFieldsFromObjOrdered(data, [
-        'createdAt',
-        'name',
-        'mail',
-        'contact',
-        'background',
-        'storyContent',
-        'howDidYouManged',
-        'whatHelpedYou',
-        'whatTriggeredChange',
-        'additionalnfo'
-    ]);
-
     return (
         <>
-            <div>
-                {processedStory.map((item, i) => {
-                    let text = item.text;
-                    if (item.titleKey === 'contact') {
-                        text = item.text
-                            ? t('login.table.yes')
-                            : t('login.table.no');
-                    }
-                    return (
-                        <div key={i}>
-                            <h4>{t(`addStoryView.${item.titleKey}Label`)}</h4>
-                            <span>{text}</span>
-                            <br />
-                        </div>
-                    );
-                })}
+            <div className="original-story-col-container">
+                <div
+                    className="back-to-admin original-align-text"
+                    onClick={back}
+                >
+                    {t('moderation.back')}
+                </div>
+                <div className="original-header-container original-align-text">
+                    <div className="original-header">
+                        {t('moderation.originalHeader')}
+                    </div>
+                    <div className="original-date">
+                        {t('moderation.originalDate', {
+                            date: data?.createdAt
+                        })}
+                    </div>
+                </div>
+                <ModerationForm
+                    formData={data}
+                    id={'OriginalStoryView'}
+                    disabled
+                />
             </div>
         </>
     );

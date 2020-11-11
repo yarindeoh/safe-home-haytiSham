@@ -11,7 +11,8 @@ export const TagsFilter = ({
     rootPath,
     storiesListClassName,
     handleStoryClick,
-    displayEditImg
+    displayEditImg,
+    useStoriesHook
 }) => {
     const { t } = useTranslation();
     const {
@@ -20,7 +21,7 @@ export const TagsFilter = ({
         isDisplayMoreTags,
         changeDisplayMoreTags,
         unselectAllTags
-    } = useTags(defaultSelectedTags);
+    } = useTags();
     const filterTagsIds = useMemo(() =>
         tagsData
             ? Object.keys(tagsData).filter(tagId => tagsData[tagId].selected, [
@@ -68,6 +69,7 @@ export const TagsFilter = ({
                     storiesListClassName={storiesListClassName}
                     handleStoryClick={handleStoryClick}
                     displayEditImg={displayEditImg}
+                    useStoriesHook={useStoriesHook}
                 />
             </Loader>
         </div>

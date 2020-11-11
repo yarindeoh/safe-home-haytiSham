@@ -23,7 +23,7 @@ export const StoryView = withRoute(props => {
         'additionalnfo'
     ]);
     const defaultTagsSimilarStories =
-        story.tagsIds && story.tagsIds.slice(0, 3);
+        story?.tagsIds && story?.tagsIds.slice(0, 3);
 
     return (
         <Skeleton>
@@ -40,7 +40,8 @@ export const StoryView = withRoute(props => {
                 </Content>
             </div>
             <StoriesList
-                key={props.location.state._id}
+                originalStory={story?.originalStory}
+                key={props?.location?.state?._id}
                 tags={defaultTagsSimilarStories}
                 title={t('tagsFilter.additionalTestimonies')}
                 changeLocationByPath={changeLocationByPath}

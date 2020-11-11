@@ -26,7 +26,6 @@ export const Header = ({ isMainHeader = false }) => {
     return (
         <div className="AppHeader">
             <Menu show={showMenu} onToggle={toggleMenu} onGoTo={goTo} />
-            <SearchIcon />
             <span>
                 <Link to="/">{t('common.iHaveBeenThereHashtag')}</Link>
             </span>

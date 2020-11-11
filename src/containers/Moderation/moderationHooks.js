@@ -1,19 +1,25 @@
 import { useState, useContext, useEffect } from 'react';
-import Api from './moderationApi';
-import { ModerationContext } from './moderationContext';
+import Api from 'containers/Moderation/moderationApi';
+import { ModerationContext } from 'containers/Moderation/moderationContext';
 import {
     NEW_MODERATE_STORY_INIT_DATA,
     SET_LOGGED_IN,
     SET_MODERATE_STORY_DATA,
-    SET_TAGS
-} from './moderationConstants';
+    SET_TAGS,
+    PAGE_SIZE
+} from 'containers/Moderation/moderationConstants';
 import {
     extractFieldsFromObj,
     getArrayOfTagsIds,
     filterObjByKey,
     getTagsAsArray
 } from 'services/general/generalHelpers';
+import {
+    useErrorsHandler,
+    useLoginSubmit
+} from 'services/general/generalHooks';
 import { useHistory } from 'react-router';
+import { usePagination } from 'services/general/generalHooks';
 
 export function useModerationContext() {
     const context = useContext(ModerationContext);
@@ -25,23 +31,93 @@ export function useModerationContext() {
     return context;
 }
 
-export const useLoginFiledChange = () => {
-    const [loginData, setLoginData] = useState({ userName: '', password: '' });
-    const handleFiledChange = (e, filed) => {
-        let newLoginData = { ...loginData };
-        newLoginData[filed] = e.target.value;
-        setLoginData(newLoginData);
+export const useModerationErrorsHandler = () => {
+    const history = useHistory();
+    const itemInLocalStorage = 'moderatorToken';
+    const { handleErrors } = useErrorsHandler(itemInLocalStorage);
+    const { dispatch } = useModerationContext();
+
+    function on401(e, itemInLocalStorage) {
+        localStorage.removeItem(itemInLocalStorage);
+        window.alert('User Token is not valid');
+        dispatch({
+            type: SET_LOGGED_IN,
+            payload: localStorage.getItem(itemInLocalStorage) !== null
+        });
+        history.push('/admin');
+    }
+
+    function onDefault(e) {
+        window.alert(e);
+    }
+
+    const ErrorsHandlerFunctionObj = {
+        '401': e => on401(e, itemInLocalStorage),
+        default: e => onDefault(e)
+    };
+
+    async function moderationErrorsHandler(e) {
+        try {
+            await handleErrors(e, ErrorsHandlerFunctionObj);
+        } catch (error) {
+            // console.error(error);
+        }
+    }
+    return {
+        moderationErrorsHandler
+    };
+};
+
+export const useModerationApiWrapper = apiFunc => {
+    const { moderationErrorsHandler } = useModerationErrorsHandler();
+
+    async function apiWrapper(params) {
+        try {
+            return await apiFunc(params);
+        } catch (e) {
+            moderationErrorsHandler(e);
+        }
+    }
+
+    return {
+        apiWrapper
+    };
+};
+
+export const useModerationLoginSubmit = loginData => {
+    const { dispatch } = useModerationContext();
+    const { postLogin } = useLoginSubmit(
+        loginData,
+        Api.postLogin,
+        'moderatorToken'
+    );
+
+    const handleModerationLogin = e => {
+        e.preventDefault();
+
+        async function callPostLogin() {
+            try {
+                await postLogin();
+                dispatch({
+                    type: SET_LOGGED_IN,
+                    payload: true
+                });
+            } catch (e) {
+                if (e.message === '403') return;
+                window.alert(e);
+            }
+        }
+        callPostLogin();
     };
 
     return {
-        loginData,
-        handleFiledChange
+        handleModerationLogin
     };
 };
 
 export const useModerationFiledChange = () => {
     const { moderationState, dispatch } = useModerationContext();
-    const handleFiledChange = (e, filed) => {
+    const handleFieldChange = (e, filed) => {
         let newModerationState = { ...moderationState };
         newModerationState[filed] = e.target.value;
         dispatch({
@@ -51,81 +127,61 @@ export const useModerationFiledChange = () => {
     };
 
     return {
-        handleFiledChange
-    };
-};
-
-export const useLoginSubmit = loginData => {
-    const { dispatch } = useModerationContext();
-
-    const handleLogin = e => {
-        e.preventDefault();
-
-        async function postLogin() {
-            try {
-                const serverData = await Api.postLogin(loginData);
-                localStorage.setItem('moderatorToken', serverData.token);
-                dispatch({
-                    type: SET_LOGGED_IN,
-                    payload: true
-                });
-            } catch (e) {
-                window.alert(e);
-            }
-        }
-        postLogin();
-    };
-
-    return {
-        handleLogin
+        handleFieldChange
     };
 };
 
 export const useModerationStories = () => {
+    const { apiWrapper: getModerationStories } = useModerationApiWrapper(
+        Api.getModerationStories
+    );
+    const {
+        getByPage,
+        data,
+        replaceRelatedOptions,
+        total,
+        totalPages,
+        page,
+        didFetch
+    } = usePagination(getModerationStories, PAGE_SIZE);
     const { moderationState } = useModerationContext();
-    const [data, setData] = useState({
-        storiesPerPage: undefined,
-        currentPage: 1,
-        totalPages: 0,
-        totalStories: 0
-    });
-    const pageSize = 10;
-
-    async function handlePageChange(event, page) {
-        let result = await Api.getModerationStories(
-            pageSize,
-            page,
-            'createdAt',
-            'ASC'
-        );
-        let newData = { ...data };
-        newData.totalPages = result.pages;
-        newData.currentPage = page;
-        newData.totalStories = result.total;
-        newData.storiesPerPage = [...result?.result];
-        setData(newData);
-    }
 
     useEffect(() => {
         if (moderationState.loggedIn) {
-            handlePageChange(undefined, 1);
+            (async function getWithOptions() {
+                replaceRelatedOptions(
+                    {
+                        sortField: 'createdAt',
+                        sortDirection: 'ASC'
+                    },
+                    true
+                );
+            })();
         }
     }, [moderationState.loggedIn]);
 
+    function handlePageChange(e, page) {
+        getByPage(page);
+    }
+
     return {
-        stories: data.storiesPerPage,
-        currentPage: data.currentPage,
-        totalPages: data.totalPages,
-        totalStories: data.totalStories,
-        handlePageChange
+        stories: data,
+        currentPage: page,
+        totalPages: totalPages,
+        totalStories: total,
+        handlePageChange: handlePageChange,
+        didFetch
     };
 };
 
 export const useEditModerationStory = () => {
-    let history = useHistory();
+    const history = useHistory();
+    const { apiWrapper: getStoryForEdit } = useModerationApiWrapper(
+        Api.getStoryForEdit
+    );
 
     async function getModerationStory(id) {
-        let result = await Api.getStoryForEdit(id);
+        let result = await getStoryForEdit(id);
         if (result !== undefined) {
             let id =
                 result.originalStory !== null
@@ -158,7 +214,8 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
                 'storyContent',
                 'whatHelpedYou',
                 'whatTriggeredChange',
-                'contact'
+                'contact',
+                'publish'
             ]);
             dispatch({
                 type: SET_MODERATE_STORY_DATA,
@@ -186,34 +243,30 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
     return {};
 };
 
-export const useModerateStorySubmit = () => {
-    const { moderationState, dispatch } = useModerationContext();
+export const useModerateStorySubmit = originalStoryModerated => {
+    const { moderationState } = useModerationContext();
+    const { apiWrapper: postAddModerateStory } = useModerationApiWrapper(
+        Api.postAddModerateStory
+    );
+
     const [submitted, setSubmitted] = useState(false);
     let moderationDataToPost = { ...moderationState };
     delete moderationDataToPost.loggedIn;
-    if(moderationDataToPost.originalStory === ''){
+    if (moderationDataToPost.originalStory === '') {
         moderationDataToPost.originalStory = moderationState._id;
     }
     delete moderationDataToPost._id;
     moderationDataToPost.tags = getArrayOfTagsIds(moderationDataToPost.tags);
+    moderationDataToPost.publish = originalStoryModerated
+        ? moderationDataToPost.publish
+        : true;
 
     const handleSubmit = e => {
         e.preventDefault();
 
         async function postData() {
-            try {
-                await Api.postAddModerateStory(moderationDataToPost);
-                dispatch({
-                    type: SET_MODERATE_STORY_DATA,
-                    payload: {
-                        ...moderationState,
-                        ...NEW_MODERATE_STORY_INIT_DATA
-                    }
-                });
-                setSubmitted(true);
-            } catch (e) {
-                console.error(e);
-            }
+            await postAddModerateStory(moderationDataToPost);
+            setSubmitted(true);
         }
         postData();
     };
@@ -225,23 +278,81 @@ export const useModerateStorySubmit = () => {
     };
 };
 
-export const useSelectedTags = () => {
+export const useDialogOkClick = back => {
     const { moderationState, dispatch } = useModerationContext();
-    function onSelect(selectedList, selectedItem) {
+
+    const handleDialogOkClick = e => {
+        e.preventDefault();
         dispatch({
-            type: SET_TAGS,
-            payload: [...moderationState.tags, selectedItem]
+            type: SET_MODERATE_STORY_DATA,
+            payload: {
+                ...moderationState,
+                ...NEW_MODERATE_STORY_INIT_DATA
+            }
         });
-    }
-    function onRemove(selectedList, selectedItem) {
+        back(e);
+    };
+
+    return {
+        handleDialogOkClick
+    };
+};
+
+export const useSelectedTags = () => {
+    const { dispatch } = useModerationContext();
+    function handleSelectedTags(selectedList) {
         dispatch({
             type: SET_TAGS,
-            payload: moderationState.tags.filter(e => e !== selectedItem)
+            payload: selectedList
         });
     }
 
     return {
-        onSelect,
-        onRemove
+        handleSelectedTags
+    };
+};
+
+export const usePublishModerateStory = () => {
+    const { moderationState } = useModerationContext();
+    const { apiWrapper: postPublishModerateStory } = useModerationApiWrapper(
+        Api.postPublishModerateStory
+    );
+
+    const [publishPostSuccess, setPublishPostSuccess] = useState(false);
+
+    async function handlePublish(publish) {
+        const dataToSubmit = {
+            publish: publish,
+            moderatedStory: moderationState._id
+        };
+        await postPublishModerateStory(dataToSubmit);
+        setPublishPostSuccess(true);
+    }
+
+    return {
+        handlePublish,
+        publishPostSuccess
+    };
+};
+
+export const useModeratedStories = tags => {
+    const { apiWrapper: getAllModeratedStories } = useModerationApiWrapper(
+        Api.getAllModeratedStories
+    );
+    const { getNextPage, hasMore, data, replaceRelatedOptions } = usePagination(
+        getAllModeratedStories,
+        PAGE_SIZE
+    );
+
+    useEffect(() => {
+        (async function fetchData() {
+            replaceRelatedOptions({ tags: tags });
+        })();
+    }, [tags]);
+
+    return {
+        stories: data,
+        hasMore: hasMore,
+        getNextPage
     };
 };

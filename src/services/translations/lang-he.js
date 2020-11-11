@@ -3,11 +3,11 @@ const he = {
         common: {
             iHaveBeenThereHashtag: '#הייתי_שם',
             yes: 'כן',
-            no: 'לא'
+            no: 'לא',
         },
         tags: {
             humiliation: 'השפלה',
-            jealousy: 'קנאה'
+            jealousy: 'קנאה',
         },
         storyName: 'שם הסיפור',
         whatTriggeredChange: 'איך הסיטואציה השתנתה',
@@ -38,7 +38,7 @@ const he = {
         IHaveBeenThereHashtag: '#הייתי_שם',
         storiesView: {
             header: 'בית לעדויות ממערכות יחסים אלימות',
-            addStory: 'לשליחת העדות שלך'
+            addStory: 'לשליחת העדות שלך',
         },
         storyView: {
             storyOf: 'עדותה של',
@@ -50,7 +50,7 @@ const he = {
             howDidYouManged: 'איך התמודדתי עם זה?',
             whatTriggeredChange: 'איך הסיטואציה השתנתה?',
             additionalnfo: 'בכמה משפטים, מה הכי היית רוצה לומר למי שבמצב דומה?',
-            whatHelpedYou: 'מה עזר לך להתמודד?'
+            whatHelpedYou: 'מה עזר לך להתמודד?',
         },
         addStoryView: {
             createdAtLabel: 'נכתב ב: ',
@@ -62,20 +62,20 @@ const he = {
             namePlaceholder: 'הוספת שם',
             mailLabel: 'מייל/טלפון ליצירת קשר (לא חובה, לא יפורסם)',
             mailPlaceholder: 'הוספת פרטי התקשרות',
-            contactLabel: 'שניצור איתך קשר לקבלת תמיכה?',
-            contactNotes: 'אפשר גם ליצור קשר 24/7 דרך כפתור התמיכה',
+            contactLabel: 'תרצו שניצור קשר לקבלת ייעוץ תמיכה?',
+            contactNotes:
+                'לקבלת תמיכה/סיוע 24/7 ניתן ליצור קשר דרך כפתור התמיכה',
             backgroundLabel:
-                'רקע* (מה היה טיב מערכת היחסים, מתי זה קרה, לאורך כמה זמן, גיל וכו׳)',
-            storyContentLabel: 'הסיפור שלי*',
-            storyContentPlaceholder: 'הסיפור שלי הוא...',
-            howDidYouMangedLabel: 'איך התמודדתי עם המצב',
+                'רקע (גיל, מתי-עבר/הווה, אופי הקשר, במשך כמה זמן או עדיין נמשך)',
+            storyContentLabel: 'השיתוף שלי*',
+            storyContentPlaceholder: 'אני רוצה לשתף...',
+            howDidYouMangedLabel: 'איך הגבת למקרה בעבר או ביום יום?',
             howDidYouMangedPlaceholder: 'ההתמודדות שלי...',
-            whatHelpedYouLabel: 'מה עזר לך להתמודד',
+            whatHelpedYouLabel: 'מה עזר או עוזר לך בהתמודדות?',
             whatHelpedYouPlaceHolder: 'מאוד עזר לי ש...',
-            whatTriggeredChangeLabel: 'איך הסיטואציה השתנתה?',
-            whatTriggeredChangePlaceHolder: 'השינוי התחיל ש...',
+            whatTriggeredChangeLabel: 'האם משהו השתנה? מה יצר את השינוי?',
             additionalnfoLabel:
-                'בכמה משפטים, מה הכי היית רוצה לומר למי במצב דומה',
+                'בכמה משפטים, מה הכי היית רוצה לומר למי שנמצאת במצב דומה?',
             additionalnfoPlaceHolder: 'אני רוצה לומר ש...',
             quoteLabel: 'ציטוט נבחר',
             quotePlaceHolder: 'ציטוט מתוך הטקסט...',
@@ -84,26 +84,27 @@ const he = {
             uploadRecording: 'להעלות הקלטה',
             submittedSuccessHeading: 'הסיפור שלך נשלח בהצלחה!',
             submittedSuccessText:
-                'במידה והשארת פרטי קשר, נעדכן אותך לאחר שהוא יעלה לאתר'
+                'במידה והשארת פרטי קשר, נעדכן אותך לאחר שהוא יעלה לאתר',
         },
         tagsFilter: {
             allTestimonies: 'כל העדויות',
             additionalTestimonies: 'עדויות נוספות',
             moreCategories: 'עוד קטגוריות +',
-            lessCategories: 'פחות קטגוריות -'
+            lessCategories: 'פחות קטגוריות -',
         },
         storiesGalleryView: {
-            confessionOf: 'עדותה של {{name}} {{date}}'
+            confessionOf: 'עדותה של {{name}} {{date}}',
         },
         storyVideo: {
             campaign: `צפו בעדות של {{storyteller}} מתוך קמפיין של פרויקט אוף לייף והעמותה ל.א לאלימות
-            שפורסמה ב{{timestamp}}`
+            שפורסמה ב{{timestamp}}`,
         },
         login: {
             header: 'התחברו כדי לערוך עדויות',
             userName: 'שם משתמש',
             password: 'סיסמא',
             loginButtonText: 'אישור',
+            emptyList: ' אין סיפורים לעריכה :)',
             listToModerate: 'העדויות שדורשות עריכה (סה"כ {{num}})',
             listAllStories: 'תצוגת העדויות שמפורסמות באתר לפי נושאים',
             table: {
@@ -112,38 +113,62 @@ const he = {
                 mail: 'אמצעי ליצירת קשר',
                 contact: 'האם ביקשו ליצור קשר?',
                 yes: 'כן',
-                no: 'לא'
-            }
+                no: 'לא',
+            },
         },
         moderation: {
-            header: 'עריכת העדות',
-            moderationRulesHeader: 'הנחיות למודרציה',
+            editHeader: 'העדות בזמן עריכה',
+            originalHeader: 'העדות המקורית',
+            originalDate: 'התקבלה ב-{{date}}',
+            nameLabel: 'שם לפרסום העדות',
+            contactAtLabel: 'ליצור קשר ב: {{mail}}',
+            back: 'חזרה לרשימת העדויות',
+            moderationRulesHeader: 'הנחיות לעריכה',
             moderationRules:
                 '1. יש להסיר שמות או סימנים מזהים ברורים של הפוגעים שעלולים לסכן מפני דיבה <br/><br/>2. יש למחוק שמות של קטינים <br/><br/>3. יש לבחור תגיות לפי הדפוסים שחוזרים על עצמם<br/><br/>4. יש לבחור ציטוט נבחר<br/><br/>5. יש לשלוח הודעה לטלפון/אימייל שהושארו לאחר פרסום העדות<br/><br/>',
             submittedSuccessHeading: 'העדות נערכה בהצלחה!',
             submittedSuccessText:
                 'תודה שערכת את העדות,  לא לשכוח לשלוח מייל/הודעה לאחר האישור!',
-            submitText: 'אישור העלאת העדות',
+            submitText: 'העלאת העדות לאתר',
+            updateText: 'עדכן באתר',
+            unPublishText: 'הסתר מהאתר',
+            publishText: 'הצג באתר',
+            saveText: 'שמירת עריכה חדשה',
             phoneMail: 'מייל/טלפון: ',
+            unPublishSuccessHeading: 'העדות הוסרה מהאתר בהצלחה!',
+            unPublishSuccessText:
+                'העדות לא תפורסם יותר באתר, יהיה ניתן לחזור לכאן וללחוץ "הצג באתר" והעדות תפורסם שוב באתר.',
+            PublishSuccessHeading: 'העדות הועלתה לאתר בהצלחה!',
+            PublishSuccessText: 'העדות תוצג באתר',
+            saveSuccessHeading: 'העדות נשמרה בהצלחה!',
+            saveSuccessText: 'העדות לא תעלה לאתר עד שלא תלחצו "הצג באתר"',
             backToAdminPage: 'חזרה לרשימת העדויות הדורשות עריכה',
-            choseTags: 'בחר תגיות'
+            choseTags: 'בחרו קטגוריות שמתאימות לטקסט',
+            choseTagsWarn: 'מומלץ לא יותר מ-5',
         },
         warningSigns: {
             header: 'סימני אזהרה',
             charactersOfReletionship: 'מאפיינים של מערכת יחסים אלימה',
             how: 'איך?',
-            violenceType: 'הגדרות של סוגי אלימות'
+            violenceType: 'הגדרות של סוגי אלימות',
         },
         about: {
             header: 'מי אנחנו',
+            noToViolanceIntro:
+                "עמותת “לא לאלימות” הוקמה בהרצליה על ידי כלת פרס ישראל הגב' רות רזניק בשנת 1977 במטרה להציל נשים וילדיהן הסובלים מאלימות במשפחה ולאפשר להם לצאת לחיים חדשים באמצעות הענקת מקלט, טיפול מקצועי והכשרה מקצועית ולשמש להם פה לשינוי חקיקה והגברת המודעות בחברה לנושא האלימות במשפחה. פעילותה המרכזית של העמותה היא ניהול והפעלת 3  מקלטים לנשים הסובלות מאלימות ולילדיהן.",
+            noToViolanceActions:
+                'כמו כן, מפעילה העמותה באמצעות מתנדבות קווי חירום הפועלים  24/7, ואת היחידה המשפטית המטפלת בהליכים המשפטיים של נשים במקלט ומתן ייעוץ משפטי ראשוני  לנשים הסובלות מאלימות ואינן זכאיות לסיוע משפטי.\n' +
+                'העמותה מקיימת הרצאות, ימי עיון וסדנאות במקלט ומחוצה לו, לגופים שונים,  כגון: צה”ל, תלמידי תיכון, אנשי משטרה, צוותים רפואיים, ארגוני נשים, סטודנטים ועוד.\n',
+            noToViolanceChange:
+                'במהלך השנים הצליחה העמותה להציל חיי נשים רבות ולהביא למהפך במודעות החברה הישראלית לתופעת האלימות במשפחה.',
             intro:
                 'האתר הוקם ע״י מתנדבות במסגרת <b>ההאקתון לזכרה של מיכל סלה במאי 2020, </b> ובשיתוף עם: פוליטיקלי קוראת, אתר און לייף, פורום מיכל סלה ועמותת לא לאלימות.',
             volunteersNamesTitle: 'שמות המתנדבות בצוות:',
             volunteersNames:
-                'מורן וובר<br/>לישי נועם<br/>ירין דקל<br/>מיכל פורג<br/>שחר גצוביץ׳<br/>נועה נובק<br/>אור מנור<br/>אורלי לבקוביץ שוורץ<br/>הדס פרחי<br/>רומי ווינטר<br/>רותם שפרינגר<br/>יעל רמוס דר<br/>דניאל גרונת<br/>לאה גרונת',
-            inCollaboration: 'פרוייקט בשיתוף'
-        }
-    }
+                'מורן וובר<br/>לישי נועם<br/>ירין דקל<br/>מיכל פורג<br/>שחר גצוביץ׳<br/>נועה נובק<br/>אור מנור<br/>אורלי לבקוביץ פרנק<br/>הדס פרחי<br/>רומי וינטר<br/>רותם שפרינגר<br/>יעל רמוס דר<br/>דניאל גרונת<br/>לאה גרונת',
+            inCollaboration: 'הפרוייקט יצא לדרך בשיתוף',
+        },
+    },
 };
 
 export default he;
