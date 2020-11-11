@@ -81,6 +81,13 @@ export const AddStoryView = withRoute(props => {
                                 ]}
                                 onClick={e => handleCheckedContact(e)}
                             />
+                            <Input
+                                name="contactTime"
+                                label={t('addStoryView.contactTimeLabel')}
+                                placeholder={t('addStoryView.contactTimePlaceholder')}
+                                value={addStoryState?.contactTime}
+                                onChange={e => handleFieldChange(e, 'contactTime')}
+                            />
                             <TextArea
                                 name="background"
                                 placeholder=""

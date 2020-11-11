@@ -65,6 +65,8 @@ const he = {
             contactLabel: 'תרצו שניצור קשר לקבלת ייעוץ תמיכה?',
             contactNotes:
                 'לקבלת תמיכה/סיוע 24/7 ניתן ליצור קשר דרך כפתור התמיכה',
+            contactTimeLabel: "אם כן, מתי ליצור קשר?",
+            contactTimePlaceholder: "לדוגמא: יום ראשון בין השעות 17:00-20:00",
             backgroundLabel:
                 'רקע (גיל, מתי-עבר/הווה, אופי הקשר, במשך כמה זמן או עדיין נמשך)',
             storyContentLabel: 'השיתוף שלי*',
