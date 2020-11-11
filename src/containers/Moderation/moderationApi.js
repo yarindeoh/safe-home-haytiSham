@@ -13,11 +13,10 @@ const Api = {
     postAddModerateStory: data => {
         return post(baseUrl('addModerateStory'), data, { no_result: true });
     },
-    //TODO: need to change after Implement API
-    postEditModerateStory: data => {
-        return post(baseUrl('editModerateStory'), data, { no_result: true });
+    postPublishModerateStory: data => {
+        return post(baseUrl('publishModerateStory'), data, { no_result: true });
     },
-    getModerationStories: (pageSize, page, sortField, sortDirection) => {
+    getModerationStories: ({ pageSize, page, sortField, sortDirection }) => {
         return get(
             baseUrl(
                 `getStortiesForModeration?page=${page}&pageSize=${pageSize}&sortField=${sortField}&sortDirection=${sortDirection}`
@@ -26,6 +25,15 @@ const Api = {
     },
     getStoryForEdit: id => {
         return get(baseUrl(`getStoryForEdit?originalStory=${id}`));
+    },
+    getAllModeratedStories: ({ tags, pageSize, page }) => {
+        return get(
+            baseUrl(
+                `getAllModeratedStories?page=${page}&pageSize=${pageSize}${
+                    tags && tags.length > 0 ? `&tags=[${tags}]` : ''
+                }`
+            )
+        );
     }
 };
 

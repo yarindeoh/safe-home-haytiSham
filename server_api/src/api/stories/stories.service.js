@@ -12,11 +12,13 @@ class StorieService {
     constructor() {
     }
 
-    listByTags(tags, page = 1, pageSize = 100, sortField = "createdAt", sortDirection = "DESC") {
+    listByTags(tags, page = 1, pageSize = 100, sortField = "createdAt", sortDirection = "DESC", publishedOnly=true) {
         sortDirection = sortDirection === "ASC" ? "" : "-";
         sortField = sortDirection + sortField;
         const query = tags ? { tags: { "$in": tags } } : {};
-        query["publish"] = true;
+        if(publishedOnly){
+            query["publish"] = true;
+        }        
         return Promise.all([
             ModeratedStrory.countDocuments(query),
             ModeratedStrory.find(query)

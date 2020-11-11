@@ -13,6 +13,11 @@ export const About = () => {
         <Skeleton>
             <Content className="about">
                 <h1>{t('about.header')}</h1>
+
+                <p>{t('about.noToViolanceIntro')}</p>
+                <p>{t('about.noToViolanceActions')}</p>
+                <p>{t('about.noToViolanceChange')}</p>
+                <div className="divider">...</div>
                 <p>
                     <Trans i18nKey="about.intro" />
                 </p>

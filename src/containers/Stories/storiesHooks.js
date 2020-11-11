@@ -1,7 +1,6 @@
 import Api from 'containers/Stories/storiesApi';
 import { useEffect, useState, useCallback } from 'react';
-import { useFetchApiData } from 'services/general/generalHooks';
-
+import { useFetchApiData, usePagination } from 'services/general/generalHooks';
 import { getSlicedTagsObj } from 'services/general/generalHelpers';
 import { PAGE_SIZE } from './storiesConstants';
 
@@ -75,50 +74,21 @@ export const useSelectedTags = tags => {
     };
 };
 
-export const useFilteredStories = tags => {
-    const [data, setData] = useState({
-        stories: [],
-        hasMore: true,
-        page: 1,
-        init: false
-    });
-
-    const pageSize = 5;
-
-    async function addNextPageData(tags, storiesSoFar, pageNumber) {
-        let result = await Api.getStoriesByTags({
-            tags,
-            pageSize,
-            page: pageNumber
-        });
-        let newData = { ...data };
-
-        if (pageNumber < result.pages) {
-            newData.page = pageNumber + 1;
-            newData.hasMore = true;
-        } else if (data.page === result.pages) {
-            newData.page = pageNumber;
-            newData.hasMore = false;
-        }
-        newData.stories = [...storiesSoFar, ...result?.result];
-        newData.init = true;
-        setData(newData);
-    }
-    async function replaceRelatedTags(tags) {
-        await addNextPageData(tags, [], 1);
-    }
-    async function getNextPage() {
-        await addNextPageData(tags, data.stories, data.page);
-    }
+export const useStories = tags => {
+    const { getNextPage, hasMore, data, replaceRelatedOptions } = usePagination(
+        Api.getStoriesByTags,
+        PAGE_SIZE
+    );
 
     useEffect(() => {
-        replaceRelatedTags(tags);
+        (async function fetchData() {
+            replaceRelatedOptions({ tags: tags });
+        })();
     }, [tags]);
 
     return {
-        stories: data.stories,
-        hasMore: data.hasMore,
-        getNextPage,
-        init: data.init
+        stories: data,
+        hasMore: hasMore,
+        getNextPage
     };
 };

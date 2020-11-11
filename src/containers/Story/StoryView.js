@@ -54,6 +54,7 @@ export const StoryView = withRoute(props => {
                 </Content>
             </div>
             <StoriesList
+                originalStory={story?.originalStory}
                 key={props?.location?.state?._id}
                 tags={defaultTagsSimilarStories}
                 title={t('tagsFilter.additionalTestimonies')}

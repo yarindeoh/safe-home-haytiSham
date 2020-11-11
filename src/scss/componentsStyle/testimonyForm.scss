@@ -16,7 +16,7 @@
     margin-bottom: map_get($spaces, small);
   }
 
-  #addStoryForm {
+  .addStoryForm {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +29,6 @@
       margin-bottom: map_get($spaces, x-large);
 
       & > label {
-        color: map_get($colors, black);
         font-weight: bold;
         padding: 0;
 
@@ -65,7 +64,17 @@
 
     .multiply-answer-area {
       &:not(:last-of-type){
-        margin-bottom: map_get($spaces, small);
+        margin-bottom: 28px;
+      }
+
+      .icon-and-label-container {
+        display: inline-flex;
+        align-items: flex-end;
+      }
+
+      .icon {
+        padding-left: 6px;
+        margin-bottom: 8px;
       }
 
       .question {
@@ -77,11 +86,17 @@
 
       .textarea-wrapper {
         border-radius: 8px;
-        background: #f4f0f0;
+        background: map_get($colors, white);
         padding: 8px;
       }
 
+      .disabled-text-area{
+        resize: none;
+        background-color:  map_get($colors, grey-1400);
+      }
+
       textarea {
+        font-size: 14px;
         width: 100%;
         background: transparent;
         resize: vertical;

@@ -5,16 +5,25 @@
     width: fit-content;
     grid-area: send-testimony-box;
     align-self: center;
-    font-weight: bold;
-    color: map_get($colors, blue-200);
+    color: map_get($colors, white);
     font-size: 15px;
     line-height: 20px;
-    text-decoration: underline;
-    margin: map_get($spaces, small);
-    background: transparent;
+    padding: 6px 15px;
+    margin: map_get($spaces, small) 0;
+    border-radius: 80px;
+    background: linear-gradient(
+        90.66deg,
+        #3691e5 -6.72%,
+        #566be4 20.51%,
+        #7845e3 96.66%
+    );
 
-    @include desktop {
-        display: none;
+    &:focus {
+        outline: none;
+    }
+    &.in-menu {
+        margin: 0;
+        padding: 3px 15px;
     }
 }
 
