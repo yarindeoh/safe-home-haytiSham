@@ -34,9 +34,6 @@ export const useLoginSubmit = (loginData, postFunction, itemInLocalStorage) => {
             localStorage.setItem(itemInLocalStorage, serverData.token);
             return Promise.resolve();
         } catch (error) {
-            if (error.message === '403') {
-                window.alert('UserName or Password is not Valid');
-            }
             return Promise.reject(error);
         }
     }

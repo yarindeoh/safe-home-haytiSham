@@ -11,7 +11,7 @@ import {
     useFiledChange,
     useSubmit
 } from './addStoryHooks';
-import { useBack, useResizeTextArea} from 'services/general/generalHooks';
+import { useBack, useResizeTextArea } from 'services/general/generalHooks';
 import Skeleton from 'src/components/Skeleton';
 import Content from 'src/components/Content';
 

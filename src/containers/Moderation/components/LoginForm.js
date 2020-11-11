@@ -2,16 +2,25 @@ import React from 'react';
 import { withRoute } from 'services/routing/routerHOC';
 import LoginInput from 'containers/Moderation/components/LoginInput';
 import { useTranslation } from 'react-i18next';
-import { useModerationLoginSubmit } from 'containers/Moderation/moderationHooks';
+import {
+    useModerationLoginSubmit,
+    useModerationContext
+} from 'containers/Moderation/moderationHooks';
 import { useLoginFiledChange } from 'services/general/generalHooks';
 
 export const LoginForm = withRoute(props => {
     const { t } = useTranslation();
     const { loginData, handleFieldChange } = useLoginFiledChange();
     const { handleModerationLogin } = useModerationLoginSubmit(loginData);
+    const { moderationState } = useModerationContext();
 
     return (
         <div className={'login-page'}>
+            {moderationState.error !== null && (
+                <div className="login-error">
+                    <h3>{t(`login.error${moderationState.error}`)}</h3>
+                </div>
+            )}
             <div className={'login-card'}>
                 <h3>{t('login.header')}</h3>
                 <form onSubmit={handleModerationLogin}>

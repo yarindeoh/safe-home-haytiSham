@@ -6,6 +6,19 @@
     min-height: 102vh; //This is important for infinite-scroll to work
 }
 
+.login-error{
+    position: fixed;
+    top: 20%;
+    width:100%;
+    
+    > h3{
+        display: table;
+        margin: 0 auto;
+        color: map_get($colors, white);
+        font-size: 24px;
+    }
+}
+
 .login-card {
     position: fixed;
     top: 50%;
