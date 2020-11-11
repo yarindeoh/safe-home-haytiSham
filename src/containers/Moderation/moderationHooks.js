@@ -46,7 +46,6 @@ export const useModerationErrorsHandler = () => {
             type: SET_ERROR,
             payload: e.message
         });
-        console.error(e);
     }
 
     const ErrorsHandlerFunctionObj = {
