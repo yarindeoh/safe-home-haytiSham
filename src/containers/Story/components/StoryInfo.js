@@ -9,14 +9,14 @@ export function StoryInfo(props) {
     let storyBy = '';
     if (isPublic) {
         storyBy = t('storyVideo.campaign', {
-            storyteller: story.storyteller,
-            timestamp: story.timestamp
+            storyteller: story?.storyteller,
+            timestamp: story?.timestamp
         });
     } else {
-        const storyName = story.name
+        const storyName = story?.name
             ? story.name.split('')[0]
             : t('storyView.anonymousTeller');
-        storyBy = `${t('storyView.storyOf')} ${storyName} ${story.createdAt}`;
+        storyBy = `${t('storyView.storyOf')} ${storyName} ${story?.createdAt}`;
     }
 
     return (
