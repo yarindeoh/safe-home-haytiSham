@@ -6,6 +6,7 @@ import {
     SET_LOGGED_IN,
     SET_MODERATE_STORY_DATA,
     SET_TAGS,
+    SET_ERROR,
     PAGE_SIZE
 } from 'containers/Moderation/moderationConstants';
 import {
@@ -30,14 +31,22 @@ export function useModerationContext() {
 
 export const useModerationErrorsHandler = () => {
     const { loggedOutHandler } = useModerationLoggedOut();
+    const { dispatch } = useModerationContext();
 
     async function on401(e) {
-        window.alert('User Token is not valid');
+        dispatch({
+            type: SET_ERROR,
+            payload: e.message
+        });
         return await loggedOutHandler();
     }
 
     function onDefault(e) {
-        window.alert(e);
+        dispatch({
+            type: SET_ERROR,
+            payload: e.message
+        });
+        console.error(e);
     }
 
     const ErrorsHandlerFunctionObj = {
@@ -85,12 +94,12 @@ export const useModerationLoggedOut = () => {
             type: SET_LOGGED_IN,
             payload: localStorage.getItem('moderatorToken') !== null
         });
-        history.push('/admin');
+        history.replace('/admin');
     };
 
     useEffect(() => {
         if (!moderationState?.loggedIn) {
-            history.push('/admin');
+            history.replace('/admin');
         }
     }, [moderationState?.loggedIn]);
 
@@ -101,6 +110,7 @@ export const useModerationLoggedOut = () => {
 
 export const useModerationLoginSubmit = loginData => {
     const { dispatch } = useModerationContext();
+    const { moderationErrorsHandler } = useModerationErrorsHandler();
     const { postLogin } = useLoginSubmit(
         loginData,
         Api.postLogin,
@@ -117,9 +127,12 @@ export const useModerationLoginSubmit = loginData => {
                     type: SET_LOGGED_IN,
                     payload: true
                 });
+                dispatch({
+                    type: SET_ERROR,
+                    payload: null
+                });
             } catch (e) {
-                if (e.message === '403') return;
-                window.alert(e);
+                moderationErrorsHandler(e);
             }
         }
         callPostLogin();
