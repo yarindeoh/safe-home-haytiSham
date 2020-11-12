@@ -93,6 +93,11 @@
       .disabled-text-area{
         resize: none;
         background-color:  map_get($colors, grey-1400);
+        color:  map_get($colors, grey-900);
+      }
+
+      .disabled-label{
+        color:  map_get($colors, grey-1600);
       }
 
       textarea {
