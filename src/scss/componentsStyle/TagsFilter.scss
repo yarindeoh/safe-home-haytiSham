@@ -8,6 +8,11 @@
   }
 }
 
+.tags-filter-container-collapsed {
+  height: 65px;
+  overflow: hidden;
+}
+
 .tags-filter-container {
   display: flex;
   flex-wrap: wrap;
