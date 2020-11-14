@@ -84,6 +84,7 @@ export const LeftColView = withRoute(({ handleFieldChange, formData }) => {
                     <TextArea
                         formId={'EditOriginalStoryView'}
                         name="quote"
+                        labelClass="quote-label"
                         label={t('addStoryView.quoteLabel')}
                         placeholder={t('addStoryView.quotePlaceHolder')}
                         value={formData?.quote}
