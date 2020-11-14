@@ -40,6 +40,10 @@ export const StoriesList = ({
                                         story={stories[key]}
                                         key={key}
                                         displayEditImg={displayEditImg}
+                                        displayAsUnPublish={
+                                            !stories[key].publish &&
+                                            displayEditImg
+                                        }
                                         changeLocationByPath={() =>
                                             changeLocationByPath(
                                                 `${

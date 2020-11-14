@@ -35,8 +35,8 @@
 
     .date {
         grid-area: date;
-        font-size: 14px;
-        color: rgba(114, 75, 228, 0.6);
+        font-size: 13px;
+        color:  map_get($colors, grey-1700);
     }
 
     .text {
@@ -55,4 +55,17 @@
 .edit-icon-story-highlight {
     position: absolute;
     padding: 14px;
+}
+
+.eye-slash-icon-story-highlight {
+    position: absolute;
+    padding: 14px 14px 14px 47px;
+}
+
+.unPublish-quote{
+    color: map_get($colors, grey-1700) !important;
+}
+
+.unPublish-tags{
+    color: map_get($colors, blue-600) !important;
 }
