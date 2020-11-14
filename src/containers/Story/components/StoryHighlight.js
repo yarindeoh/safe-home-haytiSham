@@ -10,7 +10,7 @@ export const StoryHighlight = ({
     handleStoryClick,
     displayEditImg
 }) => {
-    const { id, name, createdAt, tags, quote } = story;
+    const { id, name, createdAt, tags, quote, updatedAt } = story;
     let initials = name && name.split('')[0];
     const allTags = () => (
         <div className="tags">
@@ -37,7 +37,9 @@ export const StoryHighlight = ({
             <div className="initials">
                 <AvatarIcon />
             </div>
-            <span className="date">{createdAt}</span>
+            <span className="date">
+                {displayEditImg ? updatedAt : createdAt}
+            </span>
             <p className="text">{quote}</p>
             {allTags()}
         </li>

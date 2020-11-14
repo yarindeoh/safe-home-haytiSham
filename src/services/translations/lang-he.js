@@ -55,7 +55,8 @@ const he = {
         addStoryView: {
             createdAtLabel: 'נכתב ב: ',
             myConfession: 'העדות שלי',
-            anonymity: `שימו לב! נעבור על כל עדות שתתקבל,ולא נוכל לפרסם פרטים מזהים של הפוגעים.`,
+            anonymity: `שימו לב, אנחנו נעבור על כל עדות שתתקבל לפני שתעלה באתר, ולא נוכל לפרסם פרטים מזהים של הפוגעים.`,
+            termsOfUse: 'לקריאת תנאי השימוש',
             nameLabel: 'שם לפרסום העדות (שם מלא/אנונימי)*?',
             namePlaceholder: 'הוספת שם',
             mailLabel: 'מייל/טלפון ליצירת קשר (לא חובה, לא יפורסם)',
@@ -63,8 +64,9 @@ const he = {
             contactLabel: 'תרצו שניצור קשר לקבלת ייעוץ תמיכה?',
             contactNotes:
                 'לקבלת תמיכה/סיוע 24/7 ניתן ליצור קשר דרך כפתור התמיכה',
-            contactTimeLabel: "אם כן, מתי ליצור קשר?",
-            contactTimePlaceholder: "לדוגמא: יום ראשון בין השעות 17:00-20:00",
+            contactTimeLabel: 'מתי הכי נוח לך שניצור איתך קשר?',
+            contactTimeSubLabel: 'נוכל לחזור אלייך החל מעוד שלושה ימים',
+            contactTimePlaceholder: 'לדוגמא: יום ראשון בין השעות 17:00-20:00',
             backgroundLabel:
                 'רקע (גיל, מתי-עבר/הווה, אופי הקשר, במשך כמה זמן או עדיין נמשך)*',
             storyContentLabel: 'השיתוף שלי*',
@@ -129,8 +131,7 @@ const he = {
             moderationRules:
                 '1. יש להסיר שמות או סימנים מזהים ברורים של הפוגעים שעלולים לסכן מפני דיבה <br/><br/>2. יש למחוק שמות של קטינים <br/><br/>3. יש לבחור תגיות לפי הדפוסים שחוזרים על עצמם<br/><br/>4. יש לבחור ציטוט נבחר',
             submittedSuccessHeading: 'העדות נערכה בהצלחה!',
-            submittedSuccessText:
-                'תודה שערכת את העדות!',
+            submittedSuccessText: 'תודה שערכת את העדות!',
             submitText: 'העלאת העדות לאתר',
             updateText: 'עדכן באתר',
             unPublishText: 'הסתר מהאתר',
