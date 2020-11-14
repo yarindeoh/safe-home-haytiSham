@@ -82,7 +82,7 @@ const he = {
             uploadRecording: 'להעלות הקלטה',
             submittedSuccessHeading: 'הסיפור שלך נשלח בהצלחה!',
             submittedSuccessText:
-                'תודה על שליחת העדות, היא תתפרסם תוך 72 שעות. במקרה של עיכוב או כל בעיה אחרת ניתן לפנות לטלפון (המספר של הקו)'
+                'תודה על שליחת העדות, היא תתפרסם תוך 72 שעות. במקרה של עיכוב או כל בעיה אחרת ניתן לפנות לטלפון 6724*'
         },
         tagsFilter: {
             allTestimonies: 'כל העדויות',
@@ -120,7 +120,7 @@ const he = {
             editHeader: 'העדות בזמן עריכה',
             originalHeader: 'העדות המקורית',
             originalDate: 'התקבלה ב-{{date}}',
-            nameLabel: 'שם לפרסום העדות',
+            nameLabel: 'שם לפרסום העדות*',
             contactAtLabel: 'ליצור קשר ב: {{mail}}',
             back: 'חזרה לרשימת העדויות',
             moderationRulesHeader: 'הנחיות לעריכה',
