@@ -120,6 +120,7 @@
     padding: 64px 80px 40px 92px;
 
     > h1{
+        font-weight: normal;
         color: map_get($colors, grey-800); 
         padding-bottom: 40px;
         font-size: 22px;
