@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import no2violenceFooter from '../media/no2violence-footer-mobile.png';
+import no2violenceFooter from 'src/media/icons/no2violence-footer-mobile.png';
 
 export const Footer = ({ title, footerMenuItemsAndUrls }) => {
     const { t } = useTranslation();
