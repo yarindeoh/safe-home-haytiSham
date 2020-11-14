@@ -38,7 +38,8 @@ const he = {
         IHaveBeenThereHashtag: '#הייתי_שם',
         storiesView: {
             header: 'בית לעדויות ממערכות יחסים אלימות',
-            addStory: 'לשליחת העדות שלך'
+            addStory: 'לשליחת העדות שלך',
+            fbContact: 'Facebook'
         },
         storyView: {
             storyOf: 'עדותה של',
@@ -65,8 +66,8 @@ const he = {
             contactLabel: 'תרצו שניצור קשר לקבלת ייעוץ תמיכה?',
             contactNotes:
                 'לקבלת תמיכה/סיוע 24/7 ניתן ליצור קשר דרך כפתור התמיכה',
-            contactTimeLabel: "אם כן, מתי ליצור קשר?",
-            contactTimePlaceholder: "לדוגמא: יום ראשון בין השעות 17:00-20:00",
+            contactTimeLabel: 'אם כן, מתי ליצור קשר?',
+            contactTimePlaceholder: 'לדוגמא: יום ראשון בין השעות 17:00-20:00',
             backgroundLabel:
                 'רקע (גיל, מתי-עבר/הווה, אופי הקשר, במשך כמה זמן או עדיין נמשך)',
             storyContentLabel: 'השיתוף שלי*',
@@ -172,6 +173,11 @@ const he = {
             volunteersNames:
                 'מורן וובר<br/>לישי נועם<br/>ירין דקל<br/>מיכל פורג<br/>שחר גצוביץ׳<br/>נועה נובק<br/>אור מנור<br/>אורלי לבקוביץ פרנק<br/>הדס פרחי<br/>רומי וינטר<br/>רותם שפרינגר<br/>יעל רמוס דר<br/>דניאל גרונת<br/>לאה גרונת',
             inCollaboration: 'הפרוייקט יצא לדרך בשיתוף'
+        },
+        share: {
+            story: 'שתפו את העדות',
+            fb: 'שתפו בפייסבוק',
+            haytiSham: 'הייתי שם'
         },
         termsOfService: {
             header: 'תנאי שימוש',
