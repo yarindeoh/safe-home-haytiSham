@@ -124,7 +124,7 @@ export const violenceType = [
 
 export const phones = [
     {
-        name: 'קו החירום 24/7 של עמותת ל.א לאלימות' ,
+        name: 'קו החירום 24/7 של עמותת ל.א לאלימות',
         phone: '6724*'
     },
     {
