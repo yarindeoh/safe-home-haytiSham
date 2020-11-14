@@ -3,7 +3,11 @@ const he = {
         common: {
             iHaveBeenThereHashtag: '#הייתי_שם',
             yes: 'כן',
-            no: 'לא'
+            no: 'לא',
+            organizationName: 'ל.א לאלימות',
+            organizationLink: 'https://no2violence.co.il',
+            organizationLinkDisplay: 'no2violence.co.il',
+            facebookOrganizationLink: 'https://www.facebook.com/no2violence'
         },
         tags: {
             humiliation: 'השפלה',
@@ -31,7 +35,7 @@ const he = {
         emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber: '1202/3',
         emergencyHotlineOfMinistryOfLaborAndSocialAffairs:
             'קו החירום החברתי של \n משרד העבודה והרווחה',
-        loLalimotPhoneText: 'קו החירום של לא לאלימות',
+        loLalimotPhoneText: 'קו החירום 24/7',
         IHaveBeenThere2020: "© 'הייתי שם' 2020",
         privacyPolicy: 'תנאי שימוש',
         testimoniesFromRelationships: 'עדויות ממערכות יחסים אלימות',
@@ -181,6 +185,10 @@ const he = {
                 'למפעילי האתר לא תהיה כל אחריות בין נזק כלשהו העלול להיגרם מצפיה או קריאה של התוכן המוצג.',
             informationContentOnly:
                 'תוכן זה מוצג למטרות מידע בלבד ואין לראות בו תחליף לייעוץ משפטי.'
+        },
+        footer: {
+            website: 'אתר {{name}}: ',
+            facebook: "'{{name}}' בפייסבוק"
         }
     }
 };

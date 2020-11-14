@@ -1,7 +1,6 @@
 import Api from 'containers/Stories/storiesApi';
 import { useEffect, useState, useCallback } from 'react';
 import { useFetchApiData, usePagination } from 'services/general/generalHooks';
-import { getSlicedTagsObj } from 'services/general/generalHelpers';
 import { PAGE_SIZE } from './storiesConstants';
 
 export const useTags = defaultSelectedTags => {
@@ -11,11 +10,7 @@ export const useTags = defaultSelectedTags => {
         tags,
         defaultSelectedTags
     );
-    const getDisplayedTags = useCallback(
-        tags =>
-            isDisplayMoreTags ? tags : tags && getSlicedTagsObj(tags, 0, 5),
-        [isDisplayMoreTags]
-    );
+
     return {
         tagsMap: tags,
         changeTagSelected,
@@ -24,7 +19,7 @@ export const useTags = defaultSelectedTags => {
         changeDisplayMoreTags: useCallback(() => {
             setIsDisplayMoreTags(showMoreTags => !showMoreTags);
         }, []),
-        tagsData: getDisplayedTags(tagsData)
+        tagsData
     };
 };
 
