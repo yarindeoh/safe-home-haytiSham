@@ -3,7 +3,11 @@ const he = {
         common: {
             iHaveBeenThereHashtag: '#הייתי_שם',
             yes: 'כן',
-            no: 'לא'
+            no: 'לא',
+            organizationName: 'ל.א לאלימות',
+            organizationLink: 'https://no2violence.co.il',
+            organizationLinkDisplay: 'no2violence.co.il',
+            facebookOrganizationLink: 'https://www.facebook.com/no2violence'
         },
         tags: {
             humiliation: 'השפלה',
@@ -180,6 +184,10 @@ const he = {
                 'למפעילי האתר לא תהיה כל אחריות בין נזק כלשהו העלול להיגרם מצפיה או קריאה של התוכן המוצג.',
             informationContentOnly:
                 'תוכן זה מוצג למטרות מידע בלבד ואין לראות בו תחליף לייעוץ משפטי.'
+        },
+        footer: {
+            website: 'אתר {{name}}: ',
+            facebook: "'{{name}}' בפייסבוק"
         }
     }
 };
