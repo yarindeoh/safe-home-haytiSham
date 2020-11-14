@@ -45,7 +45,7 @@ const he = {
             addStory: 'לשליחת העדות שלך'
         },
         storyView: {
-            storyOf: 'עדותה של',
+            storyOf: 'העדות של',
             anonymousTeller: 'אנונימית',
             listeningEar: 'אוזן קשבת',
             share: 'שיתוף   ',
@@ -130,6 +130,7 @@ const he = {
             originalDate: 'התקבלה ב-{{date}}',
             nameLabel: 'שם לפרסום העדות*',
             contactAtLabel: 'ליצור קשר ב: {{mail}}',
+            contactTimeDefaultLabel: 'אין זמן מועדף',
             back: 'חזרה לרשימת העדויות',
             moderationRulesHeader: 'הנחיות לעריכה',
             moderationRules:

@@ -11,7 +11,7 @@ export const WideHeader = () => {
     return (
         <div className="app-header-wide">
             <div className="right-section">
-                <img src={no2violenceHeader} alt="no2violenceHeader"/>
+                <img src={no2violenceHeader} alt="no2violenceHeader" />
                 <Link to="/" className="title">
                     {t('common.iHaveBeenThereHashtag')}
                 </Link>
