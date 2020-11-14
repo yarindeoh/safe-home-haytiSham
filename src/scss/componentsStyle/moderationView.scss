@@ -14,6 +14,11 @@
     overflow: auto;
 }
 
+.mail-not-contact{
+    padding-bottom: 24px;
+    color:  map_get($colors, grey-1600);
+}
+
 .original-story-col-container{
     padding: 14px 24px 0 20px;
     max-width: 500px;
