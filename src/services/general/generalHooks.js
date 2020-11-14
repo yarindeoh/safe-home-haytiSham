@@ -181,7 +181,7 @@ export const usePagination = (fn, pageSize) => {
     const [total, setTotal] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const [didFetch, setDidFetch] = useState(false);
-
+        
     const getNext = useCallback(
         async (
             options = {},
@@ -199,7 +199,7 @@ export const usePagination = (fn, pageSize) => {
             setData(
                 shouldGetByPage ? [...res.result] : [...currData, ...res.result]
             );
-            setHasMore(data.length < res.total);
+            setHasMore(pageNumber < res.pages);
             setTotal(res.total);
             setTotalPages(res.pages);
             options && setLocalOptions(options);
