@@ -105,7 +105,7 @@
 
 .stories-list-admin{
     padding: map_get($spaces, small);
-    padding-top: 24px;
+    padding-top: 48px;
     border-top: 1px solid map_get($colors, grey-200);
     grid-template-columns: 1fr;
 }
@@ -117,7 +117,7 @@
 
 .stories-to-moderated-container{
     background-color: map_get($colors, white);
-    padding: 40px 80px 40px 92px;
+    padding: 64px 80px 40px 92px;
 
     > h1{
         color: map_get($colors, grey-800); 

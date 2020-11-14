@@ -268,18 +268,18 @@
 .logout-button{
     cursor: pointer;
     position: absolute;
-    left: 32px;
+    right: 32px;
     top: 10px;
-    max-width: 124px;
+    max-width: 110px;
     width: 100%;
     height: 34px;
-    padding-right: 38px;
-    background-color:  map_get($colors, purple-800);
+    padding-right: 32px;
+    background-color:  map_get($colors, purple-1000);
     font-weight: normal;
     font-size: 17px;
     text-align: right;
     line-height: 130%;
-    color: map_get($colors, white);
+    color: map_get($colors, grey-800);
     border-radius: 8px;
 
     &:focus{
