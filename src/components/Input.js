@@ -15,6 +15,7 @@ export const Input = ({
         <div className={`question ${disabled ? 'disabled-area' : ''}`}>
             <label>
                 {label}
+                {subLabel && <p>{subLabel}</p>}
                 <div>
                     <input
                         maxLength={maxLength}

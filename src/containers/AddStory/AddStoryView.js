@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
+import { Link } from 'react-router-dom';
 import { withRoute } from 'services/routing/routerHOC';
 import { Input } from 'components/Input';
 import { Radio } from 'components/Radio';
@@ -48,6 +48,9 @@ export const AddStoryView = withRoute(props => {
                     <React.Fragment>
                         <h1>{t('addStoryView.myConfession')}</h1>
                         <h2>{t('addStoryView.anonymity')}</h2>
+                        <Link to="/pages/terms-of-service">
+                            <h2>{t('addStoryView.termsOfUse')}</h2>
+                        </Link>
                         <form
                             onSubmit={handleSubmit}
                             id={'addStoryForm'}
@@ -80,6 +83,18 @@ export const AddStoryView = withRoute(props => {
                                     { value: 'no', label: t('common.no') }
                                 ]}
                                 onClick={e => handleCheckedContact(e)}
+                            />
+                            <Input
+                                name="contactTime"
+                                label={t('addStoryView.contactTimeLabel')}
+                                subLabel={t('addStoryView.contactTimeSubLabel')}
+                                placeholder={t(
+                                    'addStoryView.contactTimePlaceholder'
+                                )}
+                                value={addStoryState?.contactTime}
+                                onChange={e =>
+                                    handleFieldChange(e, 'contactTime')
+                                }
                             />
                             <TextArea
                                 name="background"

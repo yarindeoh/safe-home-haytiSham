@@ -242,6 +242,7 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
                 'whatHelpedYou',
                 'whatTriggeredChange',
                 'contact',
+                'contactTime',
                 'publish'
             ]);
             dispatch({
@@ -376,7 +377,7 @@ export const useModeratedStories = tags => {
     useEffect(() => {
         (async function fetchData() {
             if (!moderationState.loggedIn) return;
-            replaceRelatedOptions({ tags: tags });
+            replaceRelatedOptions({ tags: tags, sortField: 'updatedAt' });
         })();
     }, [tags]);
 

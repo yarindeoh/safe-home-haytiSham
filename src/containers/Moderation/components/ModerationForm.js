@@ -68,12 +68,11 @@ export const ModerationForm = withRoute(
                                         undefined
                                     )
                                 }
-                                // value={formData?.contactAt} //change to validated field
                                 defaultValue={
                                     primaryFormData?.contact
-                                        ? 'ביום ראשון בשעה 17:00'
+                                        ? primaryFormData?.contactTime
                                         : ''
-                                } //change to validated field
+                                }
                                 disabled={disabled}
                             />
                         )}

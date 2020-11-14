@@ -12,6 +12,7 @@ const storySchema = new Schema({
     name: String,
     sequence: Number,
     contact: {type: Boolean, default: false},
+    contactTime: String,
     moderated: {type: Boolean, default: false},  
 }, { timestamps: { createdAt: 'createdAt' } });
 

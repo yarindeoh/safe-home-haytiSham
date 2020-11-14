@@ -11,6 +11,7 @@ export const NEW_MODERATE_STORY_INIT_DATA = {
     whatHelpedYou: '',
     whatTriggeredChange: '',
     contact: false,
+    contactTime: '',
     tags: [],
     publish: false
 };

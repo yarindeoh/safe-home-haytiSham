@@ -77,7 +77,7 @@ export const useStories = tags => {
 
     useEffect(() => {
         (async function fetchData() {
-            replaceRelatedOptions({ tags: tags });
+            replaceRelatedOptions({ tags: tags, sortField: 'createdAt' });
         })();
     }, [tags]);
 
