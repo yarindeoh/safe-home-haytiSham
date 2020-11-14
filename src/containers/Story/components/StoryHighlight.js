@@ -1,6 +1,7 @@
 import React from 'react';
 import Tag from 'components/Tag';
 import EditImg from 'src/media/icons/Edit.svg';
+import AvatarIcon from 'src/media/icons/Avatar.svg';
 
 export const StoryHighlight = ({
     story,
@@ -9,11 +10,14 @@ export const StoryHighlight = ({
     handleStoryClick,
     displayEditImg
 }) => {
-    const { id, name, createdAt, tags, quote } = story;
+    const { id, name, createdAt, tags, quote, updatedAt } = story;
     let initials = name && name.split('')[0];
     const allTags = () => (
         <div className="tags">
-            {tags && tags.map((tag, i) => <Tag key={`tag_${i}`} text={tag} />)}
+            {tags &&
+                tags
+                    .slice(0, 3)
+                    .map((tag, i) => <Tag key={`tag_${i}`} text={tag} />)}
         </div>
     );
 
@@ -30,8 +34,12 @@ export const StoryHighlight = ({
             {displayEditImg && (
                 <EditImg className={'edit-icon-story-highlight'} />
             )}
-            <div className="initials">{initials}</div>
-            <span className="date">{createdAt}</span>
+            <div className="initials">
+                <AvatarIcon />
+            </div>
+            <span className="date">
+                {displayEditImg ? updatedAt : createdAt}
+            </span>
             <p className="text">{quote}</p>
             {allTags()}
         </li>

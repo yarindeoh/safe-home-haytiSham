@@ -4,10 +4,14 @@ const he = {
             iHaveBeenThereHashtag: '#הייתי_שם',
             yes: 'כן',
             no: 'לא',
+            organizationName: 'ל.א לאלימות',
+            organizationLink: 'https://no2violence.co.il',
+            organizationLinkDisplay: 'no2violence.co.il',
+            facebookOrganizationLink: 'https://www.facebook.com/no2violence'
         },
         tags: {
             humiliation: 'השפלה',
-            jealousy: 'קנאה',
+            jealousy: 'קנאה'
         },
         storyName: 'שם הסיפור',
         whatTriggeredChange: 'איך הסיטואציה השתנתה',
@@ -31,14 +35,14 @@ const he = {
         emergencyHotlineOfMinistryOfLaborAndSocialAffairsNumber: '1202/3',
         emergencyHotlineOfMinistryOfLaborAndSocialAffairs:
             'קו החירום החברתי של \n משרד העבודה והרווחה',
-        loLalimotPhoneText: 'קו החירום של לא לאלימות',
+        loLalimotPhoneText: 'קו החירום 24/7',
         IHaveBeenThere2020: "© 'הייתי שם' 2020",
-        privacyPolicy: 'מדיניות הפרטיות',
+        privacyPolicy: 'תנאי שימוש',
         testimoniesFromRelationships: 'עדויות ממערכות יחסים אלימות',
         IHaveBeenThereHashtag: '#הייתי_שם',
         storiesView: {
             header: 'בית לעדויות ממערכות יחסים אלימות',
-            addStory: 'לשליחת העדות שלך',
+            addStory: 'לשליחת העדות שלך'
         },
         storyView: {
             storyOf: 'עדותה של',
@@ -50,14 +54,13 @@ const he = {
             howDidYouManged: 'איך התמודדתי עם זה?',
             whatTriggeredChange: 'איך הסיטואציה השתנתה?',
             additionalnfo: 'בכמה משפטים, מה הכי היית רוצה לומר למי שבמצב דומה?',
-            whatHelpedYou: 'מה עזר לך להתמודד?',
+            whatHelpedYou: 'מה עזר לך להתמודד?'
         },
         addStoryView: {
             createdAtLabel: 'נכתב ב: ',
             myConfession: 'העדות שלי',
-            anonymity: `שימו לב! נעבור על כל עדות שתתקבל,ולא נוכל לפרסם פרטים מזהים של הפוגעים.
-                    כמו כן, במידה ותשאירו פרטי קשר נשלח הודעה לאחר פרסום העדות.
-           `,
+            anonymity: `שימו לב, אנחנו נעבור על כל עדות שתתקבל לפני שתעלה באתר, ולא נוכל לפרסם פרטים מזהים של הפוגעים.`,
+            termsOfUse: 'לקריאת תנאי השימוש',
             nameLabel: 'שם לפרסום העדות (שם מלא/אנונימי)*?',
             namePlaceholder: 'הוספת שם',
             mailLabel: 'מייל/טלפון ליצירת קשר (לא חובה, לא יפורסם)',
@@ -65,8 +68,11 @@ const he = {
             contactLabel: 'תרצו שניצור קשר לקבלת ייעוץ תמיכה?',
             contactNotes:
                 'לקבלת תמיכה/סיוע 24/7 ניתן ליצור קשר דרך כפתור התמיכה',
+            contactTimeLabel: 'מתי הכי נוח לך שניצור איתך קשר?',
+            contactTimeSubLabel: 'נוכל לחזור אלייך החל מעוד שלושה ימים',
+            contactTimePlaceholder: 'לדוגמא: יום ראשון בין השעות 17:00-20:00',
             backgroundLabel:
-                'רקע (גיל, מתי-עבר/הווה, אופי הקשר, במשך כמה זמן או עדיין נמשך)',
+                'רקע (גיל, מתי-עבר/הווה, אופי הקשר, במשך כמה זמן או עדיין נמשך)*',
             storyContentLabel: 'השיתוף שלי*',
             storyContentPlaceholder: 'אני רוצה לשתף...',
             howDidYouMangedLabel: 'איך הגבת למקרה בעבר או ביום יום?',
@@ -77,27 +83,27 @@ const he = {
             additionalnfoLabel:
                 'בכמה משפטים, מה הכי היית רוצה לומר למי שנמצאת במצב דומה?',
             additionalnfoPlaceHolder: 'אני רוצה לומר ש...',
-            quoteLabel: 'ציטוט נבחר',
+            quoteLabel: 'ציטוט נבחר*',
             quotePlaceHolder: 'ציטוט מתוך הטקסט...',
             manualSubmition: 'אפשר לדלג ולמלא בכתב או:',
             uploadVideo: 'להעלות סרטון',
             uploadRecording: 'להעלות הקלטה',
             submittedSuccessHeading: 'הסיפור שלך נשלח בהצלחה!',
             submittedSuccessText:
-                'במידה והשארת פרטי קשר, נעדכן אותך לאחר שהוא יעלה לאתר',
+                'תודה על שליחת העדות, היא תתפרסם תוך 72 שעות. במקרה של עיכוב או כל בעיה אחרת ניתן לפנות לטלפון 6724*'
         },
         tagsFilter: {
             allTestimonies: 'כל העדויות',
-            additionalTestimonies: 'עדויות נוספות',
+            additionalTestimonies: 'עדויות דומות',
             moreCategories: 'עוד קטגוריות +',
-            lessCategories: 'פחות קטגוריות -',
+            lessCategories: 'פחות קטגוריות -'
         },
         storiesGalleryView: {
-            confessionOf: 'עדותה של {{name}} {{date}}',
+            confessionOf: 'עדותה של {{name}} {{date}}'
         },
         storyVideo: {
             campaign: `צפו בעדות של {{storyteller}} מתוך קמפיין של פרויקט אוף לייף והעמותה ל.א לאלימות
-            שפורסמה ב{{timestamp}}`,
+            שפורסמה ב{{timestamp}}`
         },
         login: {
             header: 'התחברו כדי לערוך עדויות',
@@ -113,22 +119,23 @@ const he = {
                 mail: 'אמצעי ליצירת קשר',
                 contact: 'האם ביקשו ליצור קשר?',
                 yes: 'כן',
-                no: 'לא',
+                no: 'לא'
             },
+            error401: 'תם זמן החיבור, אנא התחבר/י שוב',
+            error403: 'השם משתמש או הסיסמא לא נכונים, אנא נסה/י שוב'
         },
         moderation: {
             editHeader: 'העדות בזמן עריכה',
             originalHeader: 'העדות המקורית',
             originalDate: 'התקבלה ב-{{date}}',
-            nameLabel: 'שם לפרסום העדות',
+            nameLabel: 'שם לפרסום העדות*',
             contactAtLabel: 'ליצור קשר ב: {{mail}}',
             back: 'חזרה לרשימת העדויות',
             moderationRulesHeader: 'הנחיות לעריכה',
             moderationRules:
-                '1. יש להסיר שמות או סימנים מזהים ברורים של הפוגעים שעלולים לסכן מפני דיבה <br/><br/>2. יש למחוק שמות של קטינים <br/><br/>3. יש לבחור תגיות לפי הדפוסים שחוזרים על עצמם<br/><br/>4. יש לבחור ציטוט נבחר<br/><br/>5. יש לשלוח הודעה לטלפון/אימייל שהושארו לאחר פרסום העדות<br/><br/>',
+                '1. יש להסיר שמות או סימנים מזהים ברורים של הפוגעים שעלולים לסכן מפני דיבה <br/><br/>2. יש למחוק שמות של קטינים <br/><br/>3. יש לבחור תגיות לפי הדפוסים שחוזרים על עצמם<br/><br/>4. יש לבחור ציטוט נבחר',
             submittedSuccessHeading: 'העדות נערכה בהצלחה!',
-            submittedSuccessText:
-                'תודה שערכת את העדות,  לא לשכוח לשלוח מייל/הודעה לאחר האישור!',
+            submittedSuccessText: 'תודה שערכת את העדות!',
             submitText: 'העלאת העדות לאתר',
             updateText: 'עדכן באתר',
             unPublishText: 'הסתר מהאתר',
@@ -143,14 +150,15 @@ const he = {
             saveSuccessHeading: 'העדות נשמרה בהצלחה!',
             saveSuccessText: 'העדות לא תעלה לאתר עד שלא תלחצו "הצג באתר"',
             backToAdminPage: 'חזרה לרשימת העדויות הדורשות עריכה',
-            choseTags: 'בחרו קטגוריות שמתאימות לטקסט',
+            choseTags: 'בחרו קטגוריות שמתאימות לטקסט*',
             choseTagsWarn: 'מומלץ לא יותר מ-5',
+            logout: 'התנתק'
         },
         warningSigns: {
             header: 'סימני אזהרה',
             charactersOfReletionship: 'מאפיינים של מערכת יחסים אלימה',
             how: 'איך?',
-            violenceType: 'הגדרות של סוגי אלימות',
+            violenceType: 'הגדרות של סוגי אלימות'
         },
         about: {
             header: 'מי אנחנו',
@@ -166,9 +174,23 @@ const he = {
             volunteersNamesTitle: 'שמות המתנדבות בצוות:',
             volunteersNames:
                 'מורן וובר<br/>לישי נועם<br/>ירין דקל<br/>מיכל פורג<br/>שחר גצוביץ׳<br/>נועה נובק<br/>אור מנור<br/>אורלי לבקוביץ פרנק<br/>הדס פרחי<br/>רומי וינטר<br/>רותם שפרינגר<br/>יעל רמוס דר<br/>דניאל גרונת<br/>לאה גרונת',
-            inCollaboration: 'הפרוייקט יצא לדרך בשיתוף',
+            inCollaboration: 'הפרוייקט יצא לדרך בשיתוף'
         },
-    },
+        termsOfService: {
+            header: 'תנאי שימוש',
+            responsability:
+                'הפוסטים / הפרסומים באתר זה הינם באחריותם המלאה והבלעדית של הכותבות.ים.',
+            theContent: 'התוכן המוצג באתר הינו לשקול דעתה של הכותב.ת.',
+            siteResponsibility:
+                'למפעילי האתר לא תהיה כל אחריות בין נזק כלשהו העלול להיגרם מצפיה או קריאה של התוכן המוצג.',
+            informationContentOnly:
+                'תוכן זה מוצג למטרות מידע בלבד ואין לראות בו תחליף לייעוץ משפטי.'
+        },
+        footer: {
+            website: 'אתר {{name}}: ',
+            facebook: "'{{name}}' בפייסבוק"
+        }
+    }
 };
 
 export default he;

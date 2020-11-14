@@ -57,7 +57,8 @@ class StorieController {
             storyContent: req.body.storyContent,
             mail: req.body.mail || '',
             name: req.body.name || '',
-            contact: req.body.contact || false
+            contact: req.body.contact || false,
+            contactTime: req.body.contactTime || ''
         }
                 
         // const mailData = {

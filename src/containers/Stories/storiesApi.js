@@ -10,10 +10,10 @@ const Api = {
     getAllTags: () => {
         return get(baseUrl('getAllTags'));
     },
-    getStoriesByTags: ({ tags, pageSize, page }) => {
+    getStoriesByTags: ({ tags, pageSize, page, sortField }) => {
         return get(
             baseUrl(
-                `getStoriesByTags?page=${page}&pageSize=${pageSize}${
+                `getStoriesByTags?page=${page}&pageSize=${pageSize}&sortField=${sortField}${
                     tags && tags.length > 0 ? `&tags=[${tags}]` : ''
                 }`
             )

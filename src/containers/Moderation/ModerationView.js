@@ -44,7 +44,8 @@ export const ModerationView = withRoute(props => {
             ...validModeratedStory,
             ...{
                 mail: validOriginalStory.mail,
-                contact: validOriginalStory.contact
+                contact: validOriginalStory.contact,
+                contactTime: validOriginalStory.contactTime
             }
         },
         tagsMap
@@ -103,8 +104,8 @@ export const ModerationView = withRoute(props => {
                             <EditOriginalStoryView
                                 handleSubmit={handleSubmit}
                                 handleFieldChange={handleFieldChange}
+                                primaryFormData={{ ...validOriginalStory }}
                                 formData={{ ...moderationState }}
-                                moderatedForm
                             />
                         </div>
                         {/* Col3 - left col */}

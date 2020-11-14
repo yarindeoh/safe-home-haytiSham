@@ -25,31 +25,35 @@ class StorieService {
                 .sort(sortField)
                 .skip((page - 1) * pageSize).limit(pageSize)
                 .lean()
-        ]).then(([count, result]) => {
-            // resolve tag id to tag name
+        ]).then(([count, result]) => {            
             for(let i=0; i<result.length; i++){
                 let story = result[i];
-                if(story.tags){
-                    story.tagsIds = story.tags;
-                    story.tags = [];
-                    for(let t=0; t<story.tagsIds.length; t++){
-                        let tagName = tagController.tagsMap[story.tagsIds[t]];
-                        if(tagName){
-                            story.tags.push(tagName);
-                        }
-                    }
-                }
-                if(story.createdAt){
-                    story.createdAt = new Date(story.createdAt).toDateString();
-                }
-                if(story.updatedAt){
-                    story.updatedAt = new Date(story.updatedAt).toDateString();
-                }
+                this.updateStoryInfo(story);
             }
             return {
                 result, total: count, page: page, pages: Math.ceil(count / pageSize)
             }
         });
+    }
+
+    updateStoryInfo(story){
+        if(!story || story == null) return;
+        if(story.tags){
+            story.tagsIds = story.tags;
+            story.tags = [];
+            for(let t=0; t<story.tagsIds.length; t++){
+                let tagName = tagController.tagsMap[story.tagsIds[t]];
+                if(tagName){
+                    story.tags.push(tagName);
+                }
+            }
+        }
+        if(story.createdAt){
+            story.createdAt = new Date(story.createdAt).toDateString();
+        }
+        if(story.updatedAt){
+            story.updatedAt = new Date(story.updatedAt).toDateString();
+        }        
     }
     
     listStriesToModerate(page = 1, pageSize = 100, sortField = "createdAt", sortDirection = "DESC"){
@@ -62,20 +66,33 @@ class StorieService {
                 .sort(sortField)
                 .skip((page - 1) * pageSize).limit(pageSize)
                 .populate('user')
-        ]).then(([count, result]) => ({
-                result, total: count, page: page, pages: Math.ceil(count / pageSize) }));
+            ]).then(([count, result]) => {            
+                for(let i=0; i<result.length; i++){
+                    let story = result[i];
+                    this.updateStoryInfo(story);
+                }
+                return {
+                    result, total: count, page: page, pages: Math.ceil(count / pageSize)
+                }
+            });
     } 
 
     getStoryById(originalStoryID){
-        return Story.findById(originalStoryID).lean();
+        let story = Story.findById(originalStoryID).lean();
+        this.updateStoryInfo(story);
+        return story;
     }
 
     getModeratedStoryById(storyID){
-        return ModeratedStrory.findById(storyID).lean();
+        let story = ModeratedStrory.findById(storyID).lean();
+        this.updateStoryInfo(story);
+        return story;
     }
     
     getModeratedStoryByOriginalId(originalStoryID){
-        return ModeratedStrory.findOne({originalStory: ObjectId(originalStoryID)}).lean();
+        let story = ModeratedStrory.findOne({originalStory: ObjectId(originalStoryID)}).lean();
+        this.updateStoryInfo(story);
+        return story;
     }
     
 
