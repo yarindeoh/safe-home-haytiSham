@@ -44,7 +44,8 @@ export const ModerationView = withRoute(props => {
             ...validModeratedStory,
             ...{
                 mail: validOriginalStory.mail,
-                contact: validOriginalStory.contact
+                contact: validOriginalStory.contact,
+                contactTime: validOriginalStory.contactTime,
             }
         },
         tagsMap
