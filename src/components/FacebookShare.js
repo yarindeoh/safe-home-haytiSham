@@ -5,7 +5,7 @@ import FB from 'src/media/icons/fb.svg';
 export const FacebookShare = ({ btnText, sharedContent }) => (
     <FacebookShareButton
         //working in prod only
-        url={window.location.pathname}
+        url={`https://haytisham.herokuapp.com/${window.location.pathname}`}
         quote={sharedContent}
         className="BTN-fb-share"
     >
