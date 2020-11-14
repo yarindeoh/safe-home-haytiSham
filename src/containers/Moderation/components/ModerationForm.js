@@ -68,7 +68,11 @@ export const ModerationForm = withRoute(
                                         undefined
                                     )
                                 }
-                                defaultValue={primaryFormData?.contact ? primaryFormData?.contactTime : '' }
+                                defaultValue={
+                                    primaryFormData?.contact
+                                        ? primaryFormData?.contactTime
+                                        : ''
+                                }
                                 disabled={disabled}
                             />
                         )}
