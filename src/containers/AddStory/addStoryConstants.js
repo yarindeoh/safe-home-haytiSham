@@ -7,7 +7,8 @@ export const NEW_STORY_INIT_DATA = {
     storyContent: '',
     whatHelpedYou: '',
     whatTriggeredChange: '',
-    contact: false
+    contact: false,
+    contactTime: ''
 };
 
 export const SET_CONTACT = 'SET_CONTACT';

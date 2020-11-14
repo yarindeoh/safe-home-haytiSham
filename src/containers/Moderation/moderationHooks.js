@@ -242,6 +242,7 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
                 'whatHelpedYou',
                 'whatTriggeredChange',
                 'contact',
+                'contactTime',
                 'publish'
             ]);
             dispatch({
