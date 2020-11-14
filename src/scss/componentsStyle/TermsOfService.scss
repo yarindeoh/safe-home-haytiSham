@@ -1,0 +1,7 @@
+.terms-of-service {
+    h1,
+    h2,
+    p {
+        margin-bottom: map_get($spaces, small);
+    }
+}

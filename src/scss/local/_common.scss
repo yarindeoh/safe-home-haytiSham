@@ -9,7 +9,7 @@
     top: 0;
     left: 0;
     z-index: 3;
-    background-color: map_get($colors, black);
+    background-color: map_get($colors, grey-800);
     justify-content: space-between;
     align-items: center;
     font-size: 27px;
@@ -117,6 +117,7 @@
 }
 
 .Content {
+    flex: 1;
     padding-top: 62px;
     @include desktop {
         width: 65%;
@@ -204,7 +205,7 @@ footer {
     }
 
     div {
-        background-color: map_get($colors, black);
+        background-color: map_get($colors, grey-800);
     }
 
     .footer-inner {
@@ -224,15 +225,32 @@ footer {
         .copyright {
             display: flex;
             justify-content: center;
-            padding-bottom: 10px;
+            flex-direction: column;
+            height: 45px;
+            margin-top: 40px;
+            font-size: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+
+            .facebook-no2violence {
+                color: map_get($colors, white);
+            }
+
+            div:nth-child(2) {
+                color: map_get($colors, white);
+                a {
+                    color: #3690E4;
+                    text-decoration: underline;
+                }
+                .separator {
+                    padding: 5px;
+                }
+            }
 
             span {
                 margin: auto 5px;
                 color: map_get($colors, white);
             }
-
-            height: 45px;
-            align-items: center;
 
             li {
                 margin: 10px;
@@ -243,10 +261,19 @@ footer {
     .footer-menu {
         display: flex;
         flex-direction: column;
+        align-items: center;
+
+        img {
+            width: 123px;
+            height: 76.88px;
+            margin-top: 30px;
+        }
 
         ul {
             max-width: 320px;
-            margin: 5px auto;
+            margin: 0 auto;
+            margin-top: 40px;
+            margin-bottom: 30px;
 
             li {
                 flex: 100%;
@@ -256,7 +283,7 @@ footer {
     }
 
     .footer-title {
-        color: map_get($colors, purple-500);
+        color: map_get($colors, white);
         font-size: 40px;
         align-self: center;
     }
@@ -278,6 +305,7 @@ footer {
     .phone-text {
         font-size: 12px;
         width: 70px;
+        margin-left: 10px;
         color: map_get($colors, grey-100);
     }
 }
@@ -298,7 +326,7 @@ footer {
     }
 }
 
-.disabled-area{
+.disabled-area {
     pointer-events: none;
 }
 

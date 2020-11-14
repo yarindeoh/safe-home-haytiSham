@@ -6,6 +6,7 @@ import {
     SET_LOGGED_IN,
     SET_MODERATE_STORY_DATA,
     SET_TAGS,
+    SET_ERROR,
     PAGE_SIZE
 } from 'containers/Moderation/moderationConstants';
 import {
@@ -14,10 +15,7 @@ import {
     filterObjByKey,
     getTagsAsArray
 } from 'services/general/generalHelpers';
-import {
-    useErrorsHandler,
-    useLoginSubmit
-} from 'services/general/generalHooks';
+import { useLoginSubmit } from 'services/general/generalHooks';
 import { useHistory } from 'react-router';
 import { usePagination } from 'services/general/generalHooks';
 
@@ -32,36 +30,35 @@ export function useModerationContext() {
 }
 
 export const useModerationErrorsHandler = () => {
-    const history = useHistory();
-    const itemInLocalStorage = 'moderatorToken';
-    const { handleErrors } = useErrorsHandler(itemInLocalStorage);
+    const { loggedOutHandler } = useModerationLoggedOut();
     const { dispatch } = useModerationContext();
 
-    function on401(e, itemInLocalStorage) {
-        localStorage.removeItem(itemInLocalStorage);
-        window.alert('User Token is not valid');
+    async function on401(e) {
         dispatch({
-            type: SET_LOGGED_IN,
-            payload: localStorage.getItem(itemInLocalStorage) !== null
+            type: SET_ERROR,
+            payload: e.message
         });
-        history.push('/admin');
+        return await loggedOutHandler();
     }
 
     function onDefault(e) {
-        window.alert(e);
+        dispatch({
+            type: SET_ERROR,
+            payload: e.message
+        });
     }
 
     const ErrorsHandlerFunctionObj = {
-        '401': e => on401(e, itemInLocalStorage),
+        '401': e => on401(e),
         default: e => onDefault(e)
     };
 
     async function moderationErrorsHandler(e) {
-        try {
-            await handleErrors(e, ErrorsHandlerFunctionObj);
-        } catch (error) {
-            // console.error(error);
-        }
+        let handleErrorToInvoke =
+            ErrorsHandlerFunctionObj[e.message] !== undefined
+                ? ErrorsHandlerFunctionObj[e.message]
+                : ErrorsHandlerFunctionObj.default;
+        return await handleErrorToInvoke(e);
     }
     return {
         moderationErrorsHandler
@@ -70,9 +67,11 @@ export const useModerationErrorsHandler = () => {
 
 export const useModerationApiWrapper = apiFunc => {
     const { moderationErrorsHandler } = useModerationErrorsHandler();
+    const { moderationState } = useModerationContext();
 
     async function apiWrapper(params) {
         try {
+            if (!moderationState.loggedIn) return;
             return await apiFunc(params);
         } catch (e) {
             moderationErrorsHandler(e);
@@ -84,8 +83,33 @@ export const useModerationApiWrapper = apiFunc => {
     };
 };
 
+export const useModerationLoggedOut = () => {
+    const history = useHistory();
+    const { moderationState, dispatch } = useModerationContext();
+
+    const loggedOutHandler = async () => {
+        localStorage.removeItem('moderatorToken');
+        dispatch({
+            type: SET_LOGGED_IN,
+            payload: localStorage.getItem('moderatorToken') !== null
+        });
+        history.replace('/admin');
+    };
+
+    useEffect(() => {
+        if (!moderationState?.loggedIn) {
+            history.replace('/admin');
+        }
+    }, [moderationState?.loggedIn]);
+
+    return {
+        loggedOutHandler
+    };
+};
+
 export const useModerationLoginSubmit = loginData => {
     const { dispatch } = useModerationContext();
+    const { moderationErrorsHandler } = useModerationErrorsHandler();
     const { postLogin } = useLoginSubmit(
         loginData,
         Api.postLogin,
@@ -102,9 +126,12 @@ export const useModerationLoginSubmit = loginData => {
                     type: SET_LOGGED_IN,
                     payload: true
                 });
+                dispatch({
+                    type: SET_ERROR,
+                    payload: null
+                });
             } catch (e) {
-                if (e.message === '403') return;
-                window.alert(e);
+                moderationErrorsHandler(e);
             }
         }
         callPostLogin();
@@ -215,6 +242,7 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
                 'whatHelpedYou',
                 'whatTriggeredChange',
                 'contact',
+                'contactTime',
                 'publish'
             ]);
             dispatch({
@@ -336,6 +364,8 @@ export const usePublishModerateStory = () => {
 };
 
 export const useModeratedStories = tags => {
+    const { moderationState } = useModerationContext();
+
     const { apiWrapper: getAllModeratedStories } = useModerationApiWrapper(
         Api.getAllModeratedStories
     );
@@ -346,7 +376,8 @@ export const useModeratedStories = tags => {
 
     useEffect(() => {
         (async function fetchData() {
-            replaceRelatedOptions({ tags: tags });
+            if (!moderationState.loggedIn) return;
+            replaceRelatedOptions({ tags: tags, sortField: 'updatedAt' });
         })();
     }, [tags]);
 

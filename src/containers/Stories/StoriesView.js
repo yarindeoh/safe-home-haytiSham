@@ -7,7 +7,7 @@ import HelpButton from 'src/components/HelpButton.js';
 import { Skeleton } from 'src/components/Skeleton';
 import LeftArrowIcon from 'src/media/icons/leftArrow.svg';
 
-export const StoriesView = withRoute((props) => {
+export const StoriesView = withRoute(props => {
     const { t } = useTranslation();
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);

@@ -36,7 +36,7 @@ export const StoryView = withRoute(props => {
                      ${t('storyView.storyOf')}
                      ${
                          story?.name
-                             ? story?.name.split('')[0]
+                             ? story?.name
                              : t('storyView.anonymousTeller')
                      }
                      ${story?.createdAt}

@@ -34,35 +34,12 @@ export const useLoginSubmit = (loginData, postFunction, itemInLocalStorage) => {
             localStorage.setItem(itemInLocalStorage, serverData.token);
             return Promise.resolve();
         } catch (error) {
-            if (error.message === '403') {
-                window.alert('UserName or Password is not Valid');
-            }
             return Promise.reject(error);
         }
     }
 
     return {
         postLogin
-    };
-};
-
-//Generic ErrorHandler
-export const useErrorsHandler = () => {
-    async function handleErrors(e, ErrorHandlerFunctionObj) {
-        let handleErrorToInvoke =
-            ErrorHandlerFunctionObj[e.message] !== undefined
-                ? ErrorHandlerFunctionObj[e.message]
-                : ErrorHandlerFunctionObj.default;
-        if (handleErrorToInvoke === undefined) return;
-        try {
-            handleErrorToInvoke(e);
-            return Promise.resolve();
-        } catch (error) {
-            return Promise.reject(error);
-        }
-    }
-    return {
-        handleErrors
     };
 };
 
@@ -195,6 +172,7 @@ export const useResizeTextArea = () => {
     return {};
 };
 
+// TODO:: consider use reducer to manage state
 export const usePagination = (fn, pageSize) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
@@ -203,7 +181,7 @@ export const usePagination = (fn, pageSize) => {
     const [total, setTotal] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const [didFetch, setDidFetch] = useState(false);
-
+        
     const getNext = useCallback(
         async (
             options = {},
@@ -216,11 +194,12 @@ export const usePagination = (fn, pageSize) => {
                 pageSize: pageSize,
                 ...(options || localOptions)
             });
+            if (!res) return;
             setCurrentPage(shouldGetByPage ? pageNumber : pageNumber + 1);
             setData(
                 shouldGetByPage ? [...res.result] : [...currData, ...res.result]
             );
-            setHasMore(data.length < res.total);
+            setHasMore(pageNumber < res.pages);
             setTotal(res.total);
             setTotalPages(res.pages);
             options && setLocalOptions(options);

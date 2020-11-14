@@ -27,10 +27,19 @@
 
     & > .question {
       margin-bottom: map_get($spaces, x-large);
+      & > p{
+        font-weight: normal;
+        color: map_get($colors, grey-1600);
+      }
 
       & > label {
         font-weight: bold;
         padding: 0;
+
+        & > p{
+          font-weight: normal;
+          color: map_get($colors, grey-1600);
+        }
 
         div {
           margin-top: map_get($spaces, small);
@@ -93,13 +102,18 @@
       .disabled-text-area{
         resize: none;
         background-color:  map_get($colors, grey-1400);
+        color:  map_get($colors, grey-900);
+      }
+
+      .disabled-label{
+        color:  map_get($colors, grey-1600);
       }
 
       textarea {
         font-size: 14px;
         width: 100%;
         background: transparent;
-        resize: vertical;
+        resize: none;
 
         &:focus {
           outline: none;

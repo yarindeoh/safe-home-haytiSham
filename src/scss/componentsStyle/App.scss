@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600&display=swap');
-@import "~slick-carousel/slick/slick.css";
-@import "~slick-carousel/slick/slick-theme.css";
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
 
 @import '../config/_reset.scss';
 @import '../local/_breakpoints.scss';
@@ -9,23 +9,27 @@
 @import '../local/_spaces.scss';
 @import '../config/partials/_buttons';
 
-@import "./Header";
-@import "./Footer";
-@import "./Tag";
-@import "./TagsFilter";
+@import './Header';
+@import './Footer';
+@import './Tag';
+@import './TagsFilter';
 @import 'Carousel';
 @import 'storiesGallery';
 @import 'storyPageContainer';
 @import 'testimonyForm';
-@import "./HelpButton";
+@import './HelpButton';
 @import './StoryHightlight';
 @import 'CarouselItem';
 @import 'WarningSigns';
 @import 'About';
+@import 'TermsOfService';
 @import './LoginView';
 
 #root {
     background-color: map_get($colors, grey-100);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 iframe {

@@ -1,7 +1,7 @@
 .app-header-wide {
     height: 47px;
-    background-color: map_get($colors, black);
-    width: 100%;
+    background-color: map_get($colors, grey-800);
+  width: 100%;
   justify-content: space-between;
 
     @include breakpoint-1 {
@@ -26,6 +26,9 @@
 
     .right-section {
         @extend .section;
+        img {
+            margin-left: 13px;
+        }
     }
 
     .left-section {

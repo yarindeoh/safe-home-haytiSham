@@ -26,6 +26,7 @@ export const OriginalStoryView = withRoute(({ data, back }) => {
                 </div>
                 <ModerationForm
                     formData={data}
+                    primaryFormData={data}
                     id={'OriginalStoryView'}
                     disabled
                 />

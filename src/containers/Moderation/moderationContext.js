@@ -4,12 +4,14 @@ import {
     NEW_MODERATE_STORY_INIT_DATA,
     SET_LOGGED_IN,
     SET_MODERATE_STORY_DATA,
-    SET_TAGS
+    SET_TAGS,
+    SET_ERROR
 } from './moderationConstants';
 
 const initialState = {
     ...NEW_MODERATE_STORY_INIT_DATA,
-    loggedIn: localStorage.getItem('moderatorToken') !== null
+    loggedIn: localStorage.getItem('moderatorToken') !== null,
+    error: null
 };
 
 function reducer(state, action) {
@@ -20,6 +22,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 loggedIn: action.payload
+            };
+        case SET_ERROR:
+            return {
+                ...state,
+                error: action.payload
             };
         case SET_TAGS:
             return {
