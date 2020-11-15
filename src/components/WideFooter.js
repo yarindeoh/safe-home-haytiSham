@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import no2violence from 'src/media/icons/no2violence.png';
+import no2violence from '../media/no2violence.png';
 
 export const WideFooter = () => {
     const { t } = useTranslation();
