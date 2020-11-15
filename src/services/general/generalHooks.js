@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getBreakpoint } from './breakpoints';
+import autosize from 'autosize';
 
 export const useBack = (props, setSubmitted, path = '/') => {
     const back = e => {
@@ -120,35 +121,30 @@ export const useResizeTextArea = () => {
     }
     function init() {
         function resize(element) {
-            element.style.height = 'auto';
             element.style.height = element.scrollHeight + 'px';
+            autosize(element);
         }
-        /* 0-timeout to get the already changed text */
-        function delayedResize(element) {
-            window.setTimeout(function() {
-                resize(element);
-            }, 0);
-        }
+
         let textareas = document.getElementsByTagName('textarea');
         for (let i = 0; i < textareas.length; i++) {
             let textarea = textareas[i];
             observe(textarea, 'change', function() {
-                resize(this);
+                autosize(this);
             });
             observe(textarea, 'cut', function() {
-                delayedResize(this);
+                autosize(this);
             });
             observe(textarea, 'paste', function() {
-                delayedResize(this);
+                autosize(this);
             });
             observe(textarea, 'drop', function() {
-                delayedResize(this);
+                autosize(this);
             });
             observe(textarea, 'keydown', function() {
-                delayedResize(this);
+                autosize(this);
             });
             observe(textarea, 'resize', function() {
-                delayedResize(this);
+                autosize(this);
             });
             resize(textarea);
         }

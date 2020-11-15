@@ -46,7 +46,7 @@ export const getArrayOfTagsIds = arr => {
 };
 
 export const filterObjByKey = (raw, allowed) => {
-    const filtered =
+    return (
         raw &&
         Object.keys(raw)
             .filter(key => allowed.includes(parseInt(key)))
@@ -55,7 +55,6 @@ export const filterObjByKey = (raw, allowed) => {
                     ...obj,
                     [key]: raw[key]
                 };
-            }, {});
-
-    return filtered;
+            }, {})
+    );
 };
