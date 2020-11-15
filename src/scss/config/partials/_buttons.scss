@@ -1,23 +1,17 @@
 @import '../../local/_colors.scss';
 @import '../../local/_spaces.scss';
 
-.BTN-send-testimony {
+//TODO:: remove important
+@mixin BTN {
     width: fit-content;
     grid-area: send-testimony-box;
     align-self: center;
-    color: map_get($colors, white);
-    font-size: 15px;
+    color: map_get($colors, white) !important;
+    font-size: 15px !important;
     line-height: 20px;
-    padding: 6px 15px;
+    padding: 6px 15px !important;
     margin: map_get($spaces, small) 0;
     border-radius: 80px;
-    background: linear-gradient(
-        90.66deg,
-        #3691e5 -6.72%,
-        #566be4 20.51%,
-        #7845e3 96.66%
-    );
-
     &:focus {
         outline: none;
     }
@@ -25,6 +19,21 @@
         margin: 0;
         padding: 3px 15px;
     }
+}
+
+.BTN-send-testimony {
+    @include BTN;
+    background: linear-gradient(
+        90.66deg,
+        #3691e5 -6.72%,
+        #566be4 20.51%,
+        #7845e3 96.66%
+    );
+    margin-left: 8px;
+}
+.BTN-fb-share {
+    @include BTN;
+    background-color: #0075FB !important;
 }
 
 .BTN-hamburger-menu {
