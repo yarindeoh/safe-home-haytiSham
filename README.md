@@ -24,7 +24,7 @@ npm install
 Run in locally with webpack-dev-server (FE)
 
 ```
-npm run start:dev
+npm run start-dev
 ```
 
 Run in build with webbpack (FE)
@@ -36,7 +36,7 @@ npm start
 Fix lint (FE)
 
 ```
-npm run lint:fix
+npm run lint-fix
 ```
 
 ### Start Local Server

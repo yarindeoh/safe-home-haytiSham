@@ -42,8 +42,7 @@ const he = {
         IHaveBeenThereHashtag: '#הייתי_שם',
         storiesView: {
             header: 'בית לעדויות ממערכות יחסים אלימות',
-            addStory: 'לשליחת העדות שלך',
-            fbContact: 'Facebook'
+            addStory: 'לשליחת העדות שלך'
         },
         storyView: {
             storyOf: 'העדות של',
@@ -177,11 +176,6 @@ const he = {
             volunteersNames:
                 'מורן וובר<br/>לישי נועם<br/>ירין דקל<br/>מיכל פורג<br/>שחר גצוביץ׳<br/>נועה נובק<br/>אור מנור<br/>אורלי לבקוביץ פרנק<br/>הדס פרחי<br/>רומי וינטר<br/>רותם שפרינגר<br/>יעל רמוס דר<br/>דניאל גרונת<br/>לאה גרונת',
             inCollaboration: 'הפרוייקט יצא לדרך בשיתוף'
-        },
-        share: {
-            story: 'שתפו את העדות',
-            fb: 'שתפו בפייסבוק',
-            haytiSham: 'הייתי שם'
         },
         termsOfService: {
             header: 'תנאי שימוש',
