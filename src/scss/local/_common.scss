@@ -10,6 +10,7 @@
     left: 0;
     z-index: 3;
     background-color: map_get($colors, grey-800);
+    display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 27px;
@@ -18,13 +19,6 @@
     span {
         width: 100%;
         text-align: center;
-    }
-
-    @include breakpoint-1 {
-        display: flex;
-    }
-    @include desktop {
-        display: none;
     }
 
     span a {
@@ -180,13 +174,8 @@ label {
 }
 
 footer {
+    display: flex;
     text-align: center;
-    @include breakpoint-1 {
-        display: flex;
-    }
-    @include desktop {
-        display: none;
-    }
 
     li {
         list-style-type: none;
@@ -317,11 +306,8 @@ footer {
     @include breakpoint-1 {
         grid-template-columns: 1fr;
     }
-    @include breakpoint-2 {
-        grid-template-columns: 1fr;
-    }
 
-    @include breakpoint-3 {
+    @include desktop {
         grid-template-columns: 1fr 1fr;
     }
 }

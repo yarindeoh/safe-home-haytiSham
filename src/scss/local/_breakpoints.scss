@@ -7,12 +7,12 @@ $breakpoints: (
 
 // mobile
 @mixin breakpoint-1 {
-  @media (max-width: 480px), (orientation: landscape) { @content; }
+  @media (max-width: 480px) { @content; }
 }
 
 // desktop
 @mixin breakpoint-2 {
-  @media (min-width: 481px) and (max-width: 899px) and (orientation: portrait) { @content; }
+  @media (min-width: 481px) and (max-width: 899px) { @content; }
 }
 // desktop
 @mixin breakpoint-3 {
