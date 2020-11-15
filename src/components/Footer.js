@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import no2violenceFooter from '../media/no2violence-footer-mobile.png';
-
+import FacebookIcon from '../media/icons/f_logo.svg';
 export const Footer = ({ title, footerMenuItemsAndUrls }) => {
     const { t } = useTranslation();
     const facebookLink = t('common.facebookOrganizationLink');
@@ -37,6 +37,9 @@ export const Footer = ({ title, footerMenuItemsAndUrls }) => {
 
                 <div className="copyright">
                     <div className="facebook-no2violence">
+                        <a href={facebookLink} target="_blank">
+                            <FacebookIcon id="fb-icon" />
+                        </a>
                         <p>
                             {t('footer.facebook', { name: organizationName })}
                         </p>
@@ -50,7 +53,8 @@ export const Footer = ({ title, footerMenuItemsAndUrls }) => {
                         >
                             {t('common.organizationLinkDisplay')}
                         </a>
-                        <span className="separator">•</span>
+                    </div>
+                    <div className="terms-of-use">
                         <Link to="/pages/terms-of-service">
                             <u>{t('privacyPolicy')}</u>
                         </Link>

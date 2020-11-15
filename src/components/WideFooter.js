@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import no2violence from '../media/no2violence.png';
+import FacebookIcon from '../media/icons/f_logo.svg';
 
 export const WideFooter = () => {
     const { t } = useTranslation();
@@ -29,6 +30,9 @@ export const WideFooter = () => {
                 </div>
             </div>
             <span className="copyright">
+                <a href={facebookLink} target="_blank">
+                    <FacebookIcon id="fb-icon" />
+                </a>
                 {t('footer.facebook', { name: organizationName })}
                 <span className="separator">•</span>
                 {t('footer.website', { name: organizationName })}
