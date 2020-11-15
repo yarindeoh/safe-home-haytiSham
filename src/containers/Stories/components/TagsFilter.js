@@ -34,7 +34,14 @@ export const TagsFilter = ({
         <div className={'stories-gallery-container'}>
             <h1>{t('tagsFilter.additionalTestimonies')}</h1>
             <Loader data={[tagsData, filterTagsIds]}>
-                <div className="tags-filter-container">
+                <div
+                    className={
+                        'tags-filter-container ' +
+                        (isDisplayMoreTags
+                            ? ''
+                            : 'tags-filter-container-collapsed')
+                    }
+                >
                     {
                         <TagFilter
                             tag={t('tagsFilter.allTestimonies')}

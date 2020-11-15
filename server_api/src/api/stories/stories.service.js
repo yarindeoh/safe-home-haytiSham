@@ -49,10 +49,12 @@ class StorieService {
             }
         }
         if(story.createdAt){
-            story.createdAt = new Date(story.createdAt).toDateString();
+            const date = new Date(story.createdAt);
+            story.createdAt = `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`;
         }
         if(story.updatedAt){
-            story.updatedAt = new Date(story.updatedAt).toDateString();
+            const date = new Date(story.updatedAt);
+            story.updatedAt = `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`;
         }        
     }
     
@@ -66,6 +68,7 @@ class StorieService {
                 .sort(sortField)
                 .skip((page - 1) * pageSize).limit(pageSize)
                 .populate('user')
+                .lean()
             ]).then(([count, result]) => {            
                 for(let i=0; i<result.length; i++){
                     let story = result[i];
@@ -78,23 +81,25 @@ class StorieService {
     } 
 
     getStoryById(originalStoryID){
-        let story = Story.findById(originalStoryID).lean();
-        this.updateStoryInfo(story);
-        return story;
+        return Story.findById(originalStoryID).lean().then((story) => {
+            this.updateStoryInfo(story);
+            return story;
+        });       
     }
 
     getModeratedStoryById(storyID){
-        let story = ModeratedStrory.findById(storyID).lean();
-        this.updateStoryInfo(story);
-        return story;
+        return ModeratedStrory.findById(storyID).lean().then((story) =>{
+            this.updateStoryInfo(story);
+            return story;
+        });        
     }
     
     getModeratedStoryByOriginalId(originalStoryID){
-        let story = ModeratedStrory.findOne({originalStory: ObjectId(originalStoryID)}).lean();
-        this.updateStoryInfo(story);
-        return story;
-    }
-    
+        return ModeratedStrory.findOne({originalStory: ObjectId(originalStoryID)}).lean().then((story) =>{
+            this.updateStoryInfo(story);
+            return story;
+        });        
+    }    
 
     createStory(storyInstance){
         storyInstance.moderated = false;

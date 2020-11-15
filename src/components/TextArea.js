@@ -26,7 +26,13 @@ export const TextArea = ({
         >
             <div className="icon-and-label-container">
                 {icon && <div className="icon">{icon}</div>}
-                <label className={`question ${labelClass}`}>{label}</label>
+                <label
+                    className={`question ${labelClass} ${
+                        disabled ? 'disabled-label' : ''
+                    }`}
+                >
+                    {label}
+                </label>
             </div>
             {sublabel && <div>{sublabel}</div>}
             <div
