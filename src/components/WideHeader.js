@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import no2violenceHeader from 'src/media/icons/no2violence-header.png';
+import no2violenceHeader from '../media/no2violence-header.png';
 
 export const WideHeader = () => {
     const { t } = useTranslation();
