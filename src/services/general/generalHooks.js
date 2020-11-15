@@ -202,7 +202,7 @@ export const usePagination = (fn, pageSize) => {
             setHasMore(pageNumber < res.pages);
             setTotal(res.total);
             setTotalPages(res.pages);
-            options && setLocalOptions(options);
+            Object.keys(options).length>0 && setLocalOptions(options);
             setDidFetch(true);
         },
         [data, currentPage, hasMore]
@@ -212,6 +212,7 @@ export const usePagination = (fn, pageSize) => {
         await getNext(options, [], 1, shouldGetByPage);
     };
     async function getNextPage() {
+        if(currentPage===1) return; //mean we still don't finish replaceRelatedOptions.
         await getNext(localOptions, data, currentPage);
     }
 
