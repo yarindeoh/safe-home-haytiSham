@@ -1,5 +1,19 @@
 .app-footer-wide {
-    background-color: map_get($colors, grey-800);
+  background-color: map_get($colors, grey-800);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: map_get($spaces, small) 0;
+
+  @include breakpoint-1 {
+    display: none;
+  }
+  @include desktop {
+    display: flex;
+  }
+
+  .navigation {
+    padding: 60px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
