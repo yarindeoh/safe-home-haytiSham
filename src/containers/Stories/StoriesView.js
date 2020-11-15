@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import HelpButton from 'src/components/HelpButton.js';
 import { Skeleton } from 'src/components/Skeleton';
 import LeftArrowIcon from 'src/media/icons/leftArrow.svg';
-import { FacebookShare } from 'components/FacebookShare';
 
 export const StoriesView = withRoute(props => {
     const { t } = useTranslation();
@@ -25,10 +24,6 @@ export const StoriesView = withRoute(props => {
                     {t('storiesView.addStory')}
                     <LeftArrowIcon style={{ marginRight: '11px' }} />
                 </button>
-                <FacebookShare
-                    btnText={t('share.fb')}
-                    sharedContent={t('share.haytiSham')}
-                />
             </div>
             <TagsFilter changeLocationByPath={changeLocationByPath} />
             <HelpButton />
