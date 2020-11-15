@@ -377,7 +377,7 @@ export const useModeratedStories = tags => {
     useEffect(() => {
         (async function fetchData() {
             if (!moderationState.loggedIn) return;
-            replaceRelatedOptions({ tags: tags });
+            replaceRelatedOptions({ tags: tags, sortField: 'updatedAt' });
         })();
     }, [tags]);
 

@@ -26,10 +26,10 @@ const Api = {
     getStoryForEdit: id => {
         return get(baseUrl(`getStoryForEdit?originalStory=${id}`));
     },
-    getAllModeratedStories: ({ tags, pageSize, page }) => {
+    getAllModeratedStories: ({ tags, pageSize, page, sortField }) => {
         return get(
             baseUrl(
-                `getAllModeratedStories?page=${page}&pageSize=${pageSize}${
+                `getAllModeratedStories?page=${page}&pageSize=${pageSize}&sortField=${sortField}${
                     tags && tags.length > 0 ? `&tags=[${tags}]` : ''
                 }`
             )

@@ -199,7 +199,7 @@ export const usePagination = (fn, pageSize) => {
             setData(
                 shouldGetByPage ? [...res.result] : [...currData, ...res.result]
             );
-            setHasMore(data.length < res.total);
+            setHasMore(pageNumber < res.pages);
             setTotal(res.total);
             setTotalPages(res.pages);
             options && setLocalOptions(options);

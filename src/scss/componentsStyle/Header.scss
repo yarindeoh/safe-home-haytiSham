@@ -20,6 +20,9 @@
 
     .right-section {
         @extend .section;
+        img {
+            margin-left: 13px;
+        }
     }
 
     .left-section {
