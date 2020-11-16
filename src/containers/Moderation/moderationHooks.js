@@ -257,9 +257,9 @@ export const useModerationStory = (moderatedStory, tagsMap) => {
     }, []);
 
     useEffect(() => {
-        if (moderatedStory.tags?.length > 0) {
-            let chosenTags = getTagsAsArray(
-                filterObjByKey(tagsMap, moderatedStory.tags)
+        if (moderatedStory.tagsIds?.length > 0) {
+            const chosenTags = getTagsAsArray(
+                filterObjByKey(tagsMap, moderatedStory.tagsIds)
             );
             dispatch({
                 type: SET_TAGS,
