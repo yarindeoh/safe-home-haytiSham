@@ -28,7 +28,7 @@ class StorieService {
         ]).then(([count, result]) => {            
             for(let i=0; i<result.length; i++){
                 let story = result[i];
-                this.updateStoryInfo(story);
+                this.updateStoryInfo(story, tags);
             }
             return {
                 result, total: count, page: page, pages: Math.ceil(count / pageSize)
@@ -36,9 +36,22 @@ class StorieService {
         });
     }
 
-    updateStoryInfo(story){
+    updateStoryInfo(story, tags){
         if(!story || story == null) return;
         if(story.tags){
+            if (tags) { //sort tags according to the order of the requested tags
+                story.tags = story.tags.sort(function (a, b) {
+                    let aIndex = tags.indexOf(a);
+                    let bIndex = tags.indexOf(b);
+                    if (aIndex < 0 && bIndex < 0) {
+                        return 0;
+                    }
+                    if(aIndex > -1 && bIndex < 0) return -1;
+                    if(aIndex < 0 && bIndex > -1) return 1;
+                    if(aIndex < bIndex) return 1
+                    return -1;
+                });
+            }
             story.tagsIds = story.tags;
             story.tags = [];
             for(let t=0; t<story.tagsIds.length; t++){
