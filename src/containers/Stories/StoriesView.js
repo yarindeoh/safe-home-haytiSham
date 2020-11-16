@@ -3,7 +3,7 @@ import { withRoute } from 'services/routing/routerHOC';
 import Carousel from 'containers/Stories/components/Carousel/Carousel';
 import { TagsFilter } from 'containers/Stories/components/TagsFilter';
 import { useTranslation } from 'react-i18next';
-import HelpButton from 'src/components/HelpButton.js';
+import HelpButton from 'src/components/HelpButton';
 import { Skeleton } from 'src/components/Skeleton';
 import LeftArrowIcon from 'src/media/icons/leftArrow.svg';
 import { FacebookShare } from 'components/FacebookShare';
