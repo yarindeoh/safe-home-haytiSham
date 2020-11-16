@@ -109,61 +109,13 @@ export const useResetDialogParams = (
 };
 
 export const useResizeTextArea = () => {
-    let observe;
-    if (window.attachEvent) {
-        observe = function(element, event, handler) {
-            element.attachEvent('on' + event, handler);
-        };
-    } else {
-        observe = function(element, event, handler) {
-            element.addEventListener(event, handler, false);
-        };
-    }
-    function init() {
-        function resize(element) {
-            element.style.height = element.scrollHeight + 'px';
-            autosize(element);
-        }
-
-        let textareas = document.getElementsByTagName('textarea');
-        for (let i = 0; i < textareas.length; i++) {
-            let textarea = textareas[i];
-            observe(textarea, 'change', function() {
-                autosize(this);
-            });
-            observe(textarea, 'cut', function() {
-                autosize(this);
-            });
-            observe(textarea, 'paste', function() {
-                autosize(this);
-            });
-            observe(textarea, 'drop', function() {
-                autosize(this);
-            });
-            observe(textarea, 'keydown', function() {
-                autosize(this);
-            });
-            observe(textarea, 'resize', function() {
-                autosize(this);
-            });
-            resize(textarea);
-        }
-    }
-
     useEffect(() => {
-        init();
-    });
-
-    useEffect(() => {
-        const updateTextAreaDimensions = () => {
-            init();
-        };
-
-        window.addEventListener('resize', updateTextAreaDimensions);
-
-        return () =>
-            window.removeEventListener('resize', updateTextAreaDimensions);
+        autosize(document.querySelectorAll('textarea'));
     }, []);
+
+    useEffect(() => {
+        autosize.update(document.querySelectorAll('textarea'));
+    });
 
     return {};
 };
@@ -208,7 +160,7 @@ export const usePagination = (fn, pageSize) => {
         await getNext(options, [], 1, shouldGetByPage);
     };
     async function getNextPage() {
-        if(currentPage===1) return; //mean we still don't finish replaceRelatedOptions.
+        if (currentPage === 1) return; //mean we still don't finish replaceRelatedOptions.
         await getNext(localOptions, data, currentPage);
     }
 
