@@ -28,6 +28,7 @@
     "pip": "0.0.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-ga": "^3.2.1",
     "react-i18next": "^11.7.0",
     "react-infinite-scroll-component": "^5.0.5",
     "react-messenger-customer-chat": "^0.8.0",
