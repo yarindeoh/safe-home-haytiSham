@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import no2violenceFooter from '../media/no2violence-footer-mobile.png';
-import FacebookIcon from '../media/icons/f_logo.svg';
+import FacebookIcon from 'src/media/icons/f_logo.svg';
+import no2violenceFooter from 'src/media/icons/no2violence-footer-mobile.png';
+
 export const Footer = ({ title, footerMenuItemsAndUrls }) => {
     const { t } = useTranslation();
     const facebookLink = t('common.facebookOrganizationLink');

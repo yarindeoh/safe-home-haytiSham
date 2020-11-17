@@ -40,42 +40,28 @@ export const ModerationForm = withRoute(
                                 required
                             />
                         )}
-                        {!disabled && primaryFormData?.mail && (
-                            <TextArea
-                                containerClass="disabled-area contact-container"
-                                textWrapperClass={`disabled-area ${
-                                    primaryFormData?.contact
-                                        ? 'contact-wrapper-text edit-border-radius'
-                                        : 'disabled-text-area'
-                                }`}
-                                textClass={`disabled-area ${
-                                    primaryFormData?.contact
-                                        ? 'contact-text'
-                                        : 'disabled-text-area'
-                                }`}
-                                name="contactAt"
-                                label={
-                                    primaryFormData?.contact
-                                        ? t('moderation.contactAtLabel', {
-                                              mail: primaryFormData?.mail
-                                          })
-                                        : primaryFormData?.mail
-                                }
-                                icon={
-                                    primaryFormData?.contact ? (
-                                        <WarningIcon />
-                                    ) : (
-                                        undefined
-                                    )
-                                }
-                                defaultValue={
-                                    primaryFormData?.contact
-                                        ? primaryFormData?.contactTime
-                                        : ''
-                                }
-                                disabled={disabled}
-                            />
-                        )}
+                        {!disabled &&
+                            primaryFormData?.mail &&
+                            primaryFormData?.contact && (
+                                <TextArea
+                                    containerClass="disabled-area contact-container"
+                                    textWrapperClass={`disabled-area contact-wrapper-text edit-border-radius`}
+                                    textClass={`disabled-area contact-text`}
+                                    name="contactAt"
+                                    label={t('moderation.contactAtLabel', {
+                                        mail: primaryFormData?.mail
+                                    })}
+                                    icon={<WarningIcon />}
+                                    defaultValue={
+                                        primaryFormData?.contactTime !== ''
+                                            ? primaryFormData?.contactTime
+                                            : t(
+                                                  'moderation.contactTimeDefaultLabel'
+                                              )
+                                    }
+                                    disabled={disabled}
+                                />
+                            )}
                     </div>
                     {primaryFormData?.background && (
                         <TextArea

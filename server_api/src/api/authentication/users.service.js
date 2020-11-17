@@ -47,7 +47,7 @@ class UsersService {
                 return false;
             }
             return User.findById(decoded.id).then((user) => {
-                if (user._id) {
+                if (user && user._id) {
                     return true;
                 }
                 return false;

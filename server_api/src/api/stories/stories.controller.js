@@ -87,8 +87,11 @@ class StorieController {
             whatHelpedYou: req.body.whatHelpedYou,
             background: req.body.background,
             storyContent: req.body.storyContent,
-            publish: req.body.publish || true
-        }
+            publish: req.body.publish 
+        } 
+        if(typeof req.body.publish == "undefined"){
+            instance.publish = true;
+        }       
         const originalStoryID = req.body.originalStory;
         if (!originalStoryID) {
             return res.status(400).json({

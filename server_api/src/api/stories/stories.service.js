@@ -28,7 +28,7 @@ class StorieService {
         ]).then(([count, result]) => {            
             for(let i=0; i<result.length; i++){
                 let story = result[i];
-                this.updateStoryInfo(story);
+                this.updateStoryInfo(story, tags);
             }
             return {
                 result, total: count, page: page, pages: Math.ceil(count / pageSize)
@@ -36,9 +36,22 @@ class StorieService {
         });
     }
 
-    updateStoryInfo(story){
+    updateStoryInfo(story, tags){
         if(!story || story == null) return;
         if(story.tags){
+            if (tags) { //sort tags according to the order of the requested tags
+                story.tags = story.tags.sort(function (a, b) {
+                    let aIndex = tags.indexOf(a);
+                    let bIndex = tags.indexOf(b);
+                    if (aIndex < 0 && bIndex < 0) {
+                        return 0;
+                    }
+                    if(aIndex > -1 && bIndex < 0) return -1;
+                    if(aIndex < 0 && bIndex > -1) return 1;
+                    if(aIndex < bIndex) return 1
+                    return -1;
+                });
+            }
             story.tagsIds = story.tags;
             story.tags = [];
             for(let t=0; t<story.tagsIds.length; t++){
@@ -49,10 +62,12 @@ class StorieService {
             }
         }
         if(story.createdAt){
-            story.createdAt = new Date(story.createdAt).toDateString();
+            const date = new Date(story.createdAt);
+            story.createdAt = `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`;
         }
         if(story.updatedAt){
-            story.updatedAt = new Date(story.updatedAt).toDateString();
+            const date = new Date(story.updatedAt);
+            story.updatedAt = `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`;
         }        
     }
     
@@ -66,6 +81,7 @@ class StorieService {
                 .sort(sortField)
                 .skip((page - 1) * pageSize).limit(pageSize)
                 .populate('user')
+                .lean()
             ]).then(([count, result]) => {            
                 for(let i=0; i<result.length; i++){
                     let story = result[i];
@@ -78,23 +94,25 @@ class StorieService {
     } 
 
     getStoryById(originalStoryID){
-        let story = Story.findById(originalStoryID).lean();
-        this.updateStoryInfo(story);
-        return story;
+        return Story.findById(originalStoryID).lean().then((story) => {
+            this.updateStoryInfo(story);
+            return story;
+        });       
     }
 
     getModeratedStoryById(storyID){
-        let story = ModeratedStrory.findById(storyID).lean();
-        this.updateStoryInfo(story);
-        return story;
+        return ModeratedStrory.findById(storyID).lean().then((story) =>{
+            this.updateStoryInfo(story);
+            return story;
+        });        
     }
     
     getModeratedStoryByOriginalId(originalStoryID){
-        let story = ModeratedStrory.findOne({originalStory: ObjectId(originalStoryID)}).lean();
-        this.updateStoryInfo(story);
-        return story;
-    }
-    
+        return ModeratedStrory.findOne({originalStory: ObjectId(originalStoryID)}).lean().then((story) =>{
+            this.updateStoryInfo(story);
+            return story;
+        });        
+    }    
 
     createStory(storyInstance){
         storyInstance.moderated = false;

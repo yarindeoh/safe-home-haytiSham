@@ -6,6 +6,9 @@ import {
     SET_STORY_DATA
 } from './addStoryConstants';
 import Api from './addStoryApi';
+import {sendEngagementsAnalyticsEvent} from '../../services/analytics/analytics'
+import {analyticsEvents} from '../../services/analytics/analyticsConstants'
+
 
 export function useAddStoryContext() {
     const context = React.useContext(AddStoryContext);
@@ -70,6 +73,7 @@ export const useSubmit = () => {
             }
         }
         postData();
+        sendEngagementsAnalyticsEvent(analyticsEvents.STORY_ADDED)
     };
 
     return {

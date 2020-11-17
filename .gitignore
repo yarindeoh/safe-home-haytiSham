@@ -33,3 +33,6 @@ hs_server.log
 /*.log
 server/__pycache__/__init__.cpython-38.pyc
 server/__pycache__/static_data.cpython-38.pyc
+
+#envs
+server_api/.env

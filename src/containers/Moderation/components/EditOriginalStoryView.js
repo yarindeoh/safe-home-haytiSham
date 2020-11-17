@@ -10,6 +10,9 @@ export const EditOriginalStoryView = withRoute(
         return (
             <div className="edit-container">
                 <div className="edit-header">{t('moderation.editHeader')}</div>
+                {!formData.contact && formData.mail && (
+                    <div className="mail-not-contact">{formData.mail}</div>
+                )}
                 <ModerationForm
                     handleSubmit={handleSubmit}
                     handleFieldChange={handleFieldChange}
