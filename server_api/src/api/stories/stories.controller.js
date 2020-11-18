@@ -7,22 +7,10 @@ require('dotenv').config({ path: envPath });
 class StorieController {
     constructor() {
         this.storieService = new StorieService();
-        
-            // TODO:
-            // For automatic email notifications once a new story is submitted, you should provide a receiver address, and its password.   
-            // Here, you provide email&password to Mailer from the env file. To use it, add a password and an email to the .env file, then uncomment 
-            // all relative code to mailer blow. 
-            // ( - creation of Mailer instance
-            //   - send() method in addStory below
-            //   - mailData in addStory below ) 
-            //   - Mailer module 
-
-            console.log("process.env.MAIL_ADDRESS", process.env.MAIL_ADDRESS)
-            console.log("process.env.MAIL_ADDRESS", process.env.MAIL_PASSWORD)
-            this.mailer = new Mailer({
-                user: process.env.MAIL_ADDRESS,
-                pass: process.env.MAIL_PASSWORD
-            });       
+        this.mailer = new Mailer({
+            user: process.env.MAIL_ADDRESS,
+            pass: process.env.MAIL_PASSWORD
+        });       
         
     }
 
