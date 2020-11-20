@@ -22,7 +22,7 @@ export const StoryVideo = withRoute(props => {
             <div id={'story-page-container'}>
                 <Content className="story-page-content" fullWidth={true}>
                     <div className="quote">
-                        <h1>{story.quote}</h1>
+                        <h1>{`"${story.quote}"`}</h1>
                         <h2>
                             {t('storyVideo.campaign', {
                                 storyteller: story.storyteller,

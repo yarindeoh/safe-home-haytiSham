@@ -36,7 +36,7 @@
     .date {
         grid-area: date;
         font-size: 13px;
-        color:  map_get($colors, grey-1700);
+        color:  map_get($colors, grey-1800);
     }
 
     .text {
@@ -60,6 +60,10 @@
 .eye-slash-icon-story-highlight {
     position: absolute;
     padding: 14px 14px 14px 47px;
+}
+
+.unPublish-date{
+    color: map_get($colors, grey-1700) !important;
 }
 
 .unPublish-quote{

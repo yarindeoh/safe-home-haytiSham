@@ -95,6 +95,7 @@ const he = {
         },
         tagsFilter: {
             allTestimonies: 'כל העדויות',
+            additionalTestimoniesHomePage : "עדויות נוספות",
             additionalTestimonies: 'עדויות דומות',
             moreCategories: 'עוד קטגוריות +',
             lessCategories: 'פחות קטגוריות -'
@@ -113,7 +114,7 @@ const he = {
             loginButtonText: 'אישור',
             emptyList: ' אין סיפורים לעריכה :)',
             listToModerate: 'העדויות שדורשות עריכה (סה"כ {{num}})',
-            listAllStories: 'תצוגת העדויות שמפורסמות באתר לפי נושאים',
+            listAllStories: 'עדויות לאחר עריכה',
             table: {
                 date: 'זמן שליחת העדות',
                 name: 'שם נותן העדות',

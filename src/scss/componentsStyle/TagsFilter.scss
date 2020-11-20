@@ -36,6 +36,6 @@
 
 .more-tags {
   color: map_get($colors, blue-200);
-  margin: 0 0 map_get($spaces, medium);
+  margin: map_get($spaces, small) 0 0;
   width: max-content;
 }

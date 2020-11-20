@@ -13,6 +13,8 @@ export const StoryHighlight = ({
     displayAsUnPublish
 }) => {
     const { id, name, createdAt, tags, quote, updatedAt } = story;
+    const quoteMaxLength = 70;
+    let shortQuote = `"${quote.slice(0, quoteMaxLength)}${quote.length>quoteMaxLength?"...":""}"`
     let initials = name && name.split('')[0];
     const allTags = () => (
         <div className="tags">
@@ -48,7 +50,9 @@ export const StoryHighlight = ({
             <div className="initials">
                 <AvatarIcon />
             </div>
-            <span className="date">
+            <span className={`date ${
+                    displayAsUnPublish ? 'unPublish-date' : ''
+                }`}>
                 {displayEditImg ? updatedAt : createdAt}
             </span>
             <p
@@ -56,7 +60,7 @@ export const StoryHighlight = ({
                     displayAsUnPublish ? 'unPublish-quote' : ''
                 }`}
             >
-                {quote}
+                {shortQuote}
             </p>
             {allTags()}
         </li>

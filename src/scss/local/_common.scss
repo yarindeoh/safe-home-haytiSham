@@ -384,7 +384,7 @@ footer {
         #7845e3 96.66%
     );
     font-weight: normal;
-    font-size: 22px;
+    font-size: 22px !important;
     color: map_get($colors, white);
     border-radius: 80px;
     max-width: 300px;
