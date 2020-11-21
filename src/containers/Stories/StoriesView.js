@@ -30,12 +30,17 @@ export const StoriesView = withRoute(props => {
                     btnText={t('share.fb')}
                     sharedContent={t('share.haytiSham')}
                 />
-                <MessengerCustomerChat
-                    pageId="129705330373192"
-                    appId="1301955370137940"
-                />
+                {/*<MessengerCustomerChat*/}
+                {/*    pageId="129705330373192"*/}
+                {/*    appId="1301955370137940"*/}
+                {/*    themeColor="white"*/}
+                {/*/>*/}
             </div>
-            <TagsFilter changeLocationByPath={changeLocationByPath} storiesHeader="tagsFilter.additionalTestimoniesHomePage" isInHomePage/>
+            <TagsFilter
+                changeLocationByPath={changeLocationByPath}
+                storiesHeader="tagsFilter.additionalTestimoniesHomePage"
+                isInHomePage
+            />
             <HelpButton />
         </Skeleton>
     );
