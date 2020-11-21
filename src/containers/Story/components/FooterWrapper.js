@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
-import { Footer } from 'components/Footer';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 import { useTranslation } from 'react-i18next';
+import { Footer } from 'components/Footer';
+import HelpButton from 'components/HelpButton';
 
 export const FooterWrapper = () => {
     const { t } = useTranslation();
@@ -13,6 +15,12 @@ export const FooterWrapper = () => {
 
     return (
         <Fragment>
+            <HelpButton />
+            <MessengerCustomerChat
+                pageId="129705330373192"
+                appId="1301955370137940"
+                themeColor="white"
+            />
             <Footer title={title} footerMenuItemsAndUrls={footerMenu} />
         </Fragment>
     );

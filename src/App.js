@@ -15,12 +15,11 @@ import { ModerationProvider } from 'containers/Moderation/moderationContext';
 import ScrollToTop from 'components/ScrollToTop';
 import Pages from 'containers/StaticPages/Pages';
 import { initializeAnalytics } from 'services/analytics/analytics';
-import { withMessenger } from 'services/general/withMessenger';
 
 export const history = createBrowserHistory();
 initializeAnalytics();
 
-export const App = withMessenger(() => {
+export const App = () => {
     return (
         // TODO:: fix to value
         <RouterContext.Provider history={history}>
@@ -54,4 +53,4 @@ export const App = withMessenger(() => {
             </AddStoryProvider>
         </RouterContext.Provider>
     );
-});
+};
