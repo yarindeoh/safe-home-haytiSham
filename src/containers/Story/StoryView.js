@@ -4,7 +4,6 @@ import { extractFieldsFromObjOrdered } from 'services/general/generalHelpers';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'components/Skeleton';
-import HelpButton from 'components/HelpButton.js';
 import Content from 'components/Content';
 import { Tags } from './components/Tags';
 import { FacebookShare } from 'components/FacebookShare';
@@ -49,7 +48,7 @@ export const StoryView = withRoute(props => {
                         btnText={t('share.story')}
                         sharedContent={story?.quote}
                     />
-                    <div className={'border-separator'}></div>
+                    <div className={'border-separator'} />
                     {processedStory &&
                         processedStory.map((item, key) => (
                             <div key={key}>
@@ -66,7 +65,6 @@ export const StoryView = withRoute(props => {
                 title={t('tagsFilter.additionalTestimonies')}
                 changeLocationByPath={changeLocationByPath}
             />
-            <HelpButton />
         </Skeleton>
     );
 });
