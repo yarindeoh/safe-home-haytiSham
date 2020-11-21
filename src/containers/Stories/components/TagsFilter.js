@@ -12,7 +12,9 @@ export const TagsFilter = ({
     storiesListClassName,
     handleStoryClick,
     displayEditImg,
-    useStoriesHook
+    useStoriesHook,
+    storiesHeader='tagsFilter.additionalTestimonies',
+    isInHomePage
 }) => {
     const { t } = useTranslation();
     const {
@@ -32,7 +34,7 @@ export const TagsFilter = ({
 
     return (
         <div className={'stories-gallery-container'}>
-            <h1>{t('tagsFilter.additionalTestimonies')}</h1>
+            <h1>{t(storiesHeader)}</h1>
             <Loader data={[tagsData, filterTagsIds]}>
                 <div
                     className={
@@ -77,6 +79,7 @@ export const TagsFilter = ({
                     handleStoryClick={handleStoryClick}
                     displayEditImg={displayEditImg}
                     useStoriesHook={useStoriesHook}
+                    isInHomePage={isInHomePage}
                 />
             </Loader>
         </div>

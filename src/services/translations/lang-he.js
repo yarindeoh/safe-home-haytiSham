@@ -42,10 +42,11 @@ const he = {
         IHaveBeenThereHashtag: '#הייתי_שם',
         storiesView: {
             header: 'בית לעדויות ממערכות יחסים אלימות',
-            addStory: 'לשליחת העדות שלך'
+            addStory: 'לשליחת העדות שלך',
+            fbContact: 'Facebook'
         },
         storyView: {
-            storyOf: 'עדותה של',
+            storyOf: 'העדות של',
             anonymousTeller: 'אנונימית',
             listeningEar: 'אוזן קשבת',
             share: 'שיתוף   ',
@@ -94,6 +95,7 @@ const he = {
         },
         tagsFilter: {
             allTestimonies: 'כל העדויות',
+            additionalTestimoniesHomePage : "עדויות נוספות",
             additionalTestimonies: 'עדויות דומות',
             moreCategories: 'עוד קטגוריות +',
             lessCategories: 'פחות קטגוריות -'
@@ -112,7 +114,7 @@ const he = {
             loginButtonText: 'אישור',
             emptyList: ' אין סיפורים לעריכה :)',
             listToModerate: 'העדויות שדורשות עריכה (סה"כ {{num}})',
-            listAllStories: 'תצוגת העדויות שמפורסמות באתר לפי נושאים',
+            listAllStories: 'עדויות לאחר עריכה',
             table: {
                 date: 'זמן שליחת העדות',
                 name: 'שם נותן העדות',
@@ -130,6 +132,7 @@ const he = {
             originalDate: 'התקבלה ב-{{date}}',
             nameLabel: 'שם לפרסום העדות*',
             contactAtLabel: 'ליצור קשר ב: {{mail}}',
+            contactTimeDefaultLabel: 'אין זמן מועדף',
             back: 'חזרה לרשימת העדויות',
             moderationRulesHeader: 'הנחיות לעריכה',
             moderationRules:
@@ -175,6 +178,11 @@ const he = {
             volunteersNames:
                 'מורן וובר<br/>לישי נועם<br/>ירין דקל<br/>מיכל פורג<br/>שחר גצוביץ׳<br/>נועה נובק<br/>אור מנור<br/>אורלי לבקוביץ פרנק<br/>הדס פרחי<br/>רומי וינטר<br/>רותם שפרינגר<br/>יעל רמוס דר<br/>דניאל גרונת<br/>לאה גרונת',
             inCollaboration: 'הפרוייקט יצא לדרך בשיתוף'
+        },
+        share: {
+            story: 'שתפו את העדות',
+            fb: 'שתפו בפייסבוק',
+            haytiSham: 'הייתי שם'
         },
         termsOfService: {
             header: 'תנאי שימוש',

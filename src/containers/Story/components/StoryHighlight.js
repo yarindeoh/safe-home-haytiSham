@@ -1,6 +1,7 @@
 import React from 'react';
 import Tag from 'components/Tag';
 import EditImg from 'src/media/icons/Edit.svg';
+import EyeSlashIcon from 'src/media/icons/eye-slash-grey.svg';
 import AvatarIcon from 'src/media/icons/Avatar.svg';
 
 export const StoryHighlight = ({
@@ -8,16 +9,25 @@ export const StoryHighlight = ({
     changeLocationByPath,
     liStyle,
     handleStoryClick,
-    displayEditImg
+    displayEditImg,
+    displayAsUnPublish
 }) => {
     const { id, name, createdAt, tags, quote, updatedAt } = story;
+    const quoteMaxLength = 70;
+    let shortQuote = `"${quote.slice(0, quoteMaxLength)}${quote.length>quoteMaxLength?"...":""}"`
     let initials = name && name.split('')[0];
     const allTags = () => (
         <div className="tags">
             {tags &&
                 tags
                     .slice(0, 3)
-                    .map((tag, i) => <Tag key={`tag_${i}`} text={tag} />)}
+                    .map((tag, i) => (
+                        <Tag
+                            key={`tag_${i}`}
+                            text={tag}
+                            displayAsUnPublish={displayAsUnPublish}
+                        />
+                    ))}
         </div>
     );
 
@@ -34,13 +44,24 @@ export const StoryHighlight = ({
             {displayEditImg && (
                 <EditImg className={'edit-icon-story-highlight'} />
             )}
+            {displayAsUnPublish && (
+                <EyeSlashIcon className={'eye-slash-icon-story-highlight'} />
+            )}
             <div className="initials">
                 <AvatarIcon />
             </div>
-            <span className="date">
+            <span className={`date ${
+                    displayAsUnPublish ? 'unPublish-date' : ''
+                }`}>
                 {displayEditImg ? updatedAt : createdAt}
             </span>
-            <p className="text">{quote}</p>
+            <p
+                className={`text ${
+                    displayAsUnPublish ? 'unPublish-quote' : ''
+                }`}
+            >
+                {shortQuote}
+            </p>
             {allTags()}
         </li>
     );

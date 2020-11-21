@@ -7,6 +7,7 @@ import Skeleton from 'src/components/Skeleton';
 import HelpButton from 'src/components/HelpButton.js';
 import Content from 'src/components/Content';
 import StoryInfo from './components/StoryInfo';
+import { FacebookShare } from 'components/FacebookShare';
 
 export const StoryView = withRoute(props => {
     const { t } = useTranslation();
@@ -30,6 +31,11 @@ export const StoryView = withRoute(props => {
             <div id={'story-page-container'}>
                 <Content className={'story-page-content'} alignRight={true}>
                     <StoryInfo story={story} />
+                    <FacebookShare
+                        btnText={t('share.story')}
+                        sharedContent={story?.quote}
+                    />
+                    <div className={'border-separator'}></div>
                     {processedStory &&
                         processedStory.map((item, key) => (
                             <div key={key}>

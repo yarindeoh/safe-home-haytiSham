@@ -74,9 +74,16 @@
     .organizationLink {
         color: #3690E4;
         text-decoration: underline;
+        padding-right: 5px;
     }
 
     .copyright {
         font-size: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #fb-icon {
+        padding-left: 5px;
     }
 }

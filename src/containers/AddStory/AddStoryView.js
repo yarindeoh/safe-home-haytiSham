@@ -27,6 +27,7 @@ export const AddStoryView = withRoute(props => {
     let wrapperClassName = 'testimony-form';
     if (submitted) {
         wrapperClassName += ' submitted';
+        window.scrollTo(0, 0);
     }
 
     const submittedMsg = (
@@ -84,18 +85,22 @@ export const AddStoryView = withRoute(props => {
                                 ]}
                                 onClick={e => handleCheckedContact(e)}
                             />
-                            <Input
-                                name="contactTime"
-                                label={t('addStoryView.contactTimeLabel')}
-                                subLabel={t('addStoryView.contactTimeSubLabel')}
-                                placeholder={t(
-                                    'addStoryView.contactTimePlaceholder'
-                                )}
-                                value={addStoryState?.contactTime}
-                                onChange={e =>
-                                    handleFieldChange(e, 'contactTime')
-                                }
-                            />
+                            {addStoryState.contact && (
+                                <Input
+                                    name="contactTime"
+                                    label={t('addStoryView.contactTimeLabel')}
+                                    subLabel={t(
+                                        'addStoryView.contactTimeSubLabel'
+                                    )}
+                                    placeholder={t(
+                                        'addStoryView.contactTimePlaceholder'
+                                    )}
+                                    value={addStoryState?.contactTime}
+                                    onChange={e =>
+                                        handleFieldChange(e, 'contactTime')
+                                    }
+                                />
+                            )}
                             <TextArea
                                 name="background"
                                 placeholder=""
