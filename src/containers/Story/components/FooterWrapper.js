@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 import { useTranslation } from 'react-i18next';
 import { Footer } from 'components/Footer';
@@ -19,6 +19,7 @@ export const FooterWrapper = () => {
             <MessengerCustomerChat
                 pageId="129705330373192"
                 appId="1301955370137940"
+                themeColor="white"
             />
             <Footer title={title} footerMenuItemsAndUrls={footerMenu} />
         </div>
