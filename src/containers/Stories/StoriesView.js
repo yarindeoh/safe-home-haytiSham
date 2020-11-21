@@ -35,7 +35,7 @@ export const StoriesView = withRoute(props => {
                     appId="1301955370137940"
                 />
             </div>
-            <TagsFilter changeLocationByPath={changeLocationByPath} />
+            <TagsFilter changeLocationByPath={changeLocationByPath} storiesHeader="tagsFilter.additionalTestimoniesHomePage" isInHomePage/>
             <HelpButton />
         </Skeleton>
     );

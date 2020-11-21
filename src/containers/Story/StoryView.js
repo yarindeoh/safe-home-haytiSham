@@ -49,6 +49,7 @@ export const StoryView = withRoute(props => {
                         btnText={t('share.story')}
                         sharedContent={story?.quote}
                     />
+                    <div className={'border-separator'}></div>
                     {processedStory &&
                         processedStory.map((item, key) => (
                             <div key={key}>

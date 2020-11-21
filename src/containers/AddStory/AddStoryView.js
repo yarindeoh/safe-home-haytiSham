@@ -27,6 +27,7 @@ export const AddStoryView = withRoute(props => {
     let wrapperClassName = 'testimony-form';
     if (submitted) {
         wrapperClassName += ' submitted';
+        window.scrollTo(0, 0);
     }
 
     const submittedMsg = (

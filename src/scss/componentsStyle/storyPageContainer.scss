@@ -22,7 +22,7 @@
 
     > h1 {
       font-size: 22px;
-      font-weight: normal;
+      font-weight: 600;
       color: map_get($colors, black);
     }
 
@@ -37,6 +37,10 @@
     div > span {
       font-size: 16px;
     }
+  }
+
+  .border-separator{
+    border-bottom: 1px solid map_get($colors, grey-200);
   }
 }
 
