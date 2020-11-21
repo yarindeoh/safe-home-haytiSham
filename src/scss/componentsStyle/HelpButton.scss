@@ -1,29 +1,7 @@
 .HelpButton {
-  height: 46px;
-  width: 64px;
   position: fixed;
   bottom: 30px;
   left: 0;
-  background: map_get($colors, purple-500);
-  border-radius: 0 11px 11px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 4px 6px 20px rgba(109, 48, 171, 0.36), 0px 0px 3px rgba(0, 0, 0, 0.13);
-  cursor: pointer;
-
-  .HeartShape {
-    position: absolute;
-    width: 36px;
-    height: 33px;
-  }
-
-  .Text {
-    position: absolute;
-    color: map_get($colors, white);
-    font-size: 12px;
-    padding-bottom: 7px;
-  }
 
   @include desktop{
     display: none;

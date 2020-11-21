@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Assistant:Extra-light, Light, Regular, Semi-bold, bold, Extra-bold');
+@import '../local/_colors.scss';
 
 * {
     margin: 0;
     padding: 0;
     border: 0;
     direction: rtl;
+    color: map_get($colors, grey-800);
     font-family: 'Assistant', serif;
 }
 

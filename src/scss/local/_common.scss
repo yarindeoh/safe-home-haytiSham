@@ -226,7 +226,9 @@ footer {
             }
 
             .facebook-no2violence {
-                color: map_get($colors, white);
+                p {
+                    color: map_get($colors, white);
+                }
                 display: flex;
                 svg {
                     padding-left: 5px;
