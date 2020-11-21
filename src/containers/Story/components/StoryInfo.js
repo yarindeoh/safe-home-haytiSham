@@ -21,7 +21,7 @@ export function StoryInfo(props) {
 
     return (
         <div className="story-info">
-            <h1>”{story.quote}„</h1>
+            <h1>"{story.quote}"</h1>
             <h2>{storyBy}</h2>
             <Tags tags={story.tags} />
         </div>
