@@ -13,11 +13,12 @@ export const StoriesList = ({
     handleStoryClick,
     displayEditImg,
     originalStory,
-    useStoriesHook = useStories
+    useStoriesHook = useStories,
+    isInHomePage
 }) => {
     const { stories, hasMore, getNextPage } = useStoriesHook(tags);
     return (
-        <div className={'more-testimonies'}>
+        <div className={'more-testimonies'} style={isInHomePage && {paddingLeft:0, paddingRight:0}}>
             <h1>{title}</h1>
             <InfiniteScroll
                 dataLength={stories?.length}
@@ -40,6 +41,10 @@ export const StoriesList = ({
                                         story={stories[key]}
                                         key={key}
                                         displayEditImg={displayEditImg}
+                                        displayAsUnPublish={
+                                            !stories[key].publish &&
+                                            displayEditImg
+                                        }
                                         changeLocationByPath={() =>
                                             changeLocationByPath(
                                                 `${

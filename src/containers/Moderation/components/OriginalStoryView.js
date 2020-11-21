@@ -24,6 +24,11 @@ export const OriginalStoryView = withRoute(({ data, back }) => {
                         })}
                     </div>
                 </div>
+                {!data.contact && data.mail && (
+                    <div className="original-align-text mail-not-contact">
+                        {data.mail}
+                    </div>
+                )}
                 <ModerationForm
                     formData={data}
                     primaryFormData={data}

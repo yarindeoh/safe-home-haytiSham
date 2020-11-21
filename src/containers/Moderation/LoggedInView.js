@@ -33,6 +33,7 @@ export const LoggedInView = () => {
                         handleStoryClick={handleStoryClick}
                         displayEditImg
                         useStoriesHook={useModeratedStories}
+                        storiesHeader="login.listAllStories"
                     />
                 </div>
             </div>

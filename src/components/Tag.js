@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Tag = ({ text, onClick }) => {
+export const Tag = ({ text, onClick, displayAsUnPublish }) => {
     const handleOnClick = () => {
         if (onClick) {
             onClick();
@@ -8,7 +8,10 @@ export const Tag = ({ text, onClick }) => {
     };
 
     return (
-        <span className="tag" onClick={handleOnClick}>
+        <span
+            className={`tag ${displayAsUnPublish ? 'unPublish-tags' : ''}`}
+            onClick={handleOnClick}
+        >
             {text}
         </span>
     );

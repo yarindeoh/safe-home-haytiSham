@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import HelpButton from 'src/components/HelpButton.js';
 import Skeleton from 'src/components/Skeleton';
 import Content from 'src/components/Content';
+import { FacebookShare } from 'components/FacebookShare';
 
 export const StoryVideo = withRoute(props => {
     const { t } = useTranslation();
@@ -21,7 +22,7 @@ export const StoryVideo = withRoute(props => {
             <div id={'story-page-container'}>
                 <Content className="story-page-content" fullWidth={true}>
                     <div className="quote">
-                        <h1>{story.quote}</h1>
+                        <h1>{`"${story.quote}"`}</h1>
                         <h2>
                             {t('storyVideo.campaign', {
                                 storyteller: story.storyteller,
@@ -41,6 +42,10 @@ export const StoryVideo = withRoute(props => {
                             </Video>
                         </div>
                     </div>
+                    <FacebookShare
+                        btnText={t('share.story')}
+                        sharedContent="הייתי שם"
+                    />
                 </Content>
             </div>
             <StoriesList

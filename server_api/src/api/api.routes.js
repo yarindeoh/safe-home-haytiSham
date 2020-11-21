@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const path = require('path')
 
 const TagController = require("./tags.controller");
 const tagController = new TagController();
@@ -27,5 +28,10 @@ router.get('/getStoryForEdit', loginGuard, storieController.getStoryForEdit.bind
 router.post('/addModerateStory', loginGuard, storieController.addModerateStory.bind(storieController));
 router.post('/publishModerateStory', loginGuard, storieController.publishModerateStory.bind(storieController));
 router.get('/getAllModeratedStories', loginGuard, storieController.getAllModeratedStories.bind(storieController));
+
+// send preview image for meta tag 
+router.get('/previewImage', (req, res) => 
+  res.sendFile(path.join(__dirname + '../../../../src/media/assets/preview.png'))
+);
 
 module.exports = router;

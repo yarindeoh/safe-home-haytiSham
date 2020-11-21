@@ -226,14 +226,22 @@ footer {
             display: flex;
             justify-content: center;
             flex-direction: column;
-            height: 45px;
-            margin-top: 40px;
+            height: 90px;
+            margin-top: 25px;
             font-size: 15px;
             align-items: center;
             margin-bottom: 20px;
+            div {
+                padding-top: 4px;
+                padding-bottom: 4px;
+            }
 
             .facebook-no2violence {
                 color: map_get($colors, white);
+                display: flex;
+                svg {
+                    padding-left: 5px;
+                }
             }
 
             div:nth-child(2) {
@@ -398,7 +406,7 @@ footer {
         #7845e3 96.66%
     );
     font-weight: normal;
-    font-size: 22px;
+    font-size: 22px !important;
     color: map_get($colors, white);
     border-radius: 80px;
     max-width: 300px;

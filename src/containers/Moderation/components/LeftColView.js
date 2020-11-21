@@ -9,7 +9,6 @@ import { useTags } from 'containers/Stories/storiesHooks';
 import { getTagsAsArray } from 'services/general/generalHelpers';
 import Select from 'react-select';
 import { TextArea } from 'components/TextArea';
-import { red } from '@material-ui/core/colors';
 
 export const LeftColView = withRoute(({ handleFieldChange, formData }) => {
     const { moderationState } = useModerationContext();
@@ -84,6 +83,7 @@ export const LeftColView = withRoute(({ handleFieldChange, formData }) => {
                     <TextArea
                         formId={'EditOriginalStoryView'}
                         name="quote"
+                        labelClass="quote-label"
                         label={t('addStoryView.quoteLabel')}
                         placeholder={t('addStoryView.quotePlaceHolder')}
                         value={formData?.quote}
