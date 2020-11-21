@@ -13,7 +13,7 @@ export const TagsFilter = ({
     handleStoryClick,
     displayEditImg,
     useStoriesHook,
-    storiesHeader='tagsFilter.additionalTestimonies',
+    storiesHeader = 'tagsFilter.additionalTestimonies',
     isInHomePage
 }) => {
     const { t } = useTranslation();

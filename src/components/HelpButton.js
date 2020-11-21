@@ -5,7 +5,7 @@ import {analyticsEvents} from '../services/analytics/analyticsConstants'
 
 
 const handleClick = () => {
-    sendEngagementsAnalyticsEvent(analyticsEvents.CALLING_HELP)
+    sendEngagementsAnalyticsEvent(analyticsEvents.CALLING_HELP);
 };
 
 export default function HelpButton() {
