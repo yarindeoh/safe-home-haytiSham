@@ -19,7 +19,7 @@ export const FooterWrapper = () => {
             <MessengerCustomerChat
                 pageId="129705330373192"
                 appId="1301955370137940"
-                themeColor="white"
+                themeColor="#0075FB"
             />
             <Footer title={title} footerMenuItemsAndUrls={footerMenu} />
         </div>
