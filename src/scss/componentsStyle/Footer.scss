@@ -15,89 +15,81 @@
   .navigation {
     padding: 60px 0;
     display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    img {
+      width: 123px;
+      height: 76.88px;
+    }
+
+    .emergency-line {
+      width: 125px;
+      height: 79px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: map-get($colors, purple-600 );
+      margin-left: 70px;
+      margin-right: auto;
+      border-radius: 4px;
+    }
+
+    span.phone  {
+      font-size: 32.26px;
+      font-weight: 600;
+    }
+
+    span.text {
+      font-size: 15px;
+    }
+  }
+
+  a,
+  span {
+    color: map_get($colors, white);
+    text-decoration: none;
+  }
+
+  .left-area {
+    display: flex;
     flex-direction: column;
+    margin: 0 65px;
+
+    a:not(:last-child) {
+      margin-bottom: map_get($spaces, small);
+    }
+  }
+
+  .title {
+    margin-left: 35px;
+    color:  map_get($colors, white);
+    font-size: 40px;
+    align-self: center;
+    margin-right: auto;
+  }
+
+  .separator {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .organizationLink {
+    color: #3690E4;
+    text-decoration: underline;
+    padding-right: 5px;
+  }
+
+  .copyright {
+    font-size: 15px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    padding: map_get($spaces, small) 0;
-
-    .navigation {
-        padding: 60px 0;
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-
-        img {
-            width: 123px;
-            height: 76.88px;
-        }
-
-        .emergency-line {
-            width: 125px;
-            height: 79px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: map-get($colors, purple-600 );
-            margin-left: 70px;
-            margin-right: auto;
-            border-radius: 4px;        
-        }
-        
-            span.phone  {
-                font-size: 32.26px;
-                font-weight: 600;    
-            }
-
-            span.text {
-                font-size: 15px;
-            }
-        }
-
-    a,
-    span {
-        color: map_get($colors, white);
-        text-decoration: none;
-    }
-
-    .left-area {
-        display: flex;
-        flex-direction: column;
-        margin: 0 65px;
-
-        a:not(:last-child) {
-            margin-bottom: map_get($spaces, small);
-        }
-    }
-
-    .title {
-        margin-left: 35px;
-        color:  map_get($colors, white);
-        font-size: 40px;
-        align-self: center;
-        margin-right: auto;
-    }
-
-    .separator {
-        padding-left: 7px;
-        padding-right: 7px;
-    }
-
-    .organizationLink {
-        color: #3690E4;
-        text-decoration: underline;
-        padding-right: 5px;
-    }
-
-    .copyright {
-        font-size: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #fb-icon {
-        padding-left: 5px;
-    }
+  }
+  #fb-icon {
+    padding-left: 5px;
+  }
 }
