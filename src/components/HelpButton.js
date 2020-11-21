@@ -1,11 +1,10 @@
 import React from 'react';
 import HeartIcon from 'src/media/icons/Union.svg';
-import {sendEngagementsAnalyticsEvent} from '../services/analytics/analytics'
-import {analyticsEvents} from '../services/analytics/analyticsConstants'
-
+import { sendEngagementsAnalyticsEvent } from '../services/analytics/analytics';
+import { analyticsEvents } from '../services/analytics/analyticsConstants';
 
 const handleClick = () => {
-    sendEngagementsAnalyticsEvent(analyticsEvents.CALLING_HELP)
+    sendEngagementsAnalyticsEvent(analyticsEvents.CALLING_HELP);
 };
 
 export default function HelpButton() {
