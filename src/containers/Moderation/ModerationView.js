@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRoute } from 'services/routing/routerHOC';
+import { withRoute } from 'services/routing/withRouter';
 import { EditOriginalStoryView } from 'containers/Moderation/components/EditOriginalStoryView';
 import { OriginalStoryView } from 'containers/Moderation/components/OriginalStoryView';
 import { LeftColView } from 'containers/Moderation/components/LeftColView';

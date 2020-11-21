@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRoute } from 'services/routing/routerHOC';
+import { withRoute } from 'services/routing/withRouter';
 import { useTranslation, Trans } from 'react-i18next';
 import {
     useModerationContext,

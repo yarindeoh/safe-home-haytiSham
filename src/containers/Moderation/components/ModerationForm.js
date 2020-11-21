@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRoute } from 'services/routing/routerHOC';
+import { withRoute } from 'services/routing/withRouter';
 import { Input } from 'components/Input';
 import { TextArea } from 'components/TextArea';
 import { useTranslation } from 'react-i18next';

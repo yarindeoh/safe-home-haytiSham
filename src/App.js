@@ -15,7 +15,6 @@ import { ModerationProvider } from 'containers/Moderation/moderationContext';
 import ScrollToTop from 'components/ScrollToTop';
 import Pages from 'containers/StaticPages/Pages';
 import { initializeAnalytics } from './services/analytics/analytics';
-import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 export const history = createBrowserHistory();
 initializeAnalytics();
@@ -37,11 +36,6 @@ export const App = () => {
                         />
                         <Route path="/publicStory/:id" component={StoryVideo} />
                         <Route path="/pages" component={Pages} />
-                        <MessengerCustomerChat
-                            pageId="129705330373192"
-                            appId="1301955370137940"
-                            themeColor="white"
-                        />
                         <ModerationProvider>
                             <Route exact path="/admin" component={LoginView} />
                             <Route

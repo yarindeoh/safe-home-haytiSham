@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRoute } from 'services/routing/routerHOC';
+import { withRoute } from 'services/routing/withRouter';
 import { Route, Redirect } from 'react-router-dom';
 import { useModerationContext } from './moderationHooks';
 import LoginForm from 'containers/Moderation/components/LoginForm';
