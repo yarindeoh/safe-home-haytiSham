@@ -14,13 +14,13 @@ export const FooterWrapper = () => {
     ];
 
     return (
-        <Fragment>
+        <div>
             <HelpButton />
             <MessengerCustomerChat
                 pageId="129705330373192"
                 appId="1301955370137940"
             />
             <Footer title={title} footerMenuItemsAndUrls={footerMenu} />
-        </Fragment>
+        </div>
     );
 };
