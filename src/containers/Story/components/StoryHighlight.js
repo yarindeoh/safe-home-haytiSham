@@ -12,12 +12,13 @@ export const StoryHighlight = ({
     displayEditImg,
     displayAsUnPublish
 }) => {
-    const { id, name, createdAt, tags, quote, updatedAt } = story;
+    const { name, createdAt, tags, quote, updatedAt } = story;
     const quoteMaxLength = 70;
     let shortQuote = `"${quote.slice(0, quoteMaxLength)}${
         quote.length > quoteMaxLength ? '...' : ''
     }"`;
     let initials = name && name.split('')[0];
+    console.log(tags);
     const allTags = () => (
         <div className="tags">
             {tags &&
@@ -30,6 +31,7 @@ export const StoryHighlight = ({
                             displayAsUnPublish={displayAsUnPublish}
                         />
                     ))}
+            {tags.length > 3 && <span className="tag">...</span>}
         </div>
     );
 
