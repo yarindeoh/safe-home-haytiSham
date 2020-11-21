@@ -14,9 +14,50 @@ export const About = () => {
             <Content className="about">
                 <h1>{t('about.header')}</h1>
 
-                <p>{t('about.noToViolanceIntro')}</p>
-                <p>{t('about.noToViolanceActions')}</p>
-                <p>{t('about.noToViolanceChange')}</p>
+                <p>
+                    <Trans i18nKey="about.noToViolenceIntro" />
+                </p>
+                <p>
+                    {t('about.text1')}
+                    {
+                        <a
+                            href="https://www.michalsela.org.il/hackathon"
+                            target="_blank"
+                        >
+                            {t('about.linkHackathon')}
+                        </a>
+                    }
+                    {t('about.text2')}
+                    {
+                        <a
+                            href="https://www.facebook.com/oneofone1/"
+                            target="_blank"
+                        >
+                            {t('about.linkOneofOne')}
+                        </a>
+                    }
+                    {t('about.text3')}
+                    {
+                        <a
+                            href="https://politicallycorret.co.il/beenthere/"
+                            target="_blank"
+                        >
+                            {t('about.linkHaytisham')}
+                        </a>
+                    }
+                    <Trans i18nKey="about.text4" />
+                </p>
+                <p>{t('about.text5')}</p>
+                <h2>{t('about.onNoToViolenceHeader')}</h2>
+                <p>
+                    <Trans i18nKey="about.text6" />
+                </p>
+                <p>
+                    <Trans i18nKey="about.text7" />
+                </p>
+                <p>
+                    <Trans i18nKey="about.text8" />
+                </p>
                 <div className="divider">...</div>
                 <p>
                     <Trans i18nKey="about.intro" />
@@ -25,14 +66,26 @@ export const About = () => {
                 <p>
                     <Trans i18nKey="about.volunteersNames" />
                 </p>
+                <h2>{t('about.volunteersNoViolenceTitle')}</h2>
+                <p>
+                    <Trans i18nKey="about.volunteersNoViolenceNames" />
+                </p>
                 <h3>
                     <span>{t('about.inCollaboration')}</span>
                 </h3>
                 <div className="logo-container">
-                    <MichalSelaLogo />
-                    <PoliticlyKoretLogo />
-                    <OnlifeLogo />
-                    <LoLalimotLogo />
+                    <a href="https://www.michalsela.org.il/" target="_blank">
+                        <MichalSelaLogo />
+                    </a>
+                    <a href="https://politicallycorret.co.il/" target="_blank">
+                        <PoliticlyKoretLogo />
+                    </a>
+                    <a href="https://www.onlife.co.il/" target="_blank">
+                        <OnlifeLogo />
+                    </a>
+                    <a href="https://no2violence.co.il/" target="_blank">
+                        <LoLalimotLogo />
+                    </a>
                 </div>
             </Content>
         </Skeleton>

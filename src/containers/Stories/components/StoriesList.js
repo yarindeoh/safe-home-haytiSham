@@ -18,7 +18,10 @@ export const StoriesList = ({
 }) => {
     const { stories, hasMore, getNextPage } = useStoriesHook(tags);
     return (
-        <div className={'more-testimonies'} style={isInHomePage && {paddingLeft:0, paddingRight:0}}>
+        <div
+            className={'more-testimonies'}
+            style={isInHomePage && { paddingLeft: 0, paddingRight: 0 }}
+        >
             <h1>{title}</h1>
             <InfiniteScroll
                 dataLength={stories?.length}
