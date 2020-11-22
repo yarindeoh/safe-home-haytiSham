@@ -35,7 +35,7 @@ export const StoryView = withRoute(props => {
                         btnText={t('share.story')}
                         sharedContent={story?.quote}
                     />
-                    <div className={'border-separator'}></div>
+                    <div className={'border-separator'} />
                     {processedStory &&
                         processedStory.map((item, key) => (
                             <div key={key}>
@@ -52,7 +52,6 @@ export const StoryView = withRoute(props => {
                 title={t('tagsFilter.additionalTestimonies')}
                 changeLocationByPath={changeLocationByPath}
             />
-            <HelpButton />
         </Skeleton>
     );
 });

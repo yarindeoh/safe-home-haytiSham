@@ -14,7 +14,7 @@ import { ModerationView } from 'containers/Moderation/ModerationView';
 import { ModerationProvider } from 'containers/Moderation/moderationContext';
 import ScrollToTop from 'components/ScrollToTop';
 import Pages from 'containers/StaticPages/Pages';
-import {initializeAnalytics} from './services/analytics/analytics'
+import { initializeAnalytics } from './services/analytics/analytics';
 
 export const history = createBrowserHistory();
 initializeAnalytics();
