@@ -7,9 +7,7 @@ export function CarouselItem({ story, isSelected, onClick }) {
     const { id, tags, quote, img, timestamp, storyteller } = story;
 
     const handleClick = () => {
-        if (isSelected) {
-            onClick(id);
-        }
+        onClick(id);
     };
 
     const renderTags = () => (
