@@ -40,10 +40,8 @@ export const Footer = ({ title, footerMenuItemsAndUrls }) => {
                     <div className="facebook-no2violence">
                         <a href={facebookLink} target="_blank">
                             <FacebookIcon id="fb-icon" />
-                        </a>
-                        <p>
                             {t('footer.facebook', { name: organizationName })}
-                        </p>
+                        </a>
                     </div>
                     <div>
                         {t('footer.website', { name: organizationName })}

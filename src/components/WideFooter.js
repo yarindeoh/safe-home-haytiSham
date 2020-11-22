@@ -26,14 +26,15 @@ export const WideFooter = () => {
                 </div>
                 <div className="emergency-line">
                     <span className="phone">6724*</span>
-                    <span className="text">קו חירום 24/7</span>
+                    <span className="text">קו חירום <span className="largeText">24/7</span></span>
+                    
                 </div>
             </div>
             <span className="copyright">
                 <a href={facebookLink} target="_blank">
                     <FacebookIcon id="fb-icon" />
+                    {t('footer.facebook', { name: organizationName })}
                 </a>
-                {t('footer.facebook', { name: organizationName })}
                 <span className="separator">•</span>
                 {t('footer.website', { name: organizationName })}
                 <a
