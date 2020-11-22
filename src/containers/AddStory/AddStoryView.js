@@ -73,6 +73,7 @@ export const AddStoryView = withRoute(props => {
                                 placeholder={t('addStoryView.mailPlaceholder')}
                                 value={addStoryState?.mail}
                                 onChange={e => handleFieldChange(e, 'mail')}
+                                required={addStoryState.contact}
                             />
                             <Radio
                                 name="contact"
@@ -103,7 +104,9 @@ export const AddStoryView = withRoute(props => {
                             )}
                             <TextArea
                                 name="background"
-                                placeholder=""
+                                placeholder={t(
+                                    'addStoryView.backgroundPlaceholder'
+                                )}
                                 label={t('addStoryView.backgroundLabel')}
                                 value={addStoryState?.background}
                                 onChange={e =>
@@ -149,6 +152,9 @@ export const AddStoryView = withRoute(props => {
                                 name="whatTriggeredChange"
                                 label={t(
                                     'addStoryView.whatTriggeredChangeLabel'
+                                )}
+                                placeholder={t(
+                                    'addStoryView.whatTriggeredChangePlaceholder'
                                 )}
                                 value={addStoryState?.whatTriggeredChange}
                                 onChange={e =>
