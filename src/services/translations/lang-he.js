@@ -72,6 +72,7 @@ const he = {
             contactTimeLabel: 'מתי הכי נוח לך שניצור איתך קשר?',
             contactTimeSubLabel: 'נוכל לחזור אלייך החל מעוד שלושה ימים',
             contactTimePlaceholder: 'לדוגמא: יום ראשון בין השעות 17:00-20:00',
+            backgroundPlaceholder: 'הרקע לסיפור הוא...',
             backgroundLabel:
                 'רקע (גיל, מתי-עבר/הווה, אופי הקשר, במשך כמה זמן או עדיין נמשך)*',
             storyContentLabel: 'השיתוף שלי*',
@@ -81,6 +82,7 @@ const he = {
             whatHelpedYouLabel: 'מה עזר או עוזר לך בהתמודדות?',
             whatHelpedYouPlaceHolder: 'מאוד עזר לי ש...',
             whatTriggeredChangeLabel: 'האם משהו השתנה? מה יצר את השינוי?',
+            whatTriggeredChangePlaceholder: 'השינוי קרה/לא קרה...',
             additionalnfoLabel:
                 'בכמה משפטים, מה הכי היית רוצה לומר למי שנמצאת במצב דומה?',
             additionalnfoPlaceHolder: 'אני רוצה לומר ש...',
