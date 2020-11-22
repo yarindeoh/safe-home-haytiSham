@@ -73,6 +73,7 @@ export const AddStoryView = withRoute(props => {
                                 placeholder={t('addStoryView.mailPlaceholder')}
                                 value={addStoryState?.mail}
                                 onChange={e => handleFieldChange(e, 'mail')}
+                                required={addStoryState.contact}
                             />
                             <Radio
                                 name="contact"
