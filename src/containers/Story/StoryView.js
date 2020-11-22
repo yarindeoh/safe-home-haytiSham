@@ -4,7 +4,6 @@ import { withRoute } from 'services/routing/routerHOC';
 import { extractFieldsFromObjOrdered } from 'services/general/generalHelpers';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
 import Skeleton from 'src/components/Skeleton';
-import HelpButton from 'src/components/HelpButton.js';
 import Content from 'src/components/Content';
 import StoryInfo from './components/StoryInfo';
 import { FacebookShare } from 'components/FacebookShare';
