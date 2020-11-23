@@ -1,11 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { withRoute } from 'services/routing/routerHOC';
 import { extractFieldsFromObjOrdered } from 'services/general/generalHelpers';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
-import { useTranslation } from 'react-i18next';
-import Skeleton from 'components/Skeleton';
-import Content from 'components/Content';
-import { Tags } from './components/Tags';
+import Skeleton from 'src/components/Skeleton';
+import Content from 'src/components/Content';
+import StoryInfo from './components/StoryInfo';
 import { FacebookShare } from 'components/FacebookShare';
 
 export const StoryView = withRoute(props => {
@@ -29,21 +29,7 @@ export const StoryView = withRoute(props => {
         <Skeleton>
             <div id={'story-page-container'}>
                 <Content className={'story-page-content'} alignRight={true}>
-                    <div className={'quote'}>
-                        <h1>"{story?.quote}"</h1>
-                        <h2>
-                            {`
-                     ${t('storyView.storyOf')}
-                     ${
-                         story?.name
-                             ? story?.name
-                             : t('storyView.anonymousTeller')
-                     }
-                     ${story?.createdAt}
-                   `}
-                        </h2>
-                        <Tags tags={story?.tags} />
-                    </div>
+                    <StoryInfo story={story} />
                     <FacebookShare
                         btnText={t('share.story')}
                         sharedContent={story?.quote}

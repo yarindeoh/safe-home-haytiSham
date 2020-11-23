@@ -7,11 +7,11 @@
     display: grid;
     grid-row-gap: 3px;
     grid-column-gap: map_get($spaces, x-small);
-    grid-template-columns: 6fr 1fr;
+    grid-template-columns: 1fr 6fr 1fr;
     grid-template-areas:
-        'date letter'
-        'text letter'
-        'tags letter';
+        'arrow date letter'
+        'arrow text letter'
+        'arrow tags letter';
     border-radius: 11px;
     background-color: map_get($colors, white);
     box-shadow: 0px 6px 18px rgba(219, 220, 246, 0.36);
@@ -50,6 +50,18 @@
         display: flex;
         flex-wrap: wrap;
     }
+
+    
+    .arrow-icon {
+        grid-area: arrow;
+        align-self: center;
+        justify-self: self-end;
+        display: flex;
+        color: map_get($colors, black);
+        font-size: 20px;
+        font-weight: bolder;
+    }
+
 }
 
 .edit-icon-story-highlight {

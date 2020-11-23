@@ -9,11 +9,10 @@ import PoliticlyKoretLogo from 'src/media/icons/politicly_koret_logo.svg';
 
 export const About = () => {
     const { t } = useTranslation();
-    return (
-        <Skeleton>
-            <Content className="about">
-                <h1>{t('about.header')}</h1>
 
+    const renderAboutSection = () => {
+        return (
+            <React.Fragment>
                 <p>
                     <Trans i18nKey="about.noToViolenceIntro" />
                 </p>
@@ -59,6 +58,13 @@ export const About = () => {
                     }
                     {t('about.whoIsSofi')}
                 </p>
+            </React.Fragment>
+        );
+    };
+
+    const renderNoToViolenceSection = () => {
+        return (
+            <React.Fragment>
                 <h2>{t('about.onNoToViolenceHeader')}</h2>
                 <p>
                     <Trans i18nKey="about.text6" />
@@ -79,7 +85,13 @@ export const About = () => {
                         </a>
                     }
                 </p>
-                <div className="divider">...</div>
+            </React.Fragment>
+        );
+    };
+
+    const renderVolunteeringSection = () => {
+        return (
+            <React.Fragment>
                 <p>
                     <Trans i18nKey="about.intro" />
                 </p>
@@ -91,23 +103,44 @@ export const About = () => {
                 <p>
                     <Trans i18nKey="about.volunteersNoViolenceNames" />
                 </p>
+            </React.Fragment>
+        );
+    };
+
+    const renderLogos = () => {
+        return (
+            <div className="logo-container">
+                <a href="https://www.michalsela.org.il/" target="_blank">
+                    <MichalSelaLogo />
+                </a>
+                <a href="https://politicallycorret.co.il/" target="_blank">
+                    <PoliticlyKoretLogo />
+                </a>
+                <a href="https://www.onlife.co.il/" target="_blank">
+                    <OnlifeLogo />
+                </a>
+                <a href="https://no2violence.co.il/" target="_blank">
+                    <LoLalimotLogo />
+                </a>
+            </div>
+        );
+    };
+
+    const divider = <div className="divider">...</div>;
+
+    return (
+        <Skeleton>
+            <Content className="about">
+                <h1>{t('about.header')}</h1>
+                {renderAboutSection()}
+                {divider}
+                {renderNoToViolenceSection()}
+                {divider}
+                {renderVolunteeringSection()}
                 <h3>
                     <span>{t('about.inCollaboration')}</span>
                 </h3>
-                <div className="logo-container">
-                    <a href="https://www.michalsela.org.il/" target="_blank">
-                        <MichalSelaLogo />
-                    </a>
-                    <a href="https://politicallycorret.co.il/" target="_blank">
-                        <PoliticlyKoretLogo />
-                    </a>
-                    <a href="https://www.onlife.co.il/" target="_blank">
-                        <OnlifeLogo />
-                    </a>
-                    <a href="https://no2violence.co.il/" target="_blank">
-                        <LoLalimotLogo />
-                    </a>
-                </div>
+                {renderLogos()}
             </Content>
         </Skeleton>
     );

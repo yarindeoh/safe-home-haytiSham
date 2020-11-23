@@ -1,0 +1,12 @@
+.story-info {
+  > h2 {
+    font-size: 16px;
+    color: map_get($colors, purple-500);
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+
+  div > .tag {
+    font-size: 16px;
+  }
+}

@@ -14,30 +14,6 @@
 
 #story-page-container {
   border-bottom: 1px solid map_get($colors, grey-200);
-  
-  .quote {
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 21px;
-
-    > h1 {
-      font-size: 22px;
-      font-weight: 600;
-      color: map_get($colors, black);
-    }
-
-    > h2 {
-      font-size: 15px;
-      font-weight: bold;
-      color: map_get($colors, purple-500);
-      margin-top: 10px;
-      margin-bottom: 4px;
-    }
-
-    div > span {
-      font-size: 16px;
-    }
-  }
 
   .border-separator{
     border-bottom: 1px solid map_get($colors, grey-200);
