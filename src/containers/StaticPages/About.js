@@ -47,7 +47,18 @@ export const About = () => {
                     }
                     <Trans i18nKey="about.text4" />
                 </p>
-                <p>{t('about.text5')}</p>
+                <p>
+                    {t('about.text5')}
+                    {
+                        <a
+                            href="https://soficoop.com"
+                            target="_blank"
+                        >
+                            {t('about.linkSofi')}
+                        </a>
+                    }
+                    {t('about.whoIsSofi')}
+                </p>
                 <h2>{t('about.onNoToViolenceHeader')}</h2>
                 <p>
                     <Trans i18nKey="about.text6" />
@@ -57,6 +68,16 @@ export const About = () => {
                 </p>
                 <p>
                     <Trans i18nKey="about.text8" />
+                </p>
+                <p>
+                    {
+                        <a
+                            href="https://secure.cardcom.solutions/e/xuXs"
+                            target="_blank"
+                        >
+                        {t('about.donationLink')}
+                        </a>
+                    }
                 </p>
                 <div className="divider">...</div>
                 <p>
