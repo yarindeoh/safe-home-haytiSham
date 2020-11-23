@@ -49,9 +49,11 @@ export const AddStoryView = withRoute(props => {
                     <React.Fragment>
                         <h1>{t('addStoryView.myConfession')}</h1>
                         <h2>{t('addStoryView.anonymity')}</h2>
-                        <Link to="/pages/terms-of-service">
-                            <h2>{t('addStoryView.termsOfUse')}</h2>
-                        </Link>
+                        <h2>
+                            <Link to="/pages/terms-of-service">
+                                {t('addStoryView.termsOfUse')}
+                            </Link>
+                        </h2>
                         <form
                             onSubmit={handleSubmit}
                             id={'addStoryForm'}
