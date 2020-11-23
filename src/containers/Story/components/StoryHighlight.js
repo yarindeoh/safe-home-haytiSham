@@ -3,6 +3,7 @@ import Tag from 'components/Tag';
 import EditImg from 'src/media/icons/Edit.svg';
 import EyeSlashIcon from 'src/media/icons/eye-slash-grey.svg';
 import AvatarIcon from 'src/media/icons/Avatar.svg';
+import ArrowIcon from 'src/media/icons/arrow.svg';
 
 export const StoryHighlight = ({
     story,
@@ -13,12 +14,7 @@ export const StoryHighlight = ({
     displayAsUnPublish
 }) => {
     const { name, createdAt, tags, quote, updatedAt } = story;
-    const quoteMaxLength = 70;
-    let shortQuote = `"${quote.slice(0, quoteMaxLength)}${
-        quote.length > quoteMaxLength ? '...' : ''
-    }"`;
     let initials = name && name.split('')[0];
-    console.log(tags);
     const allTags = () => (
         <div className="tags">
             {tags &&
@@ -51,6 +47,7 @@ export const StoryHighlight = ({
             {displayAsUnPublish && (
                 <EyeSlashIcon className={'eye-slash-icon-story-highlight'} />
             )}
+            <div className={'arrow-icon'}>{<ArrowIcon/>}</div>
             <div className="initials">
                 <AvatarIcon />
             </div>
@@ -64,7 +61,7 @@ export const StoryHighlight = ({
                     displayAsUnPublish ? 'unPublish-quote' : ''
                 }`}
             >
-                {shortQuote}
+                {`"${quote}"`}
             </p>
             {allTags()}
         </li>
