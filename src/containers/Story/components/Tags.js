@@ -10,3 +10,5 @@ export const Tags = ({ tags }) => {
         </div>
     );
 };
+
+export default Tags;

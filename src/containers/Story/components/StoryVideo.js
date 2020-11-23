@@ -2,12 +2,12 @@ import React from 'react';
 import { Video, Transformation } from 'cloudinary-react';
 import { withRoute } from 'services/routing/routerHOC';
 import { StoriesList } from 'containers/Stories/components/StoriesList';
-import { Tags } from 'containers/Story/components/Tags';
 import { getPublicStoryById } from 'services/general/publicStoriesConfig';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'src/components/Skeleton';
 import Content from 'src/components/Content';
 import { FacebookShare } from 'components/FacebookShare';
+import StoryInfo from './StoryInfo';
 
 export const StoryVideo = withRoute(props => {
     const { t } = useTranslation();
@@ -20,26 +20,17 @@ export const StoryVideo = withRoute(props => {
         <Skeleton>
             <div id={'story-page-container'}>
                 <Content className="story-page-content" fullWidth={true}>
-                    <div className="quote">
-                        <h1>{`"${story.quote}"`}</h1>
-                        <h2>
-                            {t('storyVideo.campaign', {
-                                storyteller: story.storyteller,
-                                timestamp: story.timestamp
-                            })}
-                        </h2>
-                        <Tags tags={story.tags} />
-                        <div className="video-wrapper">
-                            <Video
-                                className="story-video"
-                                cloudName="dh7jncxmb"
-                                publicId={story.id}
-                                format="mp4"
-                                controls
-                            >
-                                <Transformation bitRate="250k" />
-                            </Video>
-                        </div>
+                    <StoryInfo story={story} isPublic={true} />
+                    <div className="video-wrapper">
+                        <Video
+                            className="story-video"
+                            cloudName="dh7jncxmb"
+                            publicId={story.id}
+                            format="mp4"
+                            controls
+                        >
+                            <Transformation bitRate="250k" />
+                        </Video>
                     </div>
                     <FacebookShare
                         btnText={t('share.story')}
