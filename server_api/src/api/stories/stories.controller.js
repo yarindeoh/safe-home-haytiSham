@@ -53,7 +53,7 @@ class StorieController {
                 
         const mailData = {
             from: 'haytisham@gmail.com', // sender address
-            to: 'contact@no2violance.co.il', // list of receivers
+            to: 'contact@no2violence.co.il', // list of receivers
             subject: 'התקבלה עדות חדשה באתר', // Subject line
             text:
                 ' היי! קיבלנו עדות חדשה שממתינה למודרציה לפני העלאה לאתר. אנא היכנסו אל וערכו את העדות וערכו אותה כדי שתעלה אל האתר.', // plain text body
