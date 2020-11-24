@@ -14,7 +14,7 @@ export function StoryInfo(props) {
         });
     } else {
         const storyName = story?.name
-            ? story.name.split('')[0]
+            ? story.name
             : t('storyView.anonymousTeller');
         storyBy = `${t('storyView.storyOf')} ${storyName} ${story?.createdAt}`;
     }
