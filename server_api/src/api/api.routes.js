@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const path = require('path')
+const fs = require('fs');
+const React = require('react')
+const ReactDOMServer = require('react-dom/server');
+const App = require('../../src/App');
 
 const TagController = require("./tags.controller");
 const tagController = new TagController();
@@ -8,6 +12,23 @@ const StorieController = require("./stories/stories.controller");
 const storieController = new StorieController()
 const UsersController = require("./authentication/users.controller");
 const usersController = new UsersController()
+
+//ssr
+app.get('/', (req, res) => {
+  const app = ReactDOMServer.renderToString(<App />);
+
+  const indexFile = path.resolve('./build/index.html');
+  fs.readFile(indexFile, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Something went wrong:', err);
+      return res.status(500).send('Oops, better luck next time!');
+    }
+
+    return res.send(
+      data.replace('<div id="root"></div>', `<div id="root">${app}</div>`)
+    );
+  });
+});
 
 router.get('/status', (req, res) => {
     res.send({ express: 'OK' });
