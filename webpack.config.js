@@ -5,6 +5,40 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const dotenv = require('dotenv');
 const fs = require('fs');
+const SitemapPlugin = require('sitemap-webpack-plugin').default;
+
+const paths = [
+    {
+        path: '',
+        lastmod: '2020-11-24T12:37:09+00:00',
+        priority: 0.8,
+        changefreq: 'weekly'
+    },
+    {
+        path: '/addStory/',
+        lastmod: '2021-02-28',
+        priority: 0.5,
+        changefreq: 'monthly'
+    },
+    {
+        path: '/pages/warning-signs/',
+        lastmod: '2021-02-15',
+        priority: 0.5,
+        changefreq: 'monthly'
+    },
+    {
+        path: '/pages/about/',
+        lastmod: '2021-01-23',
+        priority: 0.2,
+        changefreq: 'monthly'
+    },
+    {
+        path: '/pages/terms-of-service/',
+        lastmod: '2021-01-21',
+        priority: 0.2,
+        changefreq: 'monthly'
+    }
+];
 
 module.exports = (env, argv) => {
     // Get the root path (assuming your webpack config is in the root of your project!)
@@ -87,7 +121,8 @@ module.exports = (env, argv) => {
             new HtmlWebpackPlugin({
                 filename: 'index.html',
                 template: path.resolve(__dirname, 'index.html')
-            })
+            }),
+            new SitemapPlugin({ base: 'https://hayti-sham.co.il', paths })
         ]
     };
 };
