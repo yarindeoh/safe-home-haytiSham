@@ -10,7 +10,8 @@
     "heroku-prebuild": "cd server_api && npm install",
     "start": "cd server_api && npm run start",
     "lint:fix": "eslint --fix  --ext .js src",
-    "deploy:staging": "rsync -a * root@hayti-sham.co.il:/root/staging/ --exclude=node_modules --exclude=.nova --exclude=build --exclude=.vscode --exclude=.env"
+    "deploy:staging": "rsync -a * root@hayti-sham.co.il:/root/staging/ --exclude=node_modules --exclude=.nova --exclude=build --exclude=.vscode --exclude=.env",
+    "deploy:production": "rsync -a * root@hayti-sham.co.il:/root/safe-home-haytiSham/ --exclude=node_modules --exclude=.nova --exclude=build --exclude=.vscode --exclude=.env"
   },
   "heroku-run-build-script": true,
   "dependencies": {
