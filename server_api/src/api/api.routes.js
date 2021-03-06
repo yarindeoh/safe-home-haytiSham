@@ -9,6 +9,8 @@ const storieController = new StorieController();
 const UsersController = require('./authentication/users.controller');
 const usersController = new UsersController();
 
+router.get('/story/:id', storieController.getStory.bind(storieController));
+
 router.get('/status', (req, res) => {
     res.send({ express: 'OK' });
 });

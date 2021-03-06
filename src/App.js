@@ -28,7 +28,7 @@ export const App = () => {
                     <ScrollToTop />
                     <Switch>
                         <Route path="/" exact={true} component={StoriesView} />
-                        <Route path="/story" component={StoryView} />
+                        <Route path="/story/:id" component={StoryView} />
                         <Route
                             path="/addStory"
                             exact={true}
