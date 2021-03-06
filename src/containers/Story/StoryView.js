@@ -7,10 +7,11 @@ import Skeleton from 'src/components/Skeleton';
 import Content from 'src/components/Content';
 import StoryInfo from './components/StoryInfo';
 import { FacebookShare } from 'components/FacebookShare';
+import { useStory } from 'containers/Story/storyHooks';
 
 export const StoryView = withRoute(props => {
     const { t } = useTranslation();
-    const story = props.location.state;
+    const story = useStory();
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
     };
