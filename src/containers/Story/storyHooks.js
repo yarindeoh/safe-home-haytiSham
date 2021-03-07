@@ -1,8 +1,16 @@
 import Api from 'containers/Story/storyApi';
-import { useFetchApiData } from 'services/general/generalHooks';
+import React, { useState, useEffect } from 'react';
 
-export const useStory = () => {
-    const { localState: story } = useFetchApiData(Api.getStory, []);
+export const useStory = id => {
+    const [story, setStory] = useState({});
+
+    useEffect(() => {
+        const asyncFetch = async () => {
+            const response = await Api.getStory(id);
+            setStory(response);
+        };
+        asyncFetch();
+    }, [id]);
 
     return story;
 };

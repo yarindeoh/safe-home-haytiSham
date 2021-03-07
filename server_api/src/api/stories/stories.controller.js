@@ -15,9 +15,8 @@ class StorieController {
 
     getStory(req, res) {
         const { id } = req.params;
-
         this.storieService
-            .getStoryById(id)
+            .getModeratedStoryById(id)
             .then(story => res.json(story))
             .catch(error => {
                 return res.status(400).json({

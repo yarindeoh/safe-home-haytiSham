@@ -7,9 +7,8 @@ function baseUrl(path) {
 }
 
 const Api = {
-    getStory: () => {
-        return get(baseUrl(`story/5f96df576c491f0f3064bfc4`));
-        // return get(baseUrl(`story/${id}`));
+    getStory: id => {
+        return get(baseUrl(`story/${id}`));
     }
 };
 

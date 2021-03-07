@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { withRoute } from 'services/routing/routerHOC';
 import { extractFieldsFromObjOrdered } from 'services/general/generalHelpers';
@@ -11,7 +11,9 @@ import { useStory } from 'containers/Story/storyHooks';
 
 export const StoryView = withRoute(props => {
     const { t } = useTranslation();
-    const story = useStory();
+    const { id } = props.match.params;
+    const story = useStory(id);
+
     const changeLocationByPath = (path, params) => {
         props.history.push(path, params);
     };
@@ -30,7 +32,7 @@ export const StoryView = withRoute(props => {
         <Skeleton>
             <div id={'story-page-container'}>
                 <Content className={'story-page-content'} alignRight={true}>
-                    <StoryInfo story={story} />
+                    {story && <StoryInfo story={story} />}
                     <FacebookShare
                         btnText={t('share.story')}
                         sharedContent={story?.quote}
