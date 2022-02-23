@@ -20,7 +20,13 @@ export function CarouselItem({ story, isSelected, onClick }) {
     return (
         <div className="CarouselItemWrapper" onClick={handleClick}>
             <CloudinaryContext cloudName="dh7jncxmb">
-                <Image publicId={img} crop="scale" width={300} />
+                <Image
+                    publicId={img}
+                    gravity="auto"
+                    crop="fill"
+                    height={300}
+                    width={300}
+                />
             </CloudinaryContext>
             <div className="CarouselItemTextWrapper">
                 <h1 className="CarouselItemQuote">"{quote}"</h1>
